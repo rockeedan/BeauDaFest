@@ -1,0 +1,22 @@
+DROP TABLE USERLIST 
+	CASCADE CONSTRAINTS;
+
+create table USERLIST(
+	userId VARCHAR2(200),
+	userPass VARCHAR2(100),
+	userName VARCHAR2(100),
+	userEmail VARCHAR2(300),
+	userPhone VARCHAR2(300),
+	userStatus NUMBER
+);
+
+ALTER TABLE USERLIST
+	ADD
+		CONSTRAINT PK_USERLIST
+		PRIMARY KEY (
+			userId
+		);
+		
+		
+		
+select * from USERLIST

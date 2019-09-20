@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="user">
+	<insert id="memberJoin">
+		insert into USERLIST (userId, userPass, userName, userEmail, userPhone, userStatus)
+		values(#{userId},#{userPass},#{userName},#{userEmail},#{userPhone},#{userStatus})
+	</insert>
+	
+	<delete id="deleteMember">
+		delete from USERLIST
+		where userId=#{userId}
+	</delete>
+	
+	<update id="modify">
+		update USERLIST
+		set userName=#{userName}, userEmail=#{userEmail}, userPass=#{userPass}, userPhone=#{userPhone}
+		where userId=#{userId}
+	</update>
+	
+	<select id="findUser" resultType="UserVO">
+		select userId, userPass, userName, userEmail, userPhone
+		from USERLIST
+		where userId=#{userId}
+	</select>
+</mapper>
