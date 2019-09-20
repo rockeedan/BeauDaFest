@@ -71,4 +71,14 @@ local.properties
 
 .sts4-cache/
 
+
+# Maven
+log/
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
 # End of https://www.gitignore.io/api/eclipse
