@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<context:annotation-config></context:annotation-config>
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	<tx:annotation-driven/>
+	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		  id="transactionManager">
+		<property name="dataSource" ref="dataSource"></property>	  
+	</bean>
+	<!-- 
+	     SpringBoard/ root-context.xml
+	     ==> 모델관련된 클래스(객체)들에 대한 등록,관리
+	             예) DAO, DBCP (관련클래스: DataSource)  ...
+	 -->
+	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+	      id="dataSource">
+	    <property name="driverClassName" 
+	              value="oracle.jdbc.driver.OracleDriver"></property>
+        <property name="url"
+                  value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+        <property name="username" value="scott"></property>
+        <property name="password" value="tiger"></property>                  	               
+	</bean>
+	
+	<!-- XML내에 작성된 sql문을 호출하는 객체: SqlMapClient(iBatis), SqlSession(MyBatis) -->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean"
+          id="sqlSessionFactory">
+       <property name="dataSource" ref="dataSource"></property>
+       <property name="configLocation"
+                 value="classpath:/mybatis-config.xml"></property>
+                 
+       <!-- sql문 작성된 mapperXML문서 등록 -->                 
+       <property name="mapperLocations"
+                 value="classpath:mappers/*.xml"></property>                       
+    </bean>
+          
+	<bean class="org.mybatis.spring.SqlSessionTemplate"
+	      destroy-method="clearCache">
+	      <constructor-arg ref="sqlSessionFactory"></constructor-arg>
+	</bean>
+	  
+	<!-- 모든 DAO, DAOImpl클래스는  persistence 패키지 밑에 작성하겠음!! -->
+	<context:component-scan base-package="com.encore.persistence"/>
+	<!-- 모든 Service, ServiceImpl(비즈니스모델)클래스는 service패키지 밑에 작성하겠음!! -->
+	<context:component-scan base-package="com.encore.service"/>
+	
+	<!-- 모든 Advice클래스는 aop패키지 밑에 작성하겠음!! -->
+	<context:component-scan base-package="com.encore.aop"/>
+	
+		
+</beans>
