@@ -39,8 +39,9 @@
 </head>
 <body>
 	<div>
-		<jsp:include page="/WEB-INF/views/include/nav.jsp"></div>
-	<br>
+		<%@ include file="../include/nav.jsp"%>
+	</div>
+	<br><br>
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
