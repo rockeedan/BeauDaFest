@@ -7,7 +7,7 @@ create table USERLIST(
 	userName VARCHAR2(100),
 	userEmail VARCHAR2(300),
 	userPhone VARCHAR2(300),
-	userStatus NUMBER
+	userStatus NUMBER DEFAULT 0
 );
 
 ALTER TABLE USERLIST
@@ -18,5 +18,7 @@ ALTER TABLE USERLIST
 		);
 		
 		
-		
+
 select * from USERLIST
+
+delete from USERLIST
