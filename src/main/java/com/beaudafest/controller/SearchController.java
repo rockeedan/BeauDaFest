@@ -13,5 +13,14 @@ public class SearchController {
 		
 		return "main/searchAvailability";
 	}
-
+	
+	@RequestMapping("/list")
+	public String availableShopList() {
+		return "main/availableShopList";
+	}
+	
+	@RequestMapping("/nav")
+	public String nav() {
+		return "include/nav";
+	}
 }
