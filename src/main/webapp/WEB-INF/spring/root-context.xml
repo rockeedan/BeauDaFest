@@ -50,9 +50,9 @@
 	</bean>
 	  
 	<!-- 모든 DAO, DAOImpl클래스는  persistence 패키지 밑에 작성하겠음!! -->
-	<context:component-scan base-package="com.encore.persistence"/>
+	<context:component-scan base-package="com.beaudafest.persistence"/>
 	<!-- 모든 Service, ServiceImpl(비즈니스모델)클래스는 service패키지 밑에 작성하겠음!! -->
-	<context:component-scan base-package="com.encore.service"/>
+	<context:component-scan base-package="com.beaudafest.service"/>
 	
 	<!-- 모든 Advice클래스는 aop패키지 밑에 작성하겠음!! -->
 	<context:component-scan base-package="com.encore.aop"/>
