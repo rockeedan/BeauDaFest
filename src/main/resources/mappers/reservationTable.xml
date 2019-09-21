@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="reservation">
+	<insert id="insertTimeSchedule">
+		<foreach item="item" collection="timeList" open="INSERT ALL"  close="SELECT * FROM DUAL" separator=" " >
+			into timeSchedule (shopNum,addDate,startTime,endTime,arranged)
+			values (#{shopNum},to_date(#{addDate},'YYYY/MM/DD'),to_date(#{item.start},'YYYY/MM/DD HH24:MI'),to_date(#{item.end},'YYYY/MM/DD HH24:MI'),1)
+		</foreach>
+	</insert>
+	<insert id="insertWeekSchedule">
+		<foreach item="item" collection="timeList" open="INSERT ALL"  close="SELECT * FROM DUAL" separator=" " >
+			into timeSchedule (shopNum,addDate,startTime,endTime,arranged)
+			values (#{shopNum},to_date(#{item.addDate},'YYYY/MM/DD'),to_date(#{item.start},'YYYY/MM/DD HH24:MI'),to_date(#{item.end},'YYYY/MM/DD HH24:MI'),1)
+		</foreach>
+	</insert>
+	
+	<!-- <insert id="insertFileInfo" parameterType="java.util.Map">
+	 <foreach item="item" collection="list" open="INSERT ALL"  close="SELECT * FROM DUAL" separator=" " >
+		into attach_ms(mtext_id,org_name,new_name,path)
+		values
+			(#{item.mtext_id},#{item.org_name},#{item.new_name},#{item.path})
+		</foreach>
+	</insert> -->
+	
+	<select id="selectWeekScheduleList" resultType="ReservationTableVO">
+			select addDate to_char(startTime,'HH24:MI') startTime,to_char(endTime,'HH24:MI') endTime, arranged from timeSchedule
+			where shopNum=#{shopNum}
+			<if test="startTime != null">
+			<![CDATA[startTime >= sysdate and]]>
+			</if>
+			addDate BETWEEN TO_DATE(#{weekStart}, 'YYYY/MM/DD') AND TO_DATE(#{weekEnd}, 'YYYY/MM/DD')
+			order by startTime
+	</select>
+</mapper>
