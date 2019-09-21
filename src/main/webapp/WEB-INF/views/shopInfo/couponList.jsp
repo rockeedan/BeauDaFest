@@ -17,15 +17,15 @@
 	                <div class="card" style="display: flex;">
 	                    <a href="#popular" class="btn text-left custom-card">
 	                        <div class="img-hover-zoom">
-	                            <img src="/beaudafest/resources/testimg/shushu.jpg" class="card-img-top" alt="${p.PFNAME }">
+	                            <img src="/beaudafest/resources/testimg/dashinghao.jpg" class="card-img-top" alt="${p.PFNAME }">
 	                        </div>
 	                        <div class="card-body" style="text-align: center;">
 	                            <div style="display: block; white-space:pre; word-break:break-all;"><h5 class="card-title" style="overflow: hidden; text-overflow:ellipsis;"><c:out value="슈바인학센"/></h5></div>
 	                            <p class="card-text">
-	                                	독일의 족발입니다
+	                                	테스트디자인입니다
 	                            </p>
 	                            <p class="card-text">
-	                                30000원
+	                                12000원
 	                            </p>
 	                            <p class="card-text">
 	                                1시간
@@ -38,15 +38,15 @@
 	                <div class="card" style="display: flex;">
 	                    <a href="#popular" class="btn text-left custom-card">
 	                        <div class="img-hover-zoom">
-	                            <img src="/beaudafest/resources/testimg/schneeballen.jpg" class="card-img-top" alt="${p.PFNAME }">
+	                            <img src="/beaudafest/resources/testimg/gelatopeach.jpg" class="card-img-top" alt="${p.PFNAME }">
 	                        </div>
 	                        <div class="card-body" style="text-align: center;">
 	                            <div style="display: block; white-space:pre; word-break:break-all;"><h5 class="card-title" style="overflow: hidden; text-overflow:ellipsis;"><c:out value="${p.PFNAME }"/></h5></div>
 	                            <p class="card-text">
-									독일의 과자입니다
+									테스트디자인입니다
 	                            </p>
 	                            <p class="card-text">
-	                                3000원
+	                                13000원
 	                            </p>
 	                            <p class="card-text">
 	                                30분
