@@ -23,4 +23,23 @@ public class SearchController {
 	public String nav() {
 		return "include/nav";
 	}
+	
+	@RequestMapping("/option")
+	public String addOption() {
+		return "reservation/addOption";
+	}
+	
+	@RequestMapping("/confirm")
+	public String confirm () {
+		return "reservation/rsvnConfirm";
+	}
+	
+	@RequestMapping("/login")
+	public String login () {
+		return "member/login";
+	}
+	@RequestMapping("/signup")
+	public String signUp () {
+		return "member/signUp";
+	}
 }

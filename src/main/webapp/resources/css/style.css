@@ -14,7 +14,7 @@
 
 #booking {
 	font-family: 'Alice', serif;
-	background: rgba(133, 104, 73, 0.33);
+	background: #fbceb1;
 }
 
 .booking-form {
@@ -51,7 +51,7 @@
 	right: 0;
 	bottom: 0;
 	top: 0;
-	background: rgba(133, 104, 73, 0.78);
+	background: #F29886;
 }
 
 .booking-form>form {
@@ -118,8 +118,13 @@
 }
 
 .booking-form input[type="date"].form-control:invalid {
-	color: #e5e5e5;
+	color: #F29886;
 }
+
+.booking-form input[type="time"].form-control:invalid {
+	color: #F29886;
+}
+
 
 .booking-form select.form-control {
 	-webkit-appearance: none;
@@ -156,7 +161,7 @@
 }
 
 .booking-form .form-label {
-	color: #ff8cba;
+	color: #ebe3be;
 	text-transform: uppercase;
 	line-height: 24px;
 	height: 24px;
@@ -173,7 +178,7 @@
 	display: block;
 	width: 100%;
 	color: #fff;
-	background-color: rgba(133, 104, 73, 0.9);
+	background-color: #F29886;
 	font-weight: 700;
 	font-size: 18px;
 	border: none;
@@ -185,7 +190,7 @@
 
 .booking-form .submit-btn:hover,
 .booking-form .submit-btn:focus {
-	background-color: rgba(133, 104, 73, 1);
+	background-color: #F29886;
 }
 
 @media only screen and (max-width: 768px) {
