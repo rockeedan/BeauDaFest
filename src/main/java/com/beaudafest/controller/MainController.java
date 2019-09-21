@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.beaudafest.service.MemberService;
 
 @Controller
-@RequestMapping("/beaudafest/*")
+@RequestMapping("/*")
 public class MainController {
 
 	@Autowired
@@ -17,7 +17,7 @@ public class MainController {
 	//메인 페이지로 이동
 	@GetMapping("/main")
 	public String mainPage() {
-		return "main/mainView"; //가입 페이지로 이동
+		return "main/searchAvailability"; //가입 페이지로 이동
 	}
 	
 }

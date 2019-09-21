@@ -12,7 +12,7 @@ import com.beaudafest.domain.MemberVO;
 import com.beaudafest.service.MemberService;
 
 @Controller
-@RequestMapping("/beaudafest/member/*")
+@RequestMapping("/member/*")
 public class MemberController {
 
 	@Autowired

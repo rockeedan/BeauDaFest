@@ -13,7 +13,7 @@ import com.beaudafest.domain.ShopVO;
 import com.beaudafest.service.ShopService;
 
 @Controller
-@RequestMapping("/beaudafest/shop/*")
+@RequestMapping("/shop/*")
 public class ShopController {
 	
 	@Autowired
