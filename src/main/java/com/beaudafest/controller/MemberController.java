@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.beaudafest.domain.MemberVO;
 import com.beaudafest.service.MemberService;
@@ -41,12 +42,13 @@ public class MemberController {
 
 	// 오너 회원 가입
 	@PostMapping("/ownerJoin")
-	public String ownerJoin(MemberVO vo) {
-		MemberVO vo2 = new MemberVO("hana3", "set", "셋", "hana3@naver.com", "010-3333-3333", 1);
+	public String ownerJoin(MemberVO vo, RedirectAttributes redirectAttributes) {
+		vo = new MemberVO("hana3", "set", "셋", "hana3@naver.com", "010-3333-3333", 1);
 		vo.setMemberStatus(1);
-		int result = memberService.memberJoin(vo2);
+		int result = memberService.memberJoin(vo);
 		System.out.println("가입성공 : " + result);
-		return "redirect:/beaudafest/shop/JoinPage"; //샵 등록 페이지로 이동
+		redirectAttributes.addAttribute("memberId", vo.getMemberId());
+		return "redirect:/beaudafest/shop/shopJoin"; //샵 등록 페이지로 이동
 	}
 
 	// 회원정보수정 페이지로 이동

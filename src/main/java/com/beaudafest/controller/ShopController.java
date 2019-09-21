@@ -5,10 +5,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.beaudafest.domain.MemberVO;
 import com.beaudafest.domain.ShopVO;
 import com.beaudafest.service.ShopService;
 
@@ -19,13 +19,19 @@ public class ShopController {
 	@Autowired
 	ShopService shopService;
 	
+	@GetMapping("/shopJoin")
+	public String shopJoinPage(String memberId) { //샵 등록
+		System.out.println(memberId);
+		return "shop/shopJoinPage";
+	}
+	
 	//샵 등록
 	@PostMapping("/shopJoin")
 	public String shopJoin(ShopVO vo) { //샵 등록
 		vo = new ShopVO(3333, "hana3", "셋샵", "02-333-3333", "서울시", "10:00", "20:00", "목", "111", "샵소개", 1, "취소정책");
 		int result = shopService.shopJoin(vo);
 		System.out.println(result);
-		return "/"; //샵 등록 후 페이지 이동 --> 메인으로..?
+		return "redirect:/beaudafest/main"; //샵 등록 후 페이지 이동 --> 메인으로..?
 	}
 	
 	//샵 정보 수정
