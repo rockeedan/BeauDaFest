@@ -42,4 +42,9 @@ public class SearchController {
 	public String signUp () {
 		return "member/signUp";
 	}
+	@RequestMapping("/registration")
+	public String register () {
+		return "shopInfo/shopRegister";
+	}
+	
 }

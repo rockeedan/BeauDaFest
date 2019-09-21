@@ -23,4 +23,9 @@ public class ShopInfoController {
 	public String review() {
 		return "shopInfo/review";
 	}
+	
+	@RequestMapping("/listDetail")
+	public String detail() {
+		return "shopInfo/couponDetail";
+	}
 }

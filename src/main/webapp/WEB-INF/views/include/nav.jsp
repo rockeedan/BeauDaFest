@@ -36,7 +36,7 @@
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 		<a class="navbar-brand" href="#">BEAUDA <img
-			src="resources/img/heart.png" width="30" height="30"
+			src="/beaudafest/resources/img/heart.png" width="30" height="30"
 			class="d-inline-block align-top" alt=""> FEST
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
