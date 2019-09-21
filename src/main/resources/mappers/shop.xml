@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="shop">
+	<!-- 샵 등록 -->
+	<insert id="shopJoin">
+		insert into shopInfo(shopNum, memberId, shopName, shopPhone, shopAddr, shopOpen, shopOff, shopPhoto, shopIntro, shopParking, shopPolicy)
+		values (#{shopNum},#{memberId},#{shopName},#{shopPhone},#{shopAddr},#{shopOpen},#{shopOff},#{shopPhoto},#{shopIntro},#{shopParking},#{shopPolicy})
+	</insert>
+	
+	<!-- 샵 정보 수정 -->
+	<update id="modifyShopInfo">
+		update shopInfo 
+		set shopName=#{shopName}, shopPhone=#{shopPhone}, shopAddr=#{shopAddr}, shopOpen=#{shopOpen}, shopClose=#{shopClose}, shopOff=#{shopOff}
+			, shopPhoto=#{shopPhoto}, shopIntro=#{shopIntro}, shopParking=#{shopParking}, shopPolicy=#{shopPolicy}
+		where shopNum=#{shopNum}
+	</update>
+	
+	<!-- 샵 삭제 -->
+	<delete id="deleteShop">
+		delete from shopInfo
+		where shopNum=#{shopNum}
+	</delete>
+	
+	<!-- 샵 조회 -->
+	<select id="findShop" resultType="ShopVO">
+		select shopNum, memberId, shopName, shopPhone, shopAddr, shopOpen, shopClose, shopOff, shopPhoto, shopIntro, shopParking, shopPolicy
+		from shopInfo
+		where memberId=#{memberId}
+		<if test="shopNum != null">
+			and shopNum=#{shopNum}
+		</if>
+	</select>
+</mapper>
