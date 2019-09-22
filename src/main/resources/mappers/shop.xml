@@ -4,7 +4,7 @@
 	<!-- 샵 등록 -->
 	<insert id="shopJoin">
 		insert into shopInfo(shopNum, memberId, shopName, shopPhone, shopAddr, shopOpen, shopClose,shopOff, shopPhoto, shopIntro, shopParking, shopPolicy)
-		values (#{shopNum},#{memberId},#{shopName},#{shopPhone},#{shopAddr},#{shopOpen},#{shopClose},#{shopOff},#{shopPhoto},#{shopIntro},#{shopParking},#{shopPolicy})
+		values (shopInfo_seq.nextval,#{memberId},#{shopName},#{shopPhone},#{shopAddr},#{shopOpen},#{shopClose},#{shopOff},#{shopPhoto},#{shopIntro},#{shopParking},#{shopPolicy})
 	</insert>
 	
 	<!-- 샵 정보 수정 -->

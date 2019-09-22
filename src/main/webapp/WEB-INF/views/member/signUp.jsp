@@ -58,7 +58,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" action="member/userJoin" method="post">
+				<form class="login100-form validate-form" action="userJoin" method="post">
 					<span class="login100-form-title p-b-26"> Welcome </span> <span
 						class="login100-form-title p-b-26"> <strong>BEAUDA</strong><img
 						src="/beaudafest/resources/img/heart.png" width="30" height="30"

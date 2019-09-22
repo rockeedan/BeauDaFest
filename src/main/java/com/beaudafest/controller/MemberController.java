@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.beaudafest.domain.MemberVO;
 import com.beaudafest.service.MemberService;
@@ -46,7 +45,7 @@ public class MemberController {
 	// 일반 회원 가입
 	@PostMapping("/member/userJoin")
 	public String userJoin(MemberVO vo) {
-		int result = memberService.memberJoin(vo);
+		memberService.memberJoin(vo);
 		return "redirect:/main";
 	}
 

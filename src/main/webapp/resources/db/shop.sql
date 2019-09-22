@@ -34,6 +34,13 @@ ALTER TABLE shopInfo
 		REFERENCES memberList (
 			memberId
 		);
+		
+drop sequence shopInfo_seq;
+create sequence shopInfo_seq
+       start with 1
+       increment by 1
+       nocycle
+       nocache;	
 
 		
 select * from shopInfo
