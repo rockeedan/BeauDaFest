@@ -31,5 +31,10 @@ public class MemberServiceImpl implements MemberService{
 	public MemberVO findMember(String memberId) {
 		return dao.findMember(memberId);
 	}
+
+	@Override
+	public int login(MemberVO vo) {
+		return dao.login(vo);
+	}
 	
 }

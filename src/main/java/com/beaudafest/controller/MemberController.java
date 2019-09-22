@@ -1,5 +1,8 @@
 package com.beaudafest.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,53 +15,65 @@ import com.beaudafest.domain.MemberVO;
 import com.beaudafest.service.MemberService;
 
 @Controller
-@RequestMapping("/member/*")
+@RequestMapping("/*")
 public class MemberController {
 
 	@Autowired
 	MemberService memberService;
+	
+	//로그인
+	@PostMapping("/member/login")
+	public String login(MemberVO vo, HttpSession session) {
+		int success = memberService.login(vo);
+		if(success == 0) {
+			System.out.println("ㄴㄴ");
+		} else {
+			System.out.println("로그인 성공");
+			session.setAttribute("login", "success");
+			session.setAttribute("loginId", vo.getMemberId());
+		}
+		return "redirect:/main";
+	}
+	
 
 	// 일반 회원 가입 페이지로 이동
-	@GetMapping("/userJoin")
-	public String userJoinPage() {
-		return "member/userJoinPage"; // 가입 페이지로 이동
+	@GetMapping("/member/userJoin")
+	public String userJoinPage(HttpServletRequest request ) {
+		request.setAttribute("memberStatus", 0);
+		return "member/signUp"; // 가입 페이지로 이동
 	}
 
 	// 일반 회원 가입
-	@PostMapping("/userJoin")
+	@PostMapping("/member/userJoin")
 	public String userJoin(MemberVO vo) {
-		MemberVO vo2 = new MemberVO("hana1", "hana", "하나", "hana1@naver.com", "010-1111-1111", 0);
-		vo.setMemberStatus(0);
-		int result = memberService.memberJoin(vo2);
-		System.out.println("가입성공 : " + result);
-		return "redirect:/beaudafest/main"; // 이동페이지넣기(메인)
+		int result = memberService.memberJoin(vo);
+		return "redirect:/main";
 	}
 
 	// 오너 회원 가입 페이지로 이동
-	@GetMapping("/ownerJoin")
-	public String ownerJoinPage() {
-		return "member/ownerJoinPage"; // 가입 페이지로 이동
+	@GetMapping("/member/ownerJoin")
+	public String ownerJoinPage(HttpServletRequest request) {
+		request.setAttribute("memberStatus", 1);
+		return "member/signUp"; // 가입 페이지로 이동
 	}
 
 	// 오너 회원 가입
-	@PostMapping("/ownerJoin")
+	@PostMapping("/member/ownerJoin")
 	public String ownerJoin(MemberVO vo, RedirectAttributes redirectAttributes) {
-		vo = new MemberVO("hana3", "set", "셋", "hana3@naver.com", "010-3333-3333", 1);
-		vo.setMemberStatus(1);
 		int result = memberService.memberJoin(vo);
 		System.out.println("가입성공 : " + result);
 		redirectAttributes.addAttribute("memberId", vo.getMemberId());
-		return "redirect:/beaudafest/shop/shopJoin"; //샵 등록 페이지로 이동
+		return "redirect:/shopinfo/shopJoin"; //샵 등록 페이지로 이동
 	}
 
 	// 회원정보수정 페이지로 이동
-	@GetMapping("/modifyMember")
+	@GetMapping("/member/modifyMember")
 	public String modifyMemberPage() {
 		return "modify"; // 페이지로 이동
 	}
 
 	// 회원정보수정
-	@PostMapping("/modifyMember")
+	@PostMapping("/member/modifyMember")
 	public String modifyMember(MemberVO vo) {
 		MemberVO vo2 = new MemberVO();
 		vo2.setMemberId("hana1");
@@ -72,7 +87,7 @@ public class MemberController {
 	}
 
 	// 회원삭제
-	@PostMapping("/deleteMember")
+	@PostMapping("/member/deleteMember")
 	public String deleteMember(String memberId) {
 		memberId = "hana1";
 		int result = memberService.deleteMember(memberId);
@@ -81,11 +96,13 @@ public class MemberController {
 	}
 
 	//memberId로 특정 회원 조회
-	@PostMapping("/findMember")
+	@PostMapping("/member/findMember")
 	public String findMember(String memberId, Model m) {
 		MemberVO vo = memberService.findMember("hana1");
 		System.out.println(vo.toString());
 		return "회원조회창"; // 이동페이지넣기
 	}
+	
+	
 }
 
