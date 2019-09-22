@@ -2,6 +2,7 @@ package com.beaudafest.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 
@@ -46,5 +47,12 @@ public class SearchController {
 	public String register () {
 		return "shopInfo/shopRegister";
 	}
-	
+	@RequestMapping("/calendar")
+	public String calendar() {
+		return "calendar/calendar";
+	}
+	@RequestMapping("/calcal")
+	public @ResponseBody String calcal() {
+		return "hi!";
+	}
 }
