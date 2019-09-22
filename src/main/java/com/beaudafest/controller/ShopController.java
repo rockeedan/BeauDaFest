@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.beaudafest.domain.ShopVO;
 import com.beaudafest.service.ShopService;
@@ -29,10 +30,8 @@ public class ShopController {
 	
 	//샵 등록
 	@PostMapping("/shop/shopJoin")
-	public String shopJoin(ShopVO vo, HttpSession session) { //샵 등록
-		//vo = new ShopVO(3333, "hana3", "셋샵", "02-333-3333", "서울시", "10:00", "20:00", "목", "111", "샵소개", 1, "취소정책");
+	public String shopJoin(ShopVO vo, HttpSession session, MultipartFile multi) { //샵 등록
 		vo.setMemberId((String) session.getAttribute("memberId"));
-		System.out.println("넘어온샵정보 : "+vo.toString());
 		vo.setShopPhoto("setShopPhoto");
 		int result = shopService.shopJoin(vo);
 		session.removeAttribute("memberId");
