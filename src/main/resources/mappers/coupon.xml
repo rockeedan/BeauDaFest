@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="coupon">
+	<!-- 상품등록 -->
+	<insert id="addCoupon">
+		insert into shopDesign (designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto)
+		values (design_seq.nextval, 1111, #{designName}, #{designType}, #{designOption}, #{designPrice}, #{designTime}, '1111')
+	</insert>
+</mapper>

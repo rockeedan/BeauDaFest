@@ -34,6 +34,15 @@
 	}
 }
 </style>
+<script type="text/javascript">
+	$(function() {
+		$('#addCoupon').click(function(){
+			
+			$('#couponDetail').submit();
+		})
+
+	})//ready
+</script>
 </head>
 <body>
 	<div>
@@ -43,27 +52,28 @@
 	<br>
 	<br>
 	<div class="container">
-		<section class="jumbotron text-center"  style="background-color: #fbceb1">
+		<section class="jumbotron text-center"
+			style="background-color: #fbceb1">
 			<div class="container">
 				<h1 class="jumbotron-heading">NAMDAREUM</h1>
 				<p class="lead text-muted">최고의 디자인이 어쩌고 블라 샵 코멘트</p>
 
 			</div>
 		</section>
-		
+
 		<!-- 메뉴 NAV -->
 		<div class="nav-scroller py-1 mb-2">
-			
-				<nav class="nav d-flex justify-content-between">
-					<a class="p-2 text-muted" href="#">INFO</a> 
-					<a class="p-2 text-muted" href="#">COUPON</a>
-					<a class="p-2 text-muted" href="#">REVIEW</a>
-					<a class="p-2 text-muted" href="#">AVAILABILITY</a>
-					<a class="p-2 text-muted" href="#">RESERVATION</a>
-				</nav>
-			</div>
-		
-				
+
+			<nav class="nav d-flex justify-content-between">
+				<a class="p-2 text-muted" href="#">INFO</a> <a
+					class="p-2 text-muted" href="#">COUPON</a> <a
+					class="p-2 text-muted" href="#">REVIEW</a> <a
+					class="p-2 text-muted" href="#">AVAILABILITY</a> <a
+					class="p-2 text-muted" href="#">RESERVATION</a>
+			</nav>
+		</div>
+
+
 		<div class="album py-5 bg-light">
 			<div class="container">
 				<div class="row">
@@ -279,8 +289,8 @@
 			<a href="#" class="btn btn-outline-danger my-2" data-toggle="modal"
 				data-target="#exampleModalCenter">Add More</a>
 		</p>
-		
-		
+
+
 		<!-- 디자인 추가 모달 -->
 		<!-- Modal -->
 		<div class="modal fade" id="exampleModalCenter" tabindex="-1"
@@ -296,23 +306,58 @@
 						</button>
 					</div>
 					<div class="modal-body">
-
-						<form>
+						<form action="../owner/addCoupon" method="post" id="couponDetail">
 							<div class="form-group">
 								<label for="Design-name" class="col-form-label">디자인 이름:</label>
-								<input type="text" class="form-control" id="design-name">
+								<input type="text" class="form-control" 
+									name="designName">
 							</div>
-							<div class="form-group">
-								<label for="Design-Time" class="col-form-label">시술시간 :</label> <input
-									type="text" class="form-control" id="design-time">
+						<div class="form-group">
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="inputGroupSelect01">시간</label>
+									</div>
+									<select class="custom-select" 
+										name="designTime">
+										<option disabled selected>분</option>
+										<option value="nail">60</option>
+										<option value="eyelash">90</option>
+										<option value="eyelash">120</option>
+									</select>
+								</div>
 							</div>
 							<div class="form-group">
 								<label for="Design-price" class="col-form-label">가격 :</label> <input
-									type="text" class="form-control" id="design-price">
+									type="text" class="form-control" 
+									name="designPrice">
 							</div>
+
 							<div class="form-group">
-								<label for="design-text" class="col-form-label">디자인설명:</label>
-								<textarea class="form-control" id="message-text"></textarea>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="inputGroupSelect01">Options</label>
+									</div>
+									<select class="custom-select" 
+										name="designType">
+										<option disabled selected>상품타입</option>
+										<option value="nail">네일</option>
+										<option value="eyelash">속눈썹</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="inputGroupSelect02">Options</label>
+									</div>
+									<select class="custom-select" 
+										name="designOption">
+										<option disabled selected>디자인타입</option>
+										<option value="nail">디자인</option>
+										<option value="eyelash">옵션</option>
+									</select>
+								</div>
 							</div>
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
@@ -320,7 +365,7 @@
 								</div>
 								<div class="custom-file">
 									<input type="file" class="custom-file-input"
-										id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+										 aria-describedby="inputGroupFileAddon01">
 									<label class="custom-file-label" for="inputGroupFile01">Choose
 										file</label>
 								</div>
@@ -330,7 +375,7 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Add</button>
+						<button type="button" class="btn btn-primary" id="addCoupon">Add</button>
 					</div>
 				</div>
 			</div>
