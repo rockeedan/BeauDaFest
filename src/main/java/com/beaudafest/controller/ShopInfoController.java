@@ -26,6 +26,6 @@ public class ShopInfoController {
 	
 	@RequestMapping("/listDetail")
 	public String detail() {
-		return "shopInfo/couponDetail";
+		return "shop/couponManage";
 	}
 }

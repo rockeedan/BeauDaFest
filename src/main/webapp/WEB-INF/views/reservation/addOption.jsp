@@ -42,7 +42,7 @@
 	</div>
 	<br><br><br>
 	<div class="container">
-		<section class="jumbotron text-center">
+		<section class="jumbotron text-center"  style="background-color: #fbceb1">
 			<div class="container">
 				<h1 class="jumbotron-heading">NAMDAREUM</h1>
 				<p class="lead text-muted">최고의 디자인이 어쩌고 블라 샵 코멘트</p>

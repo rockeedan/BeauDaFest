@@ -32,7 +32,7 @@
 <br><br><br>
 <body class="bg-light">
 	<div class="container">
-		<section class="jumbotron text-center">
+		<section class="jumbotron text-center"  style="background-color: #fbceb1">
 			<div class="container">
 				<h1 class="jumbotron-heading">NAMDAREUM</h1>
 				<!-- 샵 이름 -->

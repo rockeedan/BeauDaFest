@@ -47,23 +47,23 @@
 			<div class="container">
 				<h1 class="jumbotron-heading">NAMDAREUM</h1>
 				<p class="lead text-muted">최고의 디자인이 어쩌고 블라 샵 코멘트</p>
+
 			</div>
 		</section>
-
-
+		
+		<!-- 메뉴 NAV -->
 		<div class="nav-scroller py-1 mb-2">
-			<div class="col-md-4">
-
+			
 				<nav class="nav d-flex justify-content-between">
-					<a class="p-2 text-muted" href="#">INFO</a> <a
-						class="p-2 text-muted" href="#">COUPON.</a> <a
-						class="p-2 text-muted" href="#">REVIEW</a>
-
+					<a class="p-2 text-muted" href="#">INFO</a> 
+					<a class="p-2 text-muted" href="#">COUPON</a>
+					<a class="p-2 text-muted" href="#">REVIEW</a>
+					<a class="p-2 text-muted" href="#">AVAILABILITY</a>
+					<a class="p-2 text-muted" href="#">RESERVATION</a>
 				</nav>
 			</div>
-		</div>
-
-
+		
+				
 		<div class="album py-5 bg-light">
 			<div class="container">
 				<div class="row">
@@ -84,12 +84,13 @@
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
 										<!--  고객이 로그인 했을 경우 View 버튼만 보임 
-									
+									샵주인 (if 해당 샵의 샵주인이 맞다면) edit 버튼 보임, edit 누르면 모달창 뜨고 사진 수정 삭제 가능
 									
 									 -->
 										<button type="button" class="btn btn-sm btn-outline-secondary"
 											data-toggle="modal" data-target="#myModal">View</button>
-
+										<button type="button" class="btn btn-sm btn-outline-secondary"
+											data-toggle="modal" data-target="#myModal">Edit</button>
 									</div>
 									<small class="text-muted">9 mins</small>
 									<!-- 소요시간 -->
@@ -115,7 +116,8 @@
 									<div class="btn-group">
 										<button type="button" class="btn btn-sm btn-outline-secondary"
 											data-toggle="modal" data-target="#myModal">View</button>
-
+										<button type="button" class="btn btn-sm btn-outline-secondary"
+											data-toggle="modal" data-target="#myModal">Edit</button>
 									</div>
 									<small class="text-muted">9 mins</small>
 								</div>
@@ -140,7 +142,8 @@
 									<div class="btn-group">
 										<button type="button" class="btn btn-sm btn-outline-secondary"
 											data-toggle="modal" data-target="#myModal">View</button>
-
+										<button type="button" class="btn btn-sm btn-outline-secondary"
+											data-toggle="modal" data-target="#myModal">Edit</button>
 									</div>
 									<small class="text-muted">9 mins</small>
 								</div>
@@ -249,8 +252,12 @@
 							<div class="modal-footer">
 								<button type="button" class="btn btn-danger"
 									data-dismiss="modal">Close</button>
-								<button type="button" class="btn btn-success"
-								data-dismiss="modal">예약하기</button>
+
+								<button type="button" class="btn btn-primary"
+									data-dismiss="modal">Modify</button>
+
+								<button type="button" class="btn btn-danger"
+									data-dismiss="modal">Delete</button>
 							</div>
 
 						</div>
@@ -267,11 +274,68 @@
 				data-target="#myModal">View More</a>
 		</p>
 
+		<!-- 샵주인 로그인 시 버튼 활성화 (상품등록가능)  -->
+		<p class="text-center">
+			<a href="#" class="btn btn-outline-danger my-2" data-toggle="modal"
+				data-target="#exampleModalCenter">Add More</a>
+		</p>
+		
+		
+		<!-- 디자인 추가 모달 -->
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+			role="dialog" aria-labelledby="exampleModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalCenterTitle">시술추가하기</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
 
-
+						<form>
+							<div class="form-group">
+								<label for="Design-name" class="col-form-label">디자인 이름:</label>
+								<input type="text" class="form-control" id="design-name">
+							</div>
+							<div class="form-group">
+								<label for="Design-Time" class="col-form-label">시술시간 :</label> <input
+									type="text" class="form-control" id="design-time">
+							</div>
+							<div class="form-group">
+								<label for="Design-price" class="col-form-label">가격 :</label> <input
+									type="text" class="form-control" id="design-price">
+							</div>
+							<div class="form-group">
+								<label for="design-text" class="col-form-label">디자인설명:</label>
+								<textarea class="form-control" id="message-text"></textarea>
+							</div>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+								</div>
+								<div class="custom-file">
+									<input type="file" class="custom-file-input"
+										id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+									<label class="custom-file-label" for="inputGroupFile01">Choose
+										file</label>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Add</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-
-
 
 </body>
 </html>
