@@ -59,11 +59,12 @@ public class MemberController {
 
 	// 오너 회원 가입
 	@PostMapping("/member/ownerJoin")
-	public String ownerJoin(MemberVO vo, RedirectAttributes redirectAttributes) {
+	public String ownerJoin(MemberVO vo,HttpSession session) {
 		int result = memberService.memberJoin(vo);
 		System.out.println("가입성공 : " + result);
-		redirectAttributes.addAttribute("memberId", vo.getMemberId());
-		return "redirect:/shopinfo/shopJoin"; //샵 등록 페이지로 이동
+		session.setAttribute("memberId", vo.getMemberId());
+		
+		return "redirect:/shop/shopJoin"; //샵 등록 페이지로 이동
 	}
 
 	// 회원정보수정 페이지로 이동

@@ -112,7 +112,7 @@ public class ShopVO {
 		return shopIntro;
 	}
 
-	public void setShopInfo(String shopIntro) {
+	public void setShopIntro(String shopIntro) {
 		this.shopIntro = shopIntro;
 	}
 
