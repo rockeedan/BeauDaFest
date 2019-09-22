@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="user">
+<mapper namespace="member">
 	<insert id="memberJoin">
 		insert into MemberList (memberId, memberName, memberPass, memberEmail, memberPhone, memberStatus)
 		values(#{memberId},#{memberName},#{memberPass},#{memberEmail},#{memberPhone},#{memberStatus})
@@ -21,6 +21,11 @@
 		select memberId, memberPass, memberName, memberEmail, memberPhone
 		from MemberList
 		where memberId=#{memberId}
+	</select>
+	
+	<select id="login" resultType="int">
+		select count(*) from MemberList
+		where memberId=#{memberId} and memberPass=#{memberPass}
 	</select>
 </mapper>
 

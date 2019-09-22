@@ -13,7 +13,7 @@
 <!-- Custom stlylesheet -->
 <link type="text/css" rel="stylesheet" href="resources/css/style.css" />
 <script src="resources/js/jquery-3.js"></script>
-
+<title>BEAUDAFEST</title>
 </head>
 <body>
 	<div>
