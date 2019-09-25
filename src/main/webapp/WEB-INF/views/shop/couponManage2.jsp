@@ -36,40 +36,47 @@
 </style>
 <script type="text/javascript">
 	$(function() {
-		$("#addCoupon").on("click", function() {
+		$("button[type='submit']").click(function(e) {
+
+			e.preventDefault();
+			console.log('submit clicked');
+		})
+
+		$("input[type='file']").on("change", function(e) {
 			var formData = new FormData();
 			var inputFile = $("input[name='uploadCoupon']");
 			var files = inputFile[0].files;
-			formData.append("designName", $("#addName").val())
-			formData.append("designTime", $("#addTime option:selected").val())
-			formData.append("designPrice", $("#addPrice").val())
-			formData.append("designType", $("#addType option:selected").val())
-			formData.append("designOption", $("#addOption").val())
 
 			for (var i = 0; i < files.length; i++) {
 				formData.append("uploadCoupon", files[i]);
 			}
-
+			
+			formData.append("designName", $("input[name='designName']"))
+			formData.append("designName", $("input[name='designName']"))
+			
 			$.ajax({
-				url : '../owner/addCoupon',
-				processData : false,
-				contentType : false,
-				data : formData,
-				type : 'POST',
-				success : function(result) {
-					$('#myModalBye').click()
+				url: '../owner/addCoupon',
+				processData: false,
+				contentType: false, 
+				data: formData, 
+				type: 'POST',
+				success: function(result){
+					console.log(result);
 				}
-
+				
 			})
 
 		})
+		
+		
+		
 
 		/* $(".custom-file-input").on("change",function() {
 					var fileName = $(this).val().split("\\").pop();
 					$(this).siblings(".custom-file-label").addClass("selected")
 							.html(fileName);
 				}); //파일명 입력해주기 
-		 */
+ */
 	})//ready
 </script>
 </head>
@@ -338,26 +345,24 @@
 						<form method="post" id="couponDetail" role="form">
 							<div class="form-group">
 								<label for="Design-name" class="col-form-label">디자인 이름:</label>
-								<input type="text" class="form-control" name="designName"
-									id="addName">
+								<input type="text" class="form-control" name="designName">
 							</div>
 							<div class="form-group">
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
 										<label class="input-group-text" for="inputGroupSelect01">시간</label>
 									</div>
-									<select class="custom-select" name="designTime" id="addTime">
+									<select class="custom-select" name="designTime">
 										<option disabled selected>분</option>
-										<option value="60">60</option>
-										<option value="90">90</option>
-										<option value="120">120</option>
+										<option value="nail">60</option>
+										<option value="eyelash">90</option>
+										<option value="eyelash">120</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="Design-price" class="col-form-label">가격 :</label> <input
-									type="text" class="form-control" name="designPrice"
-									id="addPrice">
+									type="text" class="form-control" name="designPrice">
 							</div>
 
 							<div class="form-group">
@@ -365,10 +370,10 @@
 									<div class="input-group-prepend">
 										<label class="input-group-text" for="inputGroupSelect01">상품타입</label>
 									</div>
-									<select class="custom-select" name="designType" id="addType">
+									<select class="custom-select" name="designType">
 										<option disabled selected>선택</option>
-										<option value="네일">네일</option>
-										<option value="속눈썹">속눈썹</option>
+										<option value="nail">네일</option>
+										<option value="eyelash">속눈썹</option>
 									</select>
 								</div>
 							</div>
@@ -378,11 +383,10 @@
 									<div class="input-group-prepend">
 										<label class="input-group-text" for="inputGroupSelect02">타입</label>
 									</div>
-									<select class="custom-select" name="designOption"
-										id="addOption">
+									<select class="custom-select" name="designOption">
 										<option disabled selected>선택</option>
-										<option value="디자인">디자인</option>
-										<option value="옵션">옵션</option>
+										<option value="nail">디자인</option>
+										<option value="eyelash">옵션</option>
 									</select>
 								</div>
 							</div>
@@ -404,8 +408,8 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal" id='myModalBye'>Close</button>
-						<button type="button" class="btn btn-primary" id="addCoupon">Add</button>
+							data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary" id="addCoupon">Add</button>
 					</div>
 				</div>
 			</div>

@@ -4,6 +4,6 @@
 	<!-- 상품등록 -->
 	<insert id="addCoupon">
 		insert into shopDesign (designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto)
-		values (design_seq.nextval, 1111, #{designName}, #{designType}, #{designOption}, #{designPrice}, #{designTime}, '1111')
+		values (design_seq.nextval, 1111, #{designName}, #{designType}, #{designOption}, #{designPrice}, #{designTime}, #{designPhoto})
 	</insert>
 </mapper>
