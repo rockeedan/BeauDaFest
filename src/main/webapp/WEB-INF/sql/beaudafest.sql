@@ -73,6 +73,14 @@ select * from timeSchedule where startTime=to_date('10:30','HH:MI');
 delete timeSchedule where endTime=to_date('11:30','HH:MI');
 delete timeSchedule;
 
+select addDate, to_char(startTime,'YYYY/MM/DD HH24:MI') startTime,to_char(endTime,'YYYY/MM/DD HH24:MI') endTime, arranged
+			from timeSchedule
+			where shopNum=1 and
+			addDate BETWEEN TO_DATE('2019/09/22', 'YYYY/MM/DD') AND TO_DATE('2019/09/28', 'YYYY/MM/DD')
+			order by startTime
+			
+update timeSchedule set arranged=0 where addDate=TO_DATE('2019/09/24', 'YYYY/MM/DD')
+
 (shopNum,addDate,startTime,endTime,arranged)
 insert into timeSchedule (shopNum,addDate,startTime,endTime,arranged)
 values (1,sysdate,to_date('21/9/19 17:00','DD/MM/RR HH24:MI'),to_date('21/9/19 17:30','DD/MM/RR HH24:MI'),1)

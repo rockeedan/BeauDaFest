@@ -17,6 +17,7 @@ import javax.xml.bind.ParseConversionEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.beaudafest.domain.ReservationTableVO;
 import com.beaudafest.persistence.ReservationTableDAO;
 
 @Repository
@@ -67,7 +68,6 @@ public class ReservationTableServiceImpl implements ReservationTableService{
 				int openT = Integer.parseInt(open.substring(0, 2));//오픈시간
 				int closeT = Integer.parseInt(close.substring(0, 2));//마감시간
 				for (int j = 0;j<7;j++) {
-					cal.add(Calendar.DAY_OF_YEAR, j);
 					for (int i = openT; i < closeT;i++) {//오픈시간부터 마감시간까지 시간 Map을 생성하여 리스트에 담기
 						Map<String,String> timeMap = new HashMap<>();//리스트에 담을 시작시간과 끝시간
 						timeMap.put("addDate",format.format(cal.getTime()));
@@ -80,6 +80,7 @@ public class ReservationTableServiceImpl implements ReservationTableService{
 						timeMap2.put("end",format.format(cal.getTime())+" "+(i+1)+":00");
 						timeList.add(timeMap2);
 					}
+					cal.add(Calendar.DAY_OF_YEAR, 1);
 				}
 			map.put("timeList",timeList);
 			
@@ -95,4 +96,13 @@ public class ReservationTableServiceImpl implements ReservationTableService{
 		}
 		return false;
 	}
+	
+	@Override
+	public List<ReservationTableVO> selectWeekScheduleList(int shopNum, Date weekStart) {
+		Map<String,Object> map = new HashMap<>();
+		map.put("shopNum",shopNum);
+		map.put("weekStart",weekStart);
+		return dao.selectWeekScheduleList(map);
+	}
+	
 }

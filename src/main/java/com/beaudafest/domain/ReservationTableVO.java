@@ -1,12 +1,28 @@
 package com.beaudafest.domain;
 
+import java.util.Date;
+
 public class ReservationTableVO {
 	private int shopNum;
 	private String addDate;
 	private String startTime;
+	private Date startTimeDate;
 	private String endTime;
+	private Date endTimeDate;
 	private int arranged;
 	
+	public Date getStartTimeDate() {
+		return startTimeDate;
+	}
+	public void setStartTimeDate(Date startTimeDate) {
+		this.startTimeDate = startTimeDate;
+	}
+	public Date getEndTimeDate() {
+		return endTimeDate;
+	}
+	public void setEndTimeDate(Date endTimeDate) {
+		this.endTimeDate = endTimeDate;
+	}
 	public int getShopNum() {
 		return shopNum;
 	}

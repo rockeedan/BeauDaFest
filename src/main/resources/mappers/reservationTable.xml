@@ -22,13 +22,24 @@
 		</foreach>
 	</insert> -->
 	
-	<select id="selectWeekScheduleList" resultType="ReservationTableVO">
-			select addDate to_char(startTime,'HH24:MI') startTime,to_char(endTime,'HH24:MI') endTime, arranged from timeSchedule
-			where shopNum=#{shopNum}
+<!-- 	<select id="selectWeekScheduleList" resultType="ReservationTableVO">
+			select addDate, to_char(startTime,'YYYY/MM/DD HH24:MI') startTime,to_char(endTime,'YYYY/MM/DD HH24:MI') endTime, arranged
+			from timeSchedule
+			where shopNum=#{shopNum} and
 			<if test="startTime != null">
 			<![CDATA[startTime >= sysdate and]]>
 			</if>
-			addDate BETWEEN TO_DATE(#{weekStart}, 'YYYY/MM/DD') AND TO_DATE(#{weekEnd}, 'YYYY/MM/DD')
+			(addDate BETWEEN #{weekStart} AND #{weekStart}+7)
+			order by startTime
+	</select> -->
+	<select id="selectWeekScheduleList" resultType="ReservationTableVO">
+			select addDate, startTime startTimeDate,endTime endTimeDate, arranged
+			from timeSchedule
+			where shopNum=#{shopNum} and
+			<!-- <if test="startTime != null">
+			<![CDATA[startTime >= sysdate and]]>
+			</if> -->
+			(addDate BETWEEN #{weekStart} AND #{weekStart}+7)
 			order by startTime
 	</select>
 </mapper>

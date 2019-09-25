@@ -26,18 +26,18 @@
 </tr>
 </thead>
 <tbody>
-<c:forEach begin="0" end="${param.officeTime*2-1 }" var="i">
+<c:forEach begin="0" end="${timeList.size()-1 }" var="i">
 <tr>
 <td>
-시간 입력
+${timeList[i] }
 </td>
 	<c:forEach begin="0" end="6" var="j">
 	<td>
 	<c:choose>
-		<c:when test="${param.currentDate > param.reservationTable[j*7+i].startTime }">
+ 		<c:when test="${currentDate > list[j*timeList.size()+i].startTimeDate }">
 			X
 		</c:when>
-		<c:when test="${param.reservationTable[j*7+i].arranged != 1 }">
+		<c:when test="${list[j*timeList.size()+i].arranged != 1 }">
 			X
 		</c:when>
 		<c:otherwise>	
@@ -47,7 +47,7 @@
 	</td>
 	</c:forEach>
 <td>
-시간 입력
+${timeList[i] }
 </td>
 </tr>
 </c:forEach>
