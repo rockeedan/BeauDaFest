@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.beaudafest.domain.ReservationTableVO;
+import com.beaudafest.domain.newReservationTableVO;
 import com.beaudafest.persistence.ReservationTableDAO;
 
 @Repository
@@ -103,6 +104,11 @@ public class ReservationTableServiceImpl implements ReservationTableService{
 		map.put("shopNum",shopNum);
 		map.put("weekStart",weekStart);
 		return dao.selectWeekScheduleList(map);
+	}
+	
+	@Override
+	public List<newReservationTableVO> event() {
+		return dao.event();
 	}
 	
 }

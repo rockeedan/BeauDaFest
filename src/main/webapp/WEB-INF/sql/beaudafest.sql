@@ -69,6 +69,9 @@ select to_char(startTime,'HH24:MI') startTime,to_char(endTime,'HH24:MI') endTime
 where startTime >= to_date('2019/09/21 14:10','YYYY/MM/DD HH24:MI')
 order by startTime
 
+select '예약가능' as title, '/beaudafest/reservation/test' as url,to_char(startTime,'YYYY/MM/DD HH24:MI:SS') as "start",to_char(endTime,'YYYY/MM/DD HH24:MI:SS') as "end"
+		from timeSchedule
+
 select * from timeSchedule where startTime=to_date('10:30','HH:MI');
 delete timeSchedule where endTime=to_date('11:30','HH:MI');
 delete timeSchedule;

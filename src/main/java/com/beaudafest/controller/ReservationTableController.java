@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.beaudafest.domain.ReservationTableVO;
+import com.beaudafest.domain.newReservationTableVO;
 import com.beaudafest.service.ReservationTableService;
 
 @Controller
@@ -74,5 +75,14 @@ public class ReservationTableController {
 	@RequestMapping("/newtable")
 	public String newtable() {
 		return "/reservationTest/newTable";
+	}
+	
+	@RequestMapping("/test")
+	public @ResponseBody String test() {
+		return "성공";
+	}
+	@RequestMapping("/eventTest")
+	public @ResponseBody List<newReservationTableVO> eventTest(){
+		return service.event();
 	}
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,9 +14,30 @@
 <script src='/beaudafest/resources/css/calendar/packages/daygrid/main.js'></script>
 <script src='/beaudafest/resources/css/calendar/packages/timegrid/main.js'></script>
 <script src='/beaudafest/resources/css/calendar/packages/list/main.js'></script>
+<script src='/beaudafest/resources/js/jquery-3.js'></script>
 <script>
 
   document.addEventListener('DOMContentLoaded', function() {
+	var event=[
+  	  {
+          title: 'Meeting',
+          url:'/beaudafest/reservation/test',
+          start: '2019-09-25 12:30:00',
+          end: '2019-09-25T13:00:00'
+        },
+        {
+            title: 'Conference',
+            start: '2019-09-25T15:30:00',
+            end: '2019-09-25T16:00:00'
+          },
+  ];
+	$.ajax({
+		url:"/beaudafest/reservation/eventTest",
+		success:function(data){
+			event=data;
+		}
+	})
+	  
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -26,13 +48,22 @@
         right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
       },
       navLinks: true, // can click day/week names to navigate views
+      
+      validRange: function() {
+    	  var nowDate = new Date();  
+    	    return {
+    	        start: nowDate,
+    	        end: new Date().setMonth(nowDate.getMonth()+2)
+    	      }
+      },
 
       weekNumbers: true,
       weekNumbersWithinDays: true,
       weekNumberCalculation: 'ISO',
 
-      editable: true,
+      editable: false,
       eventLimit: true, // allow "more" link when too many events
+      events:event
     });
 
     calendar.render();
@@ -58,6 +89,5 @@
 <body>
 
   <div id='calendar'></div>
-
 </body>
 </html>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.beaudafest.domain.ReservationTableVO;
+import com.beaudafest.domain.newReservationTableVO;
 
 @Repository
 public class ReservationTableDAOImpl implements ReservationTableDAO {
@@ -28,5 +29,9 @@ public class ReservationTableDAOImpl implements ReservationTableDAO {
 	@Override
 	public List<ReservationTableVO> selectWeekScheduleList(Map map) {
 		return sqlsession.selectList("reservation.selectWeekScheduleList", map);
+	}
+	@Override
+	public List<newReservationTableVO> event() {
+		return sqlsession.selectList("reservation.selectEvent");
 	}
 }

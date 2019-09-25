@@ -26,12 +26,20 @@
         right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
       },
       navLinks: true, // can click day/week names to navigate views
+      
+      validRange: function() {
+    	  var nowDate = new Date();  
+    	    return {
+    	        start: nowDate,
+    	        end: new Date().setMonth(nowDate.getMonth()+2)
+    	      }
+      },
 
       weekNumbers: true,
       weekNumbersWithinDays: true,
       weekNumberCalculation: 'ISO',
 
-      editable: true,
+      editable: false,
       eventLimit: true, // allow "more" link when too many events
       events:[
     	  {
