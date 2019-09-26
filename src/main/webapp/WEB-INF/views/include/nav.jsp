@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,31 +47,33 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="/beaudafest/main">HOME
-						<span class="sr-only">(current)</span>
+				<li class="nav-item active"><a class="nav-link"
+					href="/beaudafest/main">HOME <span class="sr-only">(current)</span>
 				</a></li>
 				<c:choose>
 					<c:when test="${login eq 'success' }">
-						<li class="nav-item"><a class="nav-link" href="#">MYPAGE</a> <!-- 로그인 하면  MyPage로바뀌기 (회원정보수정,탈퇴)  -->
-							</li>
+						<li class="nav-item"><a class="nav-link" href="#">MYPAGE</a>
+							<!-- 로그인 하면  MyPage로바뀌기 (회원정보수정,탈퇴)  --></li>
 						<li class="nav-item"><a class="nav-link" href="#">RESERVATION</a>
 							<!-- 예약확인하기  --></li>
-						<li class="nav-item"><a class="nav-link" href="/beaudafest/logout">LOGOUT</a>
-							<!-- 선택되면 disabled로?? --></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/beaudafest/logout">LOGOUT</a> <!-- 선택되면 disabled로?? --></li>
 					</c:when>
 					<c:otherwise>
-						<li class="nav-item"><a class="nav-link" href="/beaudafest/login">LOG IN</a> <!-- 로그인 안됐을 시 뜨는 화면  -->
-						</li>
+						<li class="nav-item"><a class="nav-link"
+							href="/beaudafest/login">LOG IN</a> <!-- 로그인 안됐을 시 뜨는 화면  --></li>
 					</c:otherwise>
 				</c:choose>
-				
+
 			</ul>
 			<form class="form-inline mt-2 mt-md-0">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item"><a class="nav-link" href="/beaudafest/member/ownerJoin">Shop등록</a> <!-- 선택되면 disabled로?? -->
+					<li class="nav-item"><a class="nav-link"
+						href="/beaudafest/member/ownerJoin">Shop등록</a> <!-- 선택되면 disabled로?? -->
 					</li>
 				</ul>
-				<button type="button" class="btn btn-outline-success my-2 my-sm-0" onclick="location.href='/beaudafest/member/userJoin'" >Sign
+				<button type="button" class="btn btn-outline-success my-2 my-sm-0"
+					onclick="location.href='/beaudafest/member/userJoin'">Sign
 					Up</button>
 			</form>
 		</div>

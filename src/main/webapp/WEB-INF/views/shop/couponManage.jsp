@@ -35,11 +35,21 @@
 }
 </style>
 <script type="text/javascript">
+	var formData = new FormData(); //Ajax로 전달할 전체데이터 
+	var regex = new RegExp("(.*?)\.(zip|exe|pdf|sh|alz)$"); //해당파일 첨부 불가능 
+	function fileCheck(fileName) {
+		if (regex.test(fileName)) {
+			alert("해당 종류의 파일은 업로드할 수 없습니다")
+			$("input[name='uploadCoupon']").focus();
+			return false;
+		}
+		return true;
+	}
+
 	$(function() {
-		
+
 		$("#addCoupon").on("click", function() { //ADD COUPON (쿠폰등록) 버튼을 클릭했을 시, 
-			var formData = new FormData();
-			var inputFile = $("input[name='uploadCoupon']");
+			var inputFile = $("input[name='uploadCoupon']"); //입력된 파일
 			var files = inputFile[0].files;
 			formData.append("designName", $("#addName").val()) //쿠폰이름 
 			formData.append("designTime", $("#addTime option:selected").val()) //시술시간 
@@ -48,6 +58,10 @@
 			formData.append("designOption", $("#addOption").val()) //디자인 or 단순 시술 
 
 			for (var i = 0; i < files.length; i++) {
+
+				if (!fileCheck(files[i].name)) {
+					return false;
+				}
 				formData.append("uploadCoupon", files[i]); //선택된 파일 
 			}
 
@@ -56,10 +70,11 @@
 				processData : false,
 				contentType : false,
 				data : formData,
-				type : 'POST',
-				success : function(result) {
-					$('#myModalBye').click()
-				}
+				type : 'POST'
+
+			})
+
+			$("input[name='uploadCoupon']").on("click", function() {
 
 			})
 
@@ -188,9 +203,11 @@
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
 										<button type="button" class="btn btn-sm btn-outline-secondary"
-											data-toggle="modal" data-target="#myModal">View</button>  <%--디자인수디테일보기--%>
+											data-toggle="modal" data-target="#myModal">View</button>
+										<%--디자인수디테일보기--%>
 										<button type="button" class="btn btn-sm btn-outline-secondary"
-											data-toggle="modal" data-target="#myModal">Edit</button> <%--디자인수정 --%>
+											data-toggle="modal" data-target="#myModal">Edit</button>
+										<%--디자인수정 --%>
 									</div>
 									<small class="text-muted">9 mins</small>
 								</div>
@@ -297,7 +314,7 @@
 							<!-- 일반고객 로그인 시 닫기버튼만 활성화,
 							샵주인 로그인 시 사진 수정 및 삭제 가능 -->
 							<div class="modal-footer">
-								<button type="button" class="btn btn-danger"
+								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal" name="modalClose">Close</button>
 
 								<button type="button" class="btn btn-primary"
@@ -316,7 +333,8 @@
 
 
 		<p class="text-center">
-			<a href="#" class="btn btn-outline-primary my-2">View More</a> <%--상품카드 더 보기 --%>
+			<a href="#" class="btn btn-outline-primary my-2">View More</a>
+			<%--상품카드 더 보기 --%>
 		</p>
 
 		<!-- 샵주인 로그인 시 버튼 활성화 (상품등록가능)  -->
@@ -340,7 +358,9 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
+
 					<div class="modal-body">
+
 						<form method="post" id="couponDetailAdd" role="form">
 							<div class="form-group">
 								<label for="Design-name" class="col-form-label">디자인 이름:</label>
@@ -412,11 +432,13 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal" id='myModalBye'>Close</button>
-						<button type="button" class="btn btn-primary" id="addCoupon">Add</button>
+						<button type="button" class="btn btn-primary" id="addCoupon"
+							data-dismiss="modal">Add</button>
 					</div>
 				</div>
 			</div>
-		</div><!-- 디자인 추가 모달 끝-->
+		</div>
+		<!-- 디자인 추가 모달 끝-->
 	</div>
 </body>
 </html>

@@ -47,4 +47,9 @@ public class SearchController {
 		return "shopInfo/shopRegister";
 	}
 	
+	@RequestMapping("/shopManage")
+	public String manage () {
+		return "shop/rsvnManage";
+	}
+	
 }
