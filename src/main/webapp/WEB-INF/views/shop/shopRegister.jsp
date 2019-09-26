@@ -135,8 +135,6 @@
 					</div>
 
 
-
-
 					Shop 시작시간
 					<div class="wrap-input100 validate-input">
 						<input class="input100" type="time" name="shopOpen">

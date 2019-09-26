@@ -45,18 +45,19 @@
 	<div class="container">
 		<section class="jumbotron text-center"  style="background-color: #fbceb1">
 			<div class="container">
-				<h1 class="jumbotron-heading">NAMDAREUM</h1>
+				<h1 class="jumbotron-heading">NAMDAREUM</h1> 	<%--샵이름  --%>
 				<p class="lead text-muted">최고의 디자인이 어쩌고 블라 샵 코멘트</p>
+			<%--샵소개 코멘트  --%>
 			</div>
 		</section>
 
-
+		<!-- 메뉴 NAV -->
 		<div class="nav-scroller py-1 mb-2">
 			<div class="col-md-4">
 
 				<nav class="nav d-flex justify-content-between">
 					<a class="p-2 text-muted" href="#">INFO</a> <a
-						class="p-2 text-muted" href="#">COUPON.</a> <a
+						class="p-2 text-muted" href="#">COUPON</a> <a
 						class="p-2 text-muted" href="#">REVIEW</a>
 
 				</nav>
@@ -64,6 +65,7 @@
 		</div>
 
 
+	<%--디자인리스트 보여주기  --%>
 		<div class="album py-5 bg-light">
 			<div class="container">
 				<div class="row">
@@ -84,8 +86,7 @@
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
 										<!--  고객이 로그인 했을 경우 View 버튼만 보임 
-									
-									
+																
 									 -->
 										<button type="button" class="btn btn-sm btn-outline-secondary"
 											data-toggle="modal" data-target="#myModal">View</button>
@@ -97,6 +98,8 @@
 							</div>
 						</div>
 					</div>
+					<%--첫번째카드 끝 --%>
+					<%--두번째 카드 시작 --%>
 					<div class="col-md-4">
 						<div class="card mb-4 shadow-sm">
 							<svg class="bd-placeholder-img card-img-top" width="100%"
@@ -122,6 +125,8 @@
 							</div>
 						</div>
 					</div>
+						<%--두번째 카드 끝 --%>
+					<%--세번째 카드 시작 --%>
 					<div class="col-md-4">
 						<div class="card mb-4 shadow-sm">
 							<svg class="bd-placeholder-img card-img-top" width="100%"
@@ -139,18 +144,18 @@
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
 										<button type="button" class="btn btn-sm btn-outline-secondary"
-											data-toggle="modal" data-target="#myModal">View</button>
+											data-toggle="modal" data-target="#myModal">View</button> <%--디자인 디테일보기 --%>
 
 									</div>
 									<small class="text-muted">9 mins</small>
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> 	<%--세번째 카드 끝 --%>
 				</div>
+				<%--/row --%>
 
-
-				<!-- Coupon Detail The Modal -->
+				<!-- 카드의 View 클릭 시 /Coupon Detail The Modal -->
 				<div class="modal" id="myModal">
 					<div class="modal-dialog">
 						<div class="modal-content">
@@ -236,10 +241,6 @@
 										<label for="designPrice" class="col-form-label">디자인
 											가격:</label> <input type="text" class="form-control" id="designPrice">
 									</div>
-									<div class="form-group">
-										<label for="designText" class="col-form-label">디자인설명:</label>
-										<textarea class="form-control" id="message-text"></textarea>
-									</div>
 								</form>
 
 							</div>
@@ -261,13 +262,9 @@
 			</div>
 		</div>
 
-
 		<p class="text-center">
-			<a href="#" class="btn btn-outline-primary my-2" data-toggle="modal"
-				data-target="#myModal">View More</a>
+			<a href="#" class="btn btn-outline-primary my-2">View More</a> <%--다음리스트보기 --%>
 		</p>
-
-
 
 	</div>
 
