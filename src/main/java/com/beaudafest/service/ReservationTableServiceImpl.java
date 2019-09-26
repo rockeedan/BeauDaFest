@@ -111,4 +111,9 @@ public class ReservationTableServiceImpl implements ReservationTableService{
 		return dao.event();
 	}
 	
+	@Override
+	public int hihi() {
+		return dao.hihi();
+	}
+	
 }

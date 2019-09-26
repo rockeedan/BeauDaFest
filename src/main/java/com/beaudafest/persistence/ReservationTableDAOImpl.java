@@ -34,4 +34,8 @@ public class ReservationTableDAOImpl implements ReservationTableDAO {
 	public List<newReservationTableVO> event() {
 		return sqlsession.selectList("reservation.selectEvent");
 	}
+	@Override
+	public int hihi() {
+		return sqlsession.selectOne("reservation.hihi");
+	}
 }

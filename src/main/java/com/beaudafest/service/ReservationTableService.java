@@ -12,4 +12,5 @@ public interface ReservationTableService {
 	public boolean insertWeekSchedule(int shopNum,String weekStart,String weekEnd,String open,String close);
 	public List<ReservationTableVO> selectWeekScheduleList(int shopNum,Date weekStart);
 	public List<newReservationTableVO> event();
+	public int hihi();
 }

@@ -85,4 +85,8 @@ public class ReservationTableController {
 	public @ResponseBody List<newReservationTableVO> eventTest(){
 		return service.event();
 	}
+	@RequestMapping("/hihi")
+	public @ResponseBody int hihi() {
+		return service.hihi();
+	}
 }

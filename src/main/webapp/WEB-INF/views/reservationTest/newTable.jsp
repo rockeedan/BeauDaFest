@@ -16,27 +16,29 @@
 <script src='/beaudafest/resources/css/calendar/packages/list/main.js'></script>
 <script src='/beaudafest/resources/js/jquery-3.js'></script>
 <script>
-
+	var event;
+	$.ajax({
+		url:"/beaudafest/reservation/eventTest",
+		dataType:'json',
+		success:function(data){
+			event=data;
+			console.log(event[0])
+		}
+	})
   document.addEventListener('DOMContentLoaded', function() {
-	var event=[
+	/* var event=[
   	  {
           title: 'Meeting',
           url:'/beaudafest/reservation/test',
-          start: '2019-09-25 12:30:00',
-          end: '2019-09-25T13:00:00'
+          start: '2019-09-26 12:30:00',
+          end: '2019-09-26T13:00:00'
         },
         {
-            title: 'Conference',
-            start: '2019-09-25T15:30:00',
-            end: '2019-09-25T16:00:00'
+            title: "Conference",
+            start: '2019-09-26T15:30:00',
+            end: '2019-09-26T16:00:00'
           },
-  ];
-	$.ajax({
-		url:"/beaudafest/reservation/eventTest",
-		success:function(data){
-			event=data;
-		}
-	})
+  ]; */
 	  
     var calendarEl = document.getElementById('calendar');
 
@@ -63,7 +65,20 @@
 
       editable: false,
       eventLimit: true, // allow "more" link when too many events
-      events:event
+      //eventSources:[{events:event}]
+      /* eventSources:{url:"/beaudafest/reservation/eventTest",
+    	  color:'yellow',
+    	  textColor:'black'} */
+      eventSources:[{events:function(info, successCallback, failureCallback){
+    	  $.ajax({
+    			url:"/beaudafest/reservation/eventTest",
+    			dataType:'json',
+    			success:function(data){
+    				successCallback(data);
+    				console.log('하이');
+    			}
+    		})
+      },color:"#FFC0CB"}]
     });
 
     calendar.render();

@@ -72,6 +72,9 @@ order by startTime
 select '예약가능' as title, '/beaudafest/reservation/test' as url,to_char(startTime,'YYYY/MM/DD HH24:MI:SS') as "start",to_char(endTime,'YYYY/MM/DD HH24:MI:SS') as "end"
 		from timeSchedule
 
+select '예약가능' as title, '/beaudafest/reservation/test' as url,to_char(startTime,'YYYY/MM/DD HH24:MI:SS') as "start",to_char(endTime,'YYYY/MM/DD HH24:MI:SS') as "end"
+		from timeSchedule
+
 select * from timeSchedule where startTime=to_date('10:30','HH:MI');
 delete timeSchedule where endTime=to_date('11:30','HH:MI');
 delete timeSchedule;
