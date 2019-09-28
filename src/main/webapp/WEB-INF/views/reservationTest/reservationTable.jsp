@@ -6,85 +6,90 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="/beaudafest/resources/js/jquery-3.js"></script>
+<style>
+tr.selectOpenTime{
+	background-color: red;
+}
+button.btn{
+	border-color: black
+}
+</style>
 </head>
 <body>
-<table style="border:1px solid;border-collapse:collapse;text-align: center;" >
-<thead>
-<tr>
-<td rowspan="2">이전 일주일</td>
-<td colspan="7">2019년 9월</td>
-<td rowspan="2">다음 일주일</td>
-</tr>
-<tr>
-<td>일</td>
-<td>월</td>
-<td>화</td>
-<td>수</td>
-<td>목</td>
-<td>금</td>
-<td>토</td>
-</tr>
-</thead>
-<tbody>
-<c:forEach begin="0" end="${timeList.size()-1 }" var="i">
-<tr>
-<td>
-${timeList[i] }
-</td>
-	<c:forEach begin="0" end="6" var="j">
-	<td>
+
+<c:forEach begin="0" end="23" var="i">
 	<c:choose>
- 		<c:when test="${currentDate > list[j*timeList.size()+i].startTimeDate }">
-			X
+		<c:when test="${i<10 }">
+			<button type="button" class="btn btn-block">
+				<start checked="false">0${i }:00</start> ~ <end>0${i }:30</end>
+			</button>
+			<button type="button" class="btn btn-block">
+				<start checked="false">0${i }:30</start> ~ <end><c:choose><c:when test="${i==9}">${i+1 }</c:when><c:otherwise>0${i }</c:otherwise></c:choose>:00</end>
+			</button>
 		</c:when>
-		<c:when test="${list[j*timeList.size()+i].arranged != 1 }">
-			X
-		</c:when>
-		<c:otherwise>	
-			O
-		</c:otherwise>		
+		<c:otherwise>
+			<button type="button" class="btn btn-block">
+				<start checked="false">${i }:00</start> ~ <end>${i }:30</end>
+			</button>
+			<button type="button" class="btn btn-block">
+				<start checked="false">${i }:30</start> ~ <end>${i+1 }:00</end>
+			</button>
+		</c:otherwise>
 	</c:choose>
-	</td>
-	</c:forEach>
-<td>
-${timeList[i] }
-</td>
-</tr>
 </c:forEach>
-<!-- <tr>
-	<td>10:00</td>
-	<td>O</td>
-	<td>O</td>
-	<td>O</td>
-	<td>O</td>
-	<td>O</td>
-	<td>O</td>
-	<td>O</td>
-	<td>10:00</td>
-</tr>
-<tr>
-	<td>10:30</td>
-	<td>O</td>
-	<td>O</td>
-	<td>O</td>
-	<td>O</td>
-	<td>O</td>
-	<td>O</td>
-	<td>O</td>
-	<td>10:30</td>
-</tr>
-<tr>
-	<td>11:00</td>
-	<td>O</td>
-	<td>O</td>
-	<td>O</td>
-	<td>O</td>
-	<td>O</td>
-	<td>O</td>
-	<td>O</td>
-	<td>11:00</td>
-</tr> -->
-</tbody>
-</table>
+
+
+
+<button type="button" class="btn logPrint">
+로그 출력</button>
+
+<script>
+	$('button.logPrint').on("click",function(){
+		var hi = new FormData();
+		$('button.btn-danger').each(function(){
+			hi.append('bye',"오늘"+$(this).find("start").html())
+			console.log($(this).html())
+		})
+		console.log("select : "+hi.getAll('bye'))
+	})
+	$('button.btn').on("click",function(){
+		console.log("에잇")
+		$(this).toggleClass("btn-danger")
+		$(this).find("start").toggleClass("selectTime")
+		$(this).find("start").toggleClass("seTime")
+		$(this).find("end").toggleClass("selectTime")
+	})
+</script>
 </body>
 </html>
+
+
+<%-- 
+<table>
+<thead><tr><th>예약 가능 시간</th></tr></thead>
+<tbody>
+<c:forEach begin="0" end="23" var="i">
+	<c:choose>
+		<c:when test="${i<10 }">
+			<tr><td>
+				<start checked="false">0${i }:00</start> ~ <end>0${i }:30</end>
+			</td></tr>
+			<tr><td>
+				<start checked="false">0${i }:30</start> ~ <end><c:choose><c:when test="${i==9}">${i+1 }</c:when><c:otherwise>0${i }</c:otherwise></c:choose>:00</end>
+			</td></tr>
+		</c:when>
+		<c:otherwise>
+			<tr><td>
+				<start checked="false">${i }:00</start> ~ <end>${i }:30</end>
+			</td></tr>
+			<tr><td>
+				<start checked="false">${i }:30</start> ~ <end>${i+1 }:00</end>
+			</td></tr>
+		</c:otherwise>
+	</c:choose>
+</c:forEach>
+</tbody>
+</table>
+ --%>
