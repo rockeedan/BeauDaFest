@@ -60,9 +60,9 @@
 		var files = '';
 		
 		//파일 선택했을 때 (shop사진 고르고 확인)
-		$('input[name="uploadFile"]').on("change", function(){
+		$('#inputGroupFile01').on("change", function(){
 			$('.uploadResult ul').html('');
-			var inputFile = $("input[name='uploadFile']");
+			var inputFile = $("#inputGroupFile01");
 			files = inputFile[0].files;
 			fileCnt = files.length;
 			
@@ -144,7 +144,7 @@
 			formData.append("shopIntro",$('input[name="shopIntro"]').val())  //샵 소개
 			formData.append("shopParking",$('select[name=shopParking] option:selected'));//주차유무
 			formData.append("shopPolicy",$('select[name=shopPolicy] option:selected'));  //취소정책
-			
+			console.log(formData.getAll("uploadFile"))
 			
 			$.ajax({
 				url : 'shopJoin',
@@ -313,7 +313,7 @@
 						</div>
 						<div class="custom-file">
 							<input type="file" class="custom-file-input"
-								id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+								id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" >
 							<label class="custom-file-label" for="inputGroupFile01">Choose
 								file</label>
 						</div>
