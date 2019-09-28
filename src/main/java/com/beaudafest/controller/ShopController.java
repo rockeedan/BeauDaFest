@@ -1,7 +1,11 @@
 package com.beaudafest.controller;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
@@ -30,9 +34,49 @@ public class ShopController {
 	
 	//샵 등록
 	@PostMapping("/shop/shopJoin")
-	public String shopJoin(ShopVO vo, HttpSession session, MultipartFile multi) { //샵 등록
+	public String shopJoin(ShopVO vo, HttpSession session, MultipartFile[] uploadFile) { //샵 등록
+		String uploadFolder = "C:\\beaudafest";
+		String addDate= getFolder();//혹시 그 사이에 날짜 바뀔까봐..
+		
+		File uploadPath = new File(uploadFolder, addDate);
+		
+		String shopPhoto="";//db저장용 변수
+		
+		if(uploadPath.exists()==false) {//오늘 날짜 폴더가 없으면
+			uploadPath.mkdirs(); //오늘 날짜 폴더 만들기
+		}
+		
+		for(MultipartFile multipartFile : uploadFile) {
+			System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
+			System.out.println("Upload File Size : " + multipartFile.getSize());
+			
+			String uploadFileName = multipartFile.getOriginalFilename();
+			
+			//IE용 경로
+			uploadFileName=uploadFileName.substring(uploadFileName.lastIndexOf("\\")+1);
+			System.out.println("onlyFileName : "+uploadFileName);
+			
+			//중복 방지 UUID
+			UUID uuid = UUID.randomUUID();
+			uploadFileName=uuid.toString()+"_"+uploadFileName;
+			System.out.println(uploadFileName);
+			//'날짜/파일이름' 으로 DB에 저장
+			shopPhoto+=((addDate+"\\"+uploadFileName)+"|");
+			
+			//폴더에 이미지 추가
+			File savefile = new File(uploadPath, uploadFileName);
+			
+			try {
+				multipartFile.transferTo(savefile);
+				//DB에 저장할때
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+			
+		}
+		vo.setShopPhoto(shopPhoto);
 		vo.setMemberId((String) session.getAttribute("memberId"));
-		vo.setShopPhoto("setShopPhoto");
+		System.out.println(vo.toString());//출력
 		int result = shopService.shopJoin(vo);
 		session.removeAttribute("memberId");
 		System.out.println(session.getAttribute("memberId"));
@@ -66,5 +110,12 @@ public class ShopController {
 			System.out.println(list.get(i).toString());
 		}
 		return "/"; //조회페이지
+	}
+	
+	private String getFolder() {//오늘 날짜의 경로를 문자열로 생성
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		String str = sdf.format(date);
+		return str.replace("-", File.separator);
 	}
 }
