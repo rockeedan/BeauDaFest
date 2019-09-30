@@ -18,6 +18,10 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+	integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN"
+	crossorigin="anonymous">
 <style>
 .bd-placeholder-img {
 	font-size: 1.125rem;
@@ -32,13 +36,14 @@
 	.bd-placeholder-img-lg {
 		font-size: 3.5rem;
 	}
+a
 }
 </style>
 <script type="text/javascript">
 	var formData = new FormData(); //Ajax로 전달할 전체데이터 
-	var regex = new RegExp("(.*?)\.(zip|exe|pdf|sh|alz)$"); //해당파일 첨부 불가능 
+	var regex = new RegExp("(.*?)\.(jpg|jpeg|png|bmp|JPG|JPEG|BMP|PNG)$"); //해당파일 첨부 불가능 
 	function fileCheck(fileName) {
-		if (regex.test(fileName)) {
+		if (!regex.test(fileName)) {
 			alert("해당 종류의 파일은 업로드할 수 없습니다")
 			$("input[name='uploadCoupon']").focus();
 			return false;
@@ -48,21 +53,53 @@
 
 	$(function() {
 
+		var files = '';
+		var fileCnt=0;
+
+		$(".custom-file-input")
+				.on(
+						"change",
+						function() { //입력된 파일 리스트 뽑아내기 
+							$('.uploadResult ul').html('');
+							var inputFile = $("input[name='uploadCoupon']"); //입력된 파일
+							files = inputFile[0].files
+							for (var i = 0; i < files.length; i++) {
+								if (!fileCheck(files[i].name)) {
+									continue;
+								}
+								$('.uploadResult ul')
+										.append(
+												'<li><span>'
+														+ files[i].name
+														+ '</span> <a style="cursor:pointer" class="fas fa-times" value="times"></a></li>');
+							formData.append(files[i].name, files[i]);
+							fileCnt++;
+							}
+							console.log("111  >>"+files.length)
+							$(".custom-file-input").val("");
+							console.log("2222  >>"+files.length)
+						}); //파일명 입력해주기 
+						
+	 	$('.uploadResult ul').on("click","a", function(){
+	 		console.log($(this).closest('li').children('span').html())
+	 		formData.delete($(this).closest('li').children('span').html()) 		
+	 		$(this).closest('li').remove();
+	 		fileCnt--;
+	 		console.log("수정된 파일 갯수: "+fileCnt)
+	 	
+	 	})
+
 		$("#addCoupon").on("click", function() { //ADD COUPON (쿠폰등록) 버튼을 클릭했을 시, 
-			var inputFile = $("input[name='uploadCoupon']"); //입력된 파일
-			var files = inputFile[0].files;
+
 			formData.append("designName", $("#addName").val()) //쿠폰이름 
 			formData.append("designTime", $("#addTime option:selected").val()) //시술시간 
 			formData.append("designPrice", $("#addPrice").val()) //시술가격 
 			formData.append("designType", $("#addType option:selected").val()) //네일,페디,속눈썹선택 
 			formData.append("designOption", $("#addOption").val()) //디자인 or 단순 시술 
-
-			for (var i = 0; i < files.length; i++) {
-
-				if (!fileCheck(files[i].name)) {
-					return false;
-				}
-				formData.append("uploadCoupon", files[i]); //선택된 파일 
+			
+			for (var i = 0; i < fileCnt; i++) {
+				console.log("file명:"+$('.uploadResult ul').children().eq(i).children('span').html())
+				formData.append("uploadCoupon", formData.get($('.uploadResult ul').children().eq(i).children('span').html())); //선택된 파일 
 			}
 
 			$.ajax({
@@ -74,18 +111,8 @@
 
 			})
 
-			$("input[name='uploadCoupon']").on("click", function() {
-
-			})
-
 		})
 
-		/* $(".custom-file-input").on("change",function() {
-					var fileName = $(this).val().split("\\").pop();
-					$(this).siblings(".custom-file-label").addClass("selected")
-							.html(fileName);
-				}); //파일명 입력해주기 
-		 */
 	})//ready
 </script>
 </head>
@@ -425,6 +452,12 @@
 											multiple="multiple"> <label class="custom-file-label"
 											for="inputGroupFile01">Choose file</label>
 									</div>
+								</div>
+								<div class="uploadResult">
+									<br>
+									<ul>
+
+									</ul>
 								</div>
 							</div>
 						</form>

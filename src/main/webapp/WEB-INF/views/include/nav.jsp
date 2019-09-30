@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html>
-<head>
+
+
 <meta charset="UTF-8">
 
 <link rel="canonical"
@@ -33,8 +33,7 @@
 }
 </style>
 
-</head>
-<body>
+
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 		<a class="navbar-brand" href="#">BEAUDA <img
 			src="/beaudafest/resources/img/heart.png" width="30" height="30"
@@ -79,5 +78,4 @@
 		</div>
 	</nav>
 
-</body>
-</html>
+
