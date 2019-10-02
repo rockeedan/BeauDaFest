@@ -6,43 +6,21 @@
 <title>Sign Up</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-<link rel="icon" type="image/png" href="resources/img/icons/favicon.ico" />
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css"
-	href="/beaudafest/resources/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css"
-	href="/beaudafest/resources/font/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css"
-	href="/beaudafest/resources/font/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css"
-	href="/beaudafest/resources/vendor/animate/animate.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css"
-	href="/beaudafest/resources/vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css"
-	href="/beaudafest/resources/vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css"
-	href="/beaudafest/resources/vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css"
-	href="/beaudafest/resources/vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="/beaudafest/resources/css/util.css">
-<link rel="stylesheet" type="text/css" href="/beaudafest/resources/css/main.css">
-<!--===============================================================================================-->
-</head>
-<script src='/beaudafest/resources/js/jquery.min.js'></script>
+<!-- Custom fonts for this template-->
+<link href="resources/vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+
+<!-- Custom styles for this template-->
+<link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
+<script src="resources/js/jquery-3.js"></script>
 <script>
-	$(function(){
-		$('#signUpbutton').click(function(){
-			if($('#memberStatus').val()==1){
-				$('.validate-form').attr('action','ownerJoin');
+	$(function() {
+		$('#signUpbutton').click(function() {
+			if ($('#memberStatus').val() == 1) {
+				$('.validate-form').attr('action', 'ownerJoin');
 				$('.validate-form').submit();
 			} else {
 				$('.validate-form').submit();
@@ -50,94 +28,90 @@
 		})
 	});
 </script>
-<body>
+<body class="bg-gradient-primary">
 	<div>
 		<%@ include file="../include/nav.jsp"%>
 	</div>
-	<br><br>
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<form class="login100-form validate-form" action="userJoin" method="post">
-					<span class="login100-form-title p-b-26"> Welcome </span> <span
-						class="login100-form-title p-b-26"> <strong>BEAUDA</strong><img
-						src="/beaudafest/resources/img/heart.png" width="30" height="30"
-						class="d-inline-block align-top" alt=""> FEST
-					</span>
+	<br>
+	<br>
+	<div class="container">
 
+		<div class="card o-hidden border-0 shadow-lg my-5">
+			<div class="card-body p-0">
+				<!-- Nested Row within Card Body -->
+				<div class="row">
+					<div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+					<div class="col-lg-7">
+						<div class="p-5">
+							<div class="text-center">
+								<h1 class="h4 text-gray-900 mb-4">
+									<span class="login100-form-title p-b-26"> Welcome To </span> <span
+										class="login100-form-title p-b-26"> <strong>BEAUDA</strong><img
+										src="resources/img/heart.png" width="30" height="30"
+										class="d-inline-block align-top" alt=""> FEST
+									</span>
+								</h1>
+							</div>
+							<form class="user">
+								<div class="form-group">
+									<input type="text" class="form-control form-control-user"
+										id="exampleId" placeholder="ID" name="memberId">
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control form-control-user"
+										id="exampleName" placeholder="Name" name="memberName">
+								</div>
+								<div class="form-group">
+									<input type="email" class="form-control form-control-user"
+										id="exampleInputEmail" placeholder="Email Address">
+								</div>
+								<div class="form-group row">
+									<div class="col-sm-6 mb-3 mb-sm-0">
+										<input type="password" class="form-control form-control-user"
+											id="exampleInputPassword" placeholder="Password"
+											name="memberPass">
+									</div>
+									<div class="col-sm-6">
+										<input type="password" class="form-control form-control-user"
+											id="exampleRepeatPassword" placeholder="Repeat Password"
+											name="memberPassCheck">
+									</div>
+								</div>
+								
+								<button id="signUpbutton" class="btn btn-primary btn-user btn-block"
+									type="button">Sign Up</button>
+								<hr>
+								<input type="hidden" id="memberStatus" name="memberStatus"
+									value="${memberStatus }">
 
-					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="memberId"> <span
-							class="focus-input100" data-placeholder="ID"></span>
-					</div>
+							</form>
 
-					<div class="wrap-input100 validate-input"
-						data-validate="Enter password">
-						<span class="btn-show-pass"> <i class="zmdi zmdi-eye"></i>
-						</span> <input class="input100" type="password" name="memberPass"> <span
-							class="focus-input100" data-placeholder="Password"></span>
-
-					</div>
-					<div class="wrap-input100 validate-input"
-						data-validate="Enter password">
-						<span class="btn-show-pass"> <i class="zmdi zmdi-eye"></i>
-						</span> <input class="input100" type="password" name="memberPassCheck">
-						<span class="focus-input100" data-placeholder="Password Check"></span>
-
-					</div>
-
-					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="memberName"> <span
-							class="focus-input100" data-placeholder="Name"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input"
-						data-validate="Valid email is: a@b.c">
-						<input class="input100" type="text" name="memberEmail"> <span
-							class="focus-input100" data-placeholder="Email"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="memberPhone"> <span
-							class="focus-input100" data-placeholder="Phone Number"></span>
-					</div>
-
-					<div class="container-login100-form-btn">
-						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn" id="signUpbutton" type="button">Sign Up</button>
+							<div class="text-center">
+								<a class="small" href="forgot-password.html">Forgot
+									Password?</a>
+							</div>
+							<div class="text-center">
+								<a class="small" href="#">Already have an account?
+									Login!</a>
+							</div>
 						</div>
 					</div>
-
-
-					<div class="text-center p-t-115">
-						<span class="txt1"> Do you have an account? </span> <a
-							class="txt2" href="#"> Log In </a>
-					</div>
-					<input type="hidden" id="memberStatus" name="memberStatus" value="${memberStatus }">
-				</form>
+				</div>
 			</div>
 		</div>
+
 	</div>
 
+	<!-- Bootstrap core JavaScript-->
+	<script src="resources/vendor/jquery/jquery.min.js"></script>
+	<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-	<div id="dropDownSelect1"></div>
-	<!--===============================================================================================-->
-	<script src="/beaudafest/resources/vendor/jquery/jquery-3.2.1.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="/beaudafest/resources/vendor/animsition/js/animsition.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="/beaudafest/resources/vendor/bootstrap/js/popper.js"></script>
-	<script src="/beaudafest/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="/beaudafest/resources/vendor/select2/select2.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="/beaudafest/resources/vendor/daterangepicker/moment.min.js"></script>
-	<script src="/beaudafest/resources/vendor/daterangepicker/daterangepicker.js"></script>
-	<!--===============================================================================================-->
-	<script src="/beaudafest/resources/vendor/countdowntime/countdowntime.js"></script>
-	<!--===============================================================================================-->
-	<script src="/beaudafest/resources/js/main.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="resources/js/sb-admin-2.min.js"></script>
+
 
 
 </body>
