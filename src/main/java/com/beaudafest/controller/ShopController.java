@@ -36,51 +36,51 @@ public class ShopController {
 	@PostMapping("/shop/shopJoin")
 	public String shopJoin(HttpSession session,MultipartFile[] uploadFile,ShopVO vo) { //샵 등록
 		System.out.println("실행되니?");
-//		String uploadFolder = "C:\\beaudafest";
-//		String addDate= getFolder();//혹시 그 사이에 날짜 바뀔까봐..
-//		
-//		File uploadPath = new File(uploadFolder, addDate);
-//		
-//		String shopPhoto="";//db저장용 변수
-//		
-//		if(uploadPath.exists()==false) {//오늘 날짜 폴더가 없으면
-//			uploadPath.mkdirs(); //오늘 날짜 폴더 만들기
-//		}
-//		
-//		for(MultipartFile multipartFile : uploadFile) {
-//			System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
-//			System.out.println("Upload File Size : " + multipartFile.getSize());
-//			
-//			String uploadFileName = multipartFile.getOriginalFilename();
-//			
-//			//IE용 경로
-//			uploadFileName=uploadFileName.substring(uploadFileName.lastIndexOf("\\")+1);
-//			System.out.println("onlyFileName : "+uploadFileName);
-//			
-//			//중복 방지 UUID
-//			UUID uuid = UUID.randomUUID();
-//			uploadFileName=uuid.toString()+"_"+uploadFileName;
-//			System.out.println(uploadFileName);
-//			//'날짜/파일이름' 으로 DB에 저장
-//			shopPhoto+=((addDate+"\\"+uploadFileName)+"|");
-//			
-//			//폴더에 이미지 추가
-//			File savefile = new File(uploadPath, uploadFileName);
-//			
-//			try {
-//				multipartFile.transferTo(savefile);
-//				//DB에 저장할때
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			} 
-//			
-//		}
-//		vo.setShopPhoto(shopPhoto);
-//		vo.setMemberId((String) session.getAttribute("memberId"));
-//		System.out.println(vo.toString());//출력
-//		int result = shopService.shopJoin(vo);
-//		session.removeAttribute("memberId");
-//		System.out.println(session.getAttribute("memberId"));
+		String uploadFolder = "C:\\beaudafest";
+		String addDate= getFolder();//혹시 그 사이에 날짜 바뀔까봐..
+		
+		File uploadPath = new File(uploadFolder, addDate);
+		
+		String shopPhoto="";//db저장용 변수
+		
+		if(uploadPath.exists()==false) {//오늘 날짜 폴더가 없으면
+			uploadPath.mkdirs(); //오늘 날짜 폴더 만들기
+		}
+		
+		for(MultipartFile multipartFile : uploadFile) {
+			System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
+			System.out.println("Upload File Size : " + multipartFile.getSize());
+			
+			String uploadFileName = multipartFile.getOriginalFilename();
+			
+			//IE용 경로
+			uploadFileName=uploadFileName.substring(uploadFileName.lastIndexOf("\\")+1);
+			System.out.println("onlyFileName : "+uploadFileName);
+			
+			//중복 방지 UUID
+			UUID uuid = UUID.randomUUID();
+			uploadFileName=uuid.toString()+"_"+uploadFileName;
+			System.out.println(uploadFileName);
+			//'날짜/파일이름' 으로 DB에 저장
+			shopPhoto+=((addDate+"\\"+uploadFileName)+"|");
+			
+			//폴더에 이미지 추가
+			File savefile = new File(uploadPath, uploadFileName);
+			
+			try {
+				multipartFile.transferTo(savefile);
+				//DB에 저장할때
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+			
+		}
+		vo.setShopPhoto(shopPhoto);
+		vo.setMemberId((String) session.getAttribute("memberId"));
+		System.out.println(vo.toString());//출력
+		int result = shopService.shopJoin(vo);
+		session.removeAttribute("memberId");
+		System.out.println(session.getAttribute("memberId"));
 		return "redirect:/main"; //샵 등록 후 페이지 이동 --> 메인으로..?
 	}
 	

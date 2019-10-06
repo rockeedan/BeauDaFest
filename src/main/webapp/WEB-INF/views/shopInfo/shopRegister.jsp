@@ -141,9 +141,9 @@
 			formData.append("shopPhone",$('input[name="shopPhone"]').val()); //샵 전화번호
 			formData.append("shopOpen",$('input[name="shopOpen"]').val());   //샵 오픈시간
 			formData.append("shopClose",$('input[name="shopClose"]').val()); //샵 닫는시간
-			formData.append("shopIntro",$('input[name="shopIntro"]').val())  //샵 소개
-			formData.append("shopParking",$('select[name=shopParking] option:selected'));//주차유무
-			formData.append("shopPolicy",$('select[name=shopPolicy] option:selected'));  //취소정책
+			formData.append("shopIntro",$('textarea[name="shopIntro"]').val())  //샵 소개
+			formData.append("shopParking",$('select[name=shopParking] option:selected').val());//주차유무
+			formData.append("shopPolicy",$('select[name=shopPolicy] option:selected').val());  //취소정책
 			console.log(formData.getAll("uploadFile"))
 			
 			$.ajax({
