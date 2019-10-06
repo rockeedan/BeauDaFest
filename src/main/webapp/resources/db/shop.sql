@@ -47,6 +47,8 @@ select * from shopInfo
 
 delete from shopInfo
 
+select * from SHOPDESIGN;
+
 insert into shopInfo(shopNum, memberId, shopName, shopPhone, shopAddr, shopOpen, shopOff, shopPhoto, shopIntro, shopParking, shopPolicy)
 values (1111,'hana1','하나샵','02-1111-1111','서울시','10:00','18:00','11111','3샵정보',1,'취소정책');
 

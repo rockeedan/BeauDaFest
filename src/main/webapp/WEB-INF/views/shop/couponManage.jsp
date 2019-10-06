@@ -18,6 +18,10 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+	integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN"
+	crossorigin="anonymous">
 <style>
 .bd-placeholder-img {
 	font-size: 1.125rem;
@@ -32,38 +36,119 @@
 	.bd-placeholder-img-lg {
 		font-size: 3.5rem;
 	}
+a
 }
 </style>
+<script type="text/javascript">
+	var formData = new FormData(); //Ajax로 전달할 전체데이터 
+	var regex = new RegExp("(.*?)\.(jpg|jpeg|png|bmp|JPG|JPEG|BMP|PNG)$"); //해당파일 첨부 불가능 
+	function fileCheck(fileName) {
+		if (!regex.test(fileName)) {
+			alert("해당 종류의 파일은 업로드할 수 없습니다")
+			$("input[name='uploadCoupon']").focus();
+			return false;
+		}
+		return true;
+	}
+
+	$(function() {
+
+		var files = '';
+		var fileCnt=0;
+
+		$(".custom-file-input")
+				.on(
+						"change",
+						function() { //입력된 파일 리스트 뽑아내기 
+							$('.uploadResult ul').html('');
+							var inputFile = $("input[name='uploadCoupon']"); //입력된 파일
+							files = inputFile[0].files
+							for (var i = 0; i < files.length; i++) {
+								if (!fileCheck(files[i].name)) {
+									continue;
+								}
+								$('.uploadResult ul')
+										.append(
+												'<li><span>'
+														+ files[i].name
+														+ '</span> <a style="cursor:pointer" class="fas fa-times" value="times"></a></li>');
+							formData.append(files[i].name, files[i]);
+							fileCnt++;
+							}
+							console.log("111  >>"+files.length)
+							$(".custom-file-input").val("");
+							console.log("2222  >>"+files.length)
+						}); //파일명 입력해주기 
+						
+	 	$('.uploadResult ul').on("click","a", function(){
+	 		console.log($(this).closest('li').children('span').html())
+	 		formData.delete($(this).closest('li').children('span').html()) 		
+	 		$(this).closest('li').remove();
+	 		fileCnt--;
+	 		console.log("수정된 파일 갯수: "+fileCnt)
+	 	
+	 	})
+
+		$("#addCoupon").on("click", function() { //ADD COUPON (쿠폰등록) 버튼을 클릭했을 시, 
+
+			formData.append("designName", $("#addName").val()) //쿠폰이름 
+			formData.append("designTime", $("#addTime option:selected").val()) //시술시간 
+			formData.append("designPrice", $("#addPrice").val()) //시술가격 
+			formData.append("designType", $("#addType option:selected").val()) //네일,페디,속눈썹선택 
+			formData.append("designOption", $("#addOption").val()) //디자인 or 단순 시술 
+			
+			for (var i = 0; i < fileCnt; i++) {
+				console.log("file명:"+$('.uploadResult ul').children().eq(i).children('span').html())
+				formData.append("uploadCoupon", formData.get($('.uploadResult ul').children().eq(i).children('span').html())); //선택된 파일 
+			}
+
+			$.ajax({
+				url : '../owner/addCoupon',
+				processData : false,
+				contentType : false,
+				data : formData,
+				type : 'POST'
+
+			})
+
+		})
+
+	})//ready
+</script>
 </head>
 <body>
 	<div>
 		<%@ include file="../include/nav.jsp"%>
+		<%--Nav바 인클루드  --%>
 	</div>
 	<br>
 	<br>
 	<br>
 	<div class="container">
-		<section class="jumbotron text-center"  style="background-color: #fbceb1">
+		<section class="jumbotron text-center"
+			style="background-color: #fbceb1">
 			<div class="container">
 				<h1 class="jumbotron-heading">NAMDAREUM</h1>
+				<%--샵이름  --%>
 				<p class="lead text-muted">최고의 디자인이 어쩌고 블라 샵 코멘트</p>
+				<%--샵소개 코멘트  --%>
 
 			</div>
 		</section>
-		
+
 		<!-- 메뉴 NAV -->
 		<div class="nav-scroller py-1 mb-2">
-			
-				<nav class="nav d-flex justify-content-between">
-					<a class="p-2 text-muted" href="#">INFO</a> 
-					<a class="p-2 text-muted" href="#">COUPON</a>
-					<a class="p-2 text-muted" href="#">REVIEW</a>
-					<a class="p-2 text-muted" href="#">AVAILABILITY</a>
-					<a class="p-2 text-muted" href="#">RESERVATION</a>
-				</nav>
-			</div>
-		
-				
+
+			<nav class="nav d-flex justify-content-between">
+				<a class="p-2 text-muted" href="#">INFO</a> <a
+					class="p-2 text-muted" href="#">COUPON</a> <a
+					class="p-2 text-muted" href="#">REVIEW</a> <a
+					class="p-2 text-muted" href="#">AVAILABILITY</a> <a
+					class="p-2 text-muted" href="#">RESERVATION</a>
+			</nav>
+		</div>
+
+		<%--디자인리스트 보여주기  --%>
 		<div class="album py-5 bg-light">
 			<div class="container">
 				<div class="row">
@@ -98,6 +183,8 @@
 							</div>
 						</div>
 					</div>
+					<%--첫번째카드 끝 --%>
+					<%--두번째 카드 시작 --%>
 					<div class="col-md-4">
 						<div class="card mb-4 shadow-sm">
 							<svg class="bd-placeholder-img card-img-top" width="100%"
@@ -124,6 +211,8 @@
 							</div>
 						</div>
 					</div>
+					<%--두번째 카드 끝 --%>
+					<%--세번째 카드 시작 --%>
 					<div class="col-md-4">
 						<div class="card mb-4 shadow-sm">
 							<svg class="bd-placeholder-img card-img-top" width="100%"
@@ -142,18 +231,22 @@
 									<div class="btn-group">
 										<button type="button" class="btn btn-sm btn-outline-secondary"
 											data-toggle="modal" data-target="#myModal">View</button>
+										<%--디자인수디테일보기--%>
 										<button type="button" class="btn btn-sm btn-outline-secondary"
 											data-toggle="modal" data-target="#myModal">Edit</button>
+										<%--디자인수정 --%>
 									</div>
 									<small class="text-muted">9 mins</small>
 								</div>
 							</div>
 						</div>
 					</div>
+					<%--세번째 카드 끝 --%>
 				</div>
+				<%--/row --%>
 
 
-				<!-- Coupon Detail The Modal -->
+				<!-- 카드의 View or Edit 클릭 시 /Coupon Detail The Modal -->
 				<div class="modal" id="myModal">
 					<div class="modal-dialog">
 						<div class="modal-content">
@@ -225,6 +318,7 @@
 										<span class="sr-only">Next</span>
 									</a>
 								</div>
+								<!-- 디자인 사진 캐러셀 끝-->
 
 								<form>
 									<div class="form-group">
@@ -239,10 +333,7 @@
 										<label for="designPrice" class="col-form-label">디자인
 											가격:</label> <input type="text" class="form-control" id="designPrice">
 									</div>
-									<div class="form-group">
-										<label for="designText" class="col-form-label">디자인설명:</label>
-										<textarea class="form-control" id="message-text"></textarea>
-									</div>
+
 								</form>
 
 							</div>
@@ -250,28 +341,27 @@
 							<!-- 일반고객 로그인 시 닫기버튼만 활성화,
 							샵주인 로그인 시 사진 수정 및 삭제 가능 -->
 							<div class="modal-footer">
-								<button type="button" class="btn btn-danger"
-									data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal" name="modalClose">Close</button>
 
 								<button type="button" class="btn btn-primary"
-									data-dismiss="modal">Modify</button>
+									data-dismiss="modal" name="modalModify">Modify</button>
 
 								<button type="button" class="btn btn-danger"
-									data-dismiss="modal">Delete</button>
+									data-dismiss="modal" name="modalDelete">Delete</button>
 							</div>
 
 						</div>
 					</div>
 				</div>
 				<!-- </Modal> -->
-
 			</div>
 		</div>
 
 
 		<p class="text-center">
-			<a href="#" class="btn btn-outline-primary my-2" data-toggle="modal"
-				data-target="#myModal">View More</a>
+			<a href="#" class="btn btn-outline-primary my-2">View More</a>
+			<%--상품카드 더 보기 --%>
 		</p>
 
 		<!-- 샵주인 로그인 시 버튼 활성화 (상품등록가능)  -->
@@ -279,8 +369,8 @@
 			<a href="#" class="btn btn-outline-danger my-2" data-toggle="modal"
 				data-target="#exampleModalCenter">Add More</a>
 		</p>
-		
-		
+
+
 		<!-- 디자인 추가 모달 -->
 		<!-- Modal -->
 		<div class="modal fade" id="exampleModalCenter" tabindex="-1"
@@ -295,47 +385,93 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
+
 					<div class="modal-body">
 
-						<form>
+						<form method="post" id="couponDetailAdd" role="form">
 							<div class="form-group">
 								<label for="Design-name" class="col-form-label">디자인 이름:</label>
-								<input type="text" class="form-control" id="design-name">
+								<input type="text" class="form-control" name="designName"
+									id="addName">
 							</div>
 							<div class="form-group">
-								<label for="Design-Time" class="col-form-label">시술시간 :</label> <input
-									type="text" class="form-control" id="design-time">
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="inputGroupSelect01">시간</label>
+									</div>
+									<select class="custom-select" name="designTime" id="addTime">
+										<option disabled selected>분</option>
+										<option value="60">60</option>
+										<option value="90">90</option>
+										<option value="120">120</option>
+									</select>
+								</div>
 							</div>
 							<div class="form-group">
 								<label for="Design-price" class="col-form-label">가격 :</label> <input
-									type="text" class="form-control" id="design-price">
+									type="text" class="form-control" name="designPrice"
+									id="addPrice">
+							</div>
+
+							<div class="form-group">
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="inputGroupSelect01">상품타입</label>
+									</div>
+									<select class="custom-select" name="designType" id="addType">
+										<option disabled selected>선택</option>
+										<option value="네일">네일</option>
+										<option value="네일">페디</option>
+										<option value="속눈썹">속눈썹</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="inputGroupSelect02">타입</label>
+									</div>
+									<select class="custom-select" name="designOption"
+										id="addOption">
+										<option disabled selected>선택</option>
+										<option value="디자인">디자인</option>
+										<option value="옵션">시술</option>
+									</select>
+								</div>
 							</div>
 							<div class="form-group">
-								<label for="design-text" class="col-form-label">디자인설명:</label>
-								<textarea class="form-control" id="message-text"></textarea>
-							</div>
-							<div class="input-group mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+									</div>
+									<div class="custom-file">
+										<input type="file" class="custom-file-input"
+											id="inputGroupFile01"
+											aria-describedby="inputGroupFileAddon01" name="uploadCoupon"
+											multiple="multiple"> <label class="custom-file-label"
+											for="inputGroupFile01">Choose file</label>
+									</div>
 								</div>
-								<div class="custom-file">
-									<input type="file" class="custom-file-input"
-										id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-									<label class="custom-file-label" for="inputGroupFile01">Choose
-										file</label>
+								<div class="uploadResult">
+									<br>
+									<ul>
+
+									</ul>
 								</div>
 							</div>
 						</form>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Add</button>
+							data-dismiss="modal" id='myModalBye'>Close</button>
+						<button type="button" class="btn btn-primary" id="addCoupon"
+							data-dismiss="modal">Add</button>
 					</div>
 				</div>
 			</div>
 		</div>
+		<!-- 디자인 추가 모달 끝-->
 	</div>
-
 </body>
 </html>

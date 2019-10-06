@@ -17,8 +17,6 @@
 <link rel="canonical"
 	href="https://getbootstrap.com/docs/4.3/examples/carousel/">
 
-
-
 <style>
 .bd-placeholder-img {
 	font-size: 1.125rem;
@@ -40,14 +38,14 @@
 </head>
 <body>
 	<div>
-		<%@ include file="../include/nav.jsp"%>
+		<%@ include file="../include/nav.jsp"%> <%--Nav 바 추가 --%>
 	</div>
 	<br><br><br>
 	<div class="container">
 		<section class="jumbotron text-center">
 			<div class="container">
 				<h1 class="jumbotron-heading">ShopList</h1>
-				<p class="lead text-muted">2019년 9월 21일 오후 1시에 예약가능한 샵입니다</p>
+				<p class="lead text-muted">2019년 9월 21일 오후 1시에 예약가능한 샵입니다</p> <!-- 고객이 선택한 일시 보여주기 -->
 
 			</div>
 		</section>
@@ -63,14 +61,14 @@
 					<title>Placeholder</title><rect width="100%" height="100%"
 							fill="#777" />
 					<text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-					<h2>ShopName</h2>
+					<h2>ShopName</h2>  <%--샵 이름 --%>
 					<p>Donec sed odio dui. Etiam porta sem malesuada magna mollis
 						euismod. Nullam id dolor id nibh ultricies vehicula ut id elit.
 						Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-						Praesent commodo cursus magna.</p>
+						Praesent commodo cursus magna.</p> <%--샵 설명 --%>
 					<p>
 						<a class="btn btn-secondary" href="#" role="button">View
-							details &raquo;</a>
+							details &raquo;</a> <%--샵 정보로 들어가기 --%>
 					</p>
 				</div>
 				<!-- /.col-lg-4 -->
@@ -82,14 +80,14 @@
 					<title>Placeholder</title><rect width="100%" height="100%"
 							fill="#777" />
 					<text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-					<h2>ShopName</h2>
+					<h2>ShopName</h2><%--샵 이름 --%>
 					<p>Duis mollis, est non commodo luctus, nisi erat porttitor
 						ligula, eget lacinia odio sem nec elit. Cras mattis consectetur
 						purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo,
-						tortor mauris condimentum nibh.</p>
+						tortor mauris condimentum nibh.</p> <%--샵 설명 --%>
 					<p>
 						<a class="btn btn-secondary" href="#" role="button">View
-							details &raquo;</a>
+							details &raquo;</a> <%--샵 정보로 들어가기 --%>
 					</p>
 				</div>
 				<!-- /.col-lg-4 -->
@@ -108,19 +106,17 @@
 						condimentum nibh, ut fermentum massa justo sit amet risus.</p>
 					<p>
 						<a class="btn btn-secondary" href="#" role="button">View
-							details &raquo;</a>
+							details &raquo;</a> <%--샵 정보로 들어가기 --%>
 					</p>
 
 
 				</div>
 				<!-- /.col-lg-4 -->
-
-
 			</div>
 			<!-- /.row -->
 		</div>
 		<p class="text-center">
-			<a href="#" class="btn btn-outline-primary my-2">View More</a>
+			<a href="#" class="btn btn-outline-primary my-2">View More</a> <%--가능한 샵 리스트 더 보기 --%>
 		</p>
 
 
