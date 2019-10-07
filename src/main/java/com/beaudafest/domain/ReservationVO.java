@@ -1,0 +1,141 @@
+package com.beaudafest.domain;
+
+import java.util.Date;
+
+public class ReservationVO {
+	
+	
+	private Integer rsvnNum;
+	private String memberId;
+	private Integer shopNum;
+	private Integer designId;
+	private Date bookingDate;
+	private Date rsvnDate;
+	private Integer rsvnTime;
+	
+	
+	
+	
+	public ReservationVO() {
+		super();
+	}
+
+
+
+
+	public ReservationVO(Integer rsvnNum, String memberId, Integer shopNum, Integer designId, Date bookingDate,
+			Date rsvnDate, Integer rsvnTime) {
+		super();
+		this.rsvnNum = rsvnNum;
+		this.memberId = memberId;
+		this.shopNum = shopNum;
+		this.designId = designId;
+		this.bookingDate = bookingDate;
+		this.rsvnDate = rsvnDate;
+		this.rsvnTime = rsvnTime;
+	}
+
+
+
+
+	public Integer getRsvnNum() {
+		return rsvnNum;
+	}
+
+
+
+
+	public void setRsvnNum(Integer rsvnNum) {
+		this.rsvnNum = rsvnNum;
+	}
+
+
+
+
+	public String getMemberId() {
+		return memberId;
+	}
+
+
+
+
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+
+
+
+
+	public Integer getShopNum() {
+		return shopNum;
+	}
+
+
+
+
+	public void setShopNum(Integer shopNum) {
+		this.shopNum = shopNum;
+	}
+
+
+
+
+	public Integer getDesignId() {
+		return designId;
+	}
+
+
+
+
+	public void setDesignId(Integer designId) {
+		this.designId = designId;
+	}
+
+
+
+
+	public Date getBookingDate() {
+		return bookingDate;
+	}
+
+
+
+
+	public void setBookingDate(Date bookingDate) {
+		this.bookingDate = bookingDate;
+	}
+
+
+
+
+	public Date getRsvnDate() {
+		return rsvnDate;
+	}
+
+
+
+
+	public void setRsvnDate(Date rsvnDate) {
+		this.rsvnDate = rsvnDate;
+	}
+
+
+
+
+	public Integer getRsvnTime() {
+		return rsvnTime;
+	}
+
+
+
+
+	public void setRsvnTime(Integer rsvnTime) {
+		this.rsvnTime = rsvnTime;
+	}
+	
+	
+	
+	
+	
+
+}
