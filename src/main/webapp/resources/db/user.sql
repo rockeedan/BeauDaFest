@@ -30,3 +30,17 @@ values ('hana2','둘','a1234','hana2@naver.com','010-2222-2222',1);
 select * from memberList
 
 delete from memberList
+
+
+
+--일반회원
+insert into memberList(memberId, memberName, memberPass, memberEmail, memberPhone, memberStatus)
+values ('gosolb','고솔비','1234qwer','gosolb@gmail.com','010-1234-5678',0);
+
+insert into memberList(memberId, memberName, memberPass, memberEmail, memberPhone, memberStatus)
+values ('gildong','길동','1234qwer','gildong@gmail.com','010-1111-2222',0);
+
+insert into memberList(memberId, memberName, memberPass, memberEmail, memberPhone, memberStatus)
+values ('lime','라임','1234qwer','lime@gmail.com','010-3333-4444',0);
+
+
