@@ -21,7 +21,7 @@ public class SearchController {
 	
 	@RequestMapping("/nav")
 	public String nav() {
-		return "include/nav";
+		return "include/loginNav";
 	}
 	
 	@RequestMapping("/option")
@@ -50,6 +50,16 @@ public class SearchController {
 	@RequestMapping("/shopManage")
 	public String manage () {
 		return "shop/rsvnManage";
+	}
+	
+	
+	@RequestMapping("/tables")
+	public String table () {
+		return "shop/tables";
+	}
+	@RequestMapping("/charts")
+	public String charts () {
+		return "shop/charts";
 	}
 	
 }
