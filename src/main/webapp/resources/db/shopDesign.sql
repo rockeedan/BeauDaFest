@@ -18,6 +18,3 @@ ALTER TABLE shopDesign	ADD CONSTRAINT shopDesign PRIMARY KEY(designId);
 ALTER TABLE shopDesign ADD CONSTRAINT FK_shopInfo_TO_shopDesign
 FOREIGN KEY (shopNum) REFERENCES shopInfo(shopNum);
 
-
-insert into shopDesign
-values(1, 1111, "" );
