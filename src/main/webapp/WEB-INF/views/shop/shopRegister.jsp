@@ -51,7 +51,9 @@
 <body class="bg-gradient-primary">
 	<div>
 		<%@ include file="../include/nav.jsp"%>
+		
 	</div>
+	
 	<br>
 	<br>
 	<div class="container">
@@ -74,70 +76,135 @@
 							</div>
 							<form class="user" action="shopJoin" method="post">
 								<div class="form-group">
-									<input type="text" class="form-control form-control-user"
-										id="exampleShopName" placeholder="Shop Name" name="shopName">
+									<input type="text" class="form-control" id="exampleShopName"
+										placeholder="Shop Name" name="shopName">
 								</div>
+
 								<div class="form-group">
-									<input type="text" class="form-control form-control-user"
-										id="exampleName" placeholder="Name" name="memberName">
-								</div>
-								<div class="form-group">
-									<input type="tel" class="form-control form-control-user"
-										id="exampleInputPhone" placeholder="Phone Number">
+									<input type="tel" class="form-control" id="exampleInputPhone"
+										placeholder="Phone Number">
 								</div>
 								<div class="form-group row">
-									<div class="col-sm-6 mb-3 mb-sm-0">
-										<input type="password" class="form-control form-control-user"
-											id="exampleInputPassword" placeholder="Password"
-											name="memberPass">
+									<!-- 주소는 추후 db 사용할것임  -->
+									<div class="col-sm-4 mb-3 mb-sm-0">
+										<select class="form-control">
+											<option disabled selected>시/도</option>
+											<option>서울시</option>
+										</select>
 									</div>
-									<div class="col-sm-6">
-										<input type="password" class="form-control form-control-user"
-											id="exampleRepeatPassword" placeholder="Repeat Password"
-											name="memberPassCheck">
+									<div class="col-sm-4">
+										<select class="form-control">
+											<option disabled selected>구/군</option>
+											<option>강남구</option>
+											<option>서초구</option>
+											<option>마포구</option>
+										</select>
+									</div>
+									<div class="col-sm-4">
+										<select class="form-control">
+											<option disabled selected>동/읍/면</option>
+											<option>서초동</option>
+											<option>합정동</option>
+											<option>개포동</option>
+										</select>
 									</div>
 								</div>
 								<div class="form-group">
-									<input type="text" class="form-control form-control-user"
-										id="exampleInputAddr" placeholder="상세주소">
+									<input type="text" class="form-control" id="exampleInputAddr"
+										placeholder="상세주소">
 								</div>
 								<div class="text-center">
-									<h6 class="h6 text-gray-900 mb-4">Shop시간</h6>
+									<h6 class="h6 text-gray-900 mb-4">Shop운영시간/휴무(선택)</h6>
 									<div class="form-group row">
-
 										<div class="col-sm-6 mb-3 mb-sm-0">
-											<input type="time" class="form-control form-control-user"
-												id="exampleStartTime">
+											<input type="time" class="form-control" id="exampleStartTime">
 										</div>
 										<div class="col-sm-6">
-											<input type="time" class="form-control form-control-user"
-												id="exampleEndTime">
+											<input type="time" class="form-control" id="exampleEndTime">
+										</div>
+									</div>
+								</div>
+								<!-- 휴무요일선택 -->
+								<div class="form-group">
+									<div class="form-control">
+										<div class="text-center">
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="checkbox"
+													id="inlineCheckbox1" value="월" name="shopOffCheck">
+												<label class="form-check-label" for="inlineCheckbox1">월</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="checkbox"
+													id="inlineCheckbox2" value="화" name="shopOffCheck">
+												<label class="form-check-label" for="inlineCheckbox2">화</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="checkbox"
+													id="inlineCheckbox2" value="수" name="shopOffCheck">
+												<label class="form-check-label" for="inlineCheckbox2">수</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="checkbox"
+													id="inlineCheckbox2" value="목" name="shopOffCheck">
+												<label class="form-check-label" for="inlineCheckbox2">목</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="checkbox"
+													id="inlineCheckbox2" value="금" name="shopOffCheck">
+												<label class="form-check-label" for="inlineCheckbox2">금</label>
+											</div>
+
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="checkbox"
+													id="inlineCheckbox2" value="토" name="shopOffCheck">
+												<label class="form-check-label" for="inlineCheckbox2">토</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="checkbox"
+													id="inlineCheckbox2" value="일" name="shopOffCheck">
+												<label class="form-check-label" for="inlineCheckbox2">일</label>
+											</div>
 										</div>
 									</div>
 								</div>
 
-
-								<div class="form-group row">
-																								
+								<div class="form-group">
+									<select class="form-control" required name="shopParking">
+										<option disabled selected>Parking</option>
+										<option value="0">없음</option>
+										<option value="1">1대 이상</option>
+									</select>
 								</div>
-						
+
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroupFileAddon01">ShopPhoto</span>
+									</div>
+									<div class="custom-file">
+										<input type="file" class="custom-file-input"
+											id="inputGroupFile01"
+											aria-describedby="inputGroupFileAddon01"> <label
+											class="custom-file-label" for="inputGroupFile01">jpg,jpeg,bmp,png</label>
+									</div>
+								</div>
+
+								<div class="form-group">
+
+									<textarea class="form-control" id="shopIntro" rows="3"
+										name="shopIntro" placeholder="Shop소개"></textarea>
+								</div>
+
 
 								<button id="signUpbutton"
-									class="btn btn-primary btn-user btn-block" type="button">Sign
-									Up</button>
+									class="btn btn-primary btn-user btn-block" type="button">Shop
+									Register</button>
 								<hr>
 								<input type="hidden" id="memberStatus" name="memberStatus"
-									value="${memberStatus }">
-
+									value="${memberStatus }"> <input type="hidden"
+									name="shopOff" id="shopOff" value=""> <input
+									type="hidden" name="shopAddr" id=shopAddr value="">
 							</form>
 
-							<div class="text-center">
-								<a class="small" href="forgot-password.html">Forgot
-									Password?</a>
-							</div>
-							<div class="text-center">
-								<a class="small" href="#">Already have an account? Login!</a>
-							</div>
 						</div>
 					</div>
 				</div>
