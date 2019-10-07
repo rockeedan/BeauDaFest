@@ -8,7 +8,9 @@ import com.beaudafest.domain.newReservationTableVO;
 
 public interface ReservationTableService {
 	
-	public boolean insertTimeSchedule(int shopNum,String addDate,String open,String close);
+	public boolean selectMonthSchedule(int shopNum,String addDate);
+	
+	public boolean insertTimeSchedule(int shopNum,String addDate,String open[],String close[]);
 	public boolean insertWeekSchedule(int shopNum,String weekStart,String weekEnd,String open,String close);
 	public List<ReservationTableVO> selectWeekScheduleList(int shopNum,Date weekStart);
 	public List<newReservationTableVO> event();

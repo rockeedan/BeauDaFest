@@ -16,6 +16,11 @@ public class ReservationTableDAOImpl implements ReservationTableDAO {
 	@Autowired
 	private SqlSession sqlsession;
 	
+	
+	@Override
+	public int selectMonthSchedule(Map map) {
+		return sqlsession.selectOne("reservation.selectMonthSchedule",map);
+	}
 	@Override
 	public int insertTimeSchedule(Map map) {
 		return sqlsession.insert("reservation.insertTimeSchedule",map);

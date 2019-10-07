@@ -9,6 +9,8 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,14 +31,19 @@ public class ReservationTableController {
 	private ReservationTableService service;
 	
 	
-	@RequestMapping("/")
-	public String tableView() {
-		return "/reservationTest/reservationTable";
+	@RequestMapping("/reservationTable")
+	public String tableView(HttpServletRequest request,String addDate) {
+		int shopNum = 1;
+		if(service.selectMonthSchedule(shopNum, addDate)) {
+			return "/reservationTest/reservationTable";}
+		else {
+			return "/reservationTest/reservationTable";
+		}
 	}
 	
 	@RequestMapping("/insert")
-	public @ResponseBody String insert() {
-		if(service.insertTimeSchedule(1, "2019/09/21", "10:00", "17:00")) {
+	public @ResponseBody String insert(String addDate, String open[], String close[]) {
+		if(service.insertTimeSchedule(1, addDate,open,close)) {
 			return "성공!!!!!";
 		}
 		return "실패";

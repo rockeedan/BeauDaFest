@@ -28,25 +28,32 @@ public class ReservationTableServiceImpl implements ReservationTableService{
 	ReservationTableDAO dao;
 	
 	@Override
-	public boolean insertTimeSchedule(int shopNum, String addDate, String open, String close) {
+	public boolean selectMonthSchedule(int shopNum, String addDate) {
+		Map<String,Object> map = new HashMap<>();
+		map.put("shopNum",shopNum);
+		map.put("addDate",addDate);
+		if(dao.selectMonthSchedule(map)==0) {
+			return true;
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean insertTimeSchedule(int shopNum, String addDate, String[] open, String[] close) {
 		
 		Map<String,Object> map = new HashMap<>();
 		map.put("shopNum",shopNum);
 		map.put("addDate",addDate);
-			List<Map<String,String>> timeList = new ArrayList<>();//시간테이블에 전달할 리스트
-			int openT = Integer.parseInt(open.substring(0, 2));//오픈시간
-			int closeT = Integer.parseInt(close.substring(0, 2));//마감시간
-			for (int i = openT; i < closeT;i++) {//오픈시간부터 마감시간까지 시간 Map을 생성하여 리스트에 담기
-				Map<String,String> timeMap = new HashMap<>();//리스트에 담을 시작시간과 끝시간
-				timeMap.put("start",addDate+" "+i+":00");
-				timeMap.put("end",addDate+" "+i+":30");
-				timeList.add(timeMap);
-				Map<String,String> timeMap2 = new HashMap<>();//리스트에 담을 시작시간과 끝시간
-				timeMap2.put("start",addDate+" "+i+":30");
-				timeMap2.put("end",addDate+" "+(i+1)+":00");
-				timeList.add(timeMap2);
-			}
-		map.put("timeList",timeList);
+		map.put("start",open);
+		map.put("end",close);
+//			List<Map<String,String>> timeList = new ArrayList<>();//시간테이블에 전달할 리스트
+//			for (int i = 0; i < open.length;i++) {//오픈시간부터 마감시간까지 시간 Map을 생성하여 리스트에 담기
+//				Map<String,String> timeMap = new HashMap<>();//리스트에 담을 시작시간과 끝시간
+//				timeMap.put("start",open[i]);
+//				timeMap.put("end",close[i]);
+//				timeList.add(timeMap);
+//			}
+//		map.put("timeList",timeList);
 		
 		if(dao.insertTimeSchedule(map)!=0) {
 			return true;
