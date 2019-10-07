@@ -23,8 +23,9 @@
 		where memberId=#{memberId}
 	</select>
 	
-	<select id="login" resultType="int">
-		select count(*) from MemberList
+	<select id="login" resultType="java.util.HashMap">
+		select count(*) success, max(memberStatus) memberStatus 
+		from MemberList
 		where memberId=#{memberId} and memberPass=#{memberPass}
 	</select>
 </mapper>

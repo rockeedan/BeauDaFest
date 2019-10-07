@@ -32,7 +32,7 @@
 
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-	<a class="navbar-brand" href="#">BEAUDA <img
+	<a class="navbar-brand" href="/beaudafest">BEAUDA <img
 		src="/beaudafest/resources/img/heart.png" width="30" height="30"
 		class="d-inline-block align-top" alt=""> FEST
 	</a>
@@ -51,11 +51,11 @@
 		<form class="form-inline mt-2 mt-md-0">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="nav-link"
-					href="/beaudafest/member/ownerJoin">Shop등록</a> <!-- 선택되면 disabled로?? -->
+					href="/beaudafest/ownerSignUp">Shop등록</a> <!-- 선택되면 disabled로?? -->
 				</li>
 			</ul>
 			<button type="button" class="btn btn-outline-success my-2 my-sm-0"
-				onclick="location.href='/beaudafest/member/userJoin'">Sign
+				onclick="location.href='/beaudafest/signUp'">Sign
 				Up</button>
 		</form>
 	</div>

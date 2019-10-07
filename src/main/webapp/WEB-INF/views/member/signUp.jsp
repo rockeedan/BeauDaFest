@@ -20,10 +20,10 @@
 	$(function() {
 		$('#signUpbutton').click(function() {
 			if ($('#memberStatus').val() == 1) {
-				$('.validate-form').attr('action', 'ownerJoin');
-				$('.validate-form').submit();
+				$('#frm').attr('action', 'ownerSignUp');
+				$('#frm').submit();
 			} else {
-				$('.validate-form').submit();
+				$('#frm').submit();
 			}
 		})
 	});
@@ -52,7 +52,7 @@
 									</span>
 								</h1>
 							</div>
-							<form class="user">
+							<form id="frm" action="signUp" method="post">
 								<div class="form-group">
 									<input type="text" class="form-control form-control-user"
 										id="exampleId" placeholder="ID" name="memberId">
@@ -63,7 +63,11 @@
 								</div>
 								<div class="form-group">
 									<input type="email" class="form-control form-control-user"
-										id="exampleInputEmail" placeholder="Email Address">
+										id="exampleInputEmail" placeholder="Email Address" name="memberEmail">
+								</div>
+								<div class="form-group">
+									<input type="tel" class="form-control form-control-user"
+										id="examplePhoneNumber" placeholder="Phone Number" name="memberPhone">
 								</div>
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
@@ -91,7 +95,7 @@
 									Password?</a>
 							</div>
 							<div class="text-center">
-								<a class="small" href="#">Already have an account?
+								<a class="small" href="login">Already have an account?
 									Login!</a>
 							</div>
 						</div>

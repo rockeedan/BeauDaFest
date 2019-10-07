@@ -1,5 +1,7 @@
 package com.beaudafest.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +35,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int login(MemberVO vo) {
+	public Map<String, Integer> login(MemberVO vo) {
 		return dao.login(vo);
 	}
 	

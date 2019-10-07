@@ -18,34 +18,124 @@
 <script src="resources/js/jquery-3.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$('#signUp').click(
-				function() {
-					//휴무일
-					var shopOff = "";
-					var check = $("input[name=shopOffCheck]:checked");
-					check.each(function(idx, size) {
-						if (idx == (check.length - 1)) {
-							shopOff += $(this).val();
-						} else {
-							shopOff += $(this).val() + ",";
-						}
-					});
-					$('#shopOff').val(shopOff);
-
-					//샵 주소
-					var shopAddr = "";
-					var addr = $("select[name=shopAddrBox] option:selected");
-					addr.each(function(idx, size) {
-						if (idx < addr.length - 1) {
-							shopAddr += $(this).val() + " ";
-						} else {
-							shopAddr += $(this).val() + " "
-									+ $("input[name=shopAddrDetail]").val();
-						}
-					});
-					$('#shopAddr').val(shopAddr);
-					$('.validate-form').submit();
-				});
+		var regex=new RegExp("(.*?)\.(jpg|jpeg|bmp|png|JPG|JPEG|BMP|PNG)$");
+		var maxSize=52428880; //사이즈 --> 할지말지
+		var fileCnt=0;
+		
+		function checkExtension(fileName, fileSize){
+			if(fileSize >= maxSize){//-->할지말지
+				alert("파일 사이즈 초과");
+				return false;
+			}
+			if(!regex.test(fileName)){
+				alert('해당 종류의 파일은 업로드 할 수 없습니다.');//이미지 파일 만 올리게
+				return false;
+			}
+			return true;
+		}
+		
+		var formData = new FormData();
+		var files = '';
+		
+		//파일 선택했을 때 (shop사진 고르고 확인)
+		$('#inputGroupFile01').on("change", function(){
+			$('.uploadResult ul').html('');
+			var inputFile = $("#inputGroupFile01");
+			files = inputFile[0].files;
+			fileCnt = files.length;
+			
+			for(var i=0; i<files.length; i++){
+				if(!checkExtension(files[i].name, files[i].size)){
+					$('.uploadResult ul').html('');
+					return false;
+				}
+				$('.uploadResult ul').append('<li><span>'+files[i].name+'</span> <a style="cursor:pointer" class="fas fa-times"></a></li>');
+				formData.append(files[i].name, files[i]);
+			}
+		});
+		
+		/* //회원가입 눌렀을때
+		$('#uploadBtn').on("click", function(e){
+			for(var i=0; i<fileCnt; i++){//formData의 내용 갯수..?만큼 돌려야되는디...
+				formData.append("uploadFile", formData.get($('.uploadResult ul').find('span:eq('+i+')').html()));
+			}
+			
+			$.ajax({
+				url : '/uploadAjaxAction',
+				processData : false,
+				contentType : false,
+				data : formData,
+				type:'POST',
+				success : function(data){
+					alert("Uploaded");
+					showUploadedFile(data);
+				}
+			});
+			formData = new FormData();
+		}) */
+		
+		//올린 파일X(삭제) 눌렀을때
+		$('.uploadResult').on('click','a',function(){
+			console.log($(this).siblings('span').html());
+			$(this).closest('li').remove();
+			fileCnt--;
+		})
+		
+		
+		//회원가입하기 버튼 눌렀을 때
+		$('#signUpbutton').click(function(){
+			//shop사진 formData에 붙이기
+			for(var i=0; i<fileCnt; i++){
+				formData.append("uploadFile", formData.get($('.uploadResult ul').find('span:eq('+i+')').html()));
+			}
+			
+			//휴무일
+			var shopOff="";
+			var check=$("input[name=shopOffCheck]:checked");
+			check.each(function(idx, size){
+				if(idx==(check.length-1)){
+					shopOff+=$(this).val();
+				} else{
+					shopOff+=$(this).val()+",";
+				}
+			});
+			//$('#shopOff').val(shopOff);
+			formData.append("shopOff",shopOff); //샵 휴무
+			
+			//샵 주소
+			var shopAddr="";
+			var addr=$("select[name=shopAddrBox] option:selected");
+			addr.each(function(idx, size){
+				if(idx<addr.length-1){
+					shopAddr+=$(this).val()+" ";
+				} else{
+					shopAddr+=$(this).val()+" "+$("input[name=shopAddrDetail]").val();
+				}
+			});
+			//$('#shopAddr').val(shopAddr);
+			formData.append("shopAddr",shopAddr); //샵 주소
+			
+			formData.append("shopName",$('input[name="shopName"]').val());   //샵 이름
+			formData.append("shopPhone",$('input[name="shopPhone"]').val()); //샵 전화번호
+			formData.append("shopOpen",$('input[name="shopOpen"]').val());   //샵 오픈시간
+			formData.append("shopClose",$('input[name="shopClose"]').val()); //샵 닫는시간
+			formData.append("shopIntro",$('textarea[name="shopIntro"]').val())  //샵 소개
+			formData.append("shopParking",$('select[name=shopParking] option:selected').val());//주차유무
+			formData.append("shopPolicy",$('select[name=shopPolicy] option:selected').val());  //취소정책
+			console.log(formData.getAll("uploadFile"))
+			
+			$.ajax({
+				url : 'shopSignUp',
+				processData : false,
+				contentType : false,
+				data : formData,
+				type:'POST',
+				success : function(data){
+					alert("등록이 완료되었습니다.");
+					location.href="/beaudafest";
+				}
+			});
+		});
 	});
 </script>
 <body class="bg-gradient-primary">
@@ -69,12 +159,12 @@
 								<h1 class="h4 text-gray-900 mb-4">
 									<span class="login100-form-title p-b-26"> Welcome To </span> <span
 										class="login100-form-title p-b-26"> <strong>BEAUDA</strong><img
-										src="resources/img/heart.png" width="30" height="30"
+										src="/beaudafest/resources/img/heart.png" width="30" height="30"
 										class="d-inline-block align-top" alt=""> FEST
 									</span>
 								</h1>
 							</div>
-							<form class="user" action="shopJoin" method="post">
+							<form class="user" action="shopSignUp" method="post">
 								<div class="form-group">
 									<input type="text" class="form-control" id="exampleShopName"
 										placeholder="Shop Name" name="shopName">
@@ -82,18 +172,18 @@
 
 								<div class="form-group">
 									<input type="tel" class="form-control" id="exampleInputPhone"
-										placeholder="Phone Number">
+										placeholder="Phone Number" name="shopPhone">
 								</div>
 								<div class="form-group row">
 									<!-- 주소는 추후 db 사용할것임  -->
 									<div class="col-sm-4 mb-3 mb-sm-0">
-										<select class="form-control">
+										<select class="form-control" name="shopAddrBox">
 											<option disabled selected>시/도</option>
 											<option>서울시</option>
 										</select>
 									</div>
 									<div class="col-sm-4">
-										<select class="form-control">
+										<select class="form-control" name="shopAddrBox">
 											<option disabled selected>구/군</option>
 											<option>강남구</option>
 											<option>서초구</option>
@@ -101,7 +191,7 @@
 										</select>
 									</div>
 									<div class="col-sm-4">
-										<select class="form-control">
+										<select class="form-control" name="shopAddrBox">
 											<option disabled selected>동/읍/면</option>
 											<option>서초동</option>
 											<option>합정동</option>
@@ -111,16 +201,16 @@
 								</div>
 								<div class="form-group">
 									<input type="text" class="form-control" id="exampleInputAddr"
-										placeholder="상세주소">
+										placeholder="상세주소" name="shopAddrDetail">
 								</div>
 								<div class="text-center">
 									<h6 class="h6 text-gray-900 mb-4">Shop운영시간/휴무(선택)</h6>
 									<div class="form-group row">
 										<div class="col-sm-6 mb-3 mb-sm-0">
-											<input type="time" class="form-control" id="exampleStartTime">
+											<input type="time" class="form-control" id="exampleStartTime" name="shopOpen">
 										</div>
 										<div class="col-sm-6">
-											<input type="time" class="form-control" id="exampleEndTime">
+											<input type="time" class="form-control" id="exampleEndTime" name="shopClose">
 										</div>
 									</div>
 								</div>
@@ -175,6 +265,14 @@
 										<option value="1">1대 이상</option>
 									</select>
 								</div>
+								
+								<div class="form-group">
+									<select class="form-control" required name="shopPolicy">
+										<option disabled selected>Policy</option>
+										<option>하루 전날 까지</option>
+										<option>취소불가</option>
+									</select>
+								</div>
 
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
@@ -183,9 +281,13 @@
 									<div class="custom-file">
 										<input type="file" class="custom-file-input"
 											id="inputGroupFile01"
-											aria-describedby="inputGroupFileAddon01"> <label
+											aria-describedby="inputGroupFileAddon01" multiple accept=".gif, .jpg, .png, .bmp, .jpeg"> <label
 											class="custom-file-label" for="inputGroupFile01">jpg,jpeg,bmp,png</label>
 									</div>
+								</div>
+								
+								<div class='uploadResult'>
+									<ul></ul>
 								</div>
 
 								<div class="form-group">

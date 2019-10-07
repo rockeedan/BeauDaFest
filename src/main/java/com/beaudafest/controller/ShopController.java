@@ -13,27 +13,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.beaudafest.domain.ShopVO;
 import com.beaudafest.service.ShopService;
 
 @Controller
-@RequestMapping("/*")
 public class ShopController {
 	
 	@Autowired
 	ShopService shopService;
 	
-	@GetMapping("/shop/shopJoin")
+	@GetMapping("/shopSignUp")
 	public String shopJoinPage(HttpSession session) { //샵 등록
 		System.out.println(session.getAttribute("memberId"));
-		return "shopInfo/shopRegister";
+		return "shop/shopRegister";
 	}
 	
 	//샵 등록
-	@PostMapping("/shop/shopJoin")
+	@PostMapping("/shopSignUp")
 	public String shopJoin(HttpSession session,MultipartFile[] uploadFile,ShopVO vo) { //샵 등록
 		String uploadFolder = "C:\\beaudafest";
 		String addDate= getFolder();//혹시 그 사이에 날짜 바뀔까봐..
@@ -78,13 +76,18 @@ public class ShopController {
 		vo.setMemberId((String) session.getAttribute("memberId"));
 		System.out.println(vo.toString());//출력
 		int result = shopService.shopJoin(vo);
-		session.removeAttribute("memberId");
-		System.out.println(session.getAttribute("memberId"));
-		return "redirect:/main"; //샵 등록 후 페이지 이동 --> 메인으로..?
+		//session.removeAttribute("memberId");
+		return "redirect:/"; //샵 등록 후 페이지 이동 --> 메인으로..?
+	}
+	
+	//샵 정보 수정 페이지로 이동
+	@GetMapping("/modifyShop")
+	public String modifyShopPage(ShopVO vo) {
+		return "/수정페이지";
 	}
 	
 	//샵 정보 수정
-	@PostMapping("/shop/modifyShop")
+	@PostMapping("/modifyShop")
 	public String modifyShop(ShopVO vo) {
 		vo = new ShopVO(1111, "hana3", "하나샵", "02-1111-1111", "일산동구", "10:00", "20:00", "금", "11111.jpg", "샵소개", 1, "취소정책");
 		shopService.modifyShopInfo(vo);
@@ -92,7 +95,7 @@ public class ShopController {
 	}
 	
 	//샵 삭제
-	@PostMapping("/shop/deleteShop")
+	@PostMapping("/deleteShop")
 	public String deleteShop(Integer shopNum) {
 		//shopNum = 3333;
 		shopService.deleteShop(shopNum);

@@ -1,5 +1,7 @@
 package com.beaudafest.persistence;
 
+import java.util.Map;
+
 import com.beaudafest.domain.MemberVO;
 
 public interface MemberDAO {
@@ -8,5 +10,5 @@ public interface MemberDAO {
 	public int modifyMemberInfo(MemberVO vo);//회원 정보 수정
 	
 	public MemberVO findMember(String memberId);//id로 특정 회원 조회
-	public int login(MemberVO vo); //로그인
+	public Map<String, Integer> login(MemberVO vo); //로그인
 }
