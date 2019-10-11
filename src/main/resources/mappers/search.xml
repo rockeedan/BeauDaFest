@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="search">
+	<!-- 검색 조건에 맞는 샵 조회 -->
+	<select id="searchTimeShopList" resultType="ShopVO">
+		select info.shopName, info.shopIntro from 
+		(select shopNum from timeSchedule where (startTime between to_date(#{searchTime},'yyyy-mm--dd hh24:mi') and to_date(#{searchTime},'yyyy-mm-dd hh24:mi')+29/(24*60)) 
+		and arranged=1) time join (select shopNum,shopName,shopIntro from shopInfo where shopAddr LIKE #{shopAddr}) on time.shopNum=info.shopNum
+	</select>
+	<select id="searchShopDaySchedule" resultType="map">
+		<![CDATA[
+		select to_char(startTime,'hh24:mi') startTime, to_char(endTime,'hh24:mi') endTime from timeSchedule
+		where (shopNum=#{shopNum}) and (addDate=to_date(#{addDate},'yyyy-mm-dd')) and (startTime>=to_date(#{startTime},'yyyy-mm-dd hh24:mi'))
+		]]>
+	</select>
+</mapper>

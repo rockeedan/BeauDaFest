@@ -32,15 +32,15 @@
 									Cupiditate laboriosam numquam at</p>
 							</div>
 						</div>
-						<form>
+						<form method="POST">
 
 							<div class="form-group">
-								<span class="form-label">DATE</span> <input class="form-control"
+								<span class="form-label">DATE</span> <input name="searchDate" class="form-control"
 									type="date" required>
 
 
 								<div class="form-group">
-									<span class="form-label">Time</span> <input
+									<span class="form-label">Time</span> <input name="searchTime"
 										class="form-control" type="time" required>
 								</div>
 
@@ -48,7 +48,7 @@
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
-										<span class="form-label">시/도</span> <select
+										<span class="form-label">시/도</span> <select name="searchAddr1"
 											class="form-control" required>
 											<option value="" selected hidden>Select</option>
 											<option>서울시</option>
@@ -59,7 +59,7 @@
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-										<span class="form-label">구/군</span> <select
+										<span class="form-label">구/군</span> <select name="searchAddr2"
 											class="form-control" required>
 											<option value="" selected hidden>Select</option>
 											<option>강남구</option>
@@ -71,7 +71,7 @@
 
 								<div class="col-md-4">
 									<div class="form-group">
-										<span class="form-label">동</span> <select class="form-control"
+										<span class="form-label">동</span> <select name="searchAddr3" class="form-control"
 											required>
 											<option value="" selected hidden>Select</option>
 											<option>서초동</option>

@@ -38,8 +38,8 @@ CREATE TABLE monthSchedule (
 select * from monthSchedule
 
 /*샵추가*/
-(shopNum, userId, shopName,shopPhone,shopAddr,shopOpenTime,shopCloseTime,shopOff,shopPhoto,shopIntro,shopParking,shopPolicy)
-insert into shopInfo (shopNum, userId, shopName,shopPhone,shopAddr,shopOpenTime,shopCloseTime,shopOff,shopPhoto,shopIntro,shopParking,shopPolicy)
+(shopNum, memberId, shopName,shopPhone,shopAddr,shopOpen,shopClose,shopOff,shopPhoto,shopIntro,shopParking,shopPolicy)
+insert into shopInfo (shopNum, memberId, shopName,shopPhone,shopAddr,shopOpen,shopClose,shopOff,shopPhoto,shopIntro,shopParking,shopPolicy)
 values(1,'jsooshi','샵이름','325-0134','강남구 서초로 12길17','10:00','17:00','월요일','사진.jpg','안녕하세요 잘부탁드려요',0,'취소는 안돼요')
 /* 예약가능날짜 */
 (addDate, shopNum)
