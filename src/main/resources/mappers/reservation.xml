@@ -3,13 +3,14 @@
 <mapper namespace="reservation">
 	
 	<!-- 예약 리스트 조회 -->
+	<!-- 옵션 null : total 금액 -> null 수정 필요 -->
 	<select id = "selectRsvnList" resultType="java.util.HashMap">
 	
 		select rsvnnum, memberid, membername, memberphone, 
-			RESERVATION2.designname designname, SHOPDESIGN2.designname optionname,
-			RESERVATION2.designprice + SHOPDESIGN2.designprice designprice, 
-			 bookingdate, rsvndate, RESERVATION2.shopnum
-
+			RESERVATION2.designname designname, SHOPDESIGN2.designname optionname, 
+			bookingdate, rsvndate, RESERVATION2.shopnum,
+			RESERVATION2.designprice + SHOPDESIGN2.designprice designprice 
+		
 		from
 			(select rsvnnum, memberid, membername, shopdesign.designname designname, optionnum,
 					 shopdesign.designprice designprice, 
@@ -25,13 +26,20 @@
 			and RESERVATION.shopnum = #{shopnum}
 			) reservation2 left outer join SHOPDESIGN SHOPDESIGN2
 		ON reservation2.optionnum = SHOPDESIGN2.designid
-		order by rsvnnum;
-	
-	
-	
+		order by rsvnnum
 	</select>
 	
 	
+	<!-- 월별 예약수 -->
+	<select id = "rsvnCount" resultType="java.util.HashMap">
+		select to_char(rsvndate, 'yyyy-mm'), count(*)
+		from reservation  
+		where shopnum=#{shopnum}
+		group by to_char(rsvndate, 'yyyy-mm')
+	</select>
+	
+	
+	<!-- 월별 금액수 -->
 	
 	
 </mapper>
