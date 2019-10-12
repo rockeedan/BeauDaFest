@@ -48,13 +48,4 @@ public class SearchController {
 	}
 
 	
-	@RequestMapping("/tables")
-	public String table () {
-		return "shop/tables";
-	}
-	@RequestMapping("/charts")
-	public String charts () {
-		return "shop/charts";
-	}
-	
 }
