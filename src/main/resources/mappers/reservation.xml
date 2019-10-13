@@ -7,10 +7,10 @@
 	<select id = "selectRsvnList" resultType="java.util.HashMap">
 	
 		select rsvnnum, memberid, membername, memberphone, 
-			RESERVATION2.designname designname, SHOPDESIGN2.designname optionname, 
+			RESERVATION2.designname designname,nvl(SHOPDESIGN2.designname,'선택없음') optionname,
 			bookingdate, rsvndate, RESERVATION2.shopnum,
-			RESERVATION2.designprice + SHOPDESIGN2.designprice designprice 
-		
+			RESERVATION2.designprice +nvl(SHOPDESIGN2.designprice,0) designprice 
+			
 		from
 			(select rsvnnum, memberid, membername, shopdesign.designname designname, optionnum,
 					 shopdesign.designprice designprice, 
