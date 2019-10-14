@@ -37,15 +37,22 @@
 						height="80" class="d-inline-block align-top" alt="">FEST
 				</h1>
 				<h2 class="masthead-subheading mb-0">Will Rock Your Beauty</h2>
+				<br> <br>
 				<div class="form-group">
-					<span class="form-label">DATE</span> <input class="form-control"
-						type="date" required>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text">SEARCH</span>
+						</div>
+						<input type="date" aria-label="searchDate" class="form-control">
+						<input type="time" aria-label="searchTime" class="form-control">
+						<input type="text" aria-label="searchPlace" class="form-control"
+							placeholder="WHERE">
 
-
-					<div class="form-group">
-						<span class="form-label">Time</span> <input class="form-control"
-							type="time" required>
 					</div>
+					<br> <br>
+					<button class="btn btn-danger btn-lg btn-block" type="button"
+						id="searchShops">To Be BeauDa<img src="/beaudafest/resources/img/heart.png" width="30"
+							height="30" class="d-inline-block align-top" alt="">Fest</button>
 
 				</div>
 			</div>

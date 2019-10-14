@@ -62,4 +62,10 @@ public class SearchController {
 		return "shop/charts";
 	}
 	
+	
+	@RequestMapping("/shopInfo")
+	public String shopInfo () {
+		return "shopInfo/shopInfo";
+	}
+	
 }
