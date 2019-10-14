@@ -3,20 +3,13 @@
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<script src="/resources/js/jquery-3.js"></script>
-
-
-
-
-
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
 	<!-- Page Heading -->
-	<h1 class="h3 mb-2 text-gray-800">SHOP이름</h1>
-	
-	
+	<hr>
+	<h1 class="h3 mb-2 text-gray-800">${shop.shopName } </h1>
+	<hr>
 	<p class="mb-4">
 		DataTables is a third party plugin that is used to generate the demo
 		table below. For more information about DataTables, please visit the <a
