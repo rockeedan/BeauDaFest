@@ -1,25 +1,29 @@
 package com.beaudafest.persistence;
-
+import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
-
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.TransactionSynchronizationManager;
+
 
 @Repository
 public class ReservationDAOImpl implements ReservationDAO{
 	
-	@Inject
-	SqlSession sqlSession;
+	@Autowired
+	private SqlSession sqlSession;
 	
-	@Transactional
+	//예약 리스트 조회
+	@Override
+	public List<Map<String, Object>> selectRsvnList(int shopnum){
+		return sqlSession.selectList("reservation.selectRsvnList", shopnum);
+		
+	}
+
 	@Override
 	public int createSchedule(Map map) {
-		System.out.println("dao : "+TransactionSynchronizationManager.getCurrentTransactionName());
-		return sqlSession.update("reservation.createSchedule", map);
+		return sqlSession.update("reservation.createSchedule",map);
 	}
+	
 
 }

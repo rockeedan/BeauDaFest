@@ -47,15 +47,15 @@
 											</span>
 										</h1>
 									</div>
-									<form class="user">
+									<form class="user" action="login" method="post">
 										<div class="form-group">
-											<input type="email" class="form-control form-control-user"
+											<input type="text" class="form-control form-control-user"
 												id="exampleInputId" aria-describedby="idHelp"
-												placeholder="ID">
+												placeholder="ID" name="memberId">
 										</div>
 										<div class="form-group">
 											<input type="password" class="form-control form-control-user"
-												id="exampleInputPassword" placeholder="Password">
+												id="exampleInputPassword" placeholder="Password" name="memberPass">
 										</div>
 										<div class="form-group">
 											<div class="custom-control custom-checkbox small">
@@ -65,8 +65,8 @@
 													Me</label>
 											</div>
 										</div>
-										<a href="index.html"
-											class="btn btn-primary btn-user btn-block"> Login </a>
+										<button type="submit"
+											class="btn btn-primary btn-user btn-block"> Login </button>
 										<hr>
 
 									</form>
@@ -76,7 +76,7 @@
 											Password?</a>
 									</div>
 									<div class="text-center">
-										<a class="small" href="register.html">Create an Account!</a>
+										<a class="small" href="signUp">Create an Account!</a>
 									</div>
 								</div>
 							</div>

@@ -1,5 +1,7 @@
 package com.beaudafest.persistence;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -33,7 +35,7 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public int login(MemberVO vo) {
+	public Map<String, Integer> login(MemberVO vo) {
 		return sqlSession.selectOne("member.login", vo);
 	}
 	

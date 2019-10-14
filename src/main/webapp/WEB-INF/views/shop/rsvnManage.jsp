@@ -22,7 +22,24 @@
 <link href="resources/vendor/datatables/dataTables.bootstrap4.css"
 	rel="stylesheet">
 
+<script src="/resources/js/jquery-3.js"></script>
+<script type="text/javascript">
 
+function open_url( type, url, data, target ){ 
+	$.ajax({ 
+		type: type, 
+		url: url, 
+		data: data,
+		success: function(data){
+			$("#"+target).html(data); 
+		}
+	})
+}; 
+
+
+
+
+</script>
 
 <style>
 .bd-placeholder-img {
@@ -49,10 +66,11 @@
 	<%--Nav바 인클루드  --%>
 
 	<br>
-	
-	<ul
-		class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+	<div class="row">
+	<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+	<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
 		id="accordionSidebar">
+		
 		<!-- Divider -->
 		<hr class="sidebar-divider my-0">
 
@@ -66,20 +84,41 @@
 		<div class="sidebar-heading">Dashboard</div>
 		<!-- Nav Item - Pages Collapse Menu -->
 		<li class="nav-item"><a class="nav-link collapsed" href="#"
-			data-toggle="collapse" data-target="#collapseTwo"
-			aria-expanded="true" aria-controls="collapseTwo"> <i
-				class="fas fa-fw fa-cog"></i> <span>Chart</span>
+		data-toggle="collapse" data-target="#collapseTwo"
+		aria-expanded="true" aria-controls="collapseTwo"> 
+			
+		<i class="fas fa-fw fa-cog"></i> <span>Chart</span>
 		</a>
-			<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+		<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 				data-parent="#accordionSidebar">
-				<div class="bg-white py-2 collapse-inner rounded">
-					<h6 class="collapse-header">차트보기</h6>
-					<a class="collapse-item" href="tables.jsp">RESERVATIONS</a> <a
-						class="collapse-item" href="chargs.jsp">REVENUE</a>
-				</div>
-			</div></li>
+		<div class="bg-white py-2 collapse-inner rounded">
+		<h6 class="collapse-header">차트보기</h6>
+		<a class="collapse-item" href="javascript:;" 
+			onClick="open_url('get', 'tables','','contentDiv')">RESERVATIONS</a>
+		<a class="collapse-item" href="javascript:;" 
+			onClick="open_url('get', 'charts','','contentDiv')"> REVENUE</a>
+		</div>
+		</div>
+		</li>
 		<li class="nav-item"><a class="nav-link collapsed" href="#"><span>일정 등록</span></a></li>
 	</ul>
+	</nav>
+	
+	<main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4">
+	<br><br>
+	<div>
+		<div id = "contentDiv">
+			하이하이하이하이하이하이하이하이하이하이하이하이하이하이하이
+		</div>
+	</div>
+	
+	</main>
+	</div>
+			
+			
+			
+
+
 
 
 

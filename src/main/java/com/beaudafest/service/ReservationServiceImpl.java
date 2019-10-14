@@ -1,6 +1,7 @@
 package com.beaudafest.service;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -33,6 +34,12 @@ public class ReservationServiceImpl implements ReservationService{
 			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
 		}
 		return false;
+	}
+
+	// 예약 리스트 조회
+	@Override
+	public List<Map<String, Object>> selectRsvnList(int shopnum) {
+		return dao.selectRsvnList(shopnum);
 	}
 
 }

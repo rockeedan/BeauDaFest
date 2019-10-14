@@ -1,12 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<script src="/resources/js/jquery-3.js"></script>
+
+
+
+
+
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
 	<!-- Page Heading -->
 	<h1 class="h3 mb-2 text-gray-800">SHOP이름</h1>
+	
+	
 	<p class="mb-4">
 		DataTables is a third party plugin that is used to generate the demo
 		table below. For more information about DataTables, please visit the <a
@@ -21,51 +31,70 @@
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-				<table class="table table-bordered" id="dataTable" width="100%"
-					cellspacing="0">
+				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
 					<thead>
-						<tr>
+						<tr> 
+							<th>샵번호</th>
+							<th>예약번호</th>
 							<th>Name</th>
 							<th>ID</th>
+							<th>PHONE</th>
 							<th>Design</th>
 							<th>옵션유무</th>
 							<th>예약일시</th>
 							<th>예약날짜</th>
 							<th>Total</th>
-							<th>예약번호</th>
 							<th>예약상태</th> <!-- 확정(confirmed)/취소(canceled)/지나감(past)/노쇼(추후)표기 -->
 						</tr>
 					</thead>
 					<tfoot>
 						<tr>
+							<th>샵번호</th>
+							<th>예약번호</th>
 							<th>Name</th>
 							<th>ID</th>
+							<th>PHONE</th>
 							<th>Design</th>
 							<th>옵션유무</th>
 							<th>예약일시</th>
 							<th>예약날짜</th>
 							<th>Total</th>
-							<th>예약번호</th>
 							<th>예약상태</th> <!-- 취소/지나감/노쇼(추후)표기 -->
 						</tr>
 					</tfoot>
 					<tbody>
-						<tr>
-							<td>Tiger Nixon</td>
-							<td>nanana</td>
-							<td>꿈꾸는디자인</td>
-							<td>off(타지점시술)</td>
-							<td>2011/04/22/17:00</td>
-							<td>2011/04/20</td>
-							<td>70000</td>
-							<td>201188828</td>
-							<td>confirmed</td>
+					<c:forEach items="${list }" var="list">
+				
+						<tr align = "center">
+							<td>${list.SHOPNUM}</td>
+							<td>${list.RSVNNUM}</td>
+							<td>${list.MEMBERNAME}</td>
+							<td>${list.MEMBERID}</td>
+							<td>${list.MEMBERPHONE}</td>
+							<td>${list.DESIGNNAME}</td>
+							<td>${list.OPTIONNAME}</td>
+							<td>
+								<fmt:formatDate value="${list.BOOKINGDATE}" pattern="yyyy/MM/dd"/>
+							</td>
+							<td>
+								<fmt:formatDate value="${list.RSVNDATE}" pattern="yyyy/MM/dd HH:mm"/>
+							</td>
+							<td>${list.DESIGNPRICE}</td>
+							<td></td>
 							
 						</tr>
 						
-						
+						</c:forEach>
 					</tbody>
 				</table>
+				
+				
+				
+				
+				
+				
+				
+				
 			</div>
 		</div>
 	</div>
@@ -90,4 +119,3 @@ Page level plugins
 <script src="resources/vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="resources/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="resources/js/demo/datatables-demo.js"></script> -->
-
