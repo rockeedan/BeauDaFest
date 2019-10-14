@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="search">
 	<select id="searchTimeShopList" resultType="ShopVO">
-        select info.shopName, info.shopIntro from
+        select info.shopName, info.shopIntro, info.shopNum from
         (select shopNum 
          from timeSchedule 
          where (startTime between to_date(#{searchTime},'yyyy-mm-dd hh24:mi') and to_date(#{searchTime},'yyyy-mm-dd hh24:mi')+29/(24*60))

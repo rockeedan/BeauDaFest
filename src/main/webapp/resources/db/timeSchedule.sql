@@ -5,14 +5,15 @@ DROP TABLE monthSchedule
 /* 예약가능날짜 */
 CREATE TABLE monthSchedule (
 	addDate DATE NOT NULL, /* 예약가능날짜추가 */
-	shopNum NUMBER /* 샵넘버 */
+	shopNum NUMBER NOT NULL /* 샵넘버 */
 );
 
 ALTER TABLE monthSchedule
 	ADD
 		CONSTRAINT PK_monthSchedule
 		PRIMARY KEY (
-			addDate
+			addDate,
+			shopNum
 		);
 
 ALTER TABLE monthSchedule
@@ -55,22 +56,25 @@ ALTER TABLE timeSchedule
 	ADD
 		CONSTRAINT FK_monthScheduleToTimeSchedule
 		FOREIGN KEY (
-			addDate
+			addDate,
+			shopNum
 		)
 		REFERENCES monthSchedule (
-			addDate
+			addDate,
+			shopNum
 		);
 		
 		
 select * from shopInfo;
 insert into monthSchedule(addDate, shopNum) values ('2019-10-14', 10);
-select * from monthSchedule;   
+insert into monthSchedule(addDate, shopNum) values ('2019-10-14', 7);
+insert into monthSchedule(addDate, shopNum) values ('2019-10-14', 2);
+insert into monthSchedule(addDate, shopNum) values ('2019-10-14', 5);
+
+select * from monthSchedule;
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (10, '2019-10-14', to_date('2019-10-14 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-14 12:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-10-14', to_date('2019-10-14 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-14 12:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (5, '2019-10-14', to_date('2019-10-14 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-14 12:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (7, '2019-10-14', to_date('2019-10-14 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-14 12:29', 'yyyy-MM-dd hh24-mi'), 1);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (10, '2019-10-14', to_date('2019-10-14 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-14 12:59', 'yyyy-MM-dd hh24-mi'), 1);
 
-
-select info.shopName, info.shopIntro from
-        (select shopNum 
-         from timeSchedule 
-         where (startTime between to_date('2019-10-14 12:00','yyyy-mm-dd hh24:mi') and to_date('2019-10-14 12:00','yyyy-mm-dd hh24:mi')+29/(24*60))
-         and arranged=1) time join (select shopNum,shopName,shopIntro from shopInfo where shopAddr LIKE '%서초구%') info on time.shopNum=info.shopNum

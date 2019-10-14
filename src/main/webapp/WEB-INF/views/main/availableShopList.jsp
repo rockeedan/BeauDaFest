@@ -47,10 +47,7 @@
 		<section class="jumbotron text-center">
 			<div class="container">
 				<h1 class="jumbotron-heading">ShopList</h1>
-				<p class="lead text-muted">
-				
-				<fmt:formatDate value="${selectDate }" pattern="yyyy년 MM월 dd일 a hh시"/>에 예약가능한 샵입니다</p> <!-- 고객이 선택한 일시 보여주기 -->
-				<!-- <p class="lead text-muted">2019년 9월 21일 오후 1시에 예약가능한 샵입니다</p>
+				<p class="lead text-muted"><fmt:formatDate value="${selectDate }" pattern="yyyy년 MM월 dd일 a hh시"/>에 예약가능한 샵입니다</p> <!-- 고객이 선택한 일시 보여주기 -->
 
 			</div>
 		</section>
@@ -66,18 +63,18 @@
 					<title>Placeholder</title><rect width="100%" height="100%"
 							fill="#777" />
 					<text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-					<h2>ShopName</h2>  <%--샵 이름 --%>
+					<h2>ShopName</h2>  샵 이름
 					<p>Donec sed odio dui. Etiam porta sem malesuada magna mollis
 						euismod. Nullam id dolor id nibh ultricies vehicula ut id elit.
 						Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-						Praesent commodo cursus magna.</p> <%--샵 설명 --%>
+						Praesent commodo cursus magna.</p> 샵 설명
 					<p>
 						<a class="btn btn-secondary" href="#" role="button">View
-							details &raquo;</a> <%--샵 정보로 들어가기 --%>
+							details &raquo;</a> 샵 정보로 들어가기
 					</p>
 				</div>
 				<!-- /.col-lg-4 -->
-				<div class="col-lg-4">
+				<%-- <div class="col-lg-4">
 					<svg class="bd-placeholder-img rounded-circle" width="140"
 						height="140" xmlns="http://www.w3.org/2000/svg"
 						preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
@@ -85,14 +82,14 @@
 					<title>Placeholder</title><rect width="100%" height="100%"
 							fill="#777" />
 					<text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-					<h2>ShopName</h2><%--샵 이름 --%>
+					<h2>ShopName</h2>샵 이름
 					<p>Duis mollis, est non commodo luctus, nisi erat porttitor
 						ligula, eget lacinia odio sem nec elit. Cras mattis consectetur
 						purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo,
-						tortor mauris condimentum nibh.</p> <%--샵 설명 --%>
+						tortor mauris condimentum nibh.</p> 샵 설명
 					<p>
 						<a class="btn btn-secondary" href="#" role="button">View
-							details &raquo;</a> <%--샵 정보로 들어가기 --%>
+							details &raquo;</a> 샵 정보로 들어가기
 					</p>
 				</div>
 				<!-- /.col-lg-4 -->
@@ -111,11 +108,29 @@
 						condimentum nibh, ut fermentum massa justo sit amet risus.</p>
 					<p>
 						<a class="btn btn-secondary" href="#" role="button">View
-							details &raquo;</a> <%--샵 정보로 들어가기 --%>
+							details &raquo;</a> 샵 정보로 들어가기
 					</p>
 
 
+				</div> --%>
+				<c:forEach items="${shopList}" var="shopList">
+					<div class="col-lg-4">
+					<svg class="bd-placeholder-img rounded-circle" width="140"
+						height="140" xmlns="http://www.w3.org/2000/svg"
+						preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
+						aria-label="Placeholder: 140x140">
+					<title>Placeholder</title><rect width="100%" height="100%"
+							fill="#777" />
+					<text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+					<h2>${shopList.shopName }</h2>
+					<p>${shopList.shopIntro }</p>
+					<p>
+						<a class="btn btn-secondary" href="shopDetail/${shopList.shopNum }" role="button">View
+							details &raquo;</a>
+					</p>
 				</div>
+				</c:forEach>
+				
 				<!-- /.col-lg-4 -->
 			</div>
 			<!-- /.row -->

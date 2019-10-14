@@ -26,7 +26,7 @@ public class SearchListController {
 	public String availableShopList(TimeSearchVO vo, Model m,String date, String time) throws ParseException {
 		String searchTime=date+" "+time;
 		vo.setSearchTime(searchTime);
-		vo.setShopAddr("서초구");
+		vo.setShopAddr("강남구");
 		List<ShopVO> vo2 = service.searchTimeShop(vo);
 		for(int i=0; i<vo2.size(); i++) {
 			System.out.println(vo2.toString());
