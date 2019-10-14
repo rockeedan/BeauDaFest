@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +47,10 @@
 		<section class="jumbotron text-center">
 			<div class="container">
 				<h1 class="jumbotron-heading">ShopList</h1>
-				<p class="lead text-muted">2019년 9월 21일 오후 1시에 예약가능한 샵입니다</p> <!-- 고객이 선택한 일시 보여주기 -->
+				<p class="lead text-muted">
+				
+				<fmt:formatDate value="${selectDate }" pattern="yyyy년 MM월 dd일 a hh시"/>에 예약가능한 샵입니다</p> <!-- 고객이 선택한 일시 보여주기 -->
+				<!-- <p class="lead text-muted">2019년 9월 21일 오후 1시에 예약가능한 샵입니다</p>
 
 			</div>
 		</section>

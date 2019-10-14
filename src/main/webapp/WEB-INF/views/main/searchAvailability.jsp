@@ -32,16 +32,15 @@
 									Cupiditate laboriosam numquam at</p>
 							</div>
 						</div>
-						<form>
+						<form action="searchShopList" method="post">
 
 							<div class="form-group">
 								<span class="form-label">DATE</span> <input class="form-control"
-									type="date" required>
-
+									type="date" required name="date">
 
 								<div class="form-group">
 									<span class="form-label">Time</span> <input
-										class="form-control" type="time" required>
+										class="form-control" type="time" required name="time">
 								</div>
 
 							</div>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="search">
+	<select id="searchTimeShopList" resultType="ShopVO">
+        select info.shopName, info.shopIntro from
+        (select shopNum 
+         from timeSchedule 
+         where (startTime between to_date(#{searchTime},'yyyy-mm-dd hh24:mi') and to_date(#{searchTime},'yyyy-mm-dd hh24:mi')+29/(24*60))
+        and arranged=1) time join (select shopNum,shopName,shopIntro from shopInfo where shopAddr LIKE '%'||#{shopAddr}||'%')info on time.shopNum=info.shopNum
+    </select>
+</mapper>
