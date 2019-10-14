@@ -78,7 +78,7 @@
 						class="collapse-item" href="chargs.jsp">REVENUE</a>
 				</div>
 			</div></li>
-
+		<li class="nav-item"><a class="nav-link collapsed" href="#"><span>일정 등록</span></a></li>
 	</ul>
 
 
