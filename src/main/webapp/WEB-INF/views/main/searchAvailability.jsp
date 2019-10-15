@@ -6,12 +6,22 @@
 <head>
 <meta charset="UTF-8">
 
-<!-- Bootstrap -->
-<link type="text/css" rel="stylesheet"
-	href="resources/css/bootstrap.min.css" />
 
-<!-- Custom stlylesheet -->
-<link type="text/css" rel="stylesheet" href="resources/css/style.css" />
+
+<!-- Bootstrap core CSS -->
+<link href="resources/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<!-- Custom fonts for this template -->
+<link
+	href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i"
+	rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="resources/css/one-page-wonder.min.css" rel="stylesheet">
 <script src="resources/js/jquery-3.js"></script>
 <title>BEAUDAFEST</title>
 </head>
@@ -19,19 +29,21 @@
 	<div>
 		<%@ include file="../include/nav.jsp"%>
 	</div>
-	<br>
-	<div id="booking" class="section">
-		<div class="section-center">
+	<header class="masthead text-center text-white">
+		<div class="masthead-content">
 			<div class="container">
-				<div class="row">
-					<div class="booking-form">
-						<div class="booking-bg">
-							<div class="form-header">
-								<h2>Make your reservation</h2>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Cupiditate laboriosam numquam at</p>
-							</div>
+				<h1 class="masthead-heading mb-0">
+					BEAUDA<img src="/beaudafest/resources/img/heart.png" width="80"
+						height="80" class="d-inline-block align-top" alt="">FEST
+				</h1>
+				<h2 class="masthead-subheading mb-0">Will Rock Your Beauty</h2>
+				<br> <br>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text">SEARCH</span>
 						</div>
+<!-- <<<<<<< HEAD
 						<form action="searchShopList" method="post">
 
 							<div class="form-group">
@@ -42,52 +54,96 @@
 									<span class="form-label">Time</span> <input
 										class="form-control" type="time" required name="time">
 								</div>
+======= -->
+						<input type="date" aria-label="searchDate" class="form-control">
+						<input type="time" aria-label="searchTime" class="form-control">
+						<input type="text" aria-label="searchPlace" class="form-control"
+							placeholder="WHERE">
 
-							</div>
-							<div class="row">
-								<div class="col-md-4">
-									<div class="form-group">
-										<span class="form-label">시/도</span> <select
-											class="form-control" required>
-											<option value="" selected hidden>Select</option>
-											<option>서울시</option>
-											<option>대구광역시</option>
-											<option>부산광역시</option>
-										</select> <span class="select-arrow"></span>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="form-group">
-										<span class="form-label">구/군</span> <select
-											class="form-control" required>
-											<option value="" selected hidden>Select</option>
-											<option>강남구</option>
-											<option>서초구</option>
-											<option>마포구</option>
-										</select> <span class="select-arrow"></span>
-									</div>
-								</div>
+					</div>
+					<br> <br>
+					<button class="btn btn-danger btn-lg btn-block" type="button"
+						id="searchShops">To Be BeauDa<img src="/beaudafest/resources/img/heart.png" width="30"
+							height="30" class="d-inline-block align-top" alt="">Fest</button>
 
-								<div class="col-md-4">
-									<div class="form-group">
-										<span class="form-label">동</span> <select class="form-control"
-											required>
-											<option value="" selected hidden>Select</option>
-											<option>서초동</option>
-											<option>잠원동</option>
-										</select> <span class="select-arrow"></span>
-									</div>
-								</div>
-							</div>
-							<div class="form-btn">
-								<button class="submit-btn">Check availability</button>
-							</div>
-						</form>
+				</div>
+			</div>
+		</div>
+		<div class="bg-circle-1 bg-circle"></div>
+		<div class="bg-circle-2 bg-circle"></div>
+		<div class="bg-circle-3 bg-circle"></div>
+		<div class="bg-circle-4 bg-circle"></div>
+	</header>
+
+	<section>
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6 order-lg-2">
+					<div class="p-5">
+						<img class="img-fluid rounded-circle" src="resources/img/01.jpg"
+							alt="">
+					</div>
+				</div>
+				<div class="col-lg-6 order-lg-1">
+					<div class="p-5">
+						<h2 class="display-4">For those about to rock...</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+							Quod aliquid, mollitia odio veniam sit iste esse assumenda amet
+							aperiam exercitationem, ea animi blanditiis recusandae! Ratione
+							voluptatum molestiae adipisci, beatae obcaecati.</p>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
+
+	<section>
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6">
+					<div class="p-5">
+						<img class="img-fluid rounded-circle" src="resources/img/02.jpg"
+							alt="">
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="p-5">
+						<h2 class="display-4">We salute you!</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+							Quod aliquid, mollitia odio veniam sit iste esse assumenda amet
+							aperiam exercitationem, ea animi blanditiis recusandae! Ratione
+							voluptatum molestiae adipisci, beatae obcaecati.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6 order-lg-2">
+					<div class="p-5">
+						<img class="img-fluid rounded-circle" src="resources/img/03.jpg"
+							alt="">
+					</div>
+				</div>
+				<div class="col-lg-6 order-lg-1">
+					<div class="p-5">
+						<h2 class="display-4">Let there be rock!</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+							Quod aliquid, mollitia odio veniam sit iste esse assumenda amet
+							aperiam exercitationem, ea animi blanditiis recusandae! Ratione
+							voluptatum molestiae adipisci, beatae obcaecati.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="resources/vendor/jquery/jquery.min.js"></script>
+	<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
