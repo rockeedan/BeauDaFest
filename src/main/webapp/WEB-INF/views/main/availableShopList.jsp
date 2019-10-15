@@ -40,7 +40,17 @@
 </head>
 <body>
 	<div>
-		<%@ include file="../include/nav.jsp"%> <%--Nav 바 추가 --%>
+		<c:choose>
+			<c:when test="${memberStatus eq 0}"> <%-- 일반회원일때 --%>
+				<%@ include file="../include/memberNav.jsp"%>
+			</c:when>
+			<c:when test="${memberStatus eq 1}"> <%-- 오너회원일때 --%>
+				<%@ include file="../include/ownerNav.jsp"%>
+			</c:when>
+			<c:otherwise>						 <%-- 회원이아닐때 (로그인X) --%>
+				<%@ include file="../include/nav.jsp"%>
+			</c:otherwise>
+		</c:choose>
 	</div>
 	<br><br><br>
 	<div class="container">
