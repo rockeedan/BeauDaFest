@@ -50,7 +50,7 @@ create sequence shopInfo_seq
 --select * from SHOPDESIGN;
 
 insert into shopInfo(shopNum, memberId, shopName, shopPhone, shopAddr, shopOpen, shopOff, shopPhoto, shopIntro, shopParking, shopPolicy)
-values (shopInfo_seq.nextval,'juwon','주원샵','02-1111-1111','서울시 서초구 서초동','10:00','18:00','11111','3샵정보',1,'취소정책');
+values (shopInfo_seq.nextval,'juwon','주원샵','02-1111-1111','서울시 서초구 서초동','10:00','18:00','santa.jpg','3샵정보',1,'취소정책');
 
 insert into shopInfo(shopNum, memberId, shopName, shopPhone, shopAddr, shopOpen, shopOff, shopPhoto, shopIntro, shopParking, shopPolicy)
 values (shopInfo_seq.nextval,'yoosin','유신샵','02-3333-3333','서울시 강남구 강남동','10:00','18:00','33333','3샵정보',1,'취소정책');
@@ -58,7 +58,9 @@ values (shopInfo_seq.nextval,'yoosin','유신샵','02-3333-3333','서울시 강�
 insert into shopInfo(shopNum, memberId, shopName, shopPhone, shopAddr, shopOpen, shopOff, shopPhoto, shopIntro, shopParking, shopPolicy)
 values (shopInfo_seq.nextval,'gamchan','감찬샵','02-2222-2222','서울시 마포구 마포동','10:00','18:00','22222','샵정보',0,'취소정책');
 
+update shopInfo set shopPhoto='santa.jpg' where shopNum=1;
 
+update shopInfo set shopPhoto='2019/10/14/2019846505481.png' where shopNum=1;
 
-
+select * from shopInfo
 
