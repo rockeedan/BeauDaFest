@@ -3,9 +3,13 @@ package com.beaudafest.controller;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.swing.plaf.multi.MultiFileChooserUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,16 +32,26 @@ public class ProductController {
 	private CouponService service;
 
 	@GetMapping("/manage")
-	public String showManage() {
+	public String showManage(HttpSession session) {
+		
+		List<CouponVO> list = service.showCoupon(1);
+		session.setAttribute("couponList", list);
+		List<String> photoList = new ArrayList<String>();
+		for (int i = 0; i < list.size(); i++) {
+			photoList.add(list.get(i).getDesignPhoto().split("\\|")[0]);
+		}
+		session.setAttribute("photoList", photoList);
+		System.out.println(photoList);
 		return "shop/couponManage";
 	}
 
 	@PostMapping("/addCoupon")
-	public String addCoupon(CouponVO vo, MultipartFile[] uploadCoupon) { // 쿠폰 등록
+	public String addCoupon(CouponVO vo, MultipartFile[] uploadCoupon, HttpServletRequest request) { // 쿠폰 등록
 
 		String dbUploadedFiles = ""; //db에 넣어줄 값
-		String uploadFolder = "C:\\beaudafest"; //업로드될 폴더 
+		String uploadFolder = request.getSession().getServletContext().getRealPath("/resources/couponPhoto"); //업로드될 폴더 
 		
+		String addDate = getFolder();
 		//폴더 만들기 -------------
 		File uploadPath = new File(uploadFolder, getFolder());
 		System.out.println("upload path: " + uploadPath);
@@ -57,7 +71,8 @@ public class ProductController {
 			UUID uuid = UUID.randomUUID(); 
 						
 			uploadFileName = uuid.toString()+"_"+uploadFileName; //이름중복값 방지
-			dbUploadedFiles += uploadFileName + "|"; //db 구분자 생성 
+			dbUploadedFiles +=addDate+"/"+uploadFileName + "|"; //db 구분자 생성 
+			
  			
 			File saveFile = new File(uploadPath, uploadFileName); //저장 
 
@@ -78,11 +93,11 @@ public class ProductController {
 	}
 
 	private String getFolder() { //폴더만들어주기
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		
 		Date date = new Date();	
 		String str = sdf.format(date);
 		
-		return str.replace("-", File.separator);
+		return str.replace("/", File.separator);
 	}
 }

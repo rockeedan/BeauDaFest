@@ -1,9 +1,6 @@
 
 --샵디자인
 
-
-
-
 DROP TABLE shopDesign
 	CASCADE CONSTRAINTS;
 	
@@ -23,7 +20,59 @@ ALTER TABLE shopDesign	ADD CONSTRAINT shopDesign PRIMARY KEY(designId);
 ALTER TABLE shopDesign ADD CONSTRAINT FK_shopInfo_TO_shopDesign
 FOREIGN KEY (shopNum) REFERENCES shopInfo(shopNum);
 
+drop sequence designDesign_seq;
+drop sequence designOption_seq;
 
+
+--네일디자인시퀀스 (nd1, nd2..... )
+drop sequence nailDesign_seq;
+create sequence nailDesign_seq
+       start with 1
+       increment by 1
+       nocycle
+       nocache;	
+       
+--네일옵션 시퀀스 (no1, no2..... )
+drop sequence nailOption_seq;
+create sequence nailOption_seq
+       start with 1
+       increment by 1
+       nocycle
+       nocache;	
+       
+--페디디자인시퀀스 (pd1, pd2..... )
+drop sequence pediDesign_seq;
+create sequence pediDesign_seq
+       start with 1
+       increment by 1
+       nocycle
+       nocache;	     
+
+       
+--페디옵션시퀀스 (po1, po2..... )
+drop sequence pediOption_seq;
+create sequence pediOption_seq
+       start with 1
+       increment by 1
+       nocycle
+       nocache;	     
+  
+--속눈썹디자인시퀀스 (po1, po2..... )
+drop sequence lashDesign_seq;
+create sequence lashDesign_seq
+       start with 1
+       increment by 1
+       nocycle
+       nocache;	
+       
+       
+--속눈썹디자인시퀀스 (po1, po2..... )
+drop sequence lashOption_seq;
+create sequence lashOption_seq
+       start with 1
+       increment by 1
+       nocycle
+       nocache;	
 --옵션X
 insert into shopDesign values(1, 1111, '원컬러 젤네일', '네일', 'ND', 50000, 60, '사진1'); --샵1111 디자인1 
 insert into shopDesign values(2, 1111, '포인트 젤네일', '네일', 'ND', 62000, 90, '사진2'); --샵1111 디자인2 

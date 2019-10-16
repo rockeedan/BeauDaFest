@@ -36,7 +36,15 @@
 	.bd-placeholder-img-lg {
 		font-size: 3.5rem;
 	}
-a
+	a
+	
+	
+	
+	
+
+
+
+
 }
 </style>
 <script type="text/javascript">
@@ -49,6 +57,9 @@ a
 			return false;
 		}
 		return true;
+	}
+	function showImage(fileCallpath){
+		alert(fileCallPath);
 	}
 
 	$(function() {
@@ -75,18 +86,16 @@ a
 							formData.append(files[i].name, files[i]);
 							fileCnt++;
 							}
-							console.log("111  >>"+files.length)
+							
 							$(".custom-file-input").val("");
-							console.log("2222  >>"+files.length)
+							
 						}); //파일명 입력해주기 
 						
-	 	$('.uploadResult ul').on("click","a", function(){
+	 	$('.uploadResult ul').on("click","a", function(){ //파일 삭제
 	 		console.log($(this).closest('li').children('span').html())
 	 		formData.delete($(this).closest('li').children('span').html()) 		
 	 		$(this).closest('li').remove();
 	 		fileCnt--;
-	 		console.log("수정된 파일 갯수: "+fileCnt)
-	 	
 	 	})
 
 		$("#addCoupon").on("click", function() { //ADD COUPON (쿠폰등록) 버튼을 클릭했을 시, 
@@ -113,6 +122,9 @@ a
 
 		})
 
+	
+		
+		
 	})//ready
 </script>
 </head>
@@ -152,96 +164,43 @@ a
 		<div class="album py-5 bg-light">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-4">
-						<div class="card mb-4 shadow-sm">
-							<svg class="bd-placeholder-img card-img-top" width="100%"
-								height="225" xmlns="http://www.w3.org/2000/svg"
+					<c:forEach items="${couponList}" var="obj" varStatus="i">
+						<div class="col-md-4">
+							<div class="card mb-4 shadow-sm">
+
+
+							<img class="card-img-top" src="/beaudafest/resources/couponPhoto/${photoList.get(i.index)}"/>
+								<%-- <svg class="bd-placeholder-img card-img-top" width="100%"
+								height="225" xmlns="c://beaudafest/2019/10/16/${photoList.get(i.index)}"
 								preserveAspectRatio="xMidYMid slice" focusable="false"
 								role="img" aria-label="Placeholder: Thumbnail">
 								<title>Placeholder</title><rect width="100%" height="100%"
 									fill="#55595c" />
-								<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-							<div class="card-body">
-								<p class="card-text">
-								<h2>ShopName</h2>
-								샵설명
-								</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<!--  고객이 로그인 했을 경우 View 버튼만 보임 
+								<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> --%>
+								<div class="card-body">
+									<p class="card-text">
+									<h2>${obj.designName }</h2>
+									</p>
+									<div class="d-flex justify-content-between align-items-center">
+										<div class="btn-group">
+											<!--  고객이 로그인 했을 경우 View 버튼만 보임 
 									샵주인 (if 해당 샵의 샵주인이 맞다면) edit 버튼 보임, edit 누르면 모달창 뜨고 사진 수정 삭제 가능
 									
 									 -->
-										<button type="button" class="btn btn-sm btn-outline-secondary"
-											data-toggle="modal" data-target="#myModal">View</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary"
-											data-toggle="modal" data-target="#myModal">Edit</button>
+
+											<button type="button"
+												class="btn btn-sm btn-outline-secondary" data-toggle="modal"
+												data-target="#myModal">Edit</button>
+										</div>
+										<small class="text-muted">${obj.designTime }</small>
+										<!-- 소요시간 -->
 									</div>
-									<small class="text-muted">9 mins</small>
-									<!-- 소요시간 -->
 								</div>
 							</div>
 						</div>
-					</div>
+					</c:forEach>
 					<%--첫번째카드 끝 --%>
-					<%--두번째 카드 시작 --%>
-					<div class="col-md-4">
-						<div class="card mb-4 shadow-sm">
-							<svg class="bd-placeholder-img card-img-top" width="100%"
-								height="225" xmlns="http://www.w3.org/2000/svg"
-								preserveAspectRatio="xMidYMid slice" focusable="false"
-								role="img" aria-label="Placeholder: Thumbnail">
-								<title>Placeholder</title><rect width="100%" height="100%"
-									fill="#55595c" />
-								<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-							<div class="card-body">
-								<p class="card-text">
-								<h2>ShopName</h2>
-								샵설명
-								</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary"
-											data-toggle="modal" data-target="#myModal">View</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary"
-											data-toggle="modal" data-target="#myModal">Edit</button>
-									</div>
-									<small class="text-muted">9 mins</small>
-								</div>
-							</div>
-						</div>
-					</div>
-					<%--두번째 카드 끝 --%>
-					<%--세번째 카드 시작 --%>
-					<div class="col-md-4">
-						<div class="card mb-4 shadow-sm">
-							<svg class="bd-placeholder-img card-img-top" width="100%"
-								height="225" xmlns="http://www.w3.org/2000/svg"
-								preserveAspectRatio="xMidYMid slice" focusable="false"
-								role="img" aria-label="Placeholder: Thumbnail">
-								<title>Placeholder</title><rect width="100%" height="100%"
-									fill="#55595c" />
-								<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-							<div class="card-body">
-								<p class="card-text">
-								<h2>ShopName</h2>
-								샵설명
-								</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary"
-											data-toggle="modal" data-target="#myModal">View</button>
-										<%--디자인수디테일보기--%>
-										<button type="button" class="btn btn-sm btn-outline-secondary"
-											data-toggle="modal" data-target="#myModal">Edit</button>
-										<%--디자인수정 --%>
-									</div>
-									<small class="text-muted">9 mins</small>
-								</div>
-							</div>
-						</div>
-					</div>
-					<%--세번째 카드 끝 --%>
+
 				</div>
 				<%--/row --%>
 
@@ -401,6 +360,8 @@ a
 									</div>
 									<select class="custom-select" name="designTime" id="addTime">
 										<option disabled selected>분</option>
+										<option value="15">15</option>
+										<option value="30">30</option>
 										<option value="60">60</option>
 										<option value="90">90</option>
 										<option value="120">120</option>
@@ -436,7 +397,7 @@ a
 										id="addOption">
 										<option disabled selected>선택</option>
 										<option value="디자인">디자인</option>
-										<option value="옵션">시술</option>
+										<option value="옵션">옵션</option>
 									</select>
 								</div>
 							</div>
@@ -450,7 +411,7 @@ a
 											id="inputGroupFile01"
 											aria-describedby="inputGroupFileAddon01" name="uploadCoupon"
 											multiple="multiple"> <label class="custom-file-label"
-											for="inputGroupFile01">Choose file</label>
+											for="inputGroupFile01">jpg,bmp,jpeg,png</label>
 									</div>
 								</div>
 								<div class="uploadResult">
