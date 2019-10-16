@@ -28,6 +28,9 @@
 <body>
 	<div>
 		<c:choose>
+			<c:when test="${memberStatus eq null}">
+				<%@ include file="../include/nav.jsp"%>
+			</c:when>
 			<c:when test="${memberStatus eq 0}"> <%-- 일반회원일때 --%>
 				<%@ include file="../include/memberNav.jsp"%>
 			</c:when>
