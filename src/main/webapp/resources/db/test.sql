@@ -58,7 +58,71 @@ ON reservation2.optionnum = SHOPDESIGN2.designid
 order by rsvnnum;
 
 
+-------------------------------------------------------------------------------------------------------
+--월별 예약 조회
+--예약없는 달까지 조회 
+--outer join
+
+
+--예약 있는 달만 조회
+select to_char(rsvndate, 'yyyy-mm') ym, count(*)
+from reservation  
+where shopnum=1111
+group by to_char(rsvndate, 'yyyy-mm')
+
+
+--select to_char(rsvndate, 'yyyy-mm'), count(*)
+--from reservation  
+--where shopnum=#{shopnum}
+--group by to_char(rsvndate, 'yyyy-mm')
+
+
+
+--전체 월 조회
+select to_char(add_months(to_date('201901', 'YYYYMM'),(level - 1)), 'yyyy-mm') ym
+from dual
+connect by add_months(to_date('201901', 'YYYYMM'),(level - 1)) <= to_date('201912', 'YYYYMM')
+
+
+--select to_char(add_months(to_date(#{fromDate}, 'YYYYMM'),(level - 1)), 'yyyy-mm') ym
+--from dual
+--connect by add_months(to_date(#{fromDate}, 'YYYYMM'),(level - 1)) <= to_date(#{toDate}, 'YYYYMM')
+
+
+select yearmonth.ym ym, nvl(cnt,0) cnt
+
+from (select to_char(add_months(to_date('201901', 'YYYYMM'),(level - 1)), 'yyyy-mm') ym
+ 	 from dual
+	 connect by add_months(to_date('201901', 'YYYYMM'),(level - 1)) <= to_date('201912', 'YYYYMM')) yearmonth
+	
+	 left outer join 
+	 
+	(select to_char(rsvndate, 'yyyy-mm') ym, count(*) cnt
+	 from reservation  
+	 where shopnum=1111
+	 group by to_char(rsvndate, 'yyyy-mm')) reservation
+	 
+on yearmonth.ym = reservation.ym
+
+order by yearmonth.ym
 
 
 
 
+
+
+select yearmonth.ym, nvl(cnt,0) cnt
+
+from (select to_char(add_months(to_date(#{fromDate}, 'YYYYMM'),(level - 1)), 'yyyy-mm') ym
+ 	 from dual
+	 connect by add_months(to_date(#{fromDate}, 'YYYYMM'),(level - 1)) <= to_date(#{toDate}, 'YYYYMM')) yearmonth
+	
+	 left outer join 
+	 
+	(select to_char(rsvndate, 'yyyy-mm') ym, count(*) cnt
+	 from reservation  
+	 where shopnum=#{shopnum}
+	 group by to_char(rsvndate, 'yyyy-mm')) reservation
+	 
+on yearmonth.ym = reservation.ym
+order by yearmonth.ym
