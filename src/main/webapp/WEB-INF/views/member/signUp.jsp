@@ -86,7 +86,7 @@
 									type="button">Sign Up</button>
 								<hr>
 								<input type="hidden" id="memberStatus" name="memberStatus"
-									value="${memberStatus }">
+									value="${joinMemberStatus }">
 
 							</form>
 

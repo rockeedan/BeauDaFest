@@ -38,5 +38,12 @@ public class MemberDAOImpl implements MemberDAO{
 	public Map<String, Integer> login(MemberVO vo) {
 		return sqlSession.selectOne("member.login", vo);
 	}
+
+	@Override
+	public MemberVO login2(String memberId) {
+		return sqlSession.selectOne("member.findPassword", memberId);
+	}
+	
+	
 	
 }

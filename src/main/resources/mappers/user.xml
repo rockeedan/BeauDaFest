@@ -28,5 +28,10 @@
 		from MemberList
 		where memberId=#{memberId} and memberPass=#{memberPass}
 	</select>
+	
+	<select id="findPassword" resultType="MemberVO">
+		select memberPass, memberStatus from MemberList
+		where memberId=#{memberId}
+	</select>
 </mapper>
 

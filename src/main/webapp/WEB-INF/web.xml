@@ -9,9 +9,12 @@
 		and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		<param-value>
+			/WEB-INF/spring/root-context.xml
+			/WEB-INF/spring/security-context.xml	
+		</param-value>
 	</context-param>
-
+	
 	<!-- 클라이언트가 전달한 파라미터 한글에 대한 처리 -->
 	<filter>
 		<filter-name>encoding</filter-name>

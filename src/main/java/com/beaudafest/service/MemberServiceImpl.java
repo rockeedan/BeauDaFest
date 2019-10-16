@@ -38,5 +38,10 @@ public class MemberServiceImpl implements MemberService{
 	public Map<String, Integer> login(MemberVO vo) {
 		return dao.login(vo);
 	}
+
+	@Override
+	public MemberVO login2(String memberId) {
+		return dao.login2(memberId);
+	}
 	
 }

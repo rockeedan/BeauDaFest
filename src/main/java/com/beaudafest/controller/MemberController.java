@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,16 +20,20 @@ public class MemberController {
 	@Autowired
 	MemberService memberService;
 	
+	BCryptPasswordEncoder bcpe;
+	
 	// 일반 회원 가입 페이지로 이동
 	@GetMapping("/signUp")
 	public String userJoinPage(HttpServletRequest request ) {
-		request.setAttribute("memberStatus", 0);
+		request.setAttribute("joinMemberStatus", 0);
 		return "member/signUp"; // 가입 페이지로 이동
 	}
 
 	// 일반 회원 가입
 	@PostMapping("/signUp")
 	public String userJoin(MemberVO vo) {
+		String encPass = encPwd(vo.getMemberPass());
+		vo.setMemberPass(encPass);
 		memberService.memberJoin(vo);
 		return "redirect:/";
 	}
@@ -36,7 +41,7 @@ public class MemberController {
 	// 오너 회원 가입 페이지로 이동 (오너로 로그인 되어있으면 바로 샵등록으로 가기)
 	@GetMapping("/ownerSignUp")
 	public String ownerJoinPage(HttpServletRequest request) {
-		request.setAttribute("memberStatus", 1);
+		request.setAttribute("joinMemberStatus", 1);
 		return "member/signUp"; // 가입 페이지로 이동
 	}
 
@@ -84,9 +89,15 @@ public class MemberController {
 	public String findMember(String memberId, Model m) {
 		MemberVO vo = memberService.findMember("hana1");
 		System.out.println(vo.toString());
-		return "회원조회창"; // 이동페이지넣기
+		return "회원조회창"; //이동페이지넣기
 	}
 	
+	//비밀번호 암호화
+	private String encPwd(String decPwd) {
+		bcpe = new BCryptPasswordEncoder(10);
+		String encPassword = bcpe.encode(decPwd);
+		return encPassword;
+	}
 	
 }
 

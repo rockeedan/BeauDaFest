@@ -11,4 +11,5 @@ public interface MemberDAO {
 	
 	public MemberVO findMember(String memberId);//id로 특정 회원 조회
 	public Map<String, Integer> login(MemberVO vo); //로그인
+	public MemberVO login2(String memberId); //로그인2
 }

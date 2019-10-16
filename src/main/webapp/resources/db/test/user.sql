@@ -43,3 +43,4 @@ insert into memberList(memberId, memberName, memberPass, memberEmail, memberPhon
 values ('gamchan','감찬','1234qwer','gamchan@gmail.com','010-3333-4444',1);
 
 
+select * from memberlist;

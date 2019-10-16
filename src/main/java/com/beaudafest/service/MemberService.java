@@ -11,4 +11,5 @@ public interface MemberService {
 	
 	public MemberVO findMember(String memberId); //특정 회원 id로 조회
 	public Map<String, Integer> login(MemberVO vo); //로그인
+	public MemberVO login2(String memberId); //로그인
 }
