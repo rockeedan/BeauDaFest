@@ -51,23 +51,23 @@ delete from reservation
 
 --샵1111 디자인1번(60분) + 옵션7번(30분)
 insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2)
-values(1, 'gosolb', 1111, 1, sysdate, TO_DATE('2019-10-10 15:00','YYYY-MM-DD HH24:MI'), 90, 7);
+values(1, 'gosolb', 1, 1, sysdate, TO_DATE('2019-10-10 15:00','YYYY-MM-DD HH24:MI'), 90, 7);
 
 --샵1111 디자인2번(90분)
 insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime)
-values(2, 'gildong', 1111, 2, sysdate, TO_DATE('2019-10-10 16:30','YYYY-MM-DD HH24:MI'), 90);
+values(2, 'gildong', 1, 2, sysdate, TO_DATE('2019-10-10 16:30','YYYY-MM-DD HH24:MI'), 90);
 
 --샵2222 디자인3번(60분) + 옵션9번(30분)
 insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2)
-values(3, 'lime', 2222, 3, sysdate, TO_DATE('2019-10-10 13:00','YYYY-MM-DD HH24:MI'), 90, 9);
+values(3, 'lime', 2, 3, sysdate, TO_DATE('2019-10-10 13:00','YYYY-MM-DD HH24:MI'), 90, 9);
 
 --샵2222 디자인1번(90분) + 옵션10번(30분)
 insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2)
-values(4, 'gosolb', 2222, 4, sysdate, TO_DATE('2019-10-10 14:00','YYYY-MM-DD HH24:MI'), 120, 10);
+values(4, 'gosolb', 2, 4, sysdate, TO_DATE('2019-10-10 14:00','YYYY-MM-DD HH24:MI'), 120, 10);
 
 
 insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2)
-values(5, 'gosolb', 1111, 1, sysdate, TO_DATE('2019-11-10 15:00','YYYY-MM-DD HH24:MI'), 90, 7);
+values(5, 'gosolb', 1, 1, sysdate, TO_DATE('2019-11-10 15:00','YYYY-MM-DD HH24:MI'), 90, 7);
 
 insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2)
-values(5, 'gosolb', 1111, 1, sysdate, TO_DATE('2019-12-10 15:00','YYYY-MM-DD HH24:MI'), 90, 7);
+values(5, 'gosolb', 1, 1, sysdate, TO_DATE('2019-12-10 15:00','YYYY-MM-DD HH24:MI'), 90, 7);

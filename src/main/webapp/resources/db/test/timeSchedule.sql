@@ -66,15 +66,15 @@ ALTER TABLE timeSchedule
 		
 		
 select * from shopInfo;
-insert into monthSchedule(addDate, shopNum) values ('2019-10-14', 10);
-insert into monthSchedule(addDate, shopNum) values ('2019-10-14', 7);
+insert into monthSchedule(addDate, shopNum) values ('2019-10-14', 1);
 insert into monthSchedule(addDate, shopNum) values ('2019-10-14', 2);
-insert into monthSchedule(addDate, shopNum) values ('2019-10-14', 5);
+insert into monthSchedule(addDate, shopNum) values ('2019-10-14', 3);
 
 select * from monthSchedule;
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (10, '2019-10-14', to_date('2019-10-14 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-14 12:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-10-14', to_date('2019-10-14 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-14 12:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-10-14', to_date('2019-10-14 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-14 12:59', 'yyyy-MM-dd hh24-mi'), 1);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-10-14', to_date('2019-10-14 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-14 12:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (5, '2019-10-14', to_date('2019-10-14 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-14 12:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (7, '2019-10-14', to_date('2019-10-14 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-14 12:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (10, '2019-10-14', to_date('2019-10-14 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-14 12:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-10-14', to_date('2019-10-14 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-14 12:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-10-14', to_date('2019-10-14 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-14 12:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-10-14', to_date('2019-10-14 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-14 12:59', 'yyyy-MM-dd hh24-mi'), 1);
 

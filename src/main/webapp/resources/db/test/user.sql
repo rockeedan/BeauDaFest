@@ -20,17 +20,6 @@ ALTER TABLE memberList
 			memberId
 		);
 		
-		
-insert into memberList(memberId, memberName, memberPass, memberEmail, memberPhone, memberStatus)
-values ('hana1','하나','a1234','hana1@naver.com','010-1111-1111',1);
-insert into memberList(memberId, memberName, memberPass, memberEmail, memberPhone, memberStatus)
-values ('hana2','둘','a1234','hana2@naver.com','010-2222-2222',1);
- 
-		
-select * from memberList
-
-delete from memberList
-
 
 
 --일반회원
@@ -42,5 +31,15 @@ values ('gildong','길동','1234qwer','gildong@gmail.com','010-1111-2222',0);
 
 insert into memberList(memberId, memberName, memberPass, memberEmail, memberPhone, memberStatus)
 values ('lime','라임','1234qwer','lime@gmail.com','010-3333-4444',0);
+
+--오너회원
+insert into memberList(memberId, memberName, memberPass, memberEmail, memberPhone, memberStatus)
+values ('juwon','주원','1234qwer','juwon@gmail.com','010-5555-6666',1);
+
+insert into memberList(memberId, memberName, memberPass, memberEmail, memberPhone, memberStatus)
+values ('yoosin','유신','1234qwer','yoosin@gmail.com','010-1111-2222',1);
+
+insert into memberList(memberId, memberName, memberPass, memberEmail, memberPhone, memberStatus)
+values ('gamchan','감찬','1234qwer','gamchan@gmail.com','010-3333-4444',1);
 
 
