@@ -32,8 +32,9 @@ public class MemberController {
 	// 일반 회원 가입
 	@PostMapping("/signUp")
 	public String userJoin(MemberVO vo) {
-		String encPass = encPwd(vo.getMemberPass());
-		vo.setMemberPass(encPass);
+//★	가입 시 비밀번호 암호화 --> 나중에 적용하기!
+//		String encPass = encPwd(vo.getMemberPass());
+//		vo.setMemberPass(encPass);
 		memberService.memberJoin(vo);
 		return "redirect:/";
 	}
@@ -48,8 +49,10 @@ public class MemberController {
 	// 오너 회원 가입
 	@PostMapping("/ownerSignUp")
 	public String ownerJoin(MemberVO vo,HttpSession session) {
-		int result = memberService.memberJoin(vo);
-		System.out.println("가입성공 : " + result);
+//★	가입 시 비밀번호 암호화 --> 나중에 적용하기!
+//		String encPass = encPwd(vo.getMemberPass());
+//		vo.setMemberPass(encPass);
+		memberService.memberJoin(vo);
 		session.setAttribute("memberId", vo.getMemberId());
 		
 		return "redirect:/shopSignUp"; //샵 등록 페이지로 이동
