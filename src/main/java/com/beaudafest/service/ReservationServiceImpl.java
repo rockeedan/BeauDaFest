@@ -19,6 +19,11 @@ public class ReservationServiceImpl implements ReservationService {
 	public List<Map<String, Object>> selectRsvnList(int shopnum) {
 		return dao.selectRsvnList(shopnum);
 	}
+
+	@Override
+	public List<Map<String, Object>> selectMonthlyRsvnCount(int shopnum) {
+		return dao.selectMonthlyRsvnCount(shopnum);
+	}
 	
 	       
 
