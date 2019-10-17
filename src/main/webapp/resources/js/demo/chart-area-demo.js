@@ -133,8 +133,16 @@ $.ajax({
     success : function(value) {
     	console.log(value)
     	
-    	var d = data.datasets.data;
-    	console.log(d)
+    	var d = data.datasets.data; //에러
+    	
+//    	datasets.data 가져와서
+//    	for(var j=0 ; j < data.length ; j++){
+//			data[j] = Math.floor(Math.random() * 50); //데이터 넣기 넣기
+//		}
+    	
+//    	value(map) 데이터 넣기
+//   	 컨트롤러 수정 -> map말고 int배열로 받아와서 for문 순서대로 넣기 
+    	
     	
     	
     }
