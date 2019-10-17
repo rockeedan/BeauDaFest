@@ -93,7 +93,7 @@ select yearmonth.ym ym, nvl(cnt,0) cnt
 
 from (select to_char(add_months(to_date('201901', 'YYYYMM'),(level - 1)), 'yyyy-mm') ym
  	 from dual
-	 connect by add_months(to_date('201901', 'YYYYMM'),(level - 1)) <= to_date('201912', 'YYYYMM')) yearmonth
+	 connect by add_months(to_date('201901', 'YYYYMM'),(level - 1)) <= to_date('201901', 'YYYYMM')+364) yearmonth
 	
 	 left outer join 
 	 
