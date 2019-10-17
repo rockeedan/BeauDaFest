@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:choose>
+	<c:when test="${reservation==1 }">	
           <c:forEach begin="0" end="23" var="i">
 			<c:choose>
 				<c:when test="${i<10 }">
@@ -21,3 +23,9 @@
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
+	</c:when>
+	<c:otherwise>
+		해당 일에 일정이 있습니다.<br>
+		수정은 주간일정에서 가능합니다.
+	</c:otherwise>
+</c:choose>

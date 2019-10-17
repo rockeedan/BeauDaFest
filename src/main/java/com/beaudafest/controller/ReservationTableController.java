@@ -35,8 +35,10 @@ public class ReservationTableController {
 	public String tableView(HttpServletRequest request,String addDate) {
 		int shopNum = 1;
 		if(service.selectMonthSchedule(shopNum, addDate)) {
+			request.setAttribute("reservation", 1);
 			return "/reservationTest/reservationTable";}
 		else {
+			request.setAttribute("reservation", 0);
 			return "/reservationTest/reservationTable";
 		}
 	}
