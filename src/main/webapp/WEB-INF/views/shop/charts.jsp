@@ -2,12 +2,15 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
+
 <!-- resource/demo/chart-area-demo.js 와 chart-bar-demo.js 에서 데이터 변경 가능 -->
 	<!-- Begin Page Content -->
 	<div class="container-fluid">
 
 		<!-- Page Heading -->
+		<hr>
 		<h1 class="h3 mb-2 text-gray-800">Charts</h1>
+		<hr>
 		<p class="mb-4">
 			let's analyze your shop.
 		</p>
@@ -55,21 +58,19 @@
 
 	</div>
 	<!-- /.container-fluid -->
- <!-- Bootstrap core JavaScript-->
- <!-- 
-  <script src="resources/vendor/jquery/jquery.min.js"></script>
-  <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  Core plugin JavaScript
+</html>
+
+  <!-- <script src="resources/vendor/jquery/jquery.min.js"></script>
+  <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  Custom scripts for all pages
+
   <script src="resources/js/sb-admin-2.min.js"></script>
 
-  Page level plugins
-  <script src="resources/vendor/chart.js/Chart.min.js"></script>
- -->
-  Page level custom scripts
+
+  <script src="resources/vendor/chart.js/Chart.min.js"></script>  -->
+
   <script src="resources/js/demo/chart-area-demo.js"></script>
-  <script src="resources/js/demo/chart-pie-demo.js"></script>
-  <script src="resources/js/demo/chart-bar-demo.js"></script>
+	<script src="resources/js/demo/chart-bar-demo.js"></script>  
+

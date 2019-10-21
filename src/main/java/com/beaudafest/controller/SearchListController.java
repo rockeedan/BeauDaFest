@@ -30,13 +30,13 @@ public class SearchListController {
 		for(int i=0; i<vo2.size(); i++) {
 			System.out.println(vo2.toString());
 		}
+		
 		m.addAttribute("shopList", vo2);
 		
+		//검색한 시간 뷰에 띄우기 위한 변환
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		Date to = transFormat.parse(searchTime);
-		
 		m.addAttribute("selectDate", to);
-		
 		return "main/availableShopList";
 	}
 	

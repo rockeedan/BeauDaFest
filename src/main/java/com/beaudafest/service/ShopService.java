@@ -10,4 +10,5 @@ public interface ShopService {
 	public int deleteShop(Integer shopNum);//샵 삭제
 	
 	public List<ShopVO> findShop(ShopVO vo);//샵 조회
+	public ShopVO findShopOne(ShopVO vo);//샵 조회
 }

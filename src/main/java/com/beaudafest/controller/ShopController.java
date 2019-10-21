@@ -7,13 +7,16 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
 
 import com.beaudafest.domain.ShopVO;
 import com.beaudafest.service.ShopService;
@@ -32,8 +35,9 @@ public class ShopController {
 	
 	//샵 등록
 	@PostMapping("/shopSignUp")
-	public String shopJoin(HttpSession session,MultipartFile[] uploadFile,ShopVO vo) { //샵 등록
-		String uploadFolder = "C:\\beaudafest";
+	public String shopJoin(HttpSession session,MultipartFile[] uploadFile,ShopVO vo, HttpServletRequest request) { //샵 등록
+		String uploadFolder = request.getSession().getServletContext().getRealPath("//resources//shopPhoto");
+		
 		String addDate= getFolder();//혹시 그 사이에 날짜 바뀔까봐..
 		
 		File uploadPath = new File(uploadFolder, addDate);
