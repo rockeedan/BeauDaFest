@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.beaudafest.domain.CouponVO;
@@ -32,16 +33,16 @@ public class ProductController {
 	private CouponService service;
 
 	@GetMapping("/manage")
-	public String showManage(HttpSession session) {
+	public String showManage(HttpServletRequest request) {
 		
 		List<CouponVO> list = service.showCoupon(1);
-		session.setAttribute("couponList", list);
+		request.setAttribute("couponList", list);
 		List<String> photoList = new ArrayList<String>();
 		for (int i = 0; i < list.size(); i++) {
 			photoList.add(list.get(i).getDesignPhoto().split("\\|")[0]);
 		}
-		session.setAttribute("photoList", photoList);
-		System.out.println(photoList);
+		request.setAttribute("photoList", photoList);
+		
 		return "shop/couponManage";
 	}
 
@@ -91,6 +92,29 @@ public class ProductController {
 
 		return "redirect:/owner/manage";
 	}
+	
+	@PostMapping("designDetail")
+	public @ResponseBody CouponVO designDetail(int designId, HttpSession session) {
+		
+		CouponVO vo = service.designDetail(designId);
+		session.setAttribute("designDetail", vo);
+		System.out.println(vo);
+		return vo;
+		
+	}
+	@PostMapping("designUpdate")
+	public String designUpdate(CouponVO vo) {
+		
+		
+		service.designUpdate(vo);
+		
+		return "redirect:/owner/manage";
+	}
+	@PostMapping("designDelete")
+	public String designDelete (int designId) {
+		service.designDelete(designId);
+		return "redirect:/owner/manage";
+	}
 
 	private String getFolder() { //폴더만들어주기
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
@@ -100,4 +124,5 @@ public class ProductController {
 		
 		return str.replace("/", File.separator);
 	}
+	
 }

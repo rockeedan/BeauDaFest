@@ -86,3 +86,4 @@ insert into shopDesign values(9, 2222, '타샵 off', '네일', 'NO', 20000, 30, 
 insert into shopDesign values(10, 2222, '자샵 off', '네일', 'NO', 0, 30, '사진8');   --샵22222 디자인10
 
 select * from SHOPDESIGN;
+delete from SHOPDESIGN;

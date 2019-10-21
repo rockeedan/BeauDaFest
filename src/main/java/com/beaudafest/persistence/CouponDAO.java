@@ -10,4 +10,10 @@ public interface CouponDAO {
 
 	public List<CouponVO> showCoupon(int shopNum);
 
+	public CouponVO designDetail(int designId);
+
+	public void designUpdate(CouponVO vo);
+
+	public void designDelete(int designId);
+
 }

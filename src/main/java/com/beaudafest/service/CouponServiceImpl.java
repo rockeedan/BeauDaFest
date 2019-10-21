@@ -26,4 +26,27 @@ public class CouponServiceImpl implements CouponService {
 				
 	}
 
+
+	@Override
+	public CouponVO designDetail(int designId) {
+		
+		return dao.designDetail(designId);
+	}
+
+
+	@Override
+	public void designUpdate(CouponVO vo) {
+
+		 dao.designUpdate(vo);
+		
+	}
+
+
+	@Override
+	public void designDelete(int designId) {
+
+		dao.designDelete(designId);
+		
+	}
+
 }

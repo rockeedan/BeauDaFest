@@ -51,8 +51,29 @@
 		</choose>
 	</insert>
 	<select id="showCoupon" resultType="CouponVO">
-		select designName, designPrice, designTime, designPhoto
+		select designId, designName,
+		designPrice, designTime, designPhoto
 		from shopDesign
 		where shopNum=1
+		order by designId desc
 	</select>
+	<select id="designDetail" resultType="CouponVO">
+		select designId,
+		designName, designPrice, designTime, designPhoto
+		from shopDesign
+		where
+		designId = #{designId}
+	</select>
+	<update id="designUpdate">
+		update shopDesign set designName = #{designName},
+		designPrice = #{designPrice}, designTime = #{designTime}
+		where designId
+		= #{designId}
+	</update>
+	<delete id="designDelete">
+		delete from shopDesign
+		where
+		designId = #{designId}
+	</delete>
+
 </mapper>

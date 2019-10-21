@@ -26,5 +26,23 @@ public class CouponDAOImpl implements CouponDAO {
 		
 	}
 
+	@Override
+	public CouponVO designDetail(int designId) {
+		
+		return sqlSession.selectOne("coupon.designDetail", designId);
+	}
+
+	@Override
+	public void designUpdate(CouponVO vo) {
+
+		sqlSession.update("coupon.designUpdate", vo);
+		
+	}
+
+	@Override
+	public void designDelete(int designId) {
+		sqlSession.delete("coupon.designDelete", designId);
+	}
+
 	
 }

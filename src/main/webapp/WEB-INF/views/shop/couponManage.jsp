@@ -36,15 +36,6 @@
 	.bd-placeholder-img-lg {
 		font-size: 3.5rem;
 	}
-	a
-	
-	
-	
-	
-
-
-
-
 }
 </style>
 <script type="text/javascript">
@@ -116,15 +107,80 @@
 				processData : false,
 				contentType : false,
 				data : formData,
-				type : 'POST'
+				type : 'POST',
+				success: function(){
+					location.reload()
+				}
 
 			})
 
 		})
+		
+		$("button[name='detail']").on("click", function(){ //디자인 디테일 보기
+			var designId = $(this).attr('designId')
+			$.ajax({
+				url : '../owner/designDetail',
+				data : {designId : designId },
+				type : 'POST',
+				dataType : 'json',
+				success : function (result){
+					$(".carousel-inner").html("");
+					var photo = result.designPhoto.split("|",result.designPhoto.split("|").length-1);
+					console.log("photo="+photo.length)
+					var innerCarousel = "";	
+					for (var i=0; i<photo.length; i++){
+						if (i==0){
+							innerCarousel +="<div class='carousel-item active' ><img src='/beaudafest/resources/couponPhoto/"+photo[i]+"' width='100%' height='300'></div>"
+						}else
+						innerCarousel +="<div class='carousel-item' ><img src='/beaudafest/resources/couponPhoto/"+photo[i]+"' width='100%' height='300'></div>"
+					}
+					$(".carousel-inner").prepend(innerCarousel)
+					$("#designName").val(result.designName)
+					$("#designTime").val(result.designTime) 
+					$("#designPrice").val(result.designPrice)
+					$("#designId").val(result.designId)
+					
+				}
+			})
+		})
 
 	
+	$("button[name=modalModify]").on("click", function(){
+		var hiddenId = $("#designId").val();
+		var updatedName = $("#designName").val();
+		var updatetime = $("#designTime").val();
+		var updatePrice = $("#designPrice").val();
+		$.ajax({
+			url : '../owner/designUpdate',
+			data : {
+					designId : hiddenId,
+					designName : updatedName,
+					designTime : updatetime,
+					designPrice : updatePrice				
+			
+			},
+			type : 'POST',
+			success : function(){
+				location.reload();
+			}
+			
+		})
 		
+	})
+	
+	
+	$("button[name=modalDelete]").on("click",function(){ //디자인 삭제
+		var hiddenId = $("#designId").val();
+		$.ajax({
+			url : '../owner/designDelete',
+			data : { designId : hiddenId },
+			type : 'POST',
+			success : function(){
+				location.reload();
+			}
+		})
 		
+	})
 	})//ready
 </script>
 </head>
@@ -169,17 +225,13 @@
 							<div class="card mb-4 shadow-sm">
 
 
-							<img class="card-img-top" src="/beaudafest/resources/couponPhoto/${photoList.get(i.index)}"/>
-								<%-- <svg class="bd-placeholder-img card-img-top" width="100%"
-								height="225" xmlns="c://beaudafest/2019/10/16/${photoList.get(i.index)}"
-								preserveAspectRatio="xMidYMid slice" focusable="false"
-								role="img" aria-label="Placeholder: Thumbnail">
-								<title>Placeholder</title><rect width="100%" height="100%"
-									fill="#55595c" />
-								<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> --%>
+								<img class="card-img-top" width="100%" height="225"
+									src="/beaudafest/resources/couponPhoto/${photoList.get(i.index)}" />
+
 								<div class="card-body">
 									<p class="card-text">
 									<h2>${obj.designName }</h2>
+									${obj.designPrice }원
 									</p>
 									<div class="d-flex justify-content-between align-items-center">
 										<div class="btn-group">
@@ -187,12 +239,12 @@
 									샵주인 (if 해당 샵의 샵주인이 맞다면) edit 버튼 보임, edit 누르면 모달창 뜨고 사진 수정 삭제 가능
 									
 									 -->
-
 											<button type="button"
 												class="btn btn-sm btn-outline-secondary" data-toggle="modal"
-												data-target="#myModal">Edit</button>
+												data-target="#myModal" designId=${obj.designId }
+												name="detail">Edit</button>
 										</div>
-										<small class="text-muted">${obj.designTime }</small>
+										<small class="text-muted">${obj.designTime }mins</small>
 										<!-- 소요시간 -->
 									</div>
 								</div>
@@ -212,7 +264,7 @@
 
 							<!-- Modal Header -->
 							<div class="modal-header">
-								<h4 class="modal-title">꿈꾸는 네일 디자인</h4>
+								<h4 class="modal-title">Detail</h4>
 								<!-- 디자인이름 -->
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
 							</div>
@@ -227,21 +279,10 @@
 										<li data-target="#myCarousel" data-slide-to="2"></li>
 									</ol>
 									<div class="carousel-inner">
-										<div class="carousel-item active">
-											<svg class="bd-placeholder-img" width="100%" height="100%"
-												xmlns="http://www.w3.org/2000/svg"
-												preserveAspectRatio="xMidYMid slice" focusable="false"
-												role="img">
-												<rect width="100%" height="100%" fill="#777" /></svg>
-											<div class="container">
-												<div class="carousel-caption text-left">
-													<h1>사진1</h1>
+										<div class="carousel-item active"></div>
 
-												</div>
-											</div>
-										</div>
 
-										<div class="carousel-item">
+										<!-- 	<div class="carousel-item">
 											<svg class="bd-placeholder-img" width="100%" height="100%"
 												xmlns="http://www.w3.org/2000/svg"
 												preserveAspectRatio="xMidYMid slice" focusable="false"
@@ -265,7 +306,7 @@
 													<h1>사진3</h1>
 												</div>
 											</div>
-										</div>
+										</div> -->
 									</div>
 									<a class="carousel-control-prev" href="#myCarousel"
 										role="button" data-slide="prev"> <span
@@ -285,13 +326,15 @@
 										<input type="text" class="form-control" id="designName">
 									</div>
 									<div class="form-group">
-										<label for="designTime" class="col-form-label">시술시간: </label>
-										<input type="text" class="form-control" id="designTime">
+										<label for="designTime" class="col-form-label">시술시간(분):
+										</label> <input type="text" class="form-control" id="designTime">
 									</div>
 									<div class="form-group">
 										<label for="designPrice" class="col-form-label">디자인
-											가격:</label> <input type="text" class="form-control" id="designPrice">
+											가격(원):</label> <input type="text" class="form-control"
+											id="designPrice">
 									</div>
+									<input type="hidden" id="designId">
 
 								</form>
 
