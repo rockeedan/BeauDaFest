@@ -28,7 +28,7 @@
 				return false;
 			}
 			if(!regex.test(fileName)){
-				alert('해당 종류의 파일은 업로드 할 수 없습니다.');//이미지 파일 만 올리게
+				alert('해당 종류의 파일은 업로드 할 수 없습니다.');//이미지 파일만 올리게
 				return false;
 			}
 			return true;
@@ -39,10 +39,16 @@
 		
 		//파일 선택했을 때 (shop사진 고르고 확인)
 		$('#inputGroupFile01').on("change", function(){
-			$('.uploadResult ul').html('');
+			//$('.uploadResult ul').html('');
 			var inputFile = $("#inputGroupFile01");
 			files = inputFile[0].files;
-			fileCnt = files.length;
+			fileCnt += files.length;
+			
+			if(fileCnt>3){
+				alert("사진은 최대 3장까지 가능합니다!");
+				fileCnt -= files.length;
+				return false;
+			}
 			
 			for(var i=0; i<files.length; i++){
 				if(!checkExtension(files[i].name, files[i].size)){
@@ -53,26 +59,7 @@
 				formData.append(files[i].name, files[i]);
 			}
 		});
-		
-		/* //회원가입 눌렀을때
-		$('#uploadBtn').on("click", function(e){
-			for(var i=0; i<fileCnt; i++){//formData의 내용 갯수..?만큼 돌려야되는디...
-				formData.append("uploadFile", formData.get($('.uploadResult ul').find('span:eq('+i+')').html()));
-			}
-			
-			$.ajax({
-				url : '/uploadAjaxAction',
-				processData : false,
-				contentType : false,
-				data : formData,
-				type:'POST',
-				success : function(data){
-					alert("Uploaded");
-					showUploadedFile(data);
-				}
-			});
-			formData = new FormData();
-		}) */
+
 		
 		//올린 파일X(삭제) 눌렀을때
 		$('.uploadResult').on('click','a',function(){
@@ -123,6 +110,7 @@
 			formData.append("shopParking",$('select[name=shopParking] option:selected').val());//주차유무
 			formData.append("shopPolicy",$('select[name=shopPolicy] option:selected').val());  //취소정책
 			console.log(formData.getAll("uploadFile"))
+			
 			
 			$.ajax({
 				url : 'shopSignUp',
