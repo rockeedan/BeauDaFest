@@ -70,6 +70,7 @@ insert into monthSchedule(addDate, shopNum) values ('2019-10-14', 1);
 insert into monthSchedule(addDate, shopNum) values ('2019-10-14', 2);
 insert into monthSchedule(addDate, shopNum) values ('2019-10-14', 3);
 insert into monthSchedule(addDate, shopNum) values ('2019-10-21', 5);
+insert into monthSchedule(addDate, shopNum) values ('2019-10-21', 6);
 
 select * from monthSchedule;
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-10-14', to_date('2019-10-14 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-14 12:29', 'yyyy-MM-dd hh24-mi'), 1);
@@ -80,4 +81,6 @@ insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values 
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-10-14', to_date('2019-10-14 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-14 12:59', 'yyyy-MM-dd hh24-mi'), 1);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (5, '2019-10-21', to_date('2019-10-21 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-21 12:29', 'yyyy-MM-dd hh24-mi'), 1);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (5, '2019-10-21', to_date('2019-10-21 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-21 12:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (6, '2019-10-21', to_date('2019-10-21 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-21 12:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (6, '2019-10-21', to_date('2019-10-21 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-10-21 12:59', 'yyyy-MM-dd hh24-mi'), 1);
 
