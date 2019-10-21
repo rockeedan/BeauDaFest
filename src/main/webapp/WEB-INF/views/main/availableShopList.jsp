@@ -55,8 +55,7 @@
 				<h1 class="jumbotron-heading">ShopList</h1>
 				<p class="lead text-muted">
 					<fmt:formatDate value="${selectDate }"
-						pattern="yyyy년 MM월 dd일 a hh시" />
-					에 예약가능한 샵입니다
+						pattern="yyyy년 MM월 dd일 a hh시" />에 예약가능한 샵입니다
 				</p>
 				<!-- 고객이 선택한 일시 보여주기 -->
 
@@ -127,7 +126,7 @@
 
 				</div> --%>
 				<c:forEach items="${shopList}" var="shopList">
-					<c:set var="photo" value="${fn:split(shopList.shopPhoto,'-')[0]}" />
+					<c:set var="photo" value="${fn:split(shopList.shopPhoto,'|')[0]}" />
 					
 					<div class="col-lg-4">
 						<img src="resources/shopPhoto/${photo}" class="rounded-circle" width="140"

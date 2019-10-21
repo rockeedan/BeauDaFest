@@ -63,7 +63,7 @@ public class ShopController {
 			uploadFileName=uuid.toString()+"_"+uploadFileName;
 			System.out.println(uploadFileName);
 			//'날짜/파일이름' 으로 DB에 저장
-			shopPhoto+=((addDate+"\\"+uploadFileName)+"|");
+			shopPhoto+=((addDate+"/"+uploadFileName)+"|");
 			
 			//폴더에 이미지 추가
 			File savefile = new File(uploadPath, uploadFileName);

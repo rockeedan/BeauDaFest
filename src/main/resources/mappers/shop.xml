@@ -21,7 +21,7 @@
 		where shopNum=#{shopNum}
 	</delete>
 	
-	<!-- 샵 조회 -->
+	<!-- 오너 아이디로 샵 조회 -->
 	<select id="findShop" resultType="ShopVO">
 		select shopNum, memberId, shopName, shopPhone, shopAddr, shopOpen, shopClose, shopOff, shopPhoto, shopIntro, shopParking, shopPolicy
 		from shopInfo
@@ -29,5 +29,12 @@
 		<if test="shopNum != null">
 			and shopNum=#{shopNum}
 		</if>
+	</select>
+	
+	<!-- 샵번호로 샵정보 조회 -->
+	<select id="findShopInfo" resultType="ShopVO">
+		select shopNum, memberId, shopName, shopPhone, shopAddr, shopOpen, shopClose, shopOff, shopPhoto, shopIntro, shopParking, shopPolicy
+		from shopInfo
+		where shopNum=#{shopNum}
 	</select>
 </mapper>
