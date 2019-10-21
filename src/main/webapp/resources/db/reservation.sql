@@ -12,8 +12,7 @@ CREATE TABLE reservation (
 	bookingDate	DATE	NOT NULL,			-- 예약 날짜 
 	rsvnDate	DATE	NOT NULL,			-- 시술 일시 
 	rsvnTime	NUMBER	NOT NULL,			-- 시술 시간
-	designId2	NUMBER	DEFAULT 0			-- 옵션 아이디 
-	
+	designId2	NUMBER						-- 옵션 아이디 
 );
 
 
@@ -35,7 +34,7 @@ FOREIGN KEY (designId) REFERENCES shopDesign(designId);
 ALTER TABLE reservation ADD CONSTRAINT FK_shopDesign2_TO_reservation
 FOREIGN KEY (designId2) REFERENCES shopDesign(designId);
 
-
+drop  sequence reservation_seq
 create sequence reservation_seq
        start with 1
        increment by 1
@@ -43,7 +42,7 @@ create sequence reservation_seq
        nocache;	
        
 select * from reservation order by rsvnnum;
-
+select * from MEMBERLIST
 
 delete from reservation
 
