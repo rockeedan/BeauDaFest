@@ -9,6 +9,8 @@ public interface ShopService {
 	public int modifyShopInfo(ShopVO vo);//샵 정보 수정
 	public int deleteShop(Integer shopNum);//샵 삭제
 	
-	public List<ShopVO> findShop(ShopVO vo);//샵 조회
+	public List<ShopVO> findShop(ShopVO vo);//여러 샵 조회
 	public ShopVO findShopOne(ShopVO vo);//샵 조회
+	
+	public ShopVO findShopInfo(Integer shopNum);//한 샵 정보 조회
 }

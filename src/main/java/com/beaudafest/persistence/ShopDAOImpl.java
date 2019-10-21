@@ -28,7 +28,7 @@ public class ShopDAOImpl implements ShopDAO{
 	
 	//샵 삭제
 	@Override
-	public int deleteShop(int shopNum) {
+	public int deleteShop(Integer shopNum) {
 		return sqlSession.delete("shop.deleteShop", shopNum);
 	}
 
@@ -42,6 +42,12 @@ public class ShopDAOImpl implements ShopDAO{
 	@Override
 	public ShopVO findShopOne(ShopVO vo) {
 		return sqlSession.selectOne("shop.findShop", vo);
+	}
+
+	//특정 shopInfo 조회
+	@Override
+	public ShopVO findShopInfo(Integer shopNum) {
+		return sqlSession.selectOne("shop.findShopInfo", shopNum);
 	}
 
 }

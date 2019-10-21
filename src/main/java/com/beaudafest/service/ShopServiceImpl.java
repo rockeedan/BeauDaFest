@@ -43,4 +43,9 @@ public class ShopServiceImpl implements ShopService{
 		return dao.findShopOne(vo);
 	}
 
+	@Override
+	public ShopVO findShopInfo(Integer shopNum) {
+		return dao.findShopInfo(shopNum);
+	}
+
 }

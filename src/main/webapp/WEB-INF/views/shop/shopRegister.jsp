@@ -269,7 +269,7 @@
 								<div class="form-group">
 									<select class="form-control" required name="shopPolicy">
 										<option disabled selected>Policy</option>
-										<option>하루 전날 까지</option>
+										<option>하루 전날까지 취소 가능</option>
 										<option>취소불가</option>
 									</select>
 								</div>

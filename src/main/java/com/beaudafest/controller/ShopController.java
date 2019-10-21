@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
 
 import com.beaudafest.domain.ShopVO;
 import com.beaudafest.service.ShopService;
@@ -93,8 +93,8 @@ public class ShopController {
 	//샵 정보 수정
 	@PostMapping("/modifyShop")
 	public String modifyShop(ShopVO vo) {
-		vo = new ShopVO(1111, "hana3", "하나샵", "02-1111-1111", "일산동구", "10:00", "20:00", "금", "11111.jpg", "샵소개", 1, "취소정책");
-		shopService.modifyShopInfo(vo);
+		//vo = new ShopVO(1111, "hana3", "하나샵", "02-1111-1111", "일산동구", "10:00", "20:00", "금", "11111.jpg", "샵소개", 1, "취소정책");
+		//shopService.modifyShopInfo(vo);
 		return "/";
 	}
 	
@@ -106,17 +106,11 @@ public class ShopController {
 		return "/";
 	}
 	
-	//샵 조회
-	@PostMapping("/shop/findShop")
-	public String findShop(ShopVO vo) {
-		vo.setMemberId("hana1");
-		vo.setShopNum(1111);
-		List<ShopVO> list = new ArrayList<>();
-		list = shopService.findShop(vo);
-		for(int i=0; i<list.size(); i++) {
-			System.out.println(list.get(i).toString());
-		}
-		return "/"; //조회페이지
+	//shopNum으로 shopInfo조회
+	@GetMapping("/shopDetail/{shopNum}")
+	public String findShopInfo(@PathVariable("shopNum") Integer shopNum, Model m) {
+		m.addAttribute("shopInfo", shopService.findShopInfo(shopNum));
+		return "shopInfo/shopInfo"; //조회 페이지
 	}
 	
 	private String getFolder() {//오늘 날짜의 경로를 문자열로 생성

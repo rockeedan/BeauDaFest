@@ -60,7 +60,7 @@ values (shopInfo_seq.nextval,'gamchan','감찬샵','02-2222-2222','서울시 마
 
 update shopInfo set shopPhoto='santa.jpg' where shopNum=1;
 
-update shopInfo set shopPhoto='2019/10/21/SmartSelect_20190926-235137_YouTube Vanced.jpg|2019/10/21/펭수2.mp4_20190923_190228.851.jpg' where shopNum=5;
+update shopInfo set shopPhoto='2019/10/21/SmartSelect_20190926-235137_YouTube Vanced.jpg|2019/10/21/펭수2.mp4_20190923_190228.851.jpg|' where shopNum=5;
 update shopInfo set shopPhoto='2019/10/21/92c67fba-7194-41ba-bb25-cc08b2a7a7e4_img_20190923155051_21448557.jpg|' where shopNum=6;
 
 select * from shopInfo
