@@ -3,7 +3,8 @@ package com.beaudafest.domain;
 public class CouponVO {
 	
 	
-	
+	private String shopName;
+	private String shopIntro;
 	private int shopNum;
 	private int designId;
 	private String designName;
@@ -19,11 +20,12 @@ public class CouponVO {
 	
 	
 
- 
 
-	public CouponVO(int shopNum, int designId, String designName, String designType, String designOption,
-			int designPrice, int designTime, String designPhoto) {
+	public CouponVO(String shopName, String shopIntro, int shopNum, int designId, String designName, String designType,
+			String designOption, int designPrice, int designTime, String designPhoto) {
 		super();
+		this.shopName = shopName;
+		this.shopIntro = shopIntro;
 		this.shopNum = shopNum;
 		this.designId = designId;
 		this.designName = designName;
@@ -34,6 +36,33 @@ public class CouponVO {
 		this.designPhoto = designPhoto;
 	}
 
+
+
+
+	public String getShopName() {
+		return shopName;
+	}
+
+
+
+
+	public void setShopName(String shopName) {
+		this.shopName = shopName;
+	}
+
+
+
+
+	public String getShopIntro() {
+		return shopIntro;
+	}
+
+
+
+
+	public void setShopIntro(String shopIntro) {
+		this.shopIntro = shopIntro;
+	}
 
 
 

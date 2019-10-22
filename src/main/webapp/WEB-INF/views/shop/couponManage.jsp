@@ -103,7 +103,7 @@
 			}
 
 			$.ajax({
-				url : '../owner/addCoupon',
+				url : '/beaudafest/addCoupon',
 				processData : false,
 				contentType : false,
 				data : formData,
@@ -119,7 +119,7 @@
 		$("button[name='detail']").on("click", function(){ //디자인 디테일 보기
 			var designId = $(this).attr('designId')
 			$.ajax({
-				url : '../owner/designDetail',
+				url : '/beaudafest/designDetail',
 				data : {designId : designId },
 				type : 'POST',
 				dataType : 'json',
@@ -151,7 +151,7 @@
 		var updatetime = $("#designTime").val();
 		var updatePrice = $("#designPrice").val();
 		$.ajax({
-			url : '../owner/designUpdate',
+			url : '/beaudafest/designUpdate',
 			data : {
 					designId : hiddenId,
 					designName : updatedName,
@@ -172,7 +172,7 @@
 	$("button[name=modalDelete]").on("click",function(){ //디자인 삭제
 		var hiddenId = $("#designId").val();
 		$.ajax({
-			url : '../owner/designDelete',
+			url : '/beaudafest/designDelete',
 			data : { designId : hiddenId },
 			type : 'POST',
 			success : function(){
@@ -215,47 +215,49 @@
 					class="p-2 text-muted" href="#">RESERVATION</a>
 			</nav>
 		</div>
+		<hr>
+		<div class="container marketing">
 
-		<%--디자인리스트 보여주기  --%>
-		<div class="album py-5 bg-light">
-			<div class="container">
-				<div class="row">
-					<c:forEach items="${couponList}" var="obj" varStatus="i">
-						<div class="col-md-4">
-							<div class="card mb-4 shadow-sm">
+			<%--디자인리스트 보여주기  --%>
+			<div class="album py-5 bg-light">
+				<div class="container">
+					<div class="row">
+						<c:forEach items="${couponList}" var="obj" varStatus="i">
+							<div class="col-md-4">
+								<div class="card mb-4 shadow-sm">
 
 
-								<img class="card-img-top" width="100%" height="225"
-									src="/beaudafest/resources/couponPhoto/${photoList.get(i.index)}" />
+									<img class="card-img-top" width="100%" height="225"
+										src="/beaudafest/resources/couponPhoto/${photoList.get(i.index)}" />
 
-								<div class="card-body">
-									<p class="card-text">
-									<h2>${obj.designName }</h2>
-									${obj.designPrice }원
-									</p>
-									<div class="d-flex justify-content-between align-items-center">
-										<div class="btn-group">
-											<!--  고객이 로그인 했을 경우 View 버튼만 보임 
+									<div class="card-body">
+										<p class="card-text">
+										<h2>${obj.designName }</h2>
+										${obj.designPrice }원
+										</p>
+										<div class="d-flex justify-content-between align-items-center">
+											<div class="btn-group">
+												<!--  고객이 로그인 했을 경우 View 버튼만 보임 
 									샵주인 (if 해당 샵의 샵주인이 맞다면) edit 버튼 보임, edit 누르면 모달창 뜨고 사진 수정 삭제 가능
 									
 									 -->
-											<button type="button"
-												class="btn btn-sm btn-outline-secondary" data-toggle="modal"
-												data-target="#myModal" designId=${obj.designId }
-												name="detail">Edit</button>
+												<button type="button"
+													class="btn btn-sm btn-outline-secondary"
+													data-toggle="modal" data-target="#myModal"
+													designId=${obj.designId } name="detail">Edit</button>
+											</div>
+											<small class="text-muted">${obj.designTime }mins</small>
+											<!-- 소요시간 -->
 										</div>
-										<small class="text-muted">${obj.designTime }mins</small>
-										<!-- 소요시간 -->
 									</div>
 								</div>
 							</div>
-						</div>
-					</c:forEach>
-					<%--첫번째카드 끝 --%>
+						</c:forEach>
+						<%--첫번째카드 끝 --%>
 
+					</div>
+					<%--/row --%>
 				</div>
-				<%--/row --%>
-
 
 				<!-- 카드의 View or Edit 클릭 시 /Coupon Detail The Modal -->
 				<div class="modal" id="myModal">

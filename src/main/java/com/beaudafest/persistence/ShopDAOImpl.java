@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.beaudafest.domain.CouponVO;
 import com.beaudafest.domain.ShopVO;
 
 @Repository
@@ -48,6 +49,13 @@ public class ShopDAOImpl implements ShopDAO{
 	@Override
 	public ShopVO findShopInfo(Integer shopNum) {
 		return sqlSession.selectOne("shop.findShopInfo", shopNum);
+	}
+	
+	//특정 샵 쿠폰 조회
+	@Override
+	public List<CouponVO> couponList(Integer shopNum) {
+		
+		return sqlSession.selectList("shop.couponList", shopNum);
 	}
 
 }
