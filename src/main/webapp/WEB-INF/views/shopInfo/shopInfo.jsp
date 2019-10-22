@@ -34,11 +34,9 @@
 </style>
 <!-- Custom styles for this template -->
 <link href="/beaudafest/resources/css/carousel.css" rel="stylesheet">
-
 </head>
 <body>
-	<div>
-		<c:choose>
+	<c:choose>
 			<c:when test="${memberStatus eq null}">
 				<%@ include file="../include/nav.jsp"%>
 			</c:when>
@@ -55,8 +53,6 @@
 				<%@ include file="../include/nav.jsp"%>
 			</c:otherwise>
 		</c:choose>
-	</div>
-	<link href="/beaudafest/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<br>
 	<br>
 	<br>
