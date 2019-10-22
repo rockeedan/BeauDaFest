@@ -73,41 +73,24 @@ public class ManageController {
 		// int shopNum = session.getAttribute("shopNum");
 		int shopNum = 1111;
 
-		List<Map<String, Object>> list = reservationService.selectMonthlyRsvnCount(shopNum);
+		//월별 총 수익 조회
+		List<Map<String, Object>> list = reservationService.selectMonthlyRsvnProfits(shopNum);
 		
 		
 		//java.math.BigDecimal cannot be cast to java.lang.Integer
 		// : NUMBER형 데이터 타입을 HashMap으로 받아 Java에서 사용하려 할 때 발생
-		Map<String, Integer> value2 =  new HashMap<String, Integer>();
-		value2.put("Jan",Integer.parseInt(String.valueOf(list.get(0).get("CNT"))));
-		value2.put("Feb",Integer.parseInt(String.valueOf(list.get(1).get("CNT"))));
-		value2.put("Mar",Integer.parseInt(String.valueOf(list.get(2).get("CNT"))));
-		value2.put("Apr",Integer.parseInt(String.valueOf(list.get(3).get("CNT"))));
-		value2.put("May",Integer.parseInt(String.valueOf(list.get(4).get("CNT"))));
-		value2.put("Jun",Integer.parseInt(String.valueOf(list.get(5).get("CNT"))));
-		value2.put("Jul",Integer.parseInt(String.valueOf(list.get(6).get("CNT"))));
-		value2.put("Aug",Integer.parseInt(String.valueOf(list.get(7).get("CNT"))));
-		value2.put("Sep",Integer.parseInt(String.valueOf(list.get(8).get("CNT"))));
-		value2.put("Oct",Integer.parseInt(String.valueOf(list.get(9).get("CNT"))));
-		value2.put("Nov",Integer.parseInt(String.valueOf(list.get(10).get("CNT"))));
-		value2.put("Dec",Integer.parseInt(String.valueOf(list.get(11).get("CNT"))));
-		System.out.println("value2 : " + value2);
-		
-	
-		int[] value = {Integer.parseInt(String.valueOf(list.get(0).get("CNT"))),
-						Integer.parseInt(String.valueOf(list.get(1).get("CNT"))),
-						Integer.parseInt(String.valueOf(list.get(2).get("CNT"))),
-						Integer.parseInt(String.valueOf(list.get(3).get("CNT"))),
-						Integer.parseInt(String.valueOf(list.get(4).get("CNT"))),
-						Integer.parseInt(String.valueOf(list.get(5).get("CNT"))),
-						Integer.parseInt(String.valueOf(list.get(6).get("CNT"))),
-						Integer.parseInt(String.valueOf(list.get(7).get("CNT"))),
-						Integer.parseInt(String.valueOf(list.get(8).get("CNT"))),
-						Integer.parseInt(String.valueOf(list.get(9).get("CNT"))),
-						Integer.parseInt(String.valueOf(list.get(10).get("CNT"))),
-						Integer.parseInt(String.valueOf(list.get(11).get("CNT")))};
-		
-		
+		int[] value = {Integer.parseInt(String.valueOf(list.get(0).get("TOTALPRICE"))),
+						Integer.parseInt(String.valueOf(list.get(1).get("TOTALPRICE"))),
+						Integer.parseInt(String.valueOf(list.get(2).get("TOTALPRICE"))),
+						Integer.parseInt(String.valueOf(list.get(3).get("TOTALPRICE"))),
+						Integer.parseInt(String.valueOf(list.get(4).get("TOTALPRICE"))),
+						Integer.parseInt(String.valueOf(list.get(5).get("TOTALPRICE"))),
+						Integer.parseInt(String.valueOf(list.get(6).get("TOTALPRICE"))),
+						Integer.parseInt(String.valueOf(list.get(7).get("TOTALPRICE"))),
+						Integer.parseInt(String.valueOf(list.get(8).get("TOTALPRICE"))),
+						Integer.parseInt(String.valueOf(list.get(9).get("TOTALPRICE"))),
+						Integer.parseInt(String.valueOf(list.get(10).get("TOTALPRICE"))),
+						Integer.parseInt(String.valueOf(list.get(11).get("TOTALPRICE")))};
 		return value;
 
 	}
@@ -119,8 +102,10 @@ public class ManageController {
 		// int shopNum = session.getAttribute("shopNum");
 		int shopNum = 1111;
 
+		//월별 예약 수 조회
 		List<Map<String, Object>> list = reservationService.selectMonthlyRsvnCount(shopNum);
 	
+		
 		int[] value = {Integer.parseInt(String.valueOf(list.get(0).get("CNT"))),
 						Integer.parseInt(String.valueOf(list.get(1).get("CNT"))),
 						Integer.parseInt(String.valueOf(list.get(2).get("CNT"))),
