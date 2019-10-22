@@ -9,7 +9,7 @@ public interface ShopDAO {
 	public int modifyShopInfo(ShopVO vo); //샵 정보 수정
 	public int deleteShop(Integer shopNum); //샵 삭제
 	
-	public List<ShopVO> findShop(ShopVO vo);//여러 샵 조회
+	public List<ShopVO> findOwnerShop(ShopVO vo);//한 오너의 여러 샵 & 특정 샵 조회
 	public ShopVO findShopOne(ShopVO vo);//샵 조회
 	public ShopVO findShopInfo(Integer shopNum);//특정 shopInfo 조회
 }

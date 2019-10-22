@@ -124,8 +124,7 @@
 						class="nav-link dropdown-toggle" href="#" id="userDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false"> <span
-							class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie  <!-- username  -->
-								Luna</span> <img class="img-profile rounded-circle"
+							class="mr-2 d-none d-lg-inline text-gray-600 small">${loginId }</span> <img class="img-profile rounded-circle"
 							src="https://source.unsplash.com/QAB-WJcbgJk/60x60"> <!-- username and 프사 -->
 					</a> <!-- Dropdown - User Information -->
 						<div

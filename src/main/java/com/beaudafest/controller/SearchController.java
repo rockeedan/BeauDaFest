@@ -1,6 +1,7 @@
 package com.beaudafest.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -52,6 +53,11 @@ public class SearchController {
 	@RequestMapping("/shopInfo")
 	public String shopInfo () {
 		return "shopInfo/shopInfo";
+	}
+	
+	@GetMapping("/shopModify")
+	public String shopModify () {
+		return "shopInfo/modifyShopInfo";
 	}
 	
 }

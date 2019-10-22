@@ -32,10 +32,10 @@ public class ShopServiceImpl implements ShopService{
 		return dao.deleteShop(shopNum);
 	}
 
-	//샵 조회
+	//특정 오너의 샵 조회
 	@Override
-	public List<ShopVO> findShop(ShopVO vo) {
-		return dao.findShop(vo);
+	public List<ShopVO> findOwnerShop(ShopVO vo) {
+		return dao.findOwnerShop(vo);
 	}
 
 	@Override

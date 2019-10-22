@@ -21,8 +21,8 @@
 		where shopNum=#{shopNum}
 	</delete>
 	
-	<!-- 오너 아이디로 샵 조회 -->
-	<select id="findShop" resultType="ShopVO">
+	<!-- 오너 아이디로 샵리스트 혹은 샵 한개 조회 -->
+	<select id="findOwnerShop" resultType="ShopVO">
 		select shopNum, memberId, shopName, shopPhone, shopAddr, shopOpen, shopClose, shopOff, shopPhoto, shopIntro, shopParking, shopPolicy
 		from shopInfo
 		where memberId=#{memberId}

@@ -34,8 +34,8 @@ public class ShopDAOImpl implements ShopDAO{
 
 	//샵 조회
 	@Override
-	public List<ShopVO> findShop(ShopVO vo) {
-		return sqlSession.selectList("shop.findShop", vo);
+	public List<ShopVO> findOwnerShop(ShopVO vo) {
+		return sqlSession.selectList("shop.findOwnerShop", vo);
 	}
 	
 	//샵 조회

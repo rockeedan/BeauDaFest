@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>BEAUDAFEST - ${shopInfo.shopName }</title>
+<title>BEAUDAFEST - ${ownerShopInfo.get(0).shopName }</title>
 <link rel="canonical"
 	href="https://getbootstrap.com/docs/4.3/examples/carousel/">
 
@@ -61,9 +61,9 @@
 		<section class="jumbotron text-center"
 			style="background-color: #fbceb1">
 			<div class="container">
-				<h1 class="jumbotron-heading">${shopInfo.shopName }</h1>
+				<h1 class="jumbotron-heading">${ownerShopInfo.get(0).shopName }</h1>
 				<%--샵이름  --%>
-				<p class="lead text-muted">${shopInfo.shopIntro }</p>
+				<p class="lead text-muted">${ownerShopInfo.get(0).shopIntro }</p>
 				<%--샵소개 코멘트  --%>
 
 			</div>
@@ -72,7 +72,7 @@
 		<div class="nav-scroller py-1 mb-2">
 
 			<nav class="nav d-flex justify-content-between">
-				<a class="p-2 text-muted" href="${shopInfo.shopNum}">INFO</a> <a
+				<a class="p-2 text-muted" href="${ownerShopInfo.get(0).shopNum}">INFO</a> <a
 					class="p-2 text-muted" href="#">COUPON</a> <a
 					class="p-2 text-muted" href="#">REVIEW</a>
 			</nav>
@@ -84,55 +84,53 @@
 			<div class="row featurette">
 				<div class="col-md-7">
 					<h1 class="featurette-heading">
-						${shopInfo.shopName } </h1><br>
-						
-					<h2>
-						<span class="text-muted">${shopInfo.shopAddr }
-							<c:set ></c:set>
-						</span>
-					</h2><br>
-					<p class="lead">${shopInfo.shopIntro }</p>
+						${ownerShopInfo.get(0).shopName } </h1><br><h2><span class="text-muted">
+							<%-- <c:forEach >
+								
+							</c:forEach> --%>
+						</span></h2><br>
+					<p class="lead">${ownerShopInfo.get(0).shopIntro }</p>
 					<p class="lead">
 						<c:choose>
-							<c:when test="${fn:split(shopInfo.shopOpen,':')[0] eq 0}">
-								오전 ${fn:split(shopInfo.shopOpen,':')[0]+12}:${fn:split(shopInfo.shopOpen,':')[1]}
+							<c:when test="${fn:split(ownerShopInfo.get(0).shopOpen,':')[0] eq 0}">
+								오전 ${fn:split(ownerShopInfo.get(0).shopOpen,':')[0]+12}:${fn:split(ownerShopInfo.get(0).shopOpen,':')[1]}
+							</c:whaen>
+							<c:when test="${fn:split(ownerShopInfo.get(0).shopOpen,':')[0] eq 12}">
+								오후 ${fn:split(ownerShopInfo.get(0).shopOpen,':')[0]}:${fn:split(ownerShopInfo.get(0).shopOpen,':')[1]}
 							</c:when>
-							<c:when test="${fn:split(shopInfo.shopOpen,':')[0] eq 12}">
-								오후 ${fn:split(shopInfo.shopOpen,':')[0]}:${fn:split(shopInfo.shopOpen,':')[1]}
-							</c:when>
-							<c:when test="${fn:split(shopInfo.shopOpen,':')[0] gt 12}">
-								오후 ${fn:split(shopInfo.shopOpen,':')[0]-12}:${fn:split(shopInfo.shopOpen,':')[1]}
+							<c:when test="${fn:split(ownerShopInfo.get(0).shopOpen,':')[0] gt 12}">
+								오후 ${fn:split(ownerShopInfo.get(0).shopOpen,':')[0]-12}:${fn:split(ownerShopInfo.get(0).shopOpen,':')[1]}
 							</c:when>
 							<c:otherwise>
-								오전 ${shopInfo.shopOpen }
+								오전 ${ownerShopInfo.get(0).shopOpen }
 							</c:otherwise>
 						</c:choose> ~ 
 						<c:choose>
-							<c:when test="${fn:split(shopInfo.shopClose,':')[0] eq 0}">
-								오전 ${fn:split(shopInfo.shopClose,':')[0]+12}:${fn:split(shopInfo.shopClose,':')[1]}
+							<c:when test="${fn:split(ownerShopInfo.get(0).shopClose,':')[0] eq 0}">
+								오전 ${fn:split(ownerShopInfo.get(0).shopClose,':')[0]+12}:${fn:split(ownerShopInfo.get(0).shopClose,':')[1]}
 							</c:when>
-							<c:when test="${fn:split(shopInfo.shopClose,':')[0] eq 12}">
-								오후 ${fn:split(shopInfo.shopClose,':')[0]}:${fn:split(shopInfo.shopClose,':')[1]}
+							<c:when test="${fn:split(ownerShopInfo.get(0).shopClose,':')[0] eq 12}">
+								오후 ${fn:split(ownerShopInfo.get(0).shopClose,':')[0]}:${fn:split(ownerShopInfo.get(0).shopClose,':')[1]}
 							</c:when>
-							<c:when test="${fn:split(shopInfo.shopClose,':')[0] gt 12}">
-								오후 ${fn:split(shopInfo.shopClose,':')[0]-12}:${fn:split(shopInfo.shopClose,':')[1]}
+							<c:when test="${fn:split(ownerShopInfo.get(0).shopClose,':')[0] gt 12}">
+								오후 ${fn:split(ownerShopInfo.get(0).shopClose,':')[0]-12}:${fn:split(ownerShopInfo.get(0).shopClose,':')[1]}
 							</c:when>
 							<c:otherwise>
-								오전 ${shopInfo.shopClose }
+								오전 ${ownerShopInfo.get(0).shopClose }
 							</c:otherwise>
 						</c:choose></p>
-					<p class="lead">매주 ${shopInfo.shopOff } 휴무</p>
+					<p class="lead">매주 ${ownerShopInfo.get(0).shopOff } 휴무</p>
 					<p class="lead">
 						<c:choose>
-							<c:when test="${shopInfo.shopParking eq 0 }">주차 불가</c:when>
-							<c:when test="${shopInfo.shopParking eq 1 }">주차 가능</c:when>
+							<c:when test="${ownerShopInfo.get(0).shopParking eq 0 }">주차 불가</c:when>
+							<c:when test="${ownerShopInfo.get(0).shopParking eq 1 }">주차 가능</c:when>
 						</c:choose>
 					</p>
-					<p class="lead">${shopInfo.shopPolicy }</p>
+					<p class="lead">${ownerShopInfo.get(0).shopPolicy }</p>
 				</div>
 				<div class="col-md-5">
 					<!-- 디자인 사진 캐러셀 -->
-					<c:set var="photo" value="${fn:split(shopInfo.shopPhoto,'|')}" />
+					<c:set var="photo" value="${fn:split(ownerShopInfo.get(0).shopPhoto,'|')}" />
 					<div id="myCarousel" class="carousel slide" data-ride="carousel">
 						<ol class="carousel-indicators">
 							<c:forEach var="shopPhoto" items="${photo }" varStatus="i" >
@@ -167,32 +165,6 @@
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
-
-							<!-- <div class="carousel-item">
-								<svg class="bd-placeholder-img" width="100%" height="100%"
-									xmlns="http://www.w3.org/2000/svg"
-									preserveAspectRatio="xMidYMid slice" focusable="false"
-									role="img">
-												<rect width="100%" height="100%" fill="#777" /></svg>
-								<div class="container">
-									<div class="carousel-caption">
-										<h1>사진2</h1>
-
-									</div>
-								</div>
-							</div>
-							<div class="carousel-item">
-								<svg class="bd-placeholder-img" width="100%" height="100%"
-									xmlns="http://www.w3.org/2000/svg"
-									preserveAspectRatio="xMidYMid slice" focusable="false"
-									role="img">
-												<rect width="100%" height="100%" fill="#777" /></svg>
-								<div class="container">
-									<div class="carousel-caption text-right">
-										<h1>사진3</h1>
-									</div>
-								</div>
-							</div> -->
 						</div>
 						<a class="carousel-control-prev" href="#myCarousel" role="button"
 							data-slide="prev"> <span class="carousel-control-prev-icon"
@@ -208,6 +180,10 @@
 			<hr>
 			<!-- /END THE FEATURETTES -->
 		</div>
+		<p class="text-center">
+			<a href="../../owner/modifyShop/${ownerShopInfo.get(0).shopNum}" class="btn btn-outline-primary my-2">Modify</a>
+			<%--가능한 샵 리스트 더 보기 --%>
+		</p>
 	</div>
 	<!-- Bootstrap core JavaScript-->
 	<script src="/beaudafest/resources/vendor/jquery/jquery.min.js"></script>

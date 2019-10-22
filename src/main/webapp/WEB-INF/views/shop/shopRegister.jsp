@@ -54,26 +54,6 @@
 			}
 		});
 		
-		/* //회원가입 눌렀을때
-		$('#uploadBtn').on("click", function(e){
-			for(var i=0; i<fileCnt; i++){//formData의 내용 갯수..?만큼 돌려야되는디...
-				formData.append("uploadFile", formData.get($('.uploadResult ul').find('span:eq('+i+')').html()));
-			}
-			
-			$.ajax({
-				url : '/uploadAjaxAction',
-				processData : false,
-				contentType : false,
-				data : formData,
-				type:'POST',
-				success : function(data){
-					alert("Uploaded");
-					showUploadedFile(data);
-				}
-			});
-			formData = new FormData();
-		}) */
-		
 		//올린 파일X(삭제) 눌렀을때
 		$('.uploadResult').on('click','a',function(){
 			console.log($(this).siblings('span').html());
@@ -107,9 +87,9 @@
 			var addr=$("select[name=shopAddrBox] option:selected");
 			addr.each(function(idx, size){
 				if(idx<addr.length-1){
-					shopAddr+=$(this).val()+" ";
+					shopAddr+=$(this).val()+"|";
 				} else{
-					shopAddr+=$(this).val()+" "+$("input[name=shopAddrDetail]").val();
+					shopAddr+=$(this).val()+"|"+$("input[name=shopAddrDetail]").val();
 				}
 			});
 			//$('#shopAddr').val(shopAddr);
@@ -230,28 +210,28 @@
 											</div>
 											<div class="form-check form-check-inline">
 												<input class="form-check-input" type="checkbox"
-													id="inlineCheckbox2" value="수" name="shopOffCheck">
+													id="inlineCheckbox3" value="수" name="shopOffCheck">
 												<label class="form-check-label" for="inlineCheckbox2">수</label>
 											</div>
 											<div class="form-check form-check-inline">
 												<input class="form-check-input" type="checkbox"
-													id="inlineCheckbox2" value="목" name="shopOffCheck">
+													id="inlineCheckbox4" value="목" name="shopOffCheck">
 												<label class="form-check-label" for="inlineCheckbox2">목</label>
 											</div>
 											<div class="form-check form-check-inline">
 												<input class="form-check-input" type="checkbox"
-													id="inlineCheckbox2" value="금" name="shopOffCheck">
+													id="inlineCheckbox5" value="금" name="shopOffCheck">
 												<label class="form-check-label" for="inlineCheckbox2">금</label>
 											</div>
 
 											<div class="form-check form-check-inline">
 												<input class="form-check-input" type="checkbox"
-													id="inlineCheckbox2" value="토" name="shopOffCheck">
+													id="inlineCheckbox6" value="토" name="shopOffCheck">
 												<label class="form-check-label" for="inlineCheckbox2">토</label>
 											</div>
 											<div class="form-check form-check-inline">
 												<input class="form-check-input" type="checkbox"
-													id="inlineCheckbox2" value="일" name="shopOffCheck">
+													id="inlineCheckbox7" value="일" name="shopOffCheck">
 												<label class="form-check-label" for="inlineCheckbox2">일</label>
 											</div>
 										</div>
