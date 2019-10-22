@@ -43,7 +43,7 @@ create sequence shopInfo_seq
        nocache;	
 
 		
---select * from shopInfo
+select * from shopInfo;
 
 --delete from shopInfo
 

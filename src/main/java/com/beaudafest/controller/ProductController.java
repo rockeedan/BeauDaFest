@@ -3,9 +3,13 @@ package com.beaudafest.controller;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.swing.plaf.multi.MultiFileChooserUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.beaudafest.domain.CouponVO;
@@ -28,16 +33,26 @@ public class ProductController {
 	private CouponService service;
 
 	@GetMapping("/manage")
-	public String showManage() {
+	public String showManage(HttpServletRequest request) {
+		
+		List<CouponVO> list = service.showCoupon(1);
+		request.setAttribute("couponList", list);
+		List<String> photoList = new ArrayList<String>();
+		for (int i = 0; i < list.size(); i++) {
+			photoList.add(list.get(i).getDesignPhoto().split("\\|")[0]);
+		}
+		request.setAttribute("photoList", photoList);
+		
 		return "shop/couponManage";
 	}
 
 	@PostMapping("/addCoupon")
-	public String addCoupon(CouponVO vo, MultipartFile[] uploadCoupon) { // 쿠폰 등록
+	public String addCoupon(CouponVO vo, MultipartFile[] uploadCoupon, HttpServletRequest request) { // 쿠폰 등록
 
 		String dbUploadedFiles = ""; //db에 넣어줄 값
-		String uploadFolder = "C:\\beaudafest"; //업로드될 폴더 
+		String uploadFolder = request.getSession().getServletContext().getRealPath("/resources/couponPhoto"); //업로드될 폴더 
 		
+		String addDate = getFolder();
 		//폴더 만들기 -------------
 		File uploadPath = new File(uploadFolder, getFolder());
 		System.out.println("upload path: " + uploadPath);
@@ -57,7 +72,8 @@ public class ProductController {
 			UUID uuid = UUID.randomUUID(); 
 						
 			uploadFileName = uuid.toString()+"_"+uploadFileName; //이름중복값 방지
-			dbUploadedFiles += uploadFileName + "|"; //db 구분자 생성 
+			dbUploadedFiles +=addDate+"/"+uploadFileName + "|"; //db 구분자 생성 
+			
  			
 			File saveFile = new File(uploadPath, uploadFileName); //저장 
 
@@ -76,13 +92,37 @@ public class ProductController {
 
 		return "redirect:/owner/manage";
 	}
+	
+	@PostMapping("designDetail")
+	public @ResponseBody CouponVO designDetail(int designId, HttpSession session) {
+		
+		CouponVO vo = service.designDetail(designId);
+		session.setAttribute("designDetail", vo);
+		System.out.println(vo);
+		return vo;
+		
+	}
+	@PostMapping("designUpdate")
+	public String designUpdate(CouponVO vo) {
+		
+		
+		service.designUpdate(vo);
+		
+		return "redirect:/owner/manage";
+	}
+	@PostMapping("designDelete")
+	public String designDelete (int designId) {
+		service.designDelete(designId);
+		return "redirect:/owner/manage";
+	}
 
 	private String getFolder() { //폴더만들어주기
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		
 		Date date = new Date();	
 		String str = sdf.format(date);
 		
-		return str.replace("-", File.separator);
+		return str.replace("/", File.separator);
 	}
+	
 }
