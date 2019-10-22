@@ -26,7 +26,7 @@ import com.beaudafest.service.CouponService;
 import oracle.sql.DATE;
 
 @Controller
-@RequestMapping("/owner")
+@RequestMapping("/*")
 public class ProductController {
 
 	@Autowired
@@ -90,7 +90,7 @@ public class ProductController {
 		service.addCoupon(vo);
 		
 
-		return "redirect:/owner/manage";
+		return "redirect:/manage";
 	}
 	
 	@PostMapping("designDetail")
@@ -104,16 +104,14 @@ public class ProductController {
 	}
 	@PostMapping("designUpdate")
 	public String designUpdate(CouponVO vo) {
-		
-		
+			
 		service.designUpdate(vo);
-		
-		return "redirect:/owner/manage";
+		return "redirect:/manage";
 	}
 	@PostMapping("designDelete")
 	public String designDelete (int designId) {
 		service.designDelete(designId);
-		return "redirect:/owner/manage";
+		return "redirect:/manage";
 	}
 
 	private String getFolder() { //폴더만들어주기

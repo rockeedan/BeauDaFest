@@ -37,4 +37,11 @@
 		from shopInfo
 		where shopNum=#{shopNum}
 	</select>
+	<select id="couponList" resultType="couponVO">
+		select shopInfo.shopName, shopInfo.shopIntro, shopDesign.shopNum, shopDesign.designId, shopDesign.designName, shopDesign.designTime, shopDesign.designPrice, shopDesign.designPhoto
+		from shopDesign inner join shopInfo
+		on shopDesign.shopNum = shopInfo.shopNum
+		where shopDesign.shopNum = #{shopNum}
+		order by shopDesign.designId desc
+	</select>
 </mapper>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +19,41 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+$(function(){
+	$("button[name=couponDetail]").on("click", function(){ //디자인 디테일 보기
+		
+		var designId = $(this).attr('designId')
+		console.log(designId)
+		$.ajax({
+			url : '/beaudafest/designDetail',
+			data : {designId : designId },
+			type : 'POST',
+			dataType : 'json',
+			success : function (result){
+				$(".carousel-inner").html("");
+				var photo = result.designPhoto.split("|",result.designPhoto.split("|").length-1);
+				console.log("photo="+photo.length)
+				var innerCarousel = "";	
+				for (var i=0; i<photo.length; i++){
+					if (i==0){
+						innerCarousel +="<div class='carousel-item active' ><img src='/beaudafest/resources/couponPhoto/"+photo[i]+"' width='100%' height='300'></div>"
+					}else
+					innerCarousel +="<div class='carousel-item' ><img src='/beaudafest/resources/couponPhoto/"+photo[i]+"' width='100%' height='300'></div>"
+				}
+				$(".carousel-inner").prepend(innerCarousel)
+				$("#designName").val(result.designName)
+				$("#designTime").val(result.designTime) 
+				$("#designPrice").val(result.designPrice)
+				$("#designId").val(result.designId)
+				
+			}
+		})
+	})
+
+})//ready
+
+</script>
 <style>
 .bd-placeholder-img {
 	font-size: 1.125rem;
@@ -36,124 +72,85 @@
 </style>
 </head>
 <body>
-	<div>
-		<%@ include file="../include/nav.jsp"%>
-	</div>
+	<c:choose>
+			<c:when test="${memberStatus eq null}">
+				<%@ include file="../include/nav.jsp"%>
+			</c:when>
+			<c:when test="${memberStatus eq 0}">
+				<%-- 일반회원일때 --%>
+				<%@ include file="../include/memberNav.jsp"%>
+			</c:when>
+			<c:when test="${memberStatus eq 1}">
+				<%-- 오너회원일때 --%>
+				<%@ include file="../include/ownerNav.jsp"%>
+			</c:when>
+			<c:otherwise>
+				<%-- 회원이아닐때 (로그인X) --%>
+				<%@ include file="../include/nav.jsp"%>
+			</c:otherwise>
+		</c:choose>
 	<br>
 	<br>
 	<br>
 	<div class="container">
-		<section class="jumbotron text-center"  style="background-color: #fbceb1">
+		<section class="jumbotron text-center"
+			style="background-color: #fbceb1">
 			<div class="container">
-				<h1 class="jumbotron-heading">NAMDAREUM</h1> 	<%--샵이름  --%>
-				<p class="lead text-muted">최고의 디자인이 어쩌고 블라 샵 코멘트</p>
-			<%--샵소개 코멘트  --%>
+				<h1 class="jumbotron-heading">${couponList.get(0).shopName }</h1>
+				<%--샵이름  --%>
+				<p class="lead text-muted">${couponList.get(0).shopIntro }</p>
+				<%--샵소개 코멘트  --%>
 			</div>
 		</section>
 
 		<!-- 메뉴 NAV -->
 		<div class="nav-scroller py-1 mb-2">
-			<div class="col-md-4">
-
-				<nav class="nav d-flex justify-content-between">
-					<a class="p-2 text-muted" href="#">INFO</a> <a
-						class="p-2 text-muted" href="#">COUPON</a> <a
-						class="p-2 text-muted" href="#">REVIEW</a>
-
-				</nav>
-			</div>
+			<nav class="nav d-flex justify-content-between">
+				<a class="p-2 text-muted"
+					href="../shopDetail/${couponList.get(0).shopNum }">INFO</a> <a
+					class="p-2 text-muted" href="#">COUPON</a> <a
+					class="p-2 text-muted" href="#">REVIEW</a>
+			</nav>
 		</div>
 
-
-	<%--디자인리스트 보여주기  --%>
-		<div class="album py-5 bg-light">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4">
-						<div class="card mb-4 shadow-sm">
-							<svg class="bd-placeholder-img card-img-top" width="100%"
-								height="225" xmlns="http://www.w3.org/2000/svg"
-								preserveAspectRatio="xMidYMid slice" focusable="false"
-								role="img" aria-label="Placeholder: Thumbnail">
-								<title>Placeholder</title><rect width="100%" height="100%"
-									fill="#55595c" />
-								<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-							<div class="card-body">
-								<p class="card-text">
-								<h2>ShopName</h2>
-								샵설명
-								</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<!--  고객이 로그인 했을 경우 View 버튼만 보임 
+		<hr>
+		<div class="container marketing">
+			<%--디자인리스트 보여주기  --%>
+			<div class="album py-5 bg-light">
+				<div class="container">
+					<div class="row">
+						<c:forEach items="${couponList }" var="obj" varStatus="i">
+							<div class="col-md-4">
+								<div class="card mb-4 shadow-sm">
+									<img class="card-img-top" width="100%" height="225"
+										src="/beaudafest/resources/couponPhoto/${photoList.get(i.index)}" />
+									<div class="card-body">
+										<p class="card-text">
+										<h2>${obj.designName }</h2>
+										${obj.designPrice }원
+										</p>
+										<div class="d-flex justify-content-between align-items-center">
+											<div class="btn-group">
+												<!--  고객이 로그인 했을 경우 View 버튼만 보임 
 																
 									 -->
-										<button type="button" class="btn btn-sm btn-outline-secondary"
-											data-toggle="modal" data-target="#myModal">View</button>
+												<button type="button"
+													class="btn btn-sm btn-outline-secondary"
+													data-toggle="modal" data-target="#myModal" name="couponDetail" designId=${obj.designId }>View</button>
 
+											</div>
+											<small class="text-muted" >${obj.designTime }mins</small>
+											<!-- 소요시간 -->
+										</div>
 									</div>
-									<small class="text-muted">9 mins</small>
-									<!-- 소요시간 -->
 								</div>
 							</div>
-						</div>
+						</c:forEach>
+						<%--첫번째카드 끝 --%>
+
 					</div>
-					<%--첫번째카드 끝 --%>
-					<%--두번째 카드 시작 --%>
-					<div class="col-md-4">
-						<div class="card mb-4 shadow-sm">
-							<svg class="bd-placeholder-img card-img-top" width="100%"
-								height="225" xmlns="http://www.w3.org/2000/svg"
-								preserveAspectRatio="xMidYMid slice" focusable="false"
-								role="img" aria-label="Placeholder: Thumbnail">
-								<title>Placeholder</title><rect width="100%" height="100%"
-									fill="#55595c" />
-								<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-							<div class="card-body">
-								<p class="card-text">
-								<h2>ShopName</h2>
-								샵설명
-								</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary"
-											data-toggle="modal" data-target="#myModal">View</button>
-
-									</div>
-									<small class="text-muted">9 mins</small>
-								</div>
-							</div>
-						</div>
-					</div>
-						<%--두번째 카드 끝 --%>
-					<%--세번째 카드 시작 --%>
-					<div class="col-md-4">
-						<div class="card mb-4 shadow-sm">
-							<svg class="bd-placeholder-img card-img-top" width="100%"
-								height="225" xmlns="http://www.w3.org/2000/svg"
-								preserveAspectRatio="xMidYMid slice" focusable="false"
-								role="img" aria-label="Placeholder: Thumbnail">
-								<title>Placeholder</title><rect width="100%" height="100%"
-									fill="#55595c" />
-								<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-							<div class="card-body">
-								<p class="card-text">
-								<h2>ShopName</h2>
-								샵설명
-								</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary"
-											data-toggle="modal" data-target="#myModal">View</button> <%--디자인 디테일보기 --%>
-
-									</div>
-									<small class="text-muted">9 mins</small>
-								</div>
-							</div>
-						</div>
-					</div> 	<%--세번째 카드 끝 --%>
+					<%--/row --%>
 				</div>
-				<%--/row --%>
 
 				<!-- 카드의 View 클릭 시 /Coupon Detail The Modal -->
 				<div class="modal" id="myModal">
@@ -162,7 +159,7 @@
 
 							<!-- Modal Header -->
 							<div class="modal-header">
-								<h4 class="modal-title">꿈꾸는 네일 디자인</h4>
+								<h4 class="modal-title">DETAIL</h4>
 								<!-- 디자인이름 -->
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
 							</div>
@@ -177,45 +174,8 @@
 										<li data-target="#myCarousel" data-slide-to="2"></li>
 									</ol>
 									<div class="carousel-inner">
-										<div class="carousel-item active">
-											<svg class="bd-placeholder-img" width="100%" height="100%"
-												xmlns="http://www.w3.org/2000/svg"
-												preserveAspectRatio="xMidYMid slice" focusable="false"
-												role="img">
-												<rect width="100%" height="100%" fill="#777" /></svg>
-											<div class="container">
-												<div class="carousel-caption text-left">
-													<h1>사진1</h1>
-
-												</div>
-											</div>
-										</div>
-
-										<div class="carousel-item">
-											<svg class="bd-placeholder-img" width="100%" height="100%"
-												xmlns="http://www.w3.org/2000/svg"
-												preserveAspectRatio="xMidYMid slice" focusable="false"
-												role="img">
-												<rect width="100%" height="100%" fill="#777" /></svg>
-											<div class="container">
-												<div class="carousel-caption">
-													<h1>사진2</h1>
-
-												</div>
-											</div>
-										</div>
-										<div class="carousel-item">
-											<svg class="bd-placeholder-img" width="100%" height="100%"
-												xmlns="http://www.w3.org/2000/svg"
-												preserveAspectRatio="xMidYMid slice" focusable="false"
-												role="img">
-												<rect width="100%" height="100%" fill="#777" /></svg>
-											<div class="container">
-												<div class="carousel-caption text-right">
-													<h1>사진3</h1>
-												</div>
-											</div>
-										</div>
+								
+										
 									</div>
 									<a class="carousel-control-prev" href="#myCarousel"
 										role="button" data-slide="prev"> <span
@@ -251,7 +211,7 @@
 								<button type="button" class="btn btn-danger"
 									data-dismiss="modal">Close</button>
 								<button type="button" class="btn btn-success"
-								data-dismiss="modal">예약하기</button>
+									data-dismiss="modal">예약하기</button>
 							</div>
 
 						</div>
@@ -263,12 +223,10 @@
 		</div>
 
 		<p class="text-center">
-			<a href="#" class="btn btn-outline-primary my-2">View More</a> <%--다음리스트보기 --%>
+			<a href="#" class="btn btn-outline-primary my-2">View More</a>
+			<%--다음리스트보기 --%>
 		</p>
 
 	</div>
-
-
-
 </body>
 </html>

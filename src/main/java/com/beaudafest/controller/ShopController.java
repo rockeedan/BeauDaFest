@@ -113,6 +113,18 @@ public class ShopController {
 		return "shopInfo/shopInfo"; //조회 페이지
 	}
 	
+	@GetMapping("/couponList/{shopNum}")
+	public String couponList(@PathVariable("shopNum") Integer shopNum, Model m) {
+		
+		m.addAttribute("couponList",shopService.couponList(shopNum));
+		List<String> photoList = new ArrayList<String>();
+		for (int i = 0; i < shopService.couponList(shopNum).size(); i++) {
+			photoList.add(shopService.couponList(shopNum).get(i).getDesignPhoto().split("\\|")[0]);
+		}
+		m.addAttribute("photoList", photoList);
+		return "shopInfo/couponList";
+	}
+	
 	private String getFolder() {//오늘 날짜의 경로를 문자열로 생성
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();

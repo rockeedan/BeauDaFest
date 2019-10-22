@@ -72,7 +72,7 @@
 
 			<nav class="nav d-flex justify-content-between">
 				<a class="p-2 text-muted" href="${shopInfo.shopNum}">INFO</a> <a
-					class="p-2 text-muted" href="#">COUPON</a> <a
+					class="p-2 text-muted" href="../couponList/${shopInfo.shopNum}">COUPON</a> <a
 					class="p-2 text-muted" href="#">REVIEW</a>
 			</nav>
 		</div>
