@@ -3,7 +3,6 @@
 <mapper namespace="reservation">
 	
 	<!-- 예약 리스트 조회 -->
-	<!-- 옵션 null : total 금액 -> null 수정 필요 -->
 	<select id = "selectRsvnList" resultType="java.util.HashMap">
 	
 		select rsvnnum, memberid, membername, memberphone, 
@@ -54,7 +53,39 @@
 	</select>
 	
 	
-	<!-- 월별 금액수 -->
+	<!-- 월별 총금액 -->
+	<select id ="selectMonthlyRsvnProfits" resultType="java.util.HashMap">
+		select yearmonth.ym, nvl(totalprice,0) totalprice
+	
+		from (select to_char(add_months(to_date('201901', 'YYYYMM'),(level - 1)), 'yyyy-mm') ym
+		 	 from dual
+			 <![CDATA[
+			 connect by add_months(to_date('201901', 'YYYYMM'),(level - 1)) <= to_date('201901', 'YYYYMM')+364) yearmonth
+	 		]]>
+			
+		left outer join 
+			 
+			(select to_char(rsvndate, 'yyyy-mm') ym, 
+					sum(reservation2.designprice+nvl(SHOPDESIGN2.designprice,0)) totalPrice
+			 from
+				 (select RESERVATION.rsvndate rsvndate, 
+						RESERVATION.designid designid, RESERVATION.designid2 optionnum, 
+						shopdesign.designprice designprice
+				  from RESERVATION,  SHOPDESIGN
+				  where RESERVATION.designid = shopdesign.designid 
+				  and RESERVATION.shopnum = #{shopnum}
+				  ) reservation2 
+				 
+			left outer join SHOPDESIGN SHOPDESIGN2
+			ON reservation2.optionnum = SHOPDESIGN2.designid
+			GROUP BY to_char(rsvndate, 'yyyy-mm')) rsvn
+			  
+		on yearmonth.ym = rsvn.ym
+		order by yearmonth.ym
+	
+	
+	
+	</select>
 	
 	
 </mapper>

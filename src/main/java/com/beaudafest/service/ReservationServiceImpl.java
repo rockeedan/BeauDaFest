@@ -20,6 +20,13 @@ public class ReservationServiceImpl implements ReservationService {
 		return dao.selectRsvnList(shopnum);
 	}
 
+	//월별 총 수익, area chart 조회
+	@Override
+	public List<Map<String, Object>> selectMonthlyRsvnProfits(int shopnum) {
+		return dao.selectMonthlyRsvnProfits(shopnum);
+	}
+	
+	//월별 예약 수, bar chart 조회
 	@Override
 	public List<Map<String, Object>> selectMonthlyRsvnCount(int shopnum) {
 		return dao.selectMonthlyRsvnCount(shopnum);

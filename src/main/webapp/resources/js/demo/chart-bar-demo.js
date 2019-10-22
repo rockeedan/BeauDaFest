@@ -27,20 +27,25 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 
+
+var dataValue2 =
+{
+	labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+	datasets: [{
+		data: [20000, 15000, 5000, 20000, 0, 15000, 15000, 25000, 20000, 30000, 25000, 40000],
+		label: "Revenue",
+		backgroundColor: "#4e73df",
+		hoverBackgroundColor: "#2e59d9",
+		borderColor: "#4e73df"
+	}],
+}
+
+
 // Bar Chart Example
 var ctx = document.getElementById("myBarChart");
 var myBarChart = new Chart(ctx, {
   type: 'bar',
-  data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
-    datasets: [{
-      label: "Revenue",
-      backgroundColor: "#4e73df",
-      hoverBackgroundColor: "#2e59d9",
-      borderColor: "#4e73df",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
-    }],
-  },
+  data: dataValue2,
   options: {
     maintainAspectRatio: false,
     layout: {
@@ -67,13 +72,11 @@ var myBarChart = new Chart(ctx, {
       }],
       yAxes: [{
         ticks: {
-          min: 0,
-          max: 15000,
           maxTicksLimit: 5,
           padding: 10,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
-            return '₩' + number_format(value);
+            return number_format(value);
           }
         },
         gridLines: {
@@ -109,3 +112,25 @@ var myBarChart = new Chart(ctx, {
     },
   }
 });
+
+
+
+
+$.ajax({
+    url : "myBarChart",
+    async : false,
+    dataType : "json",
+    success : function(value) {
+    	
+    	var dataset = dataValue2.datasets;
+		for(var i=0; i<dataset.length; i++){
+			//데이터 갯수 만큼 반복
+			var data = dataset[i].data;
+			for(var j=0 ; j < data.length ; j++){
+				data[j] = value[j]
+			}
+		}
+		myBarChart.update();	//차트 업데이트
+    	
+    }
+})
