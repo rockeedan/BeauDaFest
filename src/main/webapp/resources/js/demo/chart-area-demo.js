@@ -29,7 +29,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 }
 
 
-var data = {
+var dataValue = {
 	    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 	    datasets: [{
 	      data: [20000, 15000, 5000, 20000, 0, 15000, 15000, 25000, 20000, 30000, 25000, 40000],
@@ -54,7 +54,7 @@ var ctx = document.getElementById("myAreaChart");
 		
 var config = {
   type: 'line',
-  data: data,
+  data: dataValue,
   options: {
     maintainAspectRatio: false,
     layout: {
@@ -131,19 +131,16 @@ $.ajax({
     async : false,
     dataType : "json",
     success : function(value) {
-    	console.log(value)
     	
-    	var d = data.datasets.data; //에러
-    	
-//    	datasets.data 가져와서
-//    	for(var j=0 ; j < data.length ; j++){
-//			data[j] = Math.floor(Math.random() * 50); //데이터 넣기 넣기
-//		}
-    	
-//    	value(map) 데이터 넣기
-//   	 컨트롤러 수정 -> map말고 int배열로 받아와서 for문 순서대로 넣기 
-    	
-    	
+    	var dataset = dataValue.datasets;
+		for(var i=0; i<dataset.length; i++){
+			//데이터 갯수 만큼 반복
+			var data = dataset[i].data;
+			for(var j=0 ; j < data.length ; j++){
+				data[j] = value[j]
+			}
+		}
+		myAreaChart.update();	//차트 업데이트
     	
     }
 })
