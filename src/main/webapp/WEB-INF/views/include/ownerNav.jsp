@@ -137,7 +137,7 @@
 							</a> <a class="dropdown-item" href="#"> <i
 								class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> ShopList  <!-- 오너 샵 수정 -->
 							</a>
-							<a class="dropdown-item" href="#"> <i
+							<a class="dropdown-item" href="/beaudafest/shopManage"> <i
 								class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Dashboard  <!-- 멤버 예약보기-->
 							</a>
 							<div class="dropdown-divider"></div>

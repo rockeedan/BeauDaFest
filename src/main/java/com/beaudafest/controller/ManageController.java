@@ -1,6 +1,5 @@
 package com.beaudafest.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,7 +8,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -35,8 +33,7 @@ public class ManageController {
 	public String showtable(Model m, HttpSession session) {
 
 		// 세션 아이디
-		// String loginId = (String) session.getAttribute("loginId");
-		String loginId = "hana1";
+		String loginId = (String) session.getAttribute("loginId");
 
 		// 세션 샵넘버
 		// int shopNum = session.getAttribute("shopNum");
@@ -118,8 +115,6 @@ public class ManageController {
 						Integer.parseInt(String.valueOf(list.get(9).get("CNT"))),
 						Integer.parseInt(String.valueOf(list.get(10).get("CNT"))),
 						Integer.parseInt(String.valueOf(list.get(11).get("CNT")))};
-		
-		
 		return value;
 
 	}
