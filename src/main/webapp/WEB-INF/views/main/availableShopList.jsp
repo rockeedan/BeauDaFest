@@ -44,7 +44,7 @@
 				<%@ include file="../include/nav.jsp"%>
 			</c:otherwise>
 		</c:choose>
-<link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/beaudafest/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	</div>
 	<br>
 	<br>

@@ -53,6 +53,7 @@
 				<%@ include file="../include/nav.jsp"%>
 			</c:otherwise>
 		</c:choose>
+		<link href="/beaudafest/resources/css/carousel.css" rel="stylesheet">
 	<br>
 	<br>
 	<br>
