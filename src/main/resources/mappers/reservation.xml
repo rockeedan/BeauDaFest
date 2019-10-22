@@ -54,8 +54,8 @@
 	
 	
 	<!-- 월별 총금액 -->
-	<select id ="" resultType="">
-		select yearmonth.ym, nvl(totalprice,0)
+	<select id ="selectMonthlyRsvnProfits" resultType="java.util.HashMap">
+		select yearmonth.ym, nvl(totalprice,0) totalprice
 	
 		from (select to_char(add_months(to_date('201901', 'YYYYMM'),(level - 1)), 'yyyy-mm') ym
 		 	 from dual

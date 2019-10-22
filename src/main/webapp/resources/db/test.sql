@@ -155,7 +155,7 @@ GROUP BY to_char(rsvndate, 'yyyy-mm')
 
 
 --월별 예약 총 금액 조회
-select yearmonth.ym, nvl(totalprice,0)
+select yearmonth.ym, nvl(totalprice,0) totalprice
 
 from (select to_char(add_months(to_date('201901', 'YYYYMM'),(level - 1)), 'yyyy-mm') ym
  	 from dual
