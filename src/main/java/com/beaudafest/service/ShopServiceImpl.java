@@ -28,8 +28,8 @@ public class ShopServiceImpl implements ShopService{
 
 	//샵 삭제
 	@Override
-	public int deleteShop(Integer shopNum) {
-		return dao.deleteShop(shopNum);
+	public int deleteShop(ShopVO vo) {
+		return dao.deleteShop(vo);
 	}
 
 	//특정 오너의 샵 조회

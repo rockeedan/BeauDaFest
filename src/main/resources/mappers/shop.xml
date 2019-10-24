@@ -10,15 +10,17 @@
 	<!-- 샵 정보 수정 -->
 	<update id="modifyShopInfo">
 		update shopInfo 
-		set shopName=#{shopName}, shopPhone=#{shopPhone}, shopAddr=#{shopAddr}, shopOpen=#{shopOpen}, shopClose=#{shopClose}, shopOff=#{shopOff}
-			, shopPhoto=#{shopPhoto}, shopIntro=#{shopIntro}, shopParking=#{shopParking}, shopPolicy=#{shopPolicy}
-		where shopNum=#{shopNum}
+		set shopOpen=#{shopOpen}, shopClose=#{shopClose}, shopOff=#{shopOff}, shopIntro=#{shopIntro}, shopParking=#{shopParking}, shopPolicy=#{shopPolicy}
+		<if test="shopPhoto!=null">
+			,shopPhoto=#{shopPhoto}
+		</if>
+		where shopNum=#{shopNum} and memberId=#{memberId}
 	</update>
 	
 	<!-- 샵 삭제 -->
 	<delete id="deleteShop">
 		delete from shopInfo
-		where shopNum=#{shopNum}
+		where shopNum=#{shopNum} and memberId=#{memberId}
 	</delete>
 	
 	<!-- 오너 아이디로 샵리스트 혹은 샵 한개 조회 -->

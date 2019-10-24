@@ -121,13 +121,10 @@
 <body class="bg-gradient-primary">
 	<div>
 		<%@ include file="../include/nav.jsp"%>
-		
 	</div>
-	
 	<br>
 	<br>
 	<div class="container">
-
 		<div class="card o-hidden border-0 shadow-lg my-5">
 			<div class="card-body p-0">
 				<!-- Nested Row within Card Body -->
@@ -241,7 +238,7 @@
 								<div class="form-group">
 									<select class="form-control" required name="shopParking">
 										<option disabled selected>Parking</option>
-										<option value="0">없음</option>
+										<option value="0">주차 불가</option>
 										<option value="1">1대 이상</option>
 									</select>
 								</div>

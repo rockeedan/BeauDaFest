@@ -70,7 +70,6 @@
 		</section>
 		<!-- 메뉴 NAV -->
 		<div class="nav-scroller py-1 mb-2">
-
 			<nav class="nav d-flex justify-content-between">
 				<a class="p-2 text-muted" href="${shopInfo.shopNum}">INFO</a> <a
 					class="p-2 text-muted" href="#">COUPON</a> <a
@@ -87,10 +86,14 @@
 						${shopInfo.shopName } </h1><br>
 						
 					<h2>
-						<span class="text-muted">${shopInfo.shopAddr }
-							<c:set ></c:set>
+						<span class="text-muted">
+						<c:set var="shopAddr" value="${fn:split(shopInfo.shopAddr,'|')}" />
+						<c:forEach var="addr" items="${shopAddr }" varStatus="i" >
+							${addr } 
+						</c:forEach>
 						</span>
 					</h2><br>
+					<p class="lead">${shopInfo.shopPhone }</p>
 					<p class="lead">${shopInfo.shopIntro }</p>
 					<p class="lead">
 						<c:choose>

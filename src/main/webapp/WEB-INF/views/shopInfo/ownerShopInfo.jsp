@@ -79,22 +79,22 @@
 		</div>
 		<hr>
 		<div class="container marketing">
-
-
 			<div class="row featurette">
 				<div class="col-md-7">
 					<h1 class="featurette-heading">
 						${ownerShopInfo.get(0).shopName } </h1><br><h2><span class="text-muted">
-							<%-- <c:forEach >
-								
-							</c:forEach> --%>
+						<c:set var="shopAddr" value="${fn:split(ownerShopInfo.get(0).shopAddr,'|')}" />
+						<c:forEach var="addr" items="${shopAddr }" varStatus="i" >
+							${addr } 
+						</c:forEach>
 						</span></h2><br>
+					<p class="lead">${ownerShopInfo.get(0).shopPhone }</p>
 					<p class="lead">${ownerShopInfo.get(0).shopIntro }</p>
 					<p class="lead">
 						<c:choose>
 							<c:when test="${fn:split(ownerShopInfo.get(0).shopOpen,':')[0] eq 0}">
 								오전 ${fn:split(ownerShopInfo.get(0).shopOpen,':')[0]+12}:${fn:split(ownerShopInfo.get(0).shopOpen,':')[1]}
-							</c:whaen>
+							</c:when>
 							<c:when test="${fn:split(ownerShopInfo.get(0).shopOpen,':')[0] eq 12}">
 								오후 ${fn:split(ownerShopInfo.get(0).shopOpen,':')[0]}:${fn:split(ownerShopInfo.get(0).shopOpen,':')[1]}
 							</c:when>

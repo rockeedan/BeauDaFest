@@ -80,7 +80,7 @@ public class ShopController {
 		vo.setMemberId((String) session.getAttribute("memberId"));
 		System.out.println(vo.toString());// 출력
 		int result = shopService.shopJoin(vo);
-		// session.removeAttribute("memberId");
+		session.removeAttribute("memberId");
 		return "redirect:/"; // 샵 등록 후 페이지 이동 --> 메인으로..?
 	}
 
@@ -125,19 +125,66 @@ public class ShopController {
 
 	// 샵 정보 수정
 	@PostMapping("/owner/modifyShop")
-	public String modifyShop(ShopVO vo) {
-		// vo = new ShopVO(1111, "hana3", "하나샵", "02-1111-1111", "일산동구", "10:00",
-		// "20:00", "금", "11111.jpg", "샵소개", 1, "취소정책");
-		// shopService.modifyShopInfo(vo);
-		return "/";
+	public String modifyShop(HttpSession session, MultipartFile[] uploadFile, ShopVO vo, HttpServletRequest request) {
+		vo.setMemberId(session.getAttribute("loginId").toString());
+		
+		if(uploadFile.length!=0) {
+			String uploadFolder = request.getSession().getServletContext().getRealPath("//resources//shopPhoto");
+			
+			String addDate = getFolder();// 혹시 그 사이에 날짜 바뀔까봐..
+			
+			File uploadPath = new File(uploadFolder, addDate);
+			
+			String shopPhoto = "";// db저장용 변수
+			
+			if (uploadPath.exists() == false) {// 오늘 날짜 폴더가 없으면
+				uploadPath.mkdirs(); // 오늘 날짜 폴더 만들기
+			}
+			
+			for (MultipartFile multipartFile : uploadFile) {
+				System.out.println("Upload File Name : " + multipartFile.getOriginalFilename());
+				System.out.println("Upload File Size : " + multipartFile.getSize());
+				
+				String uploadFileName = multipartFile.getOriginalFilename();
+				
+				// IE용 경로
+				uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
+				System.out.println("onlyFileName : " + uploadFileName);
+				
+				// 중복 방지 UUID
+				UUID uuid = UUID.randomUUID();
+				uploadFileName = uuid.toString() + "_" + uploadFileName;
+				System.out.println(uploadFileName);
+				// '날짜/파일이름' 으로 DB에 저장
+				shopPhoto += ((addDate + "/" + uploadFileName) + "|");
+				
+				// 폴더에 이미지 추가
+				File savefile = new File(uploadPath, uploadFileName);
+				
+				try {
+					multipartFile.transferTo(savefile);
+					// DB에 저장할때
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			vo.setShopPhoto(shopPhoto);
+		}
+		vo.setMemberId((String) session.getAttribute("loginId"));
+		System.out.println(vo.toString());// 출력
+		shopService.modifyShopInfo(vo);
+		return "redirect:/owner/shopDetail/"+vo.getShopNum(); // 샵 등록 후 페이지 이동 --> 메인으로..?
 	}
 
 	// 샵 삭제
-	@PostMapping("/deleteShop")
-	public String deleteShop(Integer shopNum) {
-		// shopNum = 3333;
-		shopService.deleteShop(shopNum);
-		return "/";
+	@GetMapping("/owner/deleteShop/{shopNum}")
+	public String deleteShop(@PathVariable("shopNum") Integer shopNum, HttpSession session) {
+		ShopVO vo = new ShopVO();
+		vo.setMemberId(session.getAttribute("loginId").toString());
+		vo.setShopNum(shopNum);
+		shopService.deleteShop(vo);
+		System.out.println(vo.toString());
+		return "redirect:/owner/shopList";
 	}
 
 	private String getFolder() {// 오늘 날짜의 경로를 문자열로 생성

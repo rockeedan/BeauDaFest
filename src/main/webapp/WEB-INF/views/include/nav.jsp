@@ -45,7 +45,7 @@
 		<ul class="navbar-nav mr-auto">
 			
 			<li class="nav-item"><a class="nav-link"
-				href="/beaudafest/login">LOG IN</a> <!-- 로그인 안됐을 시 뜨는 화면  --></li>
+				href="/beaudafest/login">LOGIN</a> <!-- 로그인 안됐을 시 뜨는 화면  --></li>
 
 		</ul>
 		<form class="form-inline mt-2 mt-md-0">

@@ -28,8 +28,8 @@ public class ShopDAOImpl implements ShopDAO{
 	
 	//샵 삭제
 	@Override
-	public int deleteShop(Integer shopNum) {
-		return sqlSession.delete("shop.deleteShop", shopNum);
+	public int deleteShop(ShopVO vo) {
+		return sqlSession.delete("shop.deleteShop", vo);
 	}
 
 	//샵 조회
