@@ -86,10 +86,17 @@
 
 		//파일 선택했을 때 (shop사진 고르고 확인)
 		$('#inputGroupFile01').on("change",function() {
-			$('.uploadResult ul').html('');
 			var inputFile = $("#inputGroupFile01");
 			files = inputFile[0].files;
 			fileCnt = files.length;
+			
+			if(fileCnt>3){
+				alert("사진은 최대 3장까지 가능합니다!");
+				fileCnt -= files.length;
+				return false;
+			}
+			$('.uploadResult ul').html('');
+			
 			for (var i = 0; i < files.length; i++) {
 				if (!checkExtension(files[i].name, files[i].size)) {
 					$('.uploadResult ul').html('');
