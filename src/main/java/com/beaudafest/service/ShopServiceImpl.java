@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.beaudafest.domain.CouponVO;
 import com.beaudafest.domain.ShopVO;
 import com.beaudafest.persistence.ShopDAO;
 
@@ -46,6 +47,12 @@ public class ShopServiceImpl implements ShopService{
 	@Override
 	public ShopVO findShopInfo(Integer shopNum) {
 		return dao.findShopInfo(shopNum);
+	}
+
+	@Override
+	public List<CouponVO> couponList(Integer shopNum) {
+		
+		return dao.couponList(shopNum);
 	}
 
 }

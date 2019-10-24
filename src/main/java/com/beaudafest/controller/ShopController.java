@@ -2,7 +2,9 @@ package com.beaudafest.controller;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -187,7 +188,19 @@ public class ShopController {
 		return "redirect:/owner/shopList";
 	}
 
-	private String getFolder() {// 오늘 날짜의 경로를 문자열로 생성
+	@GetMapping("/couponList/{shopNum}")
+	public String couponList(@PathVariable("shopNum") Integer shopNum, Model m) {
+		
+		m.addAttribute("couponList",shopService.couponList(shopNum));
+		List<String> photoList = new ArrayList<String>();
+		for (int i = 0; i < shopService.couponList(shopNum).size(); i++) {
+			photoList.add(shopService.couponList(shopNum).get(i).getDesignPhoto().split("\\|")[0]);
+		}
+		m.addAttribute("photoList", photoList);
+		return "shopInfo/couponList";
+	}
+	
+	private String getFolder() {//오늘 날짜의 경로를 문자열로 생성
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		String str = sdf.format(date);
