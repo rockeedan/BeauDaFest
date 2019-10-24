@@ -122,5 +122,27 @@ public class ReservationTableServiceImpl implements ReservationTableService{
 	public int hihi() {
 		return dao.hihi();
 	}
-	
+	@Override
+	public boolean deleteTimeSchedule(int shopNum, String addDate, String startTime) {
+		Map<String,Object> map = new HashMap<>();
+		map.put("shopNum",shopNum);
+		map.put("addDate",addDate);
+		map.put("startTime",startTime);
+		if(dao.deleteTimeSchedule(map)==1) {
+			map.remove("startTime");
+			if(dao.countTimeSchedule(map)==0) {
+				dao.deleteMonthSchedule(map);
+			}
+			return true;
+		}
+		return false;
+	}
+	@Override
+	public int countTimeSchedule(int shopNum, String addDate, String startTime) {
+		Map<String,Object> map = new HashMap<>();
+		map.put("shopNum",shopNum);
+		map.put("addDate",addDate);
+		map.put("startTime",startTime);
+		return dao.countTimeSchedule(map);
+	}
 }

@@ -10,7 +10,7 @@
 						<start checked="false">0${i }:00</start> ~ <end>0${i }:30</end>
 					</button>
 					<button type="button" class="btn btn-block">
-						<start checked="false">0${i }:30</start> ~ <end><c:choose><c:when test="${i==9}">${i+1 }</c:when><c:otherwise>0${i }</c:otherwise></c:choose>:00</end>
+						<start checked="false">0${i }:30</start> ~ <end><c:choose><c:when test="${i==9}">${i+1 }</c:when><c:otherwise>0${i+1 }</c:otherwise></c:choose>:00</end>
 					</button>
 				</c:when>
 				<c:otherwise>

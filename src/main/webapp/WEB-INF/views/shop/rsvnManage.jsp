@@ -56,13 +56,61 @@ function open_url( type, url, data, target ){
 </script>
 <script type="text/javascript">
 var addDateCnt =0;
+var calendar;
+var reservationDate;
+
+function getEventDate(date){
+	var year = date.getFullYear();//yyyy
+	var month = (1 + date.getMonth()); //M
+	month = month >= 10 ? month : '0' + month; //month 두자리로 저장
+	var day = date.getDate(); //d
+	day = day >= 10 ? day : '0' + day; //day 두자리로 저장
+	var hour = date.getHours();
+	hour = hour >= 10 ? hour : '0' + hour; //day 두자리로 저장
+	var min = date.getMinutes();
+	min = min >= 10 ? min : '0' + min; //day 두자리로 저장
+	return year + '/' + month + '/' + day+" "+hour+":"+min; }
+
+function getEndTimeDate(date){
+	var year = date.getFullYear();//yyyy
+	var month = (1 + date.getMonth()); //M
+	month = month >= 10 ? month : '0' + month; //month 두자리로 저장
+	var day = date.getDate(); //d
+	day = day >= 10 ? day : '0' + day; //day 두자리로 저장
+	var min = date.getMinutes()+30;
+	var hour = date.getHours();
+	if(min==60){
+		min = "00";
+		hour += 1;
+	}else if(hour==24){
+		hour=23;
+		min=59;
+	}
+	hour = hour >= 10 ? hour : '0' + hour; //day 두자리로 저장
+	return year + '/' + month + '/' + day+" "+hour+":"+min;
+}
+function getCloseTime(date){
+	var min = date.getMinutes()+30;
+	var hour = date.getHours();
+	if(min==60){
+		min = "00";
+		hour += 1;
+	}else if(hour==24){
+		hour=23;
+		min=59;
+	}
+	hour = hour >= 10 ? hour : '0' + hour; //day 두자리로 저장
+	return hour+":"+min;
+}
+
+
 function open_calender(){
 	var calendarEl = document.getElementById('contentDiv');
 	$('#contentDiv').html("");
-    var calendar = new FullCalendar.Calendar(calendarEl, {
+    calendar = new FullCalendar.Calendar(calendarEl, {
       plugins: [ 'interaction', 'dayGrid', 'timeGrid'],
       header: {
-        left: 'prev,next today',
+        left: 'prev,next',
         center: 'title',
         right: 'dayGridMonth,timeGridWeek'
       },
@@ -84,6 +132,7 @@ function open_calender(){
       
       dateClick: function(info) {
   	    //alert('Clicked on: ' + info.dateStr);//2019-10-30
+  	    //timeGridWeek : 2019-10-30T09:00:00+09:00 //25
   	    alert("hihi : "+ info.view.type);//dayGridMonth,timeGridWeek
   	    alert("dateStr : "+info.dateStr);
   	    alert("dateLength"+info.dateStr.length);
@@ -99,6 +148,62 @@ function open_calender(){
 	  	    	}
 	  	    })
 	  	    $('#myModal').modal();
+  	    }else{
+  	    	var cntTimeSchedule=1;
+  	    	$.ajax({
+  	    		url:"/beaudafest/reservation/countTimeSchedule",
+  	    		data:{shopNum:1,
+  	    			addDate:info.dateStr.substr(0,10),
+  	    			startTime:info.dateStr.substr(0,16)},
+  	    		dataType:"JSON",
+  	    		success:function(result){
+					console.log()
+  	    			if(result==0){
+  	    				if(confirm("일정을 추가하시겠습니까?")){
+  	    					var formData = new FormData();
+  	    					var addDate = info.dateStr.substr(0,10);
+  	    					var open = getEventDate(info.date);
+  	    					var close = getEndTimeDate(info.date);
+  	    					formData.append("shopNum",1);
+  	    					formData.append("addDate",info.dateStr.substr(0,10));
+  	    					formData.append("open",getEventDate(info.date));
+  	    					formData.append("close",getEndTimeDate(info.date));
+  	    					console.log(formData.get("open"))
+  	    					$.ajax({
+  	    	    				url:"/beaudafest/reservation/insert",
+  	    	    				processData:false,
+  	    	    				contentType:false,
+  	    	    				data:formData,
+  	    	    				type:'POST',
+  	    	    				success:function(){
+  	    	    					alert("일정이 추가되었습니다.");
+  	    	    					calendar.addEventSource([
+  	    	  	    			    {
+  	    	  	    			      title  : '예약가능',
+  	    	  	    			      start  : info.dateStr.substr(0,16),//getEventDate(info.date),
+  	    	  	    			      end : info.dateStr.substr(0,10)+"T"+getCloseTime(info.date),//getEndTimeDate(info.date),
+  	    	  	    			      color:"#FFC0CB"
+  	    	  	    			    }
+  	    	  	    			    ])
+  	    	    				}
+  	    	    			})
+  	    				}
+  	    			}
+  	    		}
+  	    	})
+  	    	/*
+  	    		var formData = new FormData();
+  	    		$.ajax({
+  				url:"/beaudafest/reservation/insert",
+  				processData:false,
+  				contentType:false,
+  				data:{addDate:info.dateStr.substr(0,10),
+  					open:info.dateStr.substr(0,16)},
+  				type:'POST',
+  				success:function(){
+  					alert("일정이 추가되었습니다.");
+  				}
+  			}) */
   	    }
   	  },
 
@@ -127,6 +232,25 @@ function open_calender(){
     	    //info.el.style.borderColor = 'red';
     	    if(info.event.title =="예약가능"){
     	    	alert("ㅎㅎㅎ 예약취소할 수 있다")
+    	    	alert(getEventDate(info.event.start))//Fri Oct 25 2019 10:00:00 GMT+0900 (한국 표준시)
+    	    	if(confirm("예약을 삭제하시겠습니까")){
+    	    		var eventDate = getEventDate(info.event.start);
+					$.ajax({
+						url:"/beaudafest/reservation/eventDelete",
+						data:{shopNum:1,
+							addDate:eventDate.substr(0,10),
+		  					startTime:eventDate.substr(0,16)},
+		  				type:'POST',
+		    			success:function(result){
+		    				if(result){
+		    					alert("일정이 닫혔습니다");
+				    	    	info.event.remove();
+		    				}else{
+		    					alert("일정을 닫을 수 없습니다");
+		    				}
+		    			}
+					})
+    	    	}
     	    }else{
     	    	alert("예약이 존재해서 일정을 닫을 수 없습니다")
     	    }
@@ -135,6 +259,9 @@ function open_calender(){
 
     calendar.render();
 }
+function eventCheck(){
+	calendar.refetchEvents()
+}
 
 $(function(){
 	$('#myModal').on("click",'button.logPrint',function(){
@@ -142,6 +269,7 @@ $(function(){
 			return;
 		}
 		var formData = new FormData();
+		formData.append('shopNum',1)
 		formData.append('addDate',reservationDate)
 		$('button.btn-danger').each(function(){
 			formData.append('open',reservationDate+" "+$(this).find("start").html())
@@ -155,8 +283,18 @@ $(function(){
 			data:formData,
 			type:'POST',
 			success:function(){
-				addDateCnt=0;
 				alert("일정이 추가되었습니다.");
+				$('button.btn-danger').each(function(){
+					calendar.addEventSource([
+		    			    {
+		    			      title  : '예약가능',
+		    			      start  : reservationDate+" "+$(this).find("start").html(),
+		    			      end : reservationDate+" "+$(this).find("end").html(),
+		    			      color:"#FFC0CB"
+		    			    }]
+		    		)
+				})
+				addDateCnt=0;
 				$('#myModal').modal("hide");
 			}
 		})
@@ -237,6 +375,8 @@ $(function(){
 		</li>
 		<li class="nav-item"><a class="nav-link collapsed" href="javascript:;"
 			onclick="open_calender()"><span>일정 등록</span></a></li>
+		<li class="nav-item"><a class="nav-link collapsed" href="javascript:;"
+			onclick="eventCheck()"><span>이벤트 삭제</span></a></li>
 	</ul>
 	</nav>
 	

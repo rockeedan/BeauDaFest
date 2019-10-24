@@ -15,4 +15,6 @@ public interface ReservationTableService {
 	public List<ReservationTableVO> selectWeekScheduleList(int shopNum,Date weekStart);
 	public List<newReservationTableVO> event();
 	public int hihi();
+	public boolean deleteTimeSchedule(int shopNum,String addDate,String startTime);
+	public int countTimeSchedule(int shopNum,String addDate, String StartTime);
 }
