@@ -13,15 +13,16 @@
 <!-- Custom fonts for this template-->
 
 
-<link href="resources/vendor/fontawesome-free/css/all.min.css"
+<link href="/beaudafest/resources/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
 
-<link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="/beaudafest/resources/css/sb-admin-2.min.css" rel="stylesheet"> 
 
 	<!-- Content Wrapper -->
+
 	<div id="content-wrapper" class="d-flex flex-column">
 
 		<!-- Main Content -->
@@ -31,9 +32,7 @@
 			<nav
 				class="navbar navbar-expand-md navbar-dark bg-dark topbar mb-4 fixed-top">
 
-
-
-				<a class="navbar-brand" href="#">BEAUDA <img
+				<a class="navbar-brand" href="/beaudafest">BEAUDA <img
 					src="/beaudafest/resources/img/heart.png" width="30" height="30"
 					class="d-inline-block align-top" alt=""> FEST
 				</a>
@@ -125,8 +124,7 @@
 						class="nav-link dropdown-toggle" href="#" id="userDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false"> <span
-							class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie  <!-- username  -->
-								Luna</span> <img class="img-profile rounded-circle"
+							class="mr-2 d-none d-lg-inline text-gray-600 small">${loginId }</span> <img class="img-profile rounded-circle"
 							src="https://source.unsplash.com/QAB-WJcbgJk/60x60"> <!-- username and 프사 -->
 					</a> <!-- Dropdown - User Information -->
 						<div
@@ -139,8 +137,7 @@
 								class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Reservation  <!-- 멤버 예약보기-->
 							</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#" data-toggle="modal"
-								data-target="#logoutModal"> <i
+							<a class="dropdown-item" href="/beaudafest/logout"> <i
 								class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 								Logout
 							</a>
@@ -149,6 +146,9 @@
 				</ul>
 			</nav>
 			<!-- End of Topbar -->
+			</div>
+			</div>
+			
 
 <!-- Bootstrap core JavaScript-->
 <!-- 

@@ -40,10 +40,6 @@ public class ReservationTableDAOImpl implements ReservationTableDAO {
 		return sqlsession.selectList("reservation.selectEvent");
 	}
 	@Override
-	public int hihi() {
-		return sqlsession.selectOne("reservation.hihi");
-	}
-	@Override
 	public int deleteTimeSchedule(Map map) {
 		return sqlsession.delete("deleteTimeSchedule",map);
 	}

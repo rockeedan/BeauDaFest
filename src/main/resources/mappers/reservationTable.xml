@@ -24,9 +24,6 @@
 	select '예약가능' as title, '/beaudafest/reservation/test' as url
 		from timeSchedule
 	</select> -->
-	<select id="hihi" resultType="int">
-	select 1 from dual
-	</select>
 	
 	<insert id="insertTimeSchedule">
 		<foreach collection="start" index="Int" open="INSERT ALL"  close="SELECT * FROM DUAL" separator=" " >

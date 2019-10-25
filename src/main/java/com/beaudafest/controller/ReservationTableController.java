@@ -45,9 +45,6 @@ public class ReservationTableController {
 	
 	@RequestMapping("/insert")
 	public @ResponseBody String insert(int shopNum, String addDate, String open[], String close[]) {
-		System.out.println("샵번호!! : " + shopNum);
-		System.out.println(open[0]);
-		System.out.println(close);
 		if(service.insertTimeSchedule(shopNum, addDate,open,close)) {
 			return "성공!!!!!";
 		}
@@ -96,10 +93,6 @@ public class ReservationTableController {
 	@RequestMapping("/eventTest")
 	public @ResponseBody List<newReservationTableVO> eventTest(){
 		return service.event();
-	}
-	@RequestMapping("/hihi")
-	public @ResponseBody int hihi() {
-		return service.hihi();
 	}
 	@RequestMapping("/eventDelete")
 	public @ResponseBody boolean eventDelete(int shopNum, String addDate, String startTime) {

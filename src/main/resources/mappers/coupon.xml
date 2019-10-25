@@ -3,7 +3,77 @@
 <mapper namespace="coupon">
 	<!-- 상품등록 -->
 	<insert id="addCoupon">
-		insert into shopDesign (designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto)
-		values (design_seq.nextval, 1111, #{designName}, #{designType}, #{designOption}, #{designPrice}, #{designTime}, #{designPhoto})
+		insert into shopDesign (designId, shopNum, designName, designType,
+		designOption, designPrice, designTime, designPhoto)
+		<choose>
+			<when test="designType == '네일' and designOption == '디자인'">
+				values (design_seq.nextval, 1, #{designName},
+				#{designType},
+				'ND'||nailDesign_seq.nextval, #{designPrice},
+				#{designTime},
+				#{designPhoto})
+			</when>
+			<when test="designType == '네일' and designOption == '옵션'">
+				values (design_seq.nextval, 1, #{designName},
+				#{designType},
+				'NO'||nailOption_seq.nextval, #{designPrice},
+				#{designTime},
+				#{designPhoto})
+			</when>
+			<when test="designType == '페디' and designOption == '디자인'">
+				values (design_seq.nextval, 1, #{designName},
+				#{designType},
+				'PD'||pediDesign_seq.nextval, #{designPrice},
+				#{designTime},
+				#{designPhoto})
+			</when>
+			<when test="designType == '페디' and designOption == '옵션'">
+				values (design_seq.nextval, 1, #{designName},
+				#{designType},
+				'PO'||pediOption_seq.nextval, #{designPrice},
+				#{designTime},
+				#{designPhoto})
+			</when>
+			<when test="designType == '속눈썹' and designOption == '디자인'">
+				values (design_seq.nextval, 1, #{designName},
+				#{designType},
+				'LD'||lashDesign_seq.nextval, #{designPrice},
+				#{designTime},
+				#{designPhoto})
+			</when>
+			<otherwise>
+				values (design_seq.nextval, 1, #{designName},
+				#{designType},
+				'LO'||lashOption_seq.nextval, #{designPrice},
+				#{designTime},
+				#{designPhoto})
+			</otherwise>
+		</choose>
 	</insert>
+	<select id="showCoupon" resultType="CouponVO">
+		select designId, designName,
+		designPrice, designTime, designPhoto
+		from shopDesign
+		where shopNum=1
+		order by designId desc
+	</select>
+	<select id="designDetail" resultType="CouponVO">
+		select designId,
+		designName, designPrice, designTime, designPhoto
+		from shopDesign
+		where
+		designId = #{designId}
+	</select>
+	<update id="designUpdate">
+		update shopDesign set designName = #{designName},
+		designPrice = #{designPrice}, designTime = #{designTime}
+		where designId
+		= #{designId}
+	</update>
+	<delete id="designDelete">
+		delete from shopDesign
+		where
+		designId = #{designId}
+	</delete>
+
 </mapper>

@@ -10,4 +10,10 @@ public interface ReservationService {
 	// 예약 생성
 	public List<Map<String, Object>> selectRsvnList(int shopnum);
 
+	// 월별 총 수익, area chart 조회
+	public List<Map<String, Object>> selectMonthlyRsvnProfits(int shopnum);
+
+	// 월별 예약 수, bar chart 조회
+	public List<Map<String, Object>> selectMonthlyRsvnCount(int shopnum);
+
 }

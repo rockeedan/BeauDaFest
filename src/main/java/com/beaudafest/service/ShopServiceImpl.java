@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.beaudafest.domain.CouponVO;
 import com.beaudafest.domain.ShopVO;
 import com.beaudafest.persistence.ShopDAO;
 
@@ -28,14 +29,30 @@ public class ShopServiceImpl implements ShopService{
 
 	//샵 삭제
 	@Override
-	public int deleteShop(Integer shopNum) {
-		return dao.deleteShop(shopNum);
+	public int deleteShop(ShopVO vo) {
+		return dao.deleteShop(vo);
 	}
 
-	//샵 조회
+	//특정 오너의 샵 조회
 	@Override
-	public List<ShopVO> findShop(ShopVO vo) {
-		return dao.findShop(vo);
+	public List<ShopVO> findOwnerShop(ShopVO vo) {
+		return dao.findOwnerShop(vo);
+	}
+
+	@Override
+	public ShopVO findShopOne(ShopVO vo) {
+		return dao.findShopOne(vo);
+	}
+
+	@Override
+	public ShopVO findShopInfo(Integer shopNum) {
+		return dao.findShopInfo(shopNum);
+	}
+
+	@Override
+	public List<CouponVO> couponList(Integer shopNum) {
+		
+		return dao.couponList(shopNum);
 	}
 
 }

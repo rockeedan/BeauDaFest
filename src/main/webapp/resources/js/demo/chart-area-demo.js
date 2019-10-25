@@ -2,6 +2,7 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
+
 function number_format(number, decimals, dec_point, thousands_sep) {
   // *     example: number_format(1234.56, 2, ',', ' ');
   // *     return: '1 234,56'
@@ -27,28 +28,52 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 
+
+var data = {
+	labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+	datasets: [{
+		data: [20000, 15000, 5000, 20000, 0, 15000, 15000, 25000, 20000, 30000, 25000, 40000],
+		label: "Earnings",
+		lineTension: 0.3,
+		backgroundColor: "rgba(78, 115, 223, 0.05)",
+		borderColor: "rgba(78, 115, 223, 1)",
+		pointRadius: 3,
+		pointBackgroundColor: "rgba(78, 115, 223, 1)",
+		pointBorderColor: "rgba(78, 115, 223, 1)",
+		pointHoverRadius: 3,
+		pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+		pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+		pointHitRadius: 10,
+		pointBorderWidth: 2
+	}],
+}
+
+var dataValue = {
+	    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+	    datasets: [{
+	      data: [20000, 15000, 5000, 20000, 0, 15000, 15000, 25000, 20000, 30000, 25000, 40000],
+	      label: "Earnings",
+	      lineTension: 0.3,
+	      backgroundColor: "rgba(78, 115, 223, 0.05)",
+	      borderColor: "rgba(78, 115, 223, 1)",
+	      pointRadius: 3,
+	      pointBackgroundColor: "rgba(78, 115, 223, 1)",
+	      pointBorderColor: "rgba(78, 115, 223, 1)",
+	      pointHoverRadius: 3,
+	      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+	      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+	      pointHitRadius: 10,
+	      pointBorderWidth: 2
+	    }],
+	  }
+
+
 // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
-var myLineChart = new Chart(ctx, {
+		
+var config = {
   type: 'line',
-  data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    datasets: [{
-      label: "Earnings",
-      lineTension: 0.3,
-      backgroundColor: "rgba(78, 115, 223, 0.05)",
-      borderColor: "rgba(78, 115, 223, 1)",
-      pointRadius: 3,
-      pointBackgroundColor: "rgba(78, 115, 223, 1)",
-      pointBorderColor: "rgba(78, 115, 223, 1)",
-      pointHoverRadius: 3,
-      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-      pointHitRadius: 10,
-      pointBorderWidth: 2,
-      data: [0, 40000, 6000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
-    }],
-  },
+  data: dataValue,
   options: {
     maintainAspectRatio: false,
     layout: {
@@ -115,4 +140,27 @@ var myLineChart = new Chart(ctx, {
       }
     }
   }
-});
+}
+
+
+var myAreaChart = new Chart(ctx, config);
+
+$.ajax({
+    url : "myAreaChart",
+    async : false,
+    dataType : "json",
+    success : function(value) {
+    	var dataset = dataValue.datasets;
+		for(var i=0; i<dataset.length; i++){
+			//데이터 갯수 만큼 반복
+			var data = dataset[i].data;
+			for(var j=0 ; j < data.length ; j++){
+				data[j] = value[j]
+			}
+		}
+		myAreaChart.update();	//차트 업데이트
+    	
+    }
+})
+
+

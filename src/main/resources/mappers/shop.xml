@@ -10,24 +10,40 @@
 	<!-- 샵 정보 수정 -->
 	<update id="modifyShopInfo">
 		update shopInfo 
-		set shopName=#{shopName}, shopPhone=#{shopPhone}, shopAddr=#{shopAddr}, shopOpen=#{shopOpen}, shopClose=#{shopClose}, shopOff=#{shopOff}
-			, shopPhoto=#{shopPhoto}, shopIntro=#{shopIntro}, shopParking=#{shopParking}, shopPolicy=#{shopPolicy}
-		where shopNum=#{shopNum}
+		set shopOpen=#{shopOpen}, shopClose=#{shopClose}, shopOff=#{shopOff}, shopIntro=#{shopIntro}, shopParking=#{shopParking}, shopPolicy=#{shopPolicy}
+		<if test="shopPhoto!=null">
+			,shopPhoto=#{shopPhoto}
+		</if>
+		where shopNum=#{shopNum} and memberId=#{memberId}
 	</update>
 	
 	<!-- 샵 삭제 -->
 	<delete id="deleteShop">
 		delete from shopInfo
-		where shopNum=#{shopNum}
+		where shopNum=#{shopNum} and memberId=#{memberId}
 	</delete>
 	
-	<!-- 샵 조회 -->
-	<select id="findShop" resultType="ShopVO">
+	<!-- 오너 아이디로 샵리스트 혹은 샵 한개 조회 -->
+	<select id="findOwnerShop" resultType="ShopVO">
 		select shopNum, memberId, shopName, shopPhone, shopAddr, shopOpen, shopClose, shopOff, shopPhoto, shopIntro, shopParking, shopPolicy
 		from shopInfo
 		where memberId=#{memberId}
 		<if test="shopNum != null">
 			and shopNum=#{shopNum}
 		</if>
+	</select>
+	
+	<!-- 샵번호로 샵정보 조회 -->
+	<select id="findShopInfo" resultType="ShopVO">
+		select shopNum, memberId, shopName, shopPhone, shopAddr, shopOpen, shopClose, shopOff, shopPhoto, shopIntro, shopParking, shopPolicy
+		from shopInfo
+		where shopNum=#{shopNum}
+	</select>
+	<select id="couponList" resultType="couponVO">
+		select shopInfo.shopName, shopInfo.shopIntro, shopDesign.shopNum, shopDesign.designId, shopDesign.designName, shopDesign.designTime, shopDesign.designPrice, shopDesign.designPhoto
+		from shopDesign inner join shopInfo
+		on shopDesign.shopNum = shopInfo.shopNum
+		where shopDesign.shopNum = #{shopNum}
+		order by shopDesign.designId desc
 	</select>
 </mapper>

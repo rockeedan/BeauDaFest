@@ -5,6 +5,7 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import oracle.jdbc.proxy.annotation.Post;
@@ -58,5 +59,16 @@ public class SearchController {
 		return "shop/shopRegister";
 	}
 
+	
+	
+	@RequestMapping("/shopInfo")
+	public String shopInfo () {
+		return "shopInfo/shopInfo";
+	}
+	
+	@GetMapping("/shopModify")
+	public String shopModify () {
+		return "shopInfo/modifyShopInfo";
+	}
 	
 }

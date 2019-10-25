@@ -119,10 +119,6 @@ public class ReservationTableServiceImpl implements ReservationTableService{
 	}
 	
 	@Override
-	public int hihi() {
-		return dao.hihi();
-	}
-	@Override
 	public boolean deleteTimeSchedule(int shopNum, String addDate, String startTime) {
 		Map<String,Object> map = new HashMap<>();
 		map.put("shopNum",shopNum);
