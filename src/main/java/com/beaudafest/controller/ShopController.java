@@ -89,6 +89,8 @@ public class ShopController {
 	@GetMapping("/shopDetail/{shopNum}")
 	public String findShopInfo(@PathVariable("shopNum") Integer shopNum, Model m) {
 		m.addAttribute("shopInfo", shopService.findShopInfo(shopNum));
+		
+		//본인 샵일땐 return "redirect:/owner/modifyShop/"+shopNum;
 		return "shopInfo/shopInfo"; // 조회 페이지
 	}
 
