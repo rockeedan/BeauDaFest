@@ -53,5 +53,17 @@ public class ReservationServiceImpl implements ReservationService{
 	public List<Map<String, Object>> selectMonthlyRsvnCount(int shopnum) {
 		return dao.selectMonthlyRsvnCount(shopnum);
 	}
+
+	//사용자 예약 리스트 조회
+	@Override
+	public List<Map<String, Object>> selectUserRsvnList(String memberId) {
+		return dao.selectUserRsvnList(memberId);
+	}
+
+	//사용자 예약 히스토리 조회
+	@Override
+	public List<Map<String, Object>> selectUserRsvnHistory(String memberId) {
+		return dao.selectUserRsvnHistory(memberId);
+	}
 	
 }

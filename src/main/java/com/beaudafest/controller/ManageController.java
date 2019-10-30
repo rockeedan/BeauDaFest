@@ -1,6 +1,5 @@
 package com.beaudafest.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -26,30 +26,41 @@ public class ManageController {
 	@Autowired
 	ShopService shopService;
 
+	
+	int shopNum = 0;
+	
 	@RequestMapping("/shopManage")
-	public String manage() {
+	public String manage(Model m) {
+		
+		// 세션 아이디
+		//String loginId = (String) session.getAttribute("loginId");
+		String loginId = "juwon";
+		
+		ShopVO shop = new ShopVO();
+		shop.setMemberId(loginId);
+		
+		m.addAttribute("shopList", shopService.findShop(shop));
 		return "shop/rsvnManage";
 	}
+	
+	
+	
 
-	@RequestMapping("/tables")
-	public String showtable(Model m, HttpSession session) {
+	@GetMapping("/tables/{shopNum}")
+	public String showtable(Model m, HttpSession session, @PathVariable("shopNum") Integer shopNum) {
 
 		// 세션 아이디
-		// String loginId = (String) session.getAttribute("loginId");
-		String loginId = "hana1";
-
-		// 세션 샵넘버
-		// int shopNum = session.getAttribute("shopNum");
-		int shopNum = 1111;
-
+		//String loginId = (String) session.getAttribute("loginId");
+		String loginId = "juwon";
+		
+		//검색하기위한 vo생성
 		ShopVO shop = new ShopVO();
 		shop.setMemberId(loginId);
 		shop.setShopNum(shopNum);
 
-		List<Map<String, Object>> list = reservationService.selectRsvnList(1111);
+		List<Map<String, Object>> list = reservationService.selectRsvnList(shopNum);
 		shop = shopService.findShopOne(shop);
 
-		System.out.println(shop);
 		m.addAttribute("list", list);// 샵11111 예약정보
 		m.addAttribute("shop", shop); // 샵1111 정보
 
@@ -57,10 +68,9 @@ public class ManageController {
 
 	}
 
-	@RequestMapping("/charts")
-	public String showcharts() {
-
-	
+	@RequestMapping("/charts/{shopNum}")
+	public String showcharts(@PathVariable("shopNum") Integer shopNum) {
+		this.shopNum = shopNum;
 		return "shop/charts";
 	}
 
@@ -69,9 +79,8 @@ public class ManageController {
 	@RequestMapping(value = "/myAreaChart")
 	public @ResponseBody int[] showAreacharts() {
 
-		// 세션 샵넘버
-		// int shopNum = session.getAttribute("shopNum");
-		int shopNum = 1111;
+		//샵넘버
+		int shopNum = this.shopNum;
 
 		//월별 총 수익 조회
 		List<Map<String, Object>> list = reservationService.selectMonthlyRsvnProfits(shopNum);
@@ -100,7 +109,7 @@ public class ManageController {
 
 		// 세션 샵넘버
 		// int shopNum = session.getAttribute("shopNum");
-		int shopNum = 1111;
+		int shopNum = 1;
 
 		//월별 예약 수 조회
 		List<Map<String, Object>> list = reservationService.selectMonthlyRsvnCount(shopNum);
@@ -118,8 +127,6 @@ public class ManageController {
 						Integer.parseInt(String.valueOf(list.get(9).get("CNT"))),
 						Integer.parseInt(String.valueOf(list.get(10).get("CNT"))),
 						Integer.parseInt(String.valueOf(list.get(11).get("CNT")))};
-		
-		
 		return value;
 
 	}

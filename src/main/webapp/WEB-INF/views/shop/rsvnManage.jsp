@@ -38,11 +38,10 @@
 
 <script src="/beaudafest/resources/js/jquery-3.js"></script>
 <script type="text/javascript">
-function open_url(type, url, data, target) {
+function open_url(type, url,target) {
 	$.ajax({
 		type : type,
 		url : url,
-		data : data,
 		success : function(data) {
 			$("#" + target).html(data);
 		}
@@ -349,28 +348,38 @@ $(function(){
 				<!-- Divider -->
 				<hr class="sidebar-divider">
 				<!-- Heading -->
-				<div class="sidebar-heading">Dashboard</div>
+				<div class="sidebar-heading">SHOP LIST</div>
 				<!-- Nav Item - Pages Collapse Menu -->
-				<li class="nav-item"><a class="nav-link collapsed" href="#"
-					data-toggle="collapse" data-target="#collapseTwo"
+				
+				<c:forEach items="${shopList }" var="shopList">
+				<!-- 샵 목록 -->
+				<li class="nav-item">
+				
+				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo${shopList.shopNum}"
 					aria-expanded="true" aria-controls="collapseTwo"> 
 					
-				<i class="fas fa-fw fa-cog"></i> <span>Chart</span>
+					<i class="fas fa-fw fa-cog"></i> 
+					<span>${shopList.shopName}</span>
 				</a>
-				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+				
+				<div id="collapseTwo${shopList.shopNum}" class="collapse" aria-labelledby="headingTwo"
 						data-parent="#accordionSidebar">
-
-
 						<div class="bg-white py-2 collapse-inner rounded">
 							<h6 class="collapse-header">차트보기</h6>
 							<a class="collapse-item" href="javascript:;"
-								onClick="open_url('get', 'tables','','contentDiv')">RESERVATIONS</a>
+								onClick="open_url('get', 'tables/${shopList.shopNum}','contentDiv')">RESERVATIONS</a>
 							<a class="collapse-item" href="javascript:;"
-								onClick="open_url('get', 'charts','','contentDiv')"> REVENUE</a>
+								onClick="open_url('get', 'charts/${shopList.shopNum}','contentDiv')"> REVENUE</a>
 						</div>
+
 					</div></li>
 				<li class="nav-item"><a class="nav-link collapsed" href="javascript:;"
 					onclick="open_calender()"><span>일정 등록</span></a></li>
+
+				</div>
+				</li>
+				</c:forEach>
+				
 			</ul>
 		</nav>
 
@@ -380,7 +389,6 @@ $(function(){
 		<div>
 			<div id="contentDiv"></div>
 		</div>
-
 		</main>
 	</div>
 	<div class="modal fade" id="myModal">
