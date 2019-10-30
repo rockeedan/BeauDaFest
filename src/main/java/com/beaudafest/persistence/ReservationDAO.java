@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.apache.ibatis.annotations.Param;
 
 
-@Repository
+
 public interface ReservationDAO {
 	
 	//예약 리스트 조회

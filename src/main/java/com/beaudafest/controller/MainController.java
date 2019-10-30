@@ -19,7 +19,7 @@ public class MainController {
 	MemberService memberService;
 
 	// 메인 페이지로 이동
-	@GetMapping("/mainmain")
+	@GetMapping("/")
 	public String mainPage() {
 		return "main/searchAvailability";// 메인페이지
 	}

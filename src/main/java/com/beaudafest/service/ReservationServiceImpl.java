@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.omg.CORBA.TRANSACTION_ROLLEDBACK;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Propagation;
@@ -19,7 +20,7 @@ import com.beaudafest.persistence.ReservationDAO;
 @Service
 public class ReservationServiceImpl implements ReservationService{
 
-	@Inject
+	@Autowired
 	ReservationDAO dao;
 	
 	@Transactional(propagation = Propagation.REQUIRES_NEW)

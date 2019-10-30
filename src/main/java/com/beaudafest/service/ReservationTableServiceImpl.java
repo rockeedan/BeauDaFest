@@ -16,12 +16,13 @@ import javax.xml.bind.ParseConversionEvent;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.beaudafest.domain.ReservationTableVO;
 import com.beaudafest.domain.newReservationTableVO;
 import com.beaudafest.persistence.ReservationTableDAO;
 
-@Repository
+@Service
 public class ReservationTableServiceImpl implements ReservationTableService{
 	
 	@Autowired
