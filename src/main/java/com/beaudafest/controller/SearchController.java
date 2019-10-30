@@ -71,4 +71,9 @@ public class SearchController {
 		return "shopInfo/modifyShopInfo";
 	}
 	
+	@RequestMapping("/review")
+	public String review () {
+		return "shopInfo/review";
+	}
+	
 }
