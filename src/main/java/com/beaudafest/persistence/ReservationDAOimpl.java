@@ -32,4 +32,16 @@ public class ReservationDAOimpl implements ReservationDAO {
 		return sqlSession.selectList("reservation.selectMonthlyRsvnCount", shopnum);
 	}
 
+	//사용자 예약 리스트 조회
+	@Override
+	public List<Map<String, Object>> selectUserRsvnList(String memberId) {
+		return sqlSession.selectList("reservation.selectUserRsvnList", memberId);
+	}
+
+	//사용자 예약 히스토리 조회
+	@Override
+	public List<Map<String, Object>> selectUserRsvnHistory(String memberId) {
+		return sqlSession.selectList("reservation.selectUserRsvnHistory", memberId);
+	}
+
 }
