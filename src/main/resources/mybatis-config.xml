@@ -4,5 +4,8 @@
 	<typeAliases>
 		<package name="com.beaudafest.domain"/>
 	</typeAliases>
+	<typeHandlers>
+		<typeHandler handler="com.beaudafest.handler.CustomDateHandler" javaType="java.util.Date" jdbcType="DATE"/>
+	</typeHandlers>
 </configuration>
 

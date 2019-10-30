@@ -74,6 +74,7 @@
 									<div class="form-group">
 										<span class="form-label">Time</span> <input
 											class="form-control" type="time" required name="time">
+>>>>>>> 611b0761c034247d790a8246e73bf02771fa0d3b
 									</div>
 	======= -->
 							<input type="date" aria-label="searchDate" class="form-control" name="date">
@@ -95,7 +96,6 @@
 		<div class="bg-circle-3 bg-circle"></div>
 		<div class="bg-circle-4 bg-circle"></div>
 	</header>
-
 	<section>
 		<div class="container">
 			<div class="row align-items-center">

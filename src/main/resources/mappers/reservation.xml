@@ -88,4 +88,12 @@
 	</select>
 	
 	
+	<!-- 예약 생성시 시간 닫기 -->
+	<update id="createSchedule">
+		<![CDATA[
+			update timeSchedule set arranged=0 where shopNum=#{shopNum} and
+			(startTime between to_date(#{startTime},'yyyy-mm--dd hh24:mi') and to_date(#{endTime},'yyyy-mm--dd hh24:mi'))
+			and arranged=1
+		]]>
+	</update>
 </mapper>
