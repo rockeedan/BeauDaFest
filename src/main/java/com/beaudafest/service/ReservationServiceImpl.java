@@ -3,7 +3,9 @@ package com.beaudafest.service;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -17,7 +19,7 @@ import com.beaudafest.persistence.ReservationDAO;
 @Service
 public class ReservationServiceImpl implements ReservationService{
 
-	@Inject
+	@Autowired
 	ReservationDAO dao;
 	
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
