@@ -67,6 +67,3 @@ values(4, 'gosolb', 2, 4, sysdate, TO_DATE('2019-10-10 14:00','YYYY-MM-DD HH24:M
 
 insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2)
 values(5, 'gosolb', 1, 1, sysdate, TO_DATE('2019-11-10 15:00','YYYY-MM-DD HH24:MI'), 90, 7);
-
-insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2)
-values(5, 'gosolb', 1, 1, sysdate, TO_DATE('2019-12-10 15:00','YYYY-MM-DD HH24:MI'), 90, 7);
