@@ -39,7 +39,7 @@ public class ManageController {
 		ShopVO shop = new ShopVO();
 		shop.setMemberId(loginId);
 		
-		m.addAttribute("shopList", shopService.findShop(shop));
+		m.addAttribute("shopList", shopService.findOwnerShop(shop));
 		return "shop/rsvnManage";
 	}
 	

@@ -334,9 +334,7 @@ $(function(){
 	<br>
 	<div class="row">
 		<nav class="col-md-2 d-none d-md-block bg-light sidebar">
-			<ul
-				class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-				id="accordionSidebar">
+			<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 				<!-- Divider -->
 				<hr class="sidebar-divider my-0">
@@ -351,15 +349,15 @@ $(function(){
 				<div class="sidebar-heading">SHOP LIST</div>
 				<!-- Nav Item - Pages Collapse Menu -->
 				
-				<c:forEach items="${shopList }" var="shopList">
+
 				<!-- 샵 목록 -->
+				<c:forEach items="${shopList }" var="shopList">
 				<li class="nav-item">
 				
 				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo${shopList.shopNum}"
 					aria-expanded="true" aria-controls="collapseTwo"> 
 					
-					<i class="fas fa-fw fa-cog"></i> 
-					<span>${shopList.shopName}</span>
+					<i class="fas fa-fw fa-cog"></i>  <span>${shopList.shopName}</span>
 				</a>
 				
 				<div id="collapseTwo${shopList.shopNum}" class="collapse" aria-labelledby="headingTwo"
@@ -372,16 +370,18 @@ $(function(){
 								onClick="open_url('get', 'charts/${shopList.shopNum}','contentDiv')"> REVENUE</a>
 						</div>
 
-					</div></li>
-				<li class="nav-item"><a class="nav-link collapsed" href="javascript:;"
-					onclick="open_calender()"><span>일정 등록</span></a></li>
-
-				</div>
+					</div>
 				</li>
+				
 				</c:forEach>
+				
+				<li class="nav-item">
+				<a class="nav-link collapsed" href="javascript:;" onclick="open_calender()"><span>일정 등록</span></a></li>
+				
 				
 			</ul>
 		</nav>
+
 
 		<main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4">
 		<br>
