@@ -85,7 +85,8 @@
 		var files = '';
 
 		//파일 선택했을 때 (shop사진 고르고 확인)
-		$('#inputGroupFile01').on("change",function() {
+		$('.custom-file-input').on("change",function() {
+			$('.uploadResult ul').html('');
 			var inputFile = $("#inputGroupFile01");
 			files = inputFile[0].files;
 			fileCnt = files.length;
@@ -95,16 +96,17 @@
 				fileCnt -= files.length;
 				return false;
 			}
-			$('.uploadResult ul').html('');
+			
 			
 			for (var i = 0; i < files.length; i++) {
 				if (!checkExtension(files[i].name, files[i].size)) {
-					$('.uploadResult ul').html('');
+					//$('.uploadResult ul').html('');
 					return false;
 				}
 				$('.uploadResult ul').append('<li><span>'+ files[i].name + '</span> <a style="cursor:pointer" class="fas fa-times"></a></li>');
 				formData.append(files[i].name, files[i]);
 			}
+			$(".custom-file-input").val("");
 		});
 
 

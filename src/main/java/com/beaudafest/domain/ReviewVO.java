@@ -3,6 +3,7 @@ package com.beaudafest.domain;
 public class ReviewVO {
 	private Integer reviewNum;
 	private String memberId;
+	private String memberName;
 	private Integer shopNum;
 	private Integer reviewScore;
 	private String reviewComment;
@@ -13,11 +14,12 @@ public class ReviewVO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ReviewVO(Integer reviewNum, String memberId, Integer shopNum, Integer reviewScore, String reviewComment,
+	public ReviewVO(Integer reviewNum, String memberId, String memberName, Integer shopNum, Integer reviewScore, String reviewComment,
 			Integer reviewDepth, Integer reviewGroup) {
 		super();
 		this.reviewNum = reviewNum;
 		this.memberId = memberId;
+		this.memberName = memberName;
 		this.shopNum = shopNum;
 		this.reviewScore = reviewScore;
 		this.reviewComment = reviewComment;
@@ -36,6 +38,12 @@ public class ReviewVO {
 	}
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
+	}
+	public String getMemberName() {
+		return memberName;
+	}
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
 	public Integer getShopNum() {
 		return shopNum;
@@ -67,10 +75,11 @@ public class ReviewVO {
 	public void setReviewGroup(Integer reviewGroup) {
 		this.reviewGroup = reviewGroup;
 	}
+	
 
 	@Override
 	public String toString() {
-		return "ReviewVO [reviewNum=" + reviewNum + ", memberId=" + memberId + ", shopNum=" + shopNum + ", reviewScore="
+		return "ReviewVO [reviewNum=" + reviewNum + ", memberId=" + memberId + ", memberName=" + memberName + ", shopNum=" + shopNum + ", reviewScore="
 				+ reviewScore + ", reviewComment=" + reviewComment + ", reviewDepth=" + reviewDepth + ", reviewGroup="
 				+ reviewGroup + "]";
 	}
