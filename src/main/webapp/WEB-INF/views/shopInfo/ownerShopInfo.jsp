@@ -74,7 +74,9 @@
 			<nav class="nav d-flex justify-content-between">
 				<a class="p-2 text-muted" href="${ownerShopInfo.get(0).shopNum}">INFO</a> <a
 					class="p-2 text-muted" href="#">COUPON</a> <a
-					class="p-2 text-muted" href="#">REVIEW</a>
+					class="p-2 text-muted" href="#">REVIEW</a> <a
+					class="p-2 text-muted" href="#">AVAILABILITY</a> <a
+					class="p-2 text-muted" href="#">RESERVATION</a>
 			</nav>
 		</div>
 		<hr>
