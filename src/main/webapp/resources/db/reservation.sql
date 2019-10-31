@@ -12,13 +12,16 @@ CREATE TABLE reservation (
 	bookingDate	DATE	NOT NULL,			-- 예약 날짜 
 	rsvnDate	DATE	NOT NULL,			-- 시술 일시 
 	rsvnTime	NUMBER	NOT NULL,			-- 시술 시간
-	designId2	NUMBER						-- 옵션 아이디 
+	designId2	NUMBER,						-- 옵션 아이디
+	--rsvnstatus	NUMBER						-- 예약 상태(0: 확정,1: 취소, 2: 노쇼)
 );
 
 
  --off없음 / off있음 (본샵) / off있음 (다른샵) off(첫오프) off(다른 지점) 
 
-
+--예약상태(
+ALTER TABLE reservation ADD(rsvnstatus NUMBER);
+update RESERVATION set rsvnstatus = 0;
 
 ALTER TABLE reservation	ADD CONSTRAINT reservation PRIMARY KEY(rsvnNum);
 
