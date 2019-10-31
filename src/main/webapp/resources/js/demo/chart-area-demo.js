@@ -125,7 +125,6 @@ var config = {
 
 
 var myAreaChart = new Chart(ctx, config);
-
 $.ajax({
     url : "myAreaChart",
     async : false,

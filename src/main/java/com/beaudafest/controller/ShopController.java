@@ -4,7 +4,9 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.beaudafest.domain.CouponVO;
 import com.beaudafest.domain.ShopVO;
 import com.beaudafest.service.ShopService;
 
@@ -190,7 +193,7 @@ public class ShopController {
 		return "redirect:/owner/shopList";
 	}
 
-	@GetMapping("/couponList/{shopNum}")
+	@GetMapping("/couponList/{shopNum}") //상품 리스트 보여주기 
 	public String couponList(@PathVariable("shopNum") Integer shopNum, Model m) {
 		
 		m.addAttribute("couponList",shopService.couponList(shopNum));
@@ -200,6 +203,24 @@ public class ShopController {
 		}
 		m.addAttribute("photoList", photoList);
 		return "shopInfo/couponList";
+	}
+	
+	@PostMapping("/addOption/{shopNum}")
+	public String addOption (@PathVariable("shopNum") Integer shopNum, CouponVO vo, Model m ) {
+			
+		String type = vo.getDesignOption().substring(0,1); 
+		Map<String, Object> map = new HashMap<>();
+		map.put("shopNum", shopNum);
+		map.put("designOption", type);
+		
+		String [] selectedPhoto = shopService.selectedDesign(vo.getDesignId()).split("\\|"); //첫번째 이미지 추출 
+		m.addAttribute("designName", vo.getDesignName()); //디자인이름 
+		m.addAttribute("designPrice", vo.getDesignPrice()); //디자인가격
+		m.addAttribute("designTime", vo.getDesignTime());  //디자인시간
+		m.addAttribute("addOption",shopService.addOption(map)); //옵션 
+		m.addAttribute("selectedPhoto", selectedPhoto[0]); //디자인사진 (첫번쨰) 
+		
+		return "reservation/addOption";
 	}
 	
 	private String getFolder() {//오늘 날짜의 경로를 문자열로 생성

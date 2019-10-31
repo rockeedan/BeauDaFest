@@ -58,7 +58,7 @@
 		order by designId desc
 	</select>
 	<select id="designDetail" resultType="CouponVO">
-		select designId,
+		select designId, designOption,
 		designName, designPrice, designTime, designPhoto
 		from shopDesign
 		where

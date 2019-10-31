@@ -1,6 +1,7 @@
 package com.beaudafest.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,5 +55,19 @@ public class ShopServiceImpl implements ShopService{
 		
 		return dao.couponList(shopNum);
 	}
+
+	@Override
+	public List<CouponVO> addOption(Map<String, Object> map) {
+		
+		return dao.addOption(map);
+	}
+
+	@Override
+	public String selectedDesign(int designId) {
+		
+		return dao.selectedDesign(designId);
+	}
+
+	
 
 }
