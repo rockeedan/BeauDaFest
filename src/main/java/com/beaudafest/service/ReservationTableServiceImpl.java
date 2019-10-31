@@ -115,8 +115,8 @@ public class ReservationTableServiceImpl implements ReservationTableService{
 	}
 	
 	@Override
-	public List<newReservationTableVO> event() {
-		return dao.event();
+	public List<newReservationTableVO> event(int shopNum) {
+		return dao.event(shopNum);
 	}
 	
 	@Override
@@ -141,5 +141,12 @@ public class ReservationTableServiceImpl implements ReservationTableService{
 		map.put("addDate",addDate);
 		map.put("startTime",startTime);
 		return dao.countTimeSchedule(map);
+	}
+	@Override
+	public List<newReservationTableVO> reservationEvent(int shopNum, int rsvnTime) {
+		Map<String,Object> map = new HashMap<>();
+		map.put("shopNum",shopNum);
+		map.put("rsvnTime",rsvnTime);
+		return dao.reservationEvent(map);
 	}
 }

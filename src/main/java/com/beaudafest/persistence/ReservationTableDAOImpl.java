@@ -36,19 +36,23 @@ public class ReservationTableDAOImpl implements ReservationTableDAO {
 		return sqlsession.selectList("reservation.selectWeekScheduleList", map);
 	}
 	@Override
-	public List<newReservationTableVO> event() {
-		return sqlsession.selectList("reservation.selectEvent");
+	public List<newReservationTableVO> event(int shopNum) {
+		return sqlsession.selectList("reservation.selectEvent",shopNum);
 	}
 	@Override
 	public int deleteTimeSchedule(Map map) {
-		return sqlsession.delete("deleteTimeSchedule",map);
+		return sqlsession.delete("reservation.deleteTimeSchedule",map);
 	}
 	@Override
 	public int countTimeSchedule(Map map) {
-		return sqlsession.selectOne("countTimeSchedule",map);
+		return sqlsession.selectOne("reservation.countTimeSchedule",map);
 	}
 	@Override
 	public int deleteMonthSchedule(Map map) {
-		return sqlsession.selectOne("deleteMonthSchedule",map);
+		return sqlsession.selectOne("reservation.deleteMonthSchedule",map);
+	}
+	@Override
+	public List<newReservationTableVO> reservationEvent(Map map) {
+		return sqlsession.selectList("reservation.selectReservationSchedule",map);
 	}
 }
