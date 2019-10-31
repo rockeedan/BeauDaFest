@@ -15,7 +15,7 @@ import com.beaudafest.service.ReservationService;
 import com.beaudafest.service.ShopService;
 
 @Controller
-public class myPageController {
+public class MyPageController {
 
 	@Autowired
 	ReservationService reservationService;
@@ -29,22 +29,16 @@ public class myPageController {
 		return "shop/myPage";
 	}
 	
-	@GetMapping("/myReservation")
+	@RequestMapping("/myReservation")
 	public String showtable(Model m, HttpSession session) {
 
 		// 세션 아이디
 		//String loginId = (String) session.getAttribute("loginId");
 		String loginId = "gosolb";
 		
-		List<Map<String, Object>> list = reservationService.selectUserRsvnList(loginId);
-		List<Map<String, Object>> history = reservationService.selectUserRsvnHistory(loginId);
-		System.out.println(list);
-		System.out.println(history);
-		
-		
 		m.addAttribute("loginId", loginId);
-		m.addAttribute("list", list);
-		m.addAttribute("history", history);
+		m.addAttribute("list", reservationService.selectUserRsvnList(loginId));
+		m.addAttribute("history", reservationService.selectUserRsvnHistory(loginId));
 		return "shop/myReservation";
 
 	}
