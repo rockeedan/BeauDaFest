@@ -110,6 +110,7 @@
 				type : 'POST',
 				success: function(){
 					location.reload()
+					
 				}
 
 			})
@@ -181,6 +182,16 @@
 		})
 		
 	})
+	
+	$("#addMore").on("click", function(){ //초기화하기
+		$("#addName").val("") //쿠폰이름 
+		 $("#addTime option:selected").val("") //시술시간 
+		$("#addPrice").val("") //시술가격 
+		 $("#addType option:selected").val("") //네일,페디,속눈썹선택 
+		$("#addOption").val("") //디자인 or 단순 시술
+		$(".custom-file-input").val("");
+		$('.uploadResult ul').html('');
+		})
 	})//ready
 </script>
 </head>
@@ -371,7 +382,7 @@
 		<!-- 샵주인 로그인 시 버튼 활성화 (상품등록가능)  -->
 		<p class="text-center">
 			<a href="#" class="btn btn-outline-danger my-2" data-toggle="modal"
-				data-target="#exampleModalCenter">Add More</a>
+				data-target="#exampleModalCenter" id="addMore">Add More</a>
 		</p>
 
 

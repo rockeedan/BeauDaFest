@@ -3,47 +3,90 @@
 <mapper namespace="shop">
 	<!-- 샵 등록 -->
 	<insert id="shopJoin">
-		insert into shopInfo(shopNum, memberId, shopName, shopPhone, shopAddr, shopOpen, shopClose,shopOff, shopPhoto, shopIntro, shopParking, shopPolicy)
-		values (shopInfo_seq.nextval,#{memberId},#{shopName},#{shopPhone},#{shopAddr},#{shopOpen},#{shopClose},#{shopOff},#{shopPhoto},#{shopIntro},#{shopParking},#{shopPolicy})
+		insert into shopInfo(shopNum, memberId, shopName,
+		shopPhone, shopAddr, shopOpen, shopClose,shopOff, shopPhoto,
+		shopIntro, shopParking, shopPolicy)
+		values
+		(shopInfo_seq.nextval,#{memberId},#{shopName},#{shopPhone},#{shopAddr},#{shopOpen},#{shopClose},#{shopOff},#{shopPhoto},#{shopIntro},#{shopParking},#{shopPolicy})
 	</insert>
-	
+
 	<!-- 샵 정보 수정 -->
 	<update id="modifyShopInfo">
-		update shopInfo 
-		set shopOpen=#{shopOpen}, shopClose=#{shopClose}, shopOff=#{shopOff}, shopIntro=#{shopIntro}, shopParking=#{shopParking}, shopPolicy=#{shopPolicy}
+		update shopInfo
+		set shopOpen=#{shopOpen}, shopClose=#{shopClose}, shopOff=#{shopOff},
+		shopIntro=#{shopIntro}, shopParking=#{shopParking},
+		shopPolicy=#{shopPolicy}
 		<if test="shopPhoto!=null">
 			,shopPhoto=#{shopPhoto}
 		</if>
 		where shopNum=#{shopNum} and memberId=#{memberId}
 	</update>
-	
+
 	<!-- 샵 삭제 -->
 	<delete id="deleteShop">
 		delete from shopInfo
-		where shopNum=#{shopNum} and memberId=#{memberId}
+		where shopNum=#{shopNum} and
+		memberId=#{memberId}
 	</delete>
-	
+
 	<!-- 오너 아이디로 샵리스트 혹은 샵 한개 조회 -->
 	<select id="findOwnerShop" resultType="ShopVO">
-		select shopNum, memberId, shopName, shopPhone, shopAddr, shopOpen, shopClose, shopOff, shopPhoto, shopIntro, shopParking, shopPolicy
-		from shopInfo
+		select shopNum, memberId, shopName, shopPhone, shopAddr, shopOpen,
+		shopClose, shopOff, shopPhoto, shopIntro, shopParking, shopPolicy
+		from
+		shopInfo
 		where memberId=#{memberId}
 		<if test="shopNum != null">
 			and shopNum=#{shopNum}
 		</if>
 	</select>
-	
+
 	<!-- 샵번호로 샵정보 조회 -->
 	<select id="findShopInfo" resultType="ShopVO">
-		select shopNum, memberId, shopName, shopPhone, shopAddr, shopOpen, shopClose, shopOff, shopPhoto, shopIntro, shopParking, shopPolicy
+		select shopNum, memberId,
+		shopName, shopPhone, shopAddr, shopOpen, shopClose, shopOff,
+		shopPhoto, shopIntro, shopParking, shopPolicy
 		from shopInfo
-		where shopNum=#{shopNum}
+		where
+		shopNum=#{shopNum}
 	</select>
 	<select id="couponList" resultType="couponVO">
-		select shopInfo.shopName, shopInfo.shopIntro, shopDesign.shopNum, shopDesign.designId, shopDesign.designName, shopDesign.designTime, shopDesign.designPrice, shopDesign.designPhoto
+		select shopInfo.shopName,
+		shopInfo.shopIntro, shopDesign.shopNum, shopDesign.designId,
+		shopDesign.designName, shopDesign.designTime, shopDesign.designPrice,
+		shopDesign.designPhoto
 		from shopDesign inner join shopInfo
-		on shopDesign.shopNum = shopInfo.shopNum
-		where shopDesign.shopNum = #{shopNum}
+		on
+		shopDesign.shopNum = shopInfo.shopNum
+		where shopDesign.shopNum =
+		#{shopNum}
 		order by shopDesign.designId desc
+	</select>
+	<select id="addOption" resultType="CouponVO">
+		<choose>
+			<when test="designOption == N">
+				select designName, designTime, designPrice
+				from shopDesign
+				where shopNum = #{shopNum} and designOption like 'NO'||'%'
+				
+			</when>
+			<when test="designOption == P">
+				select designName, designTime, designPrice
+				from shopDesign
+				where shopNum = #{shopNum} and designOption like 'PO'||'%'
+				
+			</when>
+			<otherwise>
+				select designName, designTime, designPrice
+				from shopDesign
+				where shopNum = #{shopNum} and designOption like 'LO'||'%'
+			</otherwise>
+		</choose>
+
+	</select>
+	<select id="selectedDesign" resultType="String">
+		select designPhoto
+		from shopDesign
+		where designId = #{designId}
 	</select>
 </mapper>

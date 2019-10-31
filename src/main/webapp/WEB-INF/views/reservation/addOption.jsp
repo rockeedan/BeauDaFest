@@ -1,16 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="canonical"
-	href="https://getbootstrap.com/docs/4.3/examples/blog/">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
 
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
 
@@ -37,69 +40,88 @@
 
 </head>
 <body>
-	<div>
-		<%@ include file="../include/nav.jsp"%>
-	</div>
-	<br><br><br>
+	<c:choose>
+		<c:when test="${memberStatus eq null}">
+			<%@ include file="../include/nav.jsp"%>
+		</c:when>
+		<c:when test="${memberStatus eq 0}">
+			<%-- 일반회원일때 --%>
+			<%@ include file="../include/memberNav.jsp"%>
+		</c:when>
+		<c:when test="${memberStatus eq 1}">
+			<%-- 오너회원일때 --%>
+			<%@ include file="../include/ownerNav.jsp"%>
+		</c:when>
+		<c:otherwise>
+			<%-- 회원이아닐때 (로그인X) --%>
+			<%@ include file="../include/nav.jsp"%>
+		</c:otherwise>
+	</c:choose>
+	<br>
+	<br>
+	<br>
 	<div class="container">
-		<section class="jumbotron text-center"  style="background-color: #fbceb1">
+		<section class="jumbotron text-center"
+			style="background-color: #fbceb1">
 			<div class="container">
 				<h1 class="jumbotron-heading">NAMDAREUM</h1>
 				<p class="lead text-muted">최고의 디자인이 어쩌고 블라 샵 코멘트</p>
 
 			</div>
 		</section>
-		<div class="row mb-2">
-			<div class="col-md-6">
-				<div
-					class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-					<div class="col p-4 d-flex flex-column position-static">
-						<strong class="d-inline-block mb-2 text-primary">DESIGN</strong>
-						<h3 class="mb-0">디자인이름</h3> <%--선택한 디자인 이름 --%>
-						<div class="mb-1 text-muted">가격</div>  <%--선택한 디자인 가격 --%>
-						<p class="card-text mb-auto">This is a wider card with
-							supporting text below as a natural lead-in to additional content.</p> <%--시술시간--%>
-					</div>
-					<div class="col-auto d-none d-lg-block">
-						<svg class="bd-placeholder-img" width="200" height="250"
-							xmlns="http://www.w3.org/2000/svg"
-							preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
-							aria-label="Placeholder: Thumbnail">
-						<title>Placeholder</title><rect width="100%" height="100%"
-								fill="#55595c" />
-						<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> <%--사진 넣어주기 --%>
+		<!-- 메뉴 NAV -->
+		<div class="nav-scroller py-1 mb-2">
+			<nav class="nav d-flex justify-content-between">
+				<a class="p-2 text-muted"
+					href="../shopDetail/${couponList.get(0).shopNum }">INFO</a> <a
+					class="p-2 text-muted" href="#">COUPON</a> <a
+					class="p-2 text-muted" href="#">REVIEW</a>
+			</nav>
+		</div>
+		<hr>
+		<div class="container marketing">
+			<div class="row mb-2">
+				<div class="col-md-6">
+					<div
+						class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+						<div class="col p-4 d-flex flex-column position-static">
+							<strong class="d-inline-block mb-2 text-primary">DESIGN</strong>
+							<h3 class="mb-0">${designName }</h3>
+							<%--선택한 디자인 이름 --%>
+							<strong class="d-inline-block mb-2 text-primary">Price</strong>
+							<div class="mb-1 text-muted">${designPrice }원</div>
+							<%--선택한 디자인 가격 --%>
+							<strong class="d-inline-block mb-2 text-primary">Time</strong>
+							<p class="card-text mb-auto">${designTime }mins</p>
+							<%--시술시간--%>
+
+						</div>
+						<div class="col-auto d-none d-lg-block">
+							<img src="/beaudafest/resources/couponPhoto/${selectedPhoto }"
+								width="200" height="250">
+
+							<%--사진 넣어주기 --%>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-6">
-				<h4 class="mb-3">OPTION 추가</h4>
-				<hr>
-
-				<div class="d-block my-3">
-					<div class="custom-control custom-radio">
-						<input id="credit" name="paymentMethod" type="radio"
-							class="custom-control-input" checked required> <label
-							class="custom-control-label" for="credit">OFF(본샵에서 시술한
-							경우) 30분 무료</label>
-					</div>
-					<div class="custom-control custom-radio">
-						<input id="debit" name="paymentMethod" type="radio"
-							class="custom-control-input" required> <label
-							class="custom-control-label" for="debit">OFF(타샵에서 시술한 경우)
-							30분 10000KRW</label>
-					</div>
-					<div class="custom-control custom-radio">
-						<input id="paypal" name="paymentMethod" type="radio"
-							class="custom-control-input" required> <label
-							class="custom-control-label" for="paypal">기타다른옵션 있을 경우
-							30분 추가금액</label>
-
-
-					</div>
+				<div class="col-md-6">
+					<h4 class="mb-3">OPTION 추가</h4>
 					<hr>
-					<br> <br>
 
-					<h4 class="mb-3">합계:</h4>
+					<div class="d-block my-3">
+						<c:forEach items="${addOption }" var="radio" varStatus="i">
+							<div class="custom-control custom-radio">
+								<input id="credit" name="paymentMethod" type="radio"
+									class="custom-control-input" checked required> <label
+									class="custom-control-label" for="credit">${radio.designName }
+									: ${radio.designTime }분, ${radio.designPrice}원</label>
+							</div>
+						</c:forEach>
+						<hr>
+						<br> <br>
+
+						<h4 class="mb-3">합계:</h4>
+					</div>
 				</div>
 			</div>
 		</div>

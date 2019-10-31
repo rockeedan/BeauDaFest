@@ -98,7 +98,7 @@ public class ProductController {
 		
 		CouponVO vo = service.designDetail(designId);
 		session.setAttribute("designDetail", vo);
-		System.out.println(vo);
+	
 		return vo;
 		
 	}

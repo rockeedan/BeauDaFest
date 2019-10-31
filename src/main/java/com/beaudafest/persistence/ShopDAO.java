@@ -1,6 +1,7 @@
 package com.beaudafest.persistence;
 
 import java.util.List;
+import java.util.Map;
 
 import com.beaudafest.domain.CouponVO;
 import com.beaudafest.domain.ShopVO;
@@ -14,4 +15,7 @@ public interface ShopDAO {
 	public ShopVO findShopOne(ShopVO vo);//샵 조회
 	public ShopVO findShopInfo(Integer shopNum);//특정 shopInfo 조회
 	public List<CouponVO> couponList(Integer shopNum);
+
+	public List<CouponVO> addOption(Map<String, Object> map);
+	public String selectedDesign(int designId);
 }
