@@ -26,7 +26,7 @@
 			<div class="table-responsive">
 				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
 					<thead>
-						<tr> 
+						<tr align = "center"> 
 							<th>예약번호</th>
 							<th>아이디</th>
 							<th>샵 이름 </th>
@@ -40,7 +40,7 @@
 						</tr>
 					</thead>
 					<tfoot>
-						<tr>
+						<tr align = "center">
 							<th>예약번호</th>
 							<th>아이디</th>
 							<th>샵 이름 </th>
@@ -70,7 +70,22 @@
 							</td>
 							<td>${list.DESIGNPRICE}</td>
 							<td>${list.SHOPADDR}</td>
-							<td></td>
+							<td>
+							
+							<c:choose>
+								<c:when test="${list.RSVNSTATUS eq 1}">
+									 취소
+								</c:when>
+								<c:when test="${list.RSVNSTATUS eq 2}">
+									 노쇼
+								</c:when>
+								<c:otherwise>
+									 확정<br> 
+									<a id ="cancleRsvn" href="#">취소</a>
+								</c:otherwise>
+							</c:choose>
+							
+							</td>
 							
 						</tr>
 						
@@ -100,7 +115,7 @@
 			<div class="table-responsive">
 				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
 					<thead>
-						<tr> 
+						<tr align = "center"> 
 							<th>예약번호</th>
 							<th>아이디</th>
 							<th>샵 이름 </th>
@@ -110,11 +125,12 @@
 							<th>예약날짜</th>
 							<th>Total</th>
 							<th>샵 주소</th>
+							<th>예약상태</th>
 							
 						</tr>
 					</thead>
 					<tfoot>
-						<tr>
+						<tr align = "center">
 							<th>예약번호</th>
 							<th>아이디</th>
 							<th>샵 이름 </th>
@@ -124,7 +140,7 @@
 							<th>예약날짜</th>
 							<th>Total</th>
 							<th>샵 주소</th>
-							
+							<th>예약상태</th>
 						</tr>
 					</tfoot>
 					<tbody>
@@ -144,7 +160,21 @@
 							</td>
 							<td>${history.DESIGNPRICE}</td>
 							<td>${history.SHOPADDR}</td>
+							<td>
 							
+							<c:choose>
+								<c:when test="${history.RSVNSTATUS eq 1}">
+									 취소
+								</c:when>
+								<c:when test="${history.RSVNSTATUS eq 2}">
+									 노쇼
+								</c:when>
+								<c:otherwise>
+									 완료
+								</c:otherwise>
+							</c:choose>
+							
+							</td>
 						</tr>
 						
 						</c:forEach>

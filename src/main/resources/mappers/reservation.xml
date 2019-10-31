@@ -94,20 +94,20 @@
 	<select id = "selectUserRsvnList" resultType="java.util.HashMap">
 	
 		select rsvnnum, reservation.memberid, shopname, designname, 
-				nvl(optionname,'') optionname, designprice, bookingdate, rsvndate, shopaddr
+				nvl(optionname,'') optionname, designprice, bookingdate, rsvndate, shopaddr,rsvnstatus
 		from (
 				select rsvnnum, memberid, RESERVATION2.shopnum,
 								RESERVATION2.designname designname, nvl(SHOPDESIGN2.designname,'해당없음') optionname,
 								RESERVATION2.designprice + nvl(SHOPDESIGN2.designprice,0) designprice, 
-								 bookingdate, rsvndate
+								 bookingdate, rsvndate,rsvnstatus
 						
 						from
 							(select rsvnnum, memberid, shopdesign.designname designname, designid2 optionnum,
 									 shopdesign.designprice designprice, 
-									bookingdate, rsvndate, RESERVATION.shopnum shopnum
+									bookingdate, rsvndate, RESERVATION.shopnum shopnum,rsvnstatus
 									
 							 from
-								(select rsvnnum, memberid, shopnum, designid, bookingdate, rsvndate,rsvntime, designid2
+								(select rsvnnum, memberid, shopnum, designid, bookingdate, rsvndate,rsvntime, designid2,rsvnstatus
 							 	 from reservation  inner join memberList 
 							 	 using(memberid)
 							 	 ) RESERVATION,  SHOPDESIGN
@@ -130,20 +130,20 @@
 	<select id = "selectUserRsvnHistory" resultType="java.util.HashMap">
 	
 		select rsvnnum, reservation.memberid, shopname, designname, 
-					nvl(optionname,'') optionname, designprice, bookingdate, rsvndate, shopaddr
+					nvl(optionname,'') optionname, designprice, bookingdate, rsvndate, shopaddr,rsvnstatus
 			from (
 					select rsvnnum, memberid, RESERVATION2.shopnum,
 									RESERVATION2.designname designname, nvl(SHOPDESIGN2.designname,'해당없음') optionname,
 									RESERVATION2.designprice + nvl(SHOPDESIGN2.designprice,0) designprice, 
-									 bookingdate, rsvndate
+									 bookingdate, rsvndate,rsvnstatus
 							
 							from
 								(select rsvnnum, memberid, shopdesign.designname designname, designid2 optionnum,
 										 shopdesign.designprice designprice, 
-										bookingdate, rsvndate, RESERVATION.shopnum shopnum
+										bookingdate, rsvndate, RESERVATION.shopnum shopnum,rsvnstatus
 										
 								 from
-									(select rsvnnum, memberid, shopnum, designid, bookingdate, rsvndate,rsvntime, designid2
+									(select rsvnnum, memberid, shopnum, designid, bookingdate, rsvndate,rsvntime, designid2,rsvnstatus
 								 	 from reservation  inner join memberList 
 								 	 using(memberid)
 								 	 ) RESERVATION,  SHOPDESIGN

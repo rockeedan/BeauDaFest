@@ -22,7 +22,7 @@ public class MyPageController {
 	
 	@RequestMapping("/myPage")
 	public String manage() {
-		return "shop/myPage";
+		return "member/myPage";
 	}
 	
 	@RequestMapping("/myReservation")
@@ -35,7 +35,7 @@ public class MyPageController {
 		m.addAttribute("loginId", loginId);
 		m.addAttribute("list", reservationService.selectUserRsvnList(loginId));
 		m.addAttribute("history", reservationService.selectUserRsvnHistory(loginId));
-		return "shop/myReservation";
+		return "member/myReservation";
 
 	}
 	
