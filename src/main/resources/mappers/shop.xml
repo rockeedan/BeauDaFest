@@ -33,17 +33,6 @@
 		</if>
 	</select>
 	
-	
-	<select id="findShop" resultType="ShopVO">
-		select shopNum, memberId, shopName, shopPhone, shopAddr, shopOpen, shopClose, shopOff, shopPhoto, shopIntro, shopParking, shopPolicy
-		from shopInfo
-		where memberId=#{memberId}
-		<if test="shopNum != null">
-			and shopNum=#{shopNum}
-		</if>
-	</select>
-	
-	
 	<!-- 샵번호로 샵정보 조회 -->
 	<select id="findShopInfo" resultType="ShopVO">
 		select shopNum, memberId, shopName, shopPhone, shopAddr, shopOpen, shopClose, shopOff, shopPhoto, shopIntro, shopParking, shopPolicy

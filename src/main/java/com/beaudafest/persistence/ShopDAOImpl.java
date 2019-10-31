@@ -42,7 +42,7 @@ public class ShopDAOImpl implements ShopDAO{
 	//샵 조회
 	@Override
 	public ShopVO findShopOne(ShopVO vo) {
-		return sqlSession.selectOne("shop.findShop", vo);
+		return sqlSession.selectOne("shop.findOwnerShop", vo);
 	}
 
 	//특정 shopInfo 조회
