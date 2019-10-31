@@ -58,11 +58,8 @@ public class ManageController {
 		shop.setMemberId(loginId);
 		shop.setShopNum(shopNum);
 
-		List<Map<String, Object>> list = reservationService.selectRsvnList(shopNum);
-		shop = shopService.findShopOne(shop);
-
-		m.addAttribute("list", list);// 샵11111 예약정보
-		m.addAttribute("shop", shop); // 샵1111 정보
+		m.addAttribute("list", reservationService.selectRsvnList(shopNum));// 샵11111 예약정보
+		m.addAttribute("shop", shopService.findShopOne(shop)); // 샵1111 정보
 
 		return "shop/tables";
 
@@ -107,9 +104,8 @@ public class ManageController {
 	@RequestMapping(value = "/myBarChart")
 	public @ResponseBody int[] showBarcharts() {
 
-		// 세션 샵넘버
-		// int shopNum = session.getAttribute("shopNum");
-		int shopNum = 1;
+		//샵넘버
+		int shopNum = this.shopNum;
 
 		//월별 예약 수 조회
 		List<Map<String, Object>> list = reservationService.selectMonthlyRsvnCount(shopNum);
