@@ -37,7 +37,10 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900"
 	rel="stylesheet">
+<script type="text/javascript">
 
+
+</script>
 </head>
 <body>
 	<c:choose>
@@ -112,15 +115,15 @@
 						<c:forEach items="${addOption }" var="radio" varStatus="i">
 							<div class="custom-control custom-radio">
 								<input id="credit" name="paymentMethod" type="radio"
-									class="custom-control-input" checked required> <label
+									class="custom-control-input" value="${radio.designTime }" checked required> <label
 									class="custom-control-label" for="credit">${radio.designName }
-									: ${radio.designTime }분, ${radio.designPrice}원</label>
+									: <span>${radio.designTime }분 </span><span> ${radio.designPrice}원</span></label>
 							</div>
 						</c:forEach>
 						<hr>
 						<br> <br>
 
-						<h4 class="mb-3">합계:</h4>
+						<h4 class="mb-3">총 소요시간:</h4>
 					</div>
 				</div>
 			</div>
