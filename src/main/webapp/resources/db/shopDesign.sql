@@ -57,7 +57,7 @@ create sequence pediOption_seq
        nocycle
        nocache;	     
   
---속눈썹디자인시퀀스 (po1, po2..... )
+--속눈썹디자인시퀀스 (ld1, ld2..... )
 drop sequence lashDesign_seq;
 create sequence lashDesign_seq
        start with 1
@@ -66,7 +66,7 @@ create sequence lashDesign_seq
        nocache;	
        
        
---속눈썹디자인시퀀스 (po1, po2..... )
+--속눈썹디자인시퀀스 (lo1, lo2..... )
 drop sequence lashOption_seq;
 create sequence lashOption_seq
        start with 1
