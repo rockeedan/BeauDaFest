@@ -200,14 +200,12 @@ CREATE TABLE reservation (
 	rsvnDate	DATE	NOT NULL,			-- 시술 일시 
 	rsvnTime	NUMBER	NOT NULL,			-- 시술 시간
 	designId2	NUMBER,						-- 옵션 아이디
-	--rsvnstatus	NUMBER						-- 예약 상태(0: 확정,1: 취소, 2: 노쇼)
+	rsvnstatus	NUMBER						-- 예약 상태(0: 확정,1: 취소, 2: 노쇼)
 );
 
 --off없음 / off있음 (본샵) / off있음 (다른샵) off(첫오프) off(다른 지점) 
 
 --예약상태(
-ALTER TABLE reservation ADD(rsvnstatus NUMBER);
-update RESERVATION set rsvnstatus = 0;
 
 ALTER TABLE reservation	ADD CONSTRAINT reservation PRIMARY KEY(rsvnNum);
 
@@ -296,6 +294,55 @@ create sequence shopDesign_seq
        nocycle
        nocache;
        
+--네일디자인시퀀스 (nd1, nd2..... )
+drop sequence nailDesign_seq;
+create sequence nailDesign_seq
+       start with 1
+       increment by 1
+       nocycle
+       nocache;
+       
+--네일옵션 시퀀스 (no1, no2..... )
+drop sequence nailOption_seq;
+create sequence nailOption_seq
+       start with 1
+       increment by 1
+       nocycle
+       nocache;
+       
+--페디디자인시퀀스 (pd1, pd2..... )
+drop sequence pediDesign_seq;
+create sequence pediDesign_seq
+       start with 1
+       increment by 1
+       nocycle
+       nocache;	
+       
+--페디옵션시퀀스 (po1, po2..... )
+drop sequence pediOption_seq;
+create sequence pediOption_seq
+       start with 1
+       increment by 1
+       nocycle
+       nocache;	
+       
+--속눈썹디자인시퀀스 (po1, po2..... )
+drop sequence lashDesign_seq;
+create sequence lashDesign_seq
+       start with 1
+       increment by 1
+       nocycle
+       nocache;	
+       
+--속눈썹디자인시퀀스 (po1, po2..... )
+drop sequence lashOption_seq;
+create sequence lashOption_seq
+       start with 1
+       increment by 1
+       nocycle
+       nocache;
+
+--예약시퀀스
 drop  sequence reservation_seq
 create sequence reservation_seq
        start with 1
@@ -303,6 +350,7 @@ create sequence reservation_seq
        nocycle
        nocache;
        
+--리뷰시퀀스       
 drop  sequence review_seq
 create sequence review_seq
        start with 1
