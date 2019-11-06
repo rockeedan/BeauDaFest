@@ -112,7 +112,7 @@ ALTER TABLE timeSchedule
 
 ALTER TABLE timeSchedule
 	ADD
-		CONSTRAINT FK_monthSchedule_TO_timeSchedule
+		CONSTRAINT FK_mSchedule_TO_tSchedule
 		FOREIGN KEY (
 			addDate,
 			shopNum
@@ -343,7 +343,7 @@ create sequence lashOption_seq
        nocache;
 
 --예약시퀀스
-drop  sequence reservation_seq
+drop  sequence reservation_seq;
 create sequence reservation_seq
        start with 1
        increment by 1
@@ -351,7 +351,7 @@ create sequence reservation_seq
        nocache;
        
 --리뷰시퀀스       
-drop  sequence review_seq
+drop  sequence review_seq;
 create sequence review_seq
        start with 1
        increment by 1

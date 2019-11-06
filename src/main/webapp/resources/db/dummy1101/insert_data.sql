@@ -47,7 +47,7 @@ insert into monthSchedule(addDate, shopNum) values ('2019-11-02', 1);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-02', to_date('2019-11-02 11:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-02 11:29', 'yyyy-MM-dd hh24-mi'), 1);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-02', to_date('2019-11-02 11:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-02 11:59', 'yyyy-MM-dd hh24-mi'), 0); --solbi
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-02', to_date('2019-11-02 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-02 12:29', 'yyyy-MM-dd hh24-mi'), 0);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-02', to_date('2019-11-02 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-02 12:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-02', to_date('2019-11-02 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-02 12:59', 'yyyy-MM-dd hh24-mi'), 0);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-02', to_date('2019-11-02 13:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-02 13:29', 'yyyy-MM-dd hh24-mi'), 1);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-02', to_date('2019-11-02 13:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-02 13:59', 'yyyy-MM-dd hh24-mi'), 1);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-02', to_date('2019-11-02 14:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-02 14:29', 'yyyy-MM-dd hh24-mi'), 1);
@@ -56,174 +56,158 @@ insert into monthSchedule(addDate, shopNum) values ('2019-11-03', 1);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-03', to_date('2019-11-03 11:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 11:29', 'yyyy-MM-dd hh24-mi'), 1);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-03', to_date('2019-11-03 11:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 11:59', 'yyyy-MM-dd hh24-mi'), 1);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-03', to_date('2019-11-03 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 12:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-03', to_date('2019-11-03 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 12:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-03', to_date('2019-11-03 13:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 13:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-03', to_date('2019-11-03 13:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 13:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-03', to_date('2019-11-03 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 12:59', 'yyyy-MM-dd hh24-mi'), 0); --gildong
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-03', to_date('2019-11-03 13:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 13:29', 'yyyy-MM-dd hh24-mi'), 0);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-03', to_date('2019-11-03 13:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 13:59', 'yyyy-MM-dd hh24-mi'), 0);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-03', to_date('2019-11-03 14:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 14:29', 'yyyy-MM-dd hh24-mi'), 1);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-03', to_date('2019-11-03 14:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 14:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into monthSchedule(addDate, shopNum) values ('2019-11-14', 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-14', to_date('2019-11-14 11:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-14 11:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-14', to_date('2019-11-14 11:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-14 11:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-14', to_date('2019-11-14 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-14 12:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-14', to_date('2019-11-14 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-14 12:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-14', to_date('2019-11-14 13:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-14 13:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-14', to_date('2019-11-14 13:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-14 13:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-14', to_date('2019-11-14 14:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-14 14:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-14', to_date('2019-11-14 14:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-14 14:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into monthSchedule(addDate, shopNum) values ('2019-11-15', 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-15', to_date('2019-11-15 11:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-15 11:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-15', to_date('2019-11-15 11:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-15 11:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-15', to_date('2019-11-15 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-15 12:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-15', to_date('2019-11-15 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-15 12:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-15', to_date('2019-11-15 13:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-15 13:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-15', to_date('2019-11-15 13:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-15 13:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-15', to_date('2019-11-15 14:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-15 14:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-15', to_date('2019-11-15 14:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-15 14:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into monthSchedule(addDate, shopNum) values ('2019-11-21', 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-21', to_date('2019-11-21 11:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 11:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-21', to_date('2019-11-21 11:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 11:59', 'yyyy-MM-dd hh24-mi'), 0); --thunder
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-21', to_date('2019-11-21 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 12:29', 'yyyy-MM-dd hh24-mi'), 0);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-21', to_date('2019-11-21 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 12:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-21', to_date('2019-11-21 13:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 13:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-21', to_date('2019-11-21 13:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 13:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-21', to_date('2019-11-21 14:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 14:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-21', to_date('2019-11-21 14:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 14:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into monthSchedule(addDate, shopNum) values ('2019-11-22', 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-22', to_date('2019-11-22 11:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 11:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-22', to_date('2019-11-22 11:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 11:59', 'yyyy-MM-dd hh24-mi'), 0); --ddock
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-22', to_date('2019-11-22 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 12:29', 'yyyy-MM-dd hh24-mi'), 0);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-22', to_date('2019-11-22 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 12:59', 'yyyy-MM-dd hh24-mi'), 0);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-22', to_date('2019-11-22 13:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 13:29', 'yyyy-MM-dd hh24-mi'), 0);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-22', to_date('2019-11-22 13:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 13:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-22', to_date('2019-11-22 14:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 14:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (1, '2019-11-22', to_date('2019-11-22 14:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 14:59', 'yyyy-MM-dd hh24-mi'), 1);
+
 insert into monthSchedule(addDate, shopNum) values ('2019-11-03', 2);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-03', to_date('2019-11-03 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 12:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-03', to_date('2019-11-03 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 12:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-03', to_date('2019-11-03 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 12:29', 'yyyy-MM-dd hh24-mi'), 0);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-03', to_date('2019-11-03 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 12:59', 'yyyy-MM-dd hh24-mi'), 0);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-03', to_date('2019-11-03 13:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 13:29', 'yyyy-MM-dd hh24-mi'), 1);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-03', to_date('2019-11-03 13:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 13:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-03', to_date('2019-11-03 14:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 14:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-03', to_date('2019-11-03 14:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 14:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-03', to_date('2019-11-03 15:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 15:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-03', to_date('2019-11-03 15:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 15:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into monthSchedule(addDate, shopNum) values ('2019-11-06', 2);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-06', to_date('2019-11-06 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-06 12:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-06', to_date('2019-11-06 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-06 12:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-06', to_date('2019-11-06 13:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-06 13:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-06', to_date('2019-11-06 13:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-06 13:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-06', to_date('2019-11-06 14:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-06 14:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-06', to_date('2019-11-06 14:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-06 14:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-06', to_date('2019-11-06 15:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-06 15:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into monthSchedule(addDate, shopNum) values ('2019-11-07', 2);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-07', to_date('2019-11-07 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-07 12:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-07', to_date('2019-11-07 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-07 12:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-07', to_date('2019-11-07 13:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-07 13:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-07', to_date('2019-11-07 13:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-07 13:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-07', to_date('2019-11-07 14:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-07 14:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-07', to_date('2019-11-07 14:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-07 14:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-07', to_date('2019-11-07 15:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-07 15:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-07', to_date('2019-11-07 15:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-07 15:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-03', to_date('2019-11-03 14:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 14:29', 'yyyy-MM-dd hh24-mi'), 0);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-03', to_date('2019-11-03 14:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 14:59', 'yyyy-MM-dd hh24-mi'), 0);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-03', to_date('2019-11-03 15:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 15:29', 'yyyy-MM-dd hh24-mi'), 0);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-03', to_date('2019-11-03 15:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 15:59', 'yyyy-MM-dd hh24-mi'), 0);
+insert into monthSchedule(addDate, shopNum) values ('2019-11-21', 2);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-21', to_date('2019-11-21 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 12:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-21', to_date('2019-11-21 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 12:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-21', to_date('2019-11-21 13:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 13:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-21', to_date('2019-11-21 13:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 13:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-21', to_date('2019-11-21 14:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 14:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-21', to_date('2019-11-21 14:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 14:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-21', to_date('2019-11-21 15:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 15:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into monthSchedule(addDate, shopNum) values ('2019-11-22', 2);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-22', to_date('2019-11-22 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 12:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-22', to_date('2019-11-22 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 12:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-22', to_date('2019-11-22 13:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 13:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-22', to_date('2019-11-22 13:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 13:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-22', to_date('2019-11-22 14:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 14:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-22', to_date('2019-11-22 14:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 14:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-22', to_date('2019-11-22 15:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 15:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (2, '2019-11-22', to_date('2019-11-22 15:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 15:59', 'yyyy-MM-dd hh24-mi'), 1);
+
 insert into monthSchedule(addDate, shopNum) values ('2019-11-03', 3);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-03', to_date('2019-11-03 10:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 10:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-03', to_date('2019-11-03 11:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 11:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-03', to_date('2019-11-03 11:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 11:29', 'yyyy-MM-dd hh24-mi'), 1);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-03', to_date('2019-11-03 11:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 11:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-03', to_date('2019-11-03 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 12:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-03', to_date('2019-11-03 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 12:29', 'yyyy-MM-dd hh24-mi'), 1);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-03', to_date('2019-11-03 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 12:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-03', to_date('2019-11-03 13:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 13:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-03', to_date('2019-11-03 13:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 13:29', 'yyyy-MM-dd hh24-mi'), 1);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-03', to_date('2019-11-03 13:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 13:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-03', to_date('2019-11-03 14:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 14:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-03', to_date('2019-11-03 14:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 14:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into monthSchedule(addDate, shopNum) values ('2019-11-05', 3);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-05', to_date('2019-11-05 10:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-05 10:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-05', to_date('2019-11-05 11:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-05 11:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-05', to_date('2019-11-05 11:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-05 11:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-05', to_date('2019-11-05 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-05 12:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-05', to_date('2019-11-05 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-05 12:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-05', to_date('2019-11-05 13:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-05 13:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-05', to_date('2019-11-05 13:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-05 13:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-05', to_date('2019-11-05 14:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-05 14:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-05', to_date('2019-11-05 14:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-05 14:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into monthSchedule(addDate, shopNum) values ('2019-11-07', 3);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-07', to_date('2019-11-05 10:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-07 10:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-07', to_date('2019-11-05 11:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-07 11:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-07', to_date('2019-11-05 11:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-07 11:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-07', to_date('2019-11-05 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-07 12:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-07', to_date('2019-11-05 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-07 12:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-07', to_date('2019-11-05 13:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-07 13:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-07', to_date('2019-11-05 13:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-07 13:59', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-07', to_date('2019-11-05 14:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-07 14:29', 'yyyy-MM-dd hh24-mi'), 1);
-insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-07', to_date('2019-11-05 14:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-07 14:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-03', to_date('2019-11-03 14:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 14:29', 'yyyy-MM-dd hh24-mi'), 0);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-03', to_date('2019-11-03 14:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-03 14:59', 'yyyy-MM-dd hh24-mi'), 0);
+insert into monthSchedule(addDate, shopNum) values ('2019-11-21', 3);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-21', to_date('2019-11-21 10:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 10:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-21', to_date('2019-11-21 11:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 11:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-21', to_date('2019-11-21 11:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 11:59', 'yyyy-MM-dd hh24-mi'), 0);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-21', to_date('2019-11-21 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 12:29', 'yyyy-MM-dd hh24-mi'), 0);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-21', to_date('2019-11-21 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 12:59', 'yyyy-MM-dd hh24-mi'), 0);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-21', to_date('2019-11-21 13:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 13:29', 'yyyy-MM-dd hh24-mi'), 0);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-21', to_date('2019-11-21 13:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 13:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-21', to_date('2019-11-21 14:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 14:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-21', to_date('2019-11-21 14:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-21 14:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into monthSchedule(addDate, shopNum) values ('2019-11-22', 3);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-22', to_date('2019-11-22 10:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 10:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-22', to_date('2019-11-22 11:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 11:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-22', to_date('2019-11-22 11:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 11:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-22', to_date('2019-11-22 12:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 12:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-22', to_date('2019-11-22 12:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 12:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-22', to_date('2019-11-22 13:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 13:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-22', to_date('2019-11-22 13:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 13:59', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-22', to_date('2019-11-22 14:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 14:29', 'yyyy-MM-dd hh24-mi'), 1);
+insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-22', to_date('2019-11-22 14:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 14:59', 'yyyy-MM-dd hh24-mi'), 1);
 
+delete from shopDesign;
 
 /* 샵디자인 */
 /* 샵디자인 */
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '원컬러 젤네일1', '네일', 'ND', 40000, 60, '사진1'); 
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '포인트 젤네일1', '네일', 'ND', 50000, 90, '사진1');
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '오늘의 네일1', '네일', 'ND', 49000, 90, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '오늘의 페디1', '페디', 'PD', 49000, 90, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1 '속눈썹연장1', '속눈썹', 'LD', 50000, 60, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '페디off1', '페디', 'PO', 30000, 30, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '오늘의 페디1', '페디', 'PD', 49000, 60, '사진1');  -- 4
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '속눈썹연장1', '속눈썹', 'LD', 50000, 60, '사진1'); -- 5
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '페디off1', '페디', 'PO', 30000, 30, '사진1');		  -- 6
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '네일off1', '네일', 'NO', 40000, 30, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1 '속눈썹off1', '속눈썹', 'LO', 55000, 30, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '속눈썹off1', '속눈썹', 'LO', 55000, 30, '사진1');
 
 --8
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '원컬러 젤네일2', '네일', 'ND', 40000, 60, '사진1'); 
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '포인트 젤네일2', '네일', 'ND', 50000, 90, '사진1');
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '오늘의 네일2', '네일', 'ND', 49000, 90, '사진1');
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '오늘의 페디2', '페디', 'PD', 49000, 90, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2 '속눈썹연장2', '속눈썹', 'LD', 50000, 60, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '속눈썹연장2', '속눈썹', 'LD', 50000, 60, '사진1');
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '페디off2', '페디', 'PO', 30000, 30, '사진1');
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '네일off2', '네일', 'NO', 40000, 30, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2 '속눈썹off2', '속눈썹', 'LO', 55000, 60, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '속눈썹off2', '속눈썹', 'LO', 55000, 30, '사진1');
 
 --15
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '원컬러 젤네일3', '네일', 'ND', 42000, 60, '사진1'); 
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '포인트 젤네일3', '네일', 'ND', 55000, 90, '사진1');
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '오늘의 네일3', '네일', 'ND', 19000, 90, '사진1');
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '오늘의 페디3', '페디', 'PD', 49000, 90, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3 '속눈썹연장3', '속눈썹', 'LD', 25000, 60, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '속눈썹연장3', '속눈썹', 'LD', 25000, 60, '사진1');
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '페디off3', '페디', 'PO', 25000, 30, '사진1');
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '네일off3', '네일', 'NO', 46000, 30, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3 '속눈썹off3', '속눈썹', 'LO', 51400, 60, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '속눈썹off3', '속눈썹', 'LO', 51400, 60, '사진1');
 
 
 
 --예약
-insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) 
-values(reservation_seq.nextval, 'gosolb', 1, 4, TO_DATE('2019-10-22 11:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-02 11:30','YYYY-MM-DD HH24:MI'), 90, 7, 0);
-insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) 
-values(reservation_seq.nextval, 'gildong', 1, 4, TO_DATE('2019-11-01 15:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-03 14:00','YYYY-MM-DD HH24:MI'), 120, 6, 1);
-insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) 
-values(reservation_seq.nextval, 'lime', 1, 4, TO_DATE('2019-11-02 15:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-02 11:30','YYYY-MM-DD HH24:MI'), 90, 7, 2);
-insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) 
-values(reservation_seq.nextval, 'ddoock', 1, 4, TO_DATE('2019-11-02 15:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-05 11:30','YYYY-MM-DD HH24:MI'), 120, 6, 0);
+insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, rsvnstatus) values(reservation_seq.nextval, 'gosolb', 1, 4, TO_DATE('2019-11-22 11:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-03 14:00','YYYY-MM-DD HH24:MI'), 60, 1);
+insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) values(reservation_seq.nextval, 'gosolb', 1, 4, TO_DATE('2019-10-22 11:02','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-02 11:30','YYYY-MM-DD HH24:MI'), 90, 6, 0);
+insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, rsvnstatus) values(reservation_seq.nextval, 'gildong', 1, 1, TO_DATE('2019-11-01 11:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-03 12:30','YYYY-MM-DD HH24:MI'), 60, 0);
+insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) values(reservation_seq.nextval, 'lime', 1, 2, TO_DATE('2019-11-02 15:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-02 11:30','YYYY-MM-DD HH24:MI'), 90, 7, 2);
+insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) values(reservation_seq.nextval, 'ddoock', 1, 4, TO_DATE('2019-11-02 15:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-21 11:30','YYYY-MM-DD HH24:MI'), 120, 6, 0);
+insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, rsvnstatus) values(reservation_seq.nextval, 'thunder', 1, 4, TO_DATE('2019-11-02 15:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-22 11:30','YYYY-MM-DD HH24:MI'), 90, 0);
 
-insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) 
-values(reservation_seq.nextval, 'gosolb', 2, 8, TO_DATE('2019-10-22 11:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-06 11:30','YYYY-MM-DD HH24:MI'), 60, 0, 0);
-insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) 
-values(reservation_seq.nextval, 'gildong', 2, 4, TO_DATE('2019-11-01 15:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-06 14:00','YYYY-MM-DD HH24:MI'), 120, 12, 1);
-insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) 
-values(reservation_seq.nextval, 'yoosin', 2, 4, TO_DATE('2019-11-02 15:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-07 11:30','YYYY-MM-DD HH24:MI'), 90, 7, 2);
-insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) 
-values(reservation_seq.nextval, 'gildong', 2, 4, TO_DATE('2019-11-02 15:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-07 11:30','YYYY-MM-DD HH24:MI'), 120, 6, 0);
+insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, rsvnstatus) values(reservation_seq.nextval, 'gildong', 2, 8, TO_DATE('2019-10-22 11:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-03 12:00','YYYY-MM-DD HH24:MI'), 60, 0);
+insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) values(reservation_seq.nextval, 'gosolb', 2, 9, TO_DATE('2019-11-01 15:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-03 14:00','YYYY-MM-DD HH24:MI'), 120, 14, 0);
+insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) values(reservation_seq.nextval, 'gosolb', 2, 10, TO_DATE('2019-11-01 15:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-21 14:00','YYYY-MM-DD HH24:MI'), 120, 14, 1);
+insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) values(reservation_seq.nextval, 'yoosin', 2, 12, TO_DATE('2019-11-02 15:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-07 11:30','YYYY-MM-DD HH24:MI'), 90, 15, 2);
+insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, rsvnstatus) values(reservation_seq.nextval, 'gildong', 2, 8, TO_DATE('2019-11-02 15:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-07 11:30','YYYY-MM-DD HH24:MI'), 60, 0);
 
-insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) 
-values(reservation_seq.nextval, 'bboong', 3, 8, TO_DATE('2019-10-22 11:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-03 11:30','YYYY-MM-DD HH24:MI'), 60, 0, 0);
-insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) 
-values(reservation_seq.nextval, 'thunder', 3, 4, TO_DATE('2019-11-01 15:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-05 14:00','YYYY-MM-DD HH24:MI'), 120, 6, 1);
-insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) 
-values(reservation_seq.nextval, 'ddoock', 3, 4, TO_DATE('2019-11-02 15:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-07 11:30','YYYY-MM-DD HH24:MI'), 90, 7, 2);
-insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) 
-values(reservation_seq.nextval, 'lime', 3, 4, TO_DATE('2019-11-02 15:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-07 11:30','YYYY-MM-DD HH24:MI'), 120, 6, 0);
+insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, rsvnstatus) values(reservation_seq.nextval, 'bboong', 3, 15, TO_DATE('2019-10-21 11:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-03 14:00','YYYY-MM-DD HH24:MI'), 60, 2);
+insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) values(reservation_seq.nextval, 'thunder', 3, 15, TO_DATE('2019-10-22 11:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-03 14:00','YYYY-MM-DD HH24:MI'), 90, 21, 0);
+insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, rsvnstatus) values(reservation_seq.nextval, 'thunder', 3, 16, TO_DATE('2019-11-01 15:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-21 14:00','YYYY-MM-DD HH24:MI'), 90, 1);
+insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, rsvnstatus) values(reservation_seq.nextval, 'thunder', 3, 19, TO_DATE('2019-11-01 15:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-21 14:00','YYYY-MM-DD HH24:MI'), 60, 0);
+insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) values(reservation_seq.nextval, 'gosolb', 3, 18, TO_DATE('2019-11-02 15:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-21 11:30','YYYY-MM-DD HH24:MI'), 120, 20, 1);
+insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) values(reservation_seq.nextval, 'gosolb', 3, 17, TO_DATE('2019-11-02 14:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-21 11:30','YYYY-MM-DD HH24:MI'), 120, 21, 0);
+insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) values(reservation_seq.nextval, 'gosolb', 3, 4, TO_DATE('2019-11-02 15:30','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-21 11:30','YYYY-MM-DD HH24:MI'), 120, 6, 0);
 
-
--- 리뷰
---주원샵1
-insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) 
-values(review_seq.nextval, 'gosolb', 1, 1, 5, '너무 마음에 들어요', 0, 1, TO_DATE('2019-11-02 21:00','YYYY-MM-DD HH24:MI'));
-insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) 
-values(review_seq.nextval, 'juwon', 1, 0, 0, '감사합니다 또 와주세요:)', 1, 1, TO_DATE('2019-10-31 23:00','YYYY-MM-DD HH24:MI'));
-insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) 
-values(review_seq.nextval, 'gildong', 1, 2, 3, '그냥 그랬어요', 0, 2, TO_DATE('2019-11-02 21:00','YYYY-MM-DD HH24:MI'));
-insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) 
-values(review_seq.nextval, 'lime', 1, 3, 4, '괜찮았어요', 0, 3, TO_DATE('2019-11-03 11:00','YYYY-MM-DD HH24:MI'));
-insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) 
-values(review_seq.nextval, 'juwon', 1, 0, 0, '감사합니다:)', 1, 3, TO_DATE('2019-11-03 21:00','YYYY-MM-DD HH24:MI'));
---주원샵2
-insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) 
-values(review_seq.nextval, 'bboong', 2, 4, 5, '너무 마음에 들어요', 0, 1, TO_DATE('2019-11-01 21:00','YYYY-MM-DD HH24:MI'));
-insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) 
-values(review_seq.nextval, 'juwon', 2, 0, 0, '감사합니다! :)', 1, 1, TO_DATE('2019-11-03 21:00','YYYY-MM-DD HH24:MI'));
---펭수샵
-insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) 
-values(review_seq.nextval, 'ddoock', 3, 5, 3, '뚝딱뚝딱', 0, 1, TO_DATE('2019-10-31 21:00','YYYY-MM-DD HH24:MI'));
-insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) 
-values(review_seq.nextval, 'pengsu', 3, 0, 0, '감사합니다 또 와주세요:)', 1, 1, TO_DATE('2019-10-31 23:00','YYYY-MM-DD HH24:MI'));
-insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) 
-values(review_seq.nextval, 'bboong', 3, 6, 1, '뿡뿡이', 0, 2, TO_DATE('2019-11-02 21:00','YYYY-MM-DD HH24:MI'));
-insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) 
-values(review_seq.nextval, 'thunder', 3, 7, 4, '번개맨', 0, 3, TO_DATE('2019-11-03 11:00','YYYY-MM-DD HH24:MI'));
-insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) 
-values(review_seq.nextval, 'pengsu', 3, 0, 0, '감사합니다:)', 1, 3, TO_DATE('2019-11-03 21:00','YYYY-MM-DD HH24:MI'));
+---- 리뷰
+----주원샵1
+--insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'gosolb', 1, 1, 5, '너무 마음에 들어요', 0, 1, TO_DATE('2019-11-02 21:00','YYYY-MM-DD HH24:MI'));
+--insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'juwon', 1, 0, 0, '감사합니다 또 와주세요:)', 1, 1, TO_DATE('2019-10-31 23:00','YYYY-MM-DD HH24:MI'));
+--insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'ddoock', 1, 2, 3, '그냥 그랬어요', 0, 2, TO_DATE('2019-11-02 21:00','YYYY-MM-DD HH24:MI'));
+--insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'lime', 1, 3, 4, '괜찮았어요', 0, 3, TO_DATE('2019-11-03 11:00','YYYY-MM-DD HH24:MI'));
+--insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'juwon', 1, 0, 0, '감사합니다:)', 1, 3, TO_DATE('2019-11-03 21:00','YYYY-MM-DD HH24:MI'));
+----주원샵2
+--insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'bboong', 2, 4, 5, '너무 마음에 들어요', 0, 1, TO_DATE('2019-11-01 21:00','YYYY-MM-DD HH24:MI'));
+--insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'juwon', 2, 0, 0, '감사합니다! :)', 1, 1, TO_DATE('2019-11-03 21:00','YYYY-MM-DD HH24:MI'));
+----펭수샵
+--insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'ddoock', 3, 5, 3, '뚝딱뚝딱', 0, 1, TO_DATE('2019-10-31 21:00','YYYY-MM-DD HH24:MI'));
+--insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'pengsu', 3, 0, 0, '감사합니다 또 와주세요:)', 1, 1, TO_DATE('2019-10-31 23:00','YYYY-MM-DD HH24:MI'));
+--insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'bboong', 3, 6, 1, '뿡뿡이', 0, 2, TO_DATE('2019-11-02 21:00','YYYY-MM-DD HH24:MI'));
+--insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'thunder', 3, 7, 4, '번개맨', 0, 3, TO_DATE('2019-11-03 11:00','YYYY-MM-DD HH24:MI'));
+--insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'pengsu', 3, 0, 0, '감사합니다:)', 1, 3, TO_DATE('2019-11-03 21:00','YYYY-MM-DD HH24:MI'));
