@@ -138,7 +138,6 @@ insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values 
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-22', to_date('2019-11-22 14:00', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 14:29', 'yyyy-MM-dd hh24-mi'), 1);
 insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values (3, '2019-11-22', to_date('2019-11-22 14:30', 'yyyy-MM-dd hh24-mi'), to_date('2019-11-22 14:59', 'yyyy-MM-dd hh24-mi'), 1);
 
-delete from shopDesign;
 
 /* 샵디자인 */
 /* 샵디자인 */
