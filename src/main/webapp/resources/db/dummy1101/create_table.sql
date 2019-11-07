@@ -112,7 +112,7 @@ ALTER TABLE timeSchedule
 
 ALTER TABLE timeSchedule
 	ADD
-		CONSTRAINT FK_monthSchedule_TO_timeSchedule
+		CONSTRAINT FK_mSchedule_TO_tSchedule
 		FOREIGN KEY (
 			addDate,
 			shopNum
@@ -296,14 +296,64 @@ create sequence shopDesign_seq
        nocycle
        nocache;
        
-drop  sequence reservation_seq
+--네일디자인시퀀스 (nd1, nd2..... )
+drop sequence nailDesign_seq;
+create sequence nailDesign_seq
+       start with 1
+       increment by 1
+       nocycle
+       nocache;
+       
+--네일옵션 시퀀스 (no1, no2..... )
+drop sequence nailOption_seq;
+create sequence nailOption_seq
+       start with 1
+       increment by 1
+       nocycle
+       nocache;
+       
+--페디디자인시퀀스 (pd1, pd2..... )
+drop sequence pediDesign_seq;
+create sequence pediDesign_seq
+       start with 1
+       increment by 1
+       nocycle
+       nocache;	
+       
+--페디옵션시퀀스 (po1, po2..... )
+drop sequence pediOption_seq;
+create sequence pediOption_seq
+       start with 1
+       increment by 1
+       nocycle
+       nocache;	
+       
+--속눈썹디자인시퀀스 (po1, po2..... )
+drop sequence lashDesign_seq;
+create sequence lashDesign_seq
+       start with 1
+       increment by 1
+       nocycle
+       nocache;	
+       
+--속눈썹디자인시퀀스 (po1, po2..... )
+drop sequence lashOption_seq;
+create sequence lashOption_seq
+       start with 1
+       increment by 1
+       nocycle
+       nocache;
+
+--예약시퀀스
+drop  sequence reservation_seq;
 create sequence reservation_seq
        start with 1
        increment by 1
        nocycle
        nocache;
        
-drop  sequence review_seq
+--리뷰시퀀스       
+drop  sequence review_seq;
 create sequence review_seq
        start with 1
        increment by 1
