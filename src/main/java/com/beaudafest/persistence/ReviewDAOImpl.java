@@ -18,5 +18,10 @@ public class ReviewDAOImpl implements ReviewDAO {
 	public List<ReviewVO> reviewList(Integer shopNum) {
 		return session.selectList("review.allReview", shopNum);
 		
-	} 
+	}
+
+	@Override
+	public Integer shopScore(Integer shopNum) {
+		return session.selectOne("review.shopScore", shopNum);
+	}
 }

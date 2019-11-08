@@ -17,12 +17,9 @@ public class ReviewController {
 	@GetMapping("/shopReview/{shopNum}")
 	public String reviewList(@PathVariable Integer shopNum, Model m) {
 		m.addAttribute("reviewList",service.reviewList(shopNum));
-		
-		//예약했었음 -->
-		m.addAttribute("checkRsvn",service.reviewList(shopNum));
+		m.addAttribute("shopScore",service.shopScore(shopNum));
 		return "shopInfo/review";
 	}
 	
-//	@PostMapping("/shopReview/addReview")
-//	public String reviewAdd
+	
 }

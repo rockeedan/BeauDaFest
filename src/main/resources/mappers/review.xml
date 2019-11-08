@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="review">
 	<!-- 한 샵의 전체 리뷰 조회 -->
-	<select id="allReview">
-		select reviewNum, memberId, shopNum, reviewScore, reviewComment, reviewDepth, reviewGroup, designName, memberName
-		from (select reviewNum, memberId, shopNum, reviewScore, reviewComment, reviewDepth, reviewGroup, designName
-			  from review join (select rsvnNum, designName
+	<select id="allReview" resultType="ReviewVO">
+		select reviewNum, memberId, shopNum, reviewScore, reviewComment, reviewDepth, reviewGroup, designName, memberName, rsvnDate
+		from (select reviewNum, memberId, shopNum, reviewScore, reviewComment, reviewDepth, reviewGroup, designName, rsvnDate
+			  from review join (select rsvnNum, designName, rsvnDate
 								from reservation join shopDesign 
 				                using (designId)) 
 			  using (rsvnNum)) join MEMBERLIST
@@ -14,7 +14,7 @@
 	</select>
 	
 	<!-- 샵 전체 평점 -->
-	<select id="shopScore">
+	<select id="shopScore" resultType="int">
 		select sum(reviewScore)/count(reviewScore) scoreAvg
 		from review where shopNum=#{shopNum}
 	</select>
@@ -22,7 +22,7 @@
 	<!-- 예약 했던 & 리뷰X 유저만 댓글 등록 가능 -->
 	<select id="checkRsvnAndReview">
 		select count(*) from review
-		where rsvnNum=#{rsvnNum} and (select bookingDate from reservation where rsvnNum=#{rsvnNum})<![CDATA[ < ]]>sysdate
+		where rsvnNum=#{rsvnNum} and (select bookingDate from reservation where rsvnNum=#{rsvnNum} and rsvnstatus=0)<![CDATA[ < ]]>sysdate
 	</select>
 	
 	

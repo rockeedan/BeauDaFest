@@ -6,5 +6,5 @@ import com.beaudafest.domain.ReviewVO;
 
 public interface ReviewService {
 	public List<ReviewVO> reviewList(Integer shopNum);//샵의 전체 리뷰
-
+	public Integer shopScore(Integer shopNum);
 }

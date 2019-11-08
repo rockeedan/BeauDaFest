@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,6 +61,7 @@ function add(ths,sno){
 	}
 }
 </script>
+<title>BEAUDAFEST</title>
 </head>
 <body>
 	<c:choose>
@@ -87,10 +89,10 @@ function add(ths,sno){
 		<section class="jumbotron text-center"
 			style="background-color: #fbceb1">
 			<div class="container">
-				<h1 class="jumbotron-heading">${couponList.get(0).shopName }</h1>
+				<h1 class="jumbotron-heading"></h1>
 				<!-- 샵이름 -->
 				<%--샵이름  --%>
-				<p class="lead text-muted">${couponList.get(0).shopIntro }</p>
+				<p class="lead text-muted"></p>
 				<!-- 샵소개 -->
 				<%--샵소개 코멘트  --%>
 			</div>
@@ -108,7 +110,7 @@ function add(ths,sno){
 
 		<hr>
 		<div class="container">
-			<h2 class="text-center">평점(4/5)</h2>
+			<h2 class="text-center">평점(${shopScore}/5)</h2>
 			<br>
 			<form>
 				<div class="form-row">
@@ -120,11 +122,11 @@ function add(ths,sno){
 					</div>
 				</div><br>
 				<div class="text-right"> <!-- 별점 주기 -->
-				<span class="fa fa-star" id="star1" onclick="add(this,1)"></span> <span
-					class="fa fa-star" id="star2" onclick="add(this,2)"></span> <span
-					class="fa fa-star" id="star3" onclick="add(this,3)"></span> <span
-					class="fa fa-star" id="star4" onclick="add(this,4)"></span> <span
-					class="fa fa-star" id="star5" onclick="add(this,5)"></span></div>
+				<span class="fa fa-star" id="star1" onclick="add(this,1)" style="cursor: pointer"></span> <span
+					class="fa fa-star" id="star2" onclick="add(this,2)" style="cursor: pointer"></span> <span
+					class="fa fa-star" id="star3" onclick="add(this,3)" style="cursor: pointer"></span> <span
+					class="fa fa-star" id="star4" onclick="add(this,4)" style="cursor: pointer"></span> <span
+					class="fa fa-star" id="star5" onclick="add(this,5)" style="cursor: pointer"></span></div>
 
 			</form>
 			<br>
@@ -132,19 +134,18 @@ function add(ths,sno){
 				<button type="button" class="btn btn-outline-success">Submit</button>
 			</div>
 			<br> <br>
-			<div class="card">
-				<div class="card-body">
-					<div class="row">
+			
+					<!-- <div class="row">
 						<div class="col-md-2">
 
 							<p class="text-secondary text-center">15 Minutes Ago</p>
-							<!-- 작성날짜 -->
+							작성날짜
 						</div>
 						<div class="col-md-10">
 							<p>
-								<!-- 작성자 -->
+								작성자
 								<strong>Maniruzzaman Akash</strong><span class="float-right">
-									<!-- 별점 보여주기 -->
+									별점 보여주기
 								<i class="text-warning fa fa-star"></i></span> <span class="float-right"><i
 									class="text-warning fa fa-star"></i></span> <span class="float-right"><i
 									class="text-warning fa fa-star"></i></span> <span class="float-right"><i
@@ -152,7 +153,7 @@ function add(ths,sno){
 							
 							</p>
 							<div class="clearfix"></div>
-							<!-- 내용 -->
+							내용
 							<p>Lorem Ipsum is simply dummy text of the pr make but also
 								the leap into electronic typesetting, remaining essentially
 								unchanged. It was popularised in the 1960s with the release of
@@ -161,19 +162,45 @@ function add(ths,sno){
 								including versions of Lorem Ipsum.</p>
 							<p></p>
 						</div>
-					</div>
+					</div> -->
+					<c:forEach items="${reviewList }" var="list">
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-md-2">
+										<p class="text-secondary text-center">
+											<fmt:formatDate value="${list.rsvnDate}" pattern="yy-MM-dd 방문"/>
+										</p>
+									</div>
+									<div class="col-md-10">
+										<p>
+											<strong>${list.memberName}</strong>
+											<c:forEach var="star" begin="1" end="${list.reviewScore}">
+												<span class="float-right"><i
+												class="text-warning fa fa-star"></i></span>
+											</c:forEach>
+										</p>
+										<div class="clearfix"></div>
+										<p>${list.reviewComment }</p>
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+					
 					<!-- 대댓글창 (샵오너가 댓글달기) -->
-					<div class="card card-inner">
+					<!-- <div class="card card-inner">
 						<div class="card-body">
 							<div class="row">
 								<div class="col-md-2">
 
 									<p class="text-secondary text-center">15 Minutes Ago</p>
-									<!-- 작성날짜 -->
+									작성날짜
 								</div>
 								<div class="col-md-10">
 									<p>
-										<!-- 샵이름 -->
+										샵이름
 										<strong>Maniruzzaman Akash</strong>
 									</p>
 									<p>Lorem Ipsum is simply dummy text of the pr make but also
@@ -186,9 +213,7 @@ function add(ths,sno){
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
+					</div>  대댓글-->
 		</div>
 	</div>
 </body>
