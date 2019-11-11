@@ -231,7 +231,7 @@ CREATE TABLE review (
 	memberId VARCHAR2(200) NOT NULL, /* 멤버아이디 */
 	shopNum NUMBER NOT NULL, /* 샵넘버 */
 	rsvnNum NUMBER, /* 예약번호 */
-	reviewScore NUMBER NOT NULL, /* 리뷰평점 */
+	reviewScore NUMBER, /* 리뷰평점 */
 	reviewComment VARCHAR2(1000) NOT NULL, /* 리뷰코멘트 */
 	reviewDepth NUMBER NOT NULL, /* 리뷰깊이 */
 	reviewGroup NUMBER NOT NULL, /* 리뷰그룹 */

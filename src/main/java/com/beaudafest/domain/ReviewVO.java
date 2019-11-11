@@ -13,13 +13,14 @@ public class ReviewVO {
 	private Integer reviewGroup;
 	private Date reviewDate;
 	private Date rsvnDate;
+	private String designName;
 	
 	public ReviewVO() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	public ReviewVO(Integer reviewNum, String memberId, String memberName, Integer shopNum, Integer reviewScore, String reviewComment,
-			Integer reviewDepth, Integer reviewGroup, Date reviewDate, Date rsvnDate) {
+			Integer reviewDepth, Integer reviewGroup, Date reviewDate, Date rsvnDate, String designName) {
 		super();
 		this.reviewNum = reviewNum;
 		this.memberId = memberId;
@@ -31,6 +32,7 @@ public class ReviewVO {
 		this.reviewGroup = reviewGroup;
 		this.reviewDate = reviewDate;
 		this.rsvnDate = rsvnDate;
+		this.designName = designName;
 	}
 	
 	public Integer getReviewNum() {
@@ -92,6 +94,12 @@ public class ReviewVO {
 	}
 	public void setRsvnDate(Date rsvnDate) {
 		this.rsvnDate = rsvnDate;
+	}
+	public String getDesignName() {
+		return designName;
+	}
+	public void setDesignName(String designName) {
+		this.designName = designName;
 	}
 
 	@Override

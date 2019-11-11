@@ -61,10 +61,12 @@ create sequence review_seq
 --샵2 디자인3번(60분) + 옵션9번(30분)       
 insert into review values(1, 'gosolb', 1, 1, 5, '예뻐요', 0, 1, sysdate); --샵1111 디자인1
 insert into review values(2, 'gildong', 1, 3, 1, '별로', 0, 2, sysdate); --샵1111 디자인1
+insert into review(reviewNum, memberId, shopNum, reviewComment, reviewDepth, reviewGroup, reviewDate) 
+values(3, 'juwon', 1, 'Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 1, 1, sysdate); --샵1111 디자인1
 update review set reviewComment='Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages'
-where memberId='gildong' 
+where memberId='gosolb';
 update review set reviewComment='Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
-where memberId='gildong' 
+where memberId='gildong';
 
 select * from review;
 

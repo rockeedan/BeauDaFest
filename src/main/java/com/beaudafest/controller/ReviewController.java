@@ -14,9 +14,10 @@ public class ReviewController {
 	@Autowired
 	private ReviewService service;
 	
+	//리뷰페이지
 	@GetMapping("/shopReview/{shopNum}")
 	public String reviewList(@PathVariable Integer shopNum, Model m) {
-		m.addAttribute("reviewList",service.reviewList(shopNum));
+		m.addAttribute("reviewList",service.userReviewList(shopNum));
 		m.addAttribute("shopScore",service.shopScore(shopNum));
 		return "shopInfo/review";
 	}
