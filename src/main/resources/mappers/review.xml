@@ -38,7 +38,7 @@
 	
 	<!-- 리뷰 추가 -->
 	<insert id="addReview">
-		insert into (reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewCommemt, reviewDepth, reviewGroup)
-		values (#{reviewNum},#{memberId},#{shopNum}, #{rsvnNum},#{reviewScore},#{reviewCommemt},#{reviewDepth},#{reviewGroup})
+		insert into (reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewCommemt, reviewDepth, reviewGroup, reviewDate)
+		values (review_seq.nextval,#{memberId},#{shopNum}, #{rsvnNum},#{reviewScore},#{reviewCommemt},#{reviewDepth},#{reviewGroup}, review_seq.currval)
 	</insert>
 </mapper>

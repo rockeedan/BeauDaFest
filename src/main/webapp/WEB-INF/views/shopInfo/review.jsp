@@ -87,32 +87,6 @@
 			type : 'POST'
 		})
 	})
-	
-	/* <div class="card card-inner">
-		<div class="card-body">
-			<div class="row">
-				<div class="col-md-2">
-
-					<p class="text-secondary text-center">15 Minutes Ago</p>
-					작성날짜
-				</div>
-				<div class="col-md-10">
-					<p>
-						샵이름
-						<strong>Maniruzzaman Akash</strong>
-					</p>
-					<p>Lorem Ipsum is simply dummy text of the pr make but also
-						the leap into electronic typesetting, remaining essentially
-						unchanged. It was popularised in the 1960s with the release of
-						Letraset sheets containing Lorem Ipsum passages, and more
-						recently with desktop publishing software like Aldus PageMaker
-						including versions of Lorem Ipsum.</p>
-					<p></p>
-				</div>
-			</div>
-		</div>
-	</div> */
-	
 </script>
 <title>BEAUDAFEST</title>
 </head>
@@ -155,10 +129,20 @@
 		<!-- 메뉴 NAV -->
 		<div class="nav-scroller py-1 mb-2">
 			<nav class="nav d-flex justify-content-between">
-				<a class="p-2 text-muted"
-					href="../shopDetail/${shopInfo.shopNum }">INFO</a> <a
-					class="p-2 text-muted" href="../couponList/${shopInfo.shopNum }">COUPON</a> <a
-					class="p-2 text-muted" href="../shopReview/${shopInfo.shopNum }">REVIEW</a>
+				<c:choose>
+					<c:when test="${loginId eq shopInfo.memberId}">
+						<a class="p-2 text-muted" href="../shopDetail/${shopInfo.shopNum }">INFO</a> 
+						<a class="p-2 text-muted" href="../couponList/${shopInfo.shopNum }">COUPON</a> 
+						<a class="p-2 text-muted" href="../shopReview/${shopInfo.shopNum }">REVIEW</a>
+						<a class="p-2 text-muted" href="#">AVAILABILITY</a> 
+						<a class="p-2 text-muted" href="#">RESERVATION</a>
+					</c:when>
+					<c:otherwise>
+						<a class="p-2 text-muted" href="../shopDetail/${shopInfo.shopNum }">INFO</a> 
+						<a class="p-2 text-muted" href="../couponList/${shopInfo.shopNum }">COUPON</a> 
+						<a class="p-2 text-muted" href="../shopReview/${shopInfo.shopNum }">REVIEW</a>
+					</c:otherwise>
+				</c:choose>
 			</nav>
 		</div>
 
@@ -233,8 +217,9 @@
 							<div class="col-md-10">
 								<p>
 									<strong>${list.memberName}</strong> <font color="gray">(${list.designName })</font> 
+									<c:if test="${loginId eq shopInfo.memberId}"><a href="#" class="float-right"><font color="gray" size="3">답글달기</font></a></c:if>
 									<c:forEach var="star" begin="1" end="${list.reviewScore}">
-										<span class="float-right"><i
+										<span><i
 											class="text-warning fa fa-star"></i></span>
 									</c:forEach>
 								</p>
