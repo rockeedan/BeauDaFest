@@ -1,6 +1,7 @@
 package com.beaudafest.persistence;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class ShopDAOImpl implements ShopDAO{
 	//샵 조회
 	@Override
 	public ShopVO findShopOne(ShopVO vo) {
-		return sqlSession.selectOne("shop.findShop", vo);
+		return sqlSession.selectOne("shop.findOwnerShop", vo);
 	}
 
 	//특정 shopInfo 조회
@@ -57,5 +58,19 @@ public class ShopDAOImpl implements ShopDAO{
 		
 		return sqlSession.selectList("shop.couponList", shopNum);
 	}
+
+	@Override
+	public List<CouponVO> addOption(Map<String, Object> map) {
+		
+		return sqlSession.selectList("shop.addOption", map);
+	}
+
+	@Override
+	public String selectedDesign(int designId) {
+		
+		return sqlSession.selectOne("shop.selectedDesign", designId);
+	}
+
+	
 
 }

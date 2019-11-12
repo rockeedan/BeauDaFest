@@ -1,6 +1,7 @@
 package com.beaudafest.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.beaudafest.domain.CouponVO;
 import com.beaudafest.domain.ShopVO;
@@ -15,4 +16,7 @@ public interface ShopService {
 	
 	public ShopVO findShopInfo(Integer shopNum);//한 샵 정보 조회
 	public List<CouponVO> couponList(Integer shopNum);
+	public List<CouponVO> addOption(Map<String, Object> map);
+	public String selectedDesign(int designId);
+
 }

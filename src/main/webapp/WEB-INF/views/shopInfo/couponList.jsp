@@ -6,8 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>List</title>
-
-
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script
@@ -21,7 +19,7 @@ $(function(){
 	$("button[name=couponDetail]").on("click", function(){ //디자인 디테일 보기
 		
 		var designId = $(this).attr('designId')
-		console.log(designId)
+		
 		$.ajax({
 			url : '/beaudafest/designDetail',
 			data : {designId : designId },
@@ -43,12 +41,32 @@ $(function(){
 				$("#designTime").val(result.designTime) 
 				$("#designPrice").val(result.designPrice)
 				$("#designId").val(result.designId)
-				
+				$("#designOption").val(result.designOption)
+			
 			}
 		})
 	})
+	
+/* 	$("makeRSVN").on("click", function(){
+		var shopNum = ${couponList.get(0).shopNum }
+		console.log(shopNum)
+		$.ajax({
+			url : '/beaudafest/addOption',
+			data : { shopNum : shopNum, 
+					 designId : 
+				
+			
+			}
+		})
+	}) */
+
 
 })//ready
+
+function makeRSVN (){ //예약하기 클릭 시 전달 
+	document.getElementById("addOption").submit();
+}
+
 
 </script>
 <style>
@@ -109,7 +127,6 @@ $(function(){
 					class="p-2 text-muted" href="#">REVIEW</a>
 			</nav>
 		</div>
-
 		<hr>
 		<div class="container marketing">
 			<%--디자인리스트 보여주기  --%>
@@ -185,19 +202,21 @@ $(function(){
 									</a>
 								</div>
 
-								<form>
+								<form action="/beaudafest/addOption/${couponList.get(0).shopNum }" method="POST" id="addOption">
 									<div class="form-group">
 										<label for="designName" class="col-form-label">디자인 이름:</label>
-										<input type="text" class="form-control" id="designName">
+										<input type="text" class="form-control" id="designName" name="designName">
 									</div>
 									<div class="form-group">
 										<label for="designTime" class="col-form-label">시술시간: </label>
-										<input type="text" class="form-control" id="designTime">
+										<input type="text" class="form-control" id="designTime" name="designTime">
 									</div>
 									<div class="form-group">
 										<label for="designPrice" class="col-form-label">디자인
-											가격:</label> <input type="text" class="form-control" id="designPrice">
+											가격:</label> <input type="text" class="form-control" id="designPrice" name="designPrice">
 									</div>
+									<input type="hidden" class="form-control" id="designId" name="designId">
+									<input type="hidden" class="form-control" id="designOption" name="designOption">
 								</form>
 
 							</div>
@@ -208,7 +227,7 @@ $(function(){
 								<button type="button" class="btn btn-danger"
 									data-dismiss="modal">Close</button>
 								<button type="button" class="btn btn-success"
-									data-dismiss="modal">예약하기</button>
+									data-dismiss="modal" onclick="makeRSVN()">예약하기</button>
 							</div>
 
 						</div>

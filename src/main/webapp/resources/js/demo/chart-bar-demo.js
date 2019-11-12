@@ -32,7 +32,7 @@ var dataValue2 =
 {
 	labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 	datasets: [{
-		data: [20000, 15000, 5000, 20000, 0, 15000, 15000, 25000, 20000, 30000, 25000, 40000],
+		data: [10, 15000, 5000, 20000, 0, 15000, 15000, 25000, 20000, 30000, 25000, 40000],
 		label: "Revenue",
 		backgroundColor: "#4e73df",
 		hoverBackgroundColor: "#2e59d9",

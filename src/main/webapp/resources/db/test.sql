@@ -1,40 +1,13 @@
 
---조회
--- 1. # 2. 예약자명  3. 예약날짜  4. 시술명(디자인명) 5. 옵션 6. 금액합계
-
 select * from reservation
 select * from memberlist
 select * from shopdesign
+select * from shopInfo
 
-
-/* 
-  
- --조회할 데이터 
-rsvnnum, memberid, membername, designname, designid2 optionname, 
-designprice, bookingdate, rsvndate, memberphone, shopnum ,designname, designprice
-
-
---memberList
-memberid, memberName
-
---reservation
-rsvnnum, bookingDate, rsvnDate, designId, designId2
-
---shopDesign
-designName, designId, designName,designPrice
-
-
- */
-
-
---내 샵번호 찾기
-select shopnum
-from SHOPINFO
-where memberid = 'hana1'
-
+------------------------------------------------------------------------------------------------------
 
 select rsvnnum, memberid, membername, memberphone, 
-		RESERVATION2.designname designname, nvl(SHOPDESIGN2.designname,'X') optionname,
+		RESERVATION2.designname designname, nvl(SHOPDESIGN2.designname,'해당없음') optionname,
 		RESERVATION2.designprice + nvl(SHOPDESIGN2.designprice,0) designprice, 
 		 bookingdate, rsvndate, RESERVATION2.shopnum
 
@@ -50,7 +23,7 @@ from
 	 	 using(memberid)
 	 	 ) RESERVATION,  SHOPDESIGN
 	where RESERVATION.designid = shopdesign.designid
-	and RESERVATION.shopnum = 1111
+	and RESERVATION.shopnum = 1
 
 	) 
 	reservation2 left outer join SHOPDESIGN SHOPDESIGN2
@@ -58,7 +31,7 @@ ON reservation2.optionnum = SHOPDESIGN2.designid
 order by rsvnnum;
 
 
--------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
 --월별 예약 조회
 --예약없는 달까지 조회 
 --outer join
@@ -99,7 +72,7 @@ from (select to_char(add_months(to_date('201901', 'YYYYMM'),(level - 1)), 'yyyy-
 	 
 	(select to_char(rsvndate, 'yyyy-mm') ym, count(*) cnt
 	 from reservation  
-	 where shopnum=1111
+	 where shopnum=1
 	 group by to_char(rsvndate, 'yyyy-mm')) reservation
 	 
 on yearmonth.ym = reservation.ym
@@ -108,27 +81,7 @@ order by yearmonth.ym
 
 
 
-
-
-
-select yearmonth.ym, nvl(cnt,0) cnt
-
-from (select to_char(add_months(to_date(#{fromDate}, 'YYYYMM'),(level - 1)), 'yyyy-mm') ym
- 	 from dual
-	 connect by add_months(to_date(#{fromDate}, 'YYYYMM'),(level - 1)) <= to_date(#{toDate}, 'YYYYMM')) yearmonth
-	
-	 left outer join 
-	 
-	(select to_char(rsvndate, 'yyyy-mm') ym, count(*) cnt
-	 from reservation  
-	 where shopnum=#{shopnum}
-	 group by to_char(rsvndate, 'yyyy-mm')) reservation
-	 
-on yearmonth.ym = reservation.ym
-order by yearmonth.ym
-
-
--------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
 --월별 예약 총 금액 조회
 
 --reservation - designid,designid2가져와서
@@ -180,3 +133,124 @@ left outer join
 	  
 on yearmonth.ym = rsvn.ym
 order by yearmonth.ym
+
+
+
+select rsvnnum, memberid, membername, memberphone, 
+				RESERVATION2.designname designname, nvl(SHOPDESIGN2.designname,'해당없음') optionname,
+				RESERVATION2.designprice + nvl(SHOPDESIGN2.designprice,0) designprice, 
+				 bookingdate, rsvndate, RESERVATION2.shopnum
+		
+		from
+			(select rsvnnum, memberid, membername, shopdesign.designname designname, optionnum,
+					 shopdesign.designprice designprice, 
+					bookingdate, rsvndate, memberphone, RESERVATION.shopnum shopnum
+					
+			 from
+				(select rsvnnum, memberid, membername, designid, designid2 optionnum, 
+						bookingdate, rsvndate, memberphone, shopnum
+			 	 from reservation  inner join memberList 
+			 	 using(memberid)
+			 	 ) RESERVATION,  SHOPDESIGN
+			where RESERVATION.designid = shopdesign.designid
+			and RESERVATION.shopnum = 1
+		
+			) 
+			reservation2 left outer join SHOPDESIGN SHOPDESIGN2
+		ON reservation2.optionnum = SHOPDESIGN2.designid
+		order by rsvnnum
+		
+		
+		
+select yearmonth.ym ym, nvl(cnt,0) cnt
+
+from (select to_char(add_months(to_date('201901', 'YYYYMM'),(level - 1)), 'yyyy-mm') ym
+ 			 from dual
+ 			
+			 connect by add_months(to_date('201901', 'YYYYMM'),(level - 1)) <= to_date('201901', 'YYYYMM')+364) yearmonth
+ 		
+ 		
+	 left outer join 
+ 
+		(select to_char(rsvndate, 'yyyy-mm') ym, count(*) cnt
+	 from reservation  
+	 where shopnum=1
+	 group by to_char(rsvndate, 'yyyy-mm')) reservation
+ 
+	on yearmonth.ym = reservation.ym
+	order by yearmonth.ym
+		
+		
+select yearmonth.ym, nvl(totalprice,0) totalprice
+
+from (select to_char(add_months(to_date('201901', 'YYYYMM'),(level - 1)), 'yyyy-mm') ym
+ 	 from dual
+	
+	 connect by add_months(to_date('201901', 'YYYYMM'),(level - 1)) <= to_date('201901', 'YYYYMM')+364) yearmonth
+ 	
+		
+	left outer join 
+		 
+		(select to_char(rsvndate, 'yyyy-mm') ym, 
+			sum(reservation2.designprice+nvl(SHOPDESIGN2.designprice,0)) totalPrice
+	 from
+		 (select RESERVATION.rsvndate rsvndate, 
+				RESERVATION.designid designid, RESERVATION.designid2 optionnum, 
+				shopdesign.designprice designprice
+		  from RESERVATION,  SHOPDESIGN
+		  where RESERVATION.designid = shopdesign.designid 
+		  and RESERVATION.shopnum = 1
+		  ) reservation2 
+		 
+	left outer join SHOPDESIGN SHOPDESIGN2
+	ON reservation2.optionnum = SHOPDESIGN2.designid
+	GROUP BY to_char(rsvndate, 'yyyy-mm')) rsvn
+	  
+on yearmonth.ym = rsvn.ym
+order by yearmonth.ym
+		
+		
+------------------------------------------------------------------------------------------------------
+-- 오너 샵 목록 보여주기
+--샵추가
+insert into shopInfo(shopNum, memberId, shopName, shopPhone, shopAddr, 
+shopOpen, shopOff, shopPhoto, shopIntro, shopParking, shopPolicy)
+values (shopInfo_seq.nextval,'juwon','주원샵2','02-1111-1111','서울시 서초구 방배동',
+'11:00','18:00','2019/10/14/2019846505481.png','4샵정보',1,'취소정책');
+
+
+------------------------------------------------------------------------------------------------------
+--회원의 본인 예약 리스트 조회
+
+select * from reservation
+where memberid = 'gosolb';
+
+
+select rsvnnum, reservation.memberid, shopname, designname, 
+		nvl(optionname,'') optionname, designprice, bookingdate, rsvndate, shopaddr
+from (
+		select rsvnnum, memberid, RESERVATION2.shopnum,
+						RESERVATION2.designname designname, nvl(SHOPDESIGN2.designname,'해당없음') optionname,
+						RESERVATION2.designprice + nvl(SHOPDESIGN2.designprice,0) designprice, 
+						 bookingdate, rsvndate
+				
+				from
+					(select rsvnnum, memberid, shopdesign.designname designname, designid2 optionnum,
+							 shopdesign.designprice designprice, 
+							bookingdate, rsvndate, RESERVATION.shopnum shopnum
+							
+					 from
+						(select rsvnnum, memberid, shopnum, designid, bookingdate, rsvndate,rsvntime, designid2
+					 	 from reservation  inner join memberList 
+					 	 using(memberid)
+					 	 ) RESERVATION,  SHOPDESIGN
+					where RESERVATION.designid = shopdesign.designid
+					and rsvndate > bookingdate
+					and RESERVATION.memberid = 'gosolb'
+				
+					) 
+					reservation2 left outer join SHOPDESIGN SHOPDESIGN2
+				ON reservation2.optionnum = SHOPDESIGN2.designid
+		)reservation left outer join shopinfo
+ON reservation.shopnum = shopinfo.shopnum
+order by rsvnnum

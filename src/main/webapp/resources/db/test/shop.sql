@@ -62,3 +62,8 @@ values (shopInfo_seq.nextval,'gamchan','감찬샵','02-2222-2222','서울시|마
 select * from shopInfo;
 select * from memberList;
 
+--샵추가
+insert into shopInfo(shopNum, memberId, shopName, shopPhone, shopAddr, 
+shopOpen, shopOff, shopPhoto, shopIntro, shopParking, shopPolicy)
+values (shopInfo_seq.nextval,'juwon','주원샵2','02-1111-1111','서울시 서초구 방배동',
+'11:00','18:00','2019/10/14/2019846505481.png','4샵정보',1,'취소정책');
