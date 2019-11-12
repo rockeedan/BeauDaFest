@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,21 +45,29 @@
 	color: orange;
 }
 </style>
-<script> //별점 주는 JS 
-function add(ths,sno){
+<script>
+	//별점 주는 JS 
+	function add(ths, sno) {
 
-	for (var i=1;i<=5;i++){
-		var cur=document.getElementById("star"+i)
-		cur.className="fa fa-star"
-	}
-	
-	for (var i=1;i<=sno;i++){
-		var cur=document.getElementById("star"+i)
-		if(cur.className=="fa fa-star"){
-			cur.className="fa fa-star checked"
+		for (var i = 1; i <= 5; i++) {
+			var cur = document.getElementById("star" + i)
+			cur.className = "fa fa-star"
+		}
+
+		for (var i = 1; i <= sno; i++) {
+			var cur = document.getElementById("star" + i)
+			if (cur.className == "fa fa-star") {
+				cur.className = "fa fa-star checked"
+			}
 		}
 	}
-}
+	
+	
+	$(function(){
+		$.ajax({
+			
+		})
+	})
 </script>
 <title>BEAUDAFEST</title>
 </head>
@@ -81,6 +89,21 @@ function add(ths,sno){
 			<%@ include file="../include/nav.jsp"%>
 		</c:otherwise>
 	</c:choose>
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<link
+		href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+		rel="stylesheet"
+		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+		crossorigin="anonymous">
 
 	<br>
 	<br>
@@ -89,7 +112,7 @@ function add(ths,sno){
 		<section class="jumbotron text-center"
 			style="background-color: #fbceb1">
 			<div class="container">
-				<h1 class="jumbotron-heading"></h1>
+				<h1 class="jumbotron-heading">샵이름</h1>
 				<!-- 샵이름 -->
 				<%--샵이름  --%>
 				<p class="lead text-muted"></p>
@@ -120,13 +143,16 @@ function add(ths,sno){
 						</div>
 						<textarea class="form-control" aria-label="With textarea"></textarea>
 					</div>
-				</div><br>
-				<div class="text-right"> <!-- 별점 주기 -->
-				<span class="fa fa-star" id="star1" onclick="add(this,1)" style="cursor: pointer"></span> <span
-					class="fa fa-star" id="star2" onclick="add(this,2)" style="cursor: pointer"></span> <span
-					class="fa fa-star" id="star3" onclick="add(this,3)" style="cursor: pointer"></span> <span
-					class="fa fa-star" id="star4" onclick="add(this,4)" style="cursor: pointer"></span> <span
-					class="fa fa-star" id="star5" onclick="add(this,5)" style="cursor: pointer"></span></div>
+				</div>
+				<br>
+				<div class="text-right">
+					<!-- 별점 주기 -->
+					<span class="fa fa-star" id="star1" onclick="add(this,1)" style="cursor: pointer"></span> 
+					<span class="fa fa-star" id="star2" onclick="add(this,2)" style="cursor: pointer"></span> 
+					<span class="fa fa-star" id="star3" onclick="add(this,3)" style="cursor: pointer"></span> 
+					<span class="fa fa-star" id="star4" onclick="add(this,4)" style="cursor: pointer"></span> 
+					<span class="fa fa-star" id="star5" onclick="add(this,5)" style="cursor: pointer"></span>
+				</div>
 
 			</form>
 			<br>
@@ -134,8 +160,8 @@ function add(ths,sno){
 				<button type="button" class="btn btn-outline-success">Submit</button>
 			</div>
 			<br> <br>
-			
-					<!-- <div class="row">
+
+			<!-- <div class="row">
 						<div class="col-md-2">
 
 							<p class="text-secondary text-center">15 Minutes Ago</p>
@@ -163,34 +189,37 @@ function add(ths,sno){
 							<p></p>
 						</div>
 					</div> -->
-					<c:forEach items="${reviewList }" var="list">
-						<div class="card">
-							<div class="card-body">
-								<div class="row">
-									<div class="col-md-2">
-										<p class="text-secondary text-center">
-											<fmt:formatDate value="${list.rsvnDate}" pattern="yy-MM-dd 방문"/>
-										</p>
-									</div>
-									<div class="col-md-10">
-										<p>
-											<strong>${list.memberName}</strong>
-											<c:forEach var="star" begin="1" end="${list.reviewScore}">
-												<span class="float-right"><i
-												class="text-warning fa fa-star"></i></span>
-											</c:forEach>
-										</p>
-										<div class="clearfix"></div>
-										<p>${list.reviewComment }</p>
-										<p></p>
-									</div>
-								</div>
+			<c:forEach items="${reviewList }" var="list">
+				<div class="card" >
+					<div class="card-body" id="${list.reviewGroup }">
+						<div class="row">
+							<div class="col-md-2">
+								<p class="text-secondary text-center">
+									<fmt:formatDate value="${list.rsvnDate}" pattern="yy-MM-dd 방문" />
+								</p>
+							</div>
+							<div class="col-md-10">
+								<p>
+									<strong>${list.memberName}</strong> <font color="gray">(${list.designName })</font> 
+									<c:forEach var="star" begin="1" end="${list.reviewScore}">
+										<span class="float-right"><i
+											class="text-warning fa fa-star"></i></span>
+									</c:forEach>
+								</p>
+								<div class="clearfix"></div>
+								<p>${list.reviewComment }</p>
+								<p></p>
 							</div>
 						</div>
-					</c:forEach>
-					
-					<!-- 대댓글창 (샵오너가 댓글달기) -->
-					<!-- <div class="card card-inner">
+						<div class="rere"> <!-- 여기에 리리플 달기 -->
+						
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+
+			<!-- 대댓글창 (샵오너가 댓글달기) -->
+			<!-- <div class="card card-inner">
 						<div class="card-body">
 							<div class="row">
 								<div class="col-md-2">
