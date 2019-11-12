@@ -13,7 +13,8 @@ public interface ReservationTableService {
 	public boolean insertTimeSchedule(int shopNum,String addDate,String open[],String close[]);
 	public boolean insertWeekSchedule(int shopNum,String weekStart,String weekEnd,String open,String close);
 	public List<ReservationTableVO> selectWeekScheduleList(int shopNum,Date weekStart);
-	public List<newReservationTableVO> event();
+	public List<newReservationTableVO> event(int shopNum);
 	public boolean deleteTimeSchedule(int shopNum,String addDate,String startTime);
 	public int countTimeSchedule(int shopNum,String addDate, String StartTime);
+	public List<newReservationTableVO> reservationEvent(int shopNum,int rsvnTime);
 }

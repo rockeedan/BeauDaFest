@@ -357,3 +357,18 @@ create sequence review_seq
        increment by 1
        nocycle
        nocache;
+       
+--트리거 생성 // command창 열어서 직접 입력 바랍니다.
+create or replace trigger schedule_insert_trigger
+before insert
+on timeSchedule
+for each row
+declare
+	insertDate number;
+begin
+	select count(*) into insertDate from monthSchedule where addDate=:new.addDate and shopNum=:new.shopNum;
+	if insertDate = 0 then
+		insert into monthSchedule(shopNum,addDate) values(:new.shopNum,:new.addDate);
+	end if;	
+end;
+/

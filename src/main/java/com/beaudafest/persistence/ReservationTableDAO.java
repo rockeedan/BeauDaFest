@@ -13,8 +13,9 @@ public interface ReservationTableDAO {
 	public int insertTimeSchedule(Map map);
 	public int insertWeekSchedule(Map map);
 	public List<ReservationTableVO> selectWeekScheduleList(Map map);
-	public List<newReservationTableVO> event();
+	public List<newReservationTableVO> event(int shopNum);
 	public int deleteTimeSchedule(Map map);
 	public int countTimeSchedule(Map map);
 	public int deleteMonthSchedule(Map map);
+	public List<newReservationTableVO> reservationEvent(Map map);
 }

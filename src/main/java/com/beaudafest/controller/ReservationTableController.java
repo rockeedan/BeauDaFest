@@ -30,6 +30,10 @@ public class ReservationTableController {
 	@Autowired
 	private ReservationTableService service;
 	
+	@RequestMapping("/selectReservation")
+	public String selectReservation(HttpServletRequest request) {
+		return "/reservation/reservationDate";
+	}
 	
 	@RequestMapping("/reservationTable")
 	public String tableView(HttpServletRequest request,String addDate) {
@@ -91,8 +95,8 @@ public class ReservationTableController {
 		return "성공";
 	}
 	@RequestMapping("/eventTest")
-	public @ResponseBody List<newReservationTableVO> eventTest(){
-		return service.event();
+	public @ResponseBody List<newReservationTableVO> eventTest(int shopNum){
+		return service.event(shopNum);
 	}
 	@RequestMapping("/eventDelete")
 	public @ResponseBody boolean eventDelete(int shopNum, String addDate, String startTime) {
@@ -101,5 +105,9 @@ public class ReservationTableController {
 	@RequestMapping("/countTimeSchedule")
 	public @ResponseBody Integer countTimeSchedule(int shopNum, String addDate, String startTime) {
 		return service.countTimeSchedule(shopNum, addDate, startTime);
+	}
+	@RequestMapping("/reservationEvent")
+	public @ResponseBody List<newReservationTableVO> reservationEvent(int shopNum,int rsvnTime){
+		return service.reservationEvent(shopNum, rsvnTime);
 	}
 }
