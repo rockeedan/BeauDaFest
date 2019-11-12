@@ -73,11 +73,11 @@
 								<strong>예약날짜</strong>
 							</h6>
 
-						</div> <span class="text-muted">날짜/시간</span>
+						</div> <span class="text-muted">${rsvnDate}</span>
 					</li>
 
 					<li class="list-group-item d-flex justify-content-between"><span>Total
-							(KRW)</span><small class="text-muted">총 시술시간</small> <strong>총가격</strong></li>
+							(KRW)</span><small class="text-muted">${rsvnTime }분</small> <strong>총가격</strong></li>
 				</ul>
 			</div>
 			<div class="col-md-8 order-md-1">

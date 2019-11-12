@@ -110,7 +110,7 @@
 		return hour + ":" + min;
 	}
 
-	function open_calender() {
+	function open_calender(shopNum) {
 		var calendarEl = document.getElementById('contentDiv');
 		$('#contentDiv').html("");
 		calendar = new FullCalendar.Calendar(
@@ -159,6 +159,7 @@
 											$('.modal-body').html(result);
 										}
 									})
+							$('#myModal').find('button.logPrint').attr('shopNum',shopNum);
 							$('#myModal').modal();
 						} else {
 							var cntTimeSchedule = 1;
@@ -166,7 +167,7 @@
 									.ajax({
 										url : "/beaudafest/reservation/countTimeSchedule",
 										data : {
-											shopNum : 1,
+											shopNum : shopNum,
 											addDate : info.dateStr
 													.substr(0, 10),
 											startTime : info.dateStr.substr(0,
@@ -183,7 +184,7 @@
 													var open = getEventDate(info.date);
 													var close = getEndTimeDate(info.date);
 													formData.append("shopNum",
-															1);
+															shopNum);
 													formData
 															.append(
 																	"addDate",
@@ -258,6 +259,7 @@
 								failureCallback) {
 							$.ajax({
 								url : "/beaudafest/reservation/eventTest",
+								data:{shopNum:shopNum},
 								dataType : 'json',
 								success : function(data) {
 									successCallback(data);
@@ -283,7 +285,7 @@
 										.ajax({
 											url : "/beaudafest/reservation/eventDelete",
 											data : {
-												shopNum : 1,
+												shopNum : shopNum,
 												addDate : eventDate.substr(0,
 														10),
 												startTime : eventDate.substr(0,
@@ -322,7 +324,7 @@
 								return;
 							}
 							var formData = new FormData();
-							formData.append('shopNum', 1)
+							formData.append('shopNum', $(this).attr('shopNum'))
 							formData.append('addDate', reservationDate)
 							$('button.btn-danger').each(
 									function() {
@@ -458,16 +460,12 @@
 								<a class="collapse-item" href="javascript:;"
 									onClick="open_url('get', 'charts/${shopList.shopNum}','contentDiv')">
 									REVENUE</a>
+								<a class="collapse-item" href="javascript:;" onclick="open_calender(${shopList.shopNum})">일정등록</a>
 							</div>
 
 						</div></li>
 
 				</c:forEach>
-
-				<li class="nav-item"><a class="nav-link collapsed"
-					href="javascript:;" onclick="open_calender()"><span>일정
-							등록</span></a></li>
-
 
 			</ul>
 		</nav>
@@ -494,7 +492,7 @@
 				<div class="modal-body"></div>
 				<!-- Modal footer -->
 				<div class="modal-footer">
-					<button type="button" class="btn logPrint">일정 등록</button>
+					<button type="button" class="btn logPrint" shopNum="0">일정 등록</button>
 					<button type="button" class="btn closeModal" data-dismiss="modal">취소</button>
 				</div>
 			</div>

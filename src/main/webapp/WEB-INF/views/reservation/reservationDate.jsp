@@ -41,6 +41,20 @@
 </style>
 
 <script type="text/javascript">
+function sendPost(action, params) {
+	var form = document.createElement('form');
+	form.setAttribute('method', 'post');
+	form.setAttribute('action', action);
+	for ( var key in params) {
+		var hiddenField = document.createElement('input');
+		hiddenField.setAttribute('type', 'hidden');
+		hiddenField.setAttribute('name', key);
+		hiddenField.setAttribute('value', params[key]);
+		form.appendChild(hiddenField);
+	}
+	document.body.appendChild(form);
+	form.submit();
+}
 $(function(){
 	var calendarEl = document.getElementById('contentDiv');
 	$('#contentDiv').html("");
@@ -73,15 +87,20 @@ $(function(){
       /* eventSources:{url:"/beaudafest/reservation/eventTest",
     	  color:'yellow',
     	  textColor:'black'} */
-      eventSources:[{events:function(info, successCallback, failureCallback){
-    	  $.ajax({
-    			url:"/beaudafest/reservation/reservationEvent",
-    			dataType:'json',
-    			success:function(data){
-    				successCallback(data);
-    			}
-    		})
+//////////////////////////////////////////////////////////////////////////////////////일정 가져오기
+	  eventSources:[{events:function(info, successCallback, failureCallback){
+			$.ajax({
+				url:"/beaudafest/reservation/reservationEvent",
+				data:{shopNum:1,
+					rsvnTime:60},
+				type:"POST",
+				dataType:'JSON',
+				success:function(data){
+					successCallback(data);
+				}
+			})
       },color:"#FFC0CB"}],
+//////////////////////////////////////////////////////////////////////////////////////일정 가져오기
       eventClick: function(info) {
     	    info.jsEvent.preventDefault();
     	    /*alert('Event: ' + info.event.title);
@@ -90,16 +109,32 @@ $(function(){
 
     	    // change the border color just for fun
     	    //info.el.style.borderColor = 'red';
+//////////////////////////////////////////////////////////////////////////////////////일정 등록
     	    if(info.event.title =="예약가능"){
-    	    	var eventDate = getEventDate(info.event.start);
-    	    	if(confirm(eventDate.getMonth()+"월 "+eventDate.getDate()+"일 "+
-    	    			eventDate.getHours()+":"+eventDate.getMinutes()+" 에 예약하시겠습니까?")){
-					alert(eventDate +": 일정이 등록되었습니다")
+    	    	var eventDate = new Date(info.event.start);
+    	    	console.log(eventDate);
+    	    	var monthCheck = eventDate.getMonth()<10 ? "0"+eventDate.getMonth():""+eventDate.getMonth();
+    	    	var dateCheck = eventDate.getDate()<10 ? "0"+eventDate.getDate():""+eventDate.getDate();
+    	    	var hoursCheck = eventDate.getHours()<10 ? "0"+eventDate.getHours():""+eventDate.getHours();
+    	    	var minutesCheck = eventDate.getMinutes()==0 ? "00":"30";
+    	    	
+    	    	if(confirm(monthCheck+"월 "+dateCheck+"일 "+
+    	    			hoursCheck+":"+minutesCheck+" 에 예약하시겠습니까?")){
+    	    			var params = {
+    	    				"shopNum":1,
+   	        				"designId":1,
+   	        				"bookingDate":eventDate.getFullYear()+"/"+monthCheck+"/"+dateCheck,
+   	        				"rsvnDate":eventDate.getFullYear()+"/"+monthCheck+"/"+dateCheck+" "+
+   	        				hoursCheck+":"+minutesCheck,
+   	        				"rsvnTime":60,
+   	        				"designId2":"이런디자인"
+    	    			};
+    	    		sendPost("/beaudafest/confirm", params);
     	    	}
     	    }
+//////////////////////////////////////////////////////////////////////////////////////일정 등록
     	  }
     });
-
     calendar.render();	
 })
 </script>

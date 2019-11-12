@@ -42,7 +42,9 @@ public class SearchController {
 	}
 	
 	@RequestMapping("/confirm")
-	public String confirm () {
+	public String confirm (HttpServletRequest request) {
+		request.setAttribute("rsvnDate", request.getParameter("rsvnDate"));
+		request.setAttribute("rsvnTime", request.getParameter("rsvnTime"));
 		return "reservation/rsvnConfirm";
 	}
 	
