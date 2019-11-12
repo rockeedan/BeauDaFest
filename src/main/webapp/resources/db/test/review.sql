@@ -64,7 +64,7 @@ insert into review values(2, 'gildong', 1, 3, 1, '별로', 0, 2, sysdate); --샵
 update review set reviewComment='Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages'
 where memberId='gildong' 
 update review set reviewComment='Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
-where memberId='gildong' 
+where memberId='gosolb' 
 
 select * from review;
 
