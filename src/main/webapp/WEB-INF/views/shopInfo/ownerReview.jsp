@@ -64,55 +64,10 @@
 	
 	
 	$(function(){
-		//오너 대댓글 조회
-		$.ajax({ 
-			url : "owners/${shopInfo.shopNum}",
-			success : function(data){
-				var html="";
-				for(var i=0; i<data.length; i++){
-					html+="<div class='card card-inner'>";
-					html+="<div class='card-body'>";
-					html+="<div class='row'>";
-					html+="<div class='col-md-2'>";
-					html+="<p class='text-secondary text-center'>"+data[i].reviewDate+"</p>";
-					html+="</div>";
-					html+="<div class='col-md-10'>";
-					html+="<p><strong>"+data[i].shopName+"</strong></p>"
-					html+="<p>"+data[i].reviewComment+"</p></div></div></div></div>";
-					$('.reply_area'+data[i].reviewGroup).html(html);
-					html="";
-				}
-			},
-			dataType:'json',
-			type : 'POST'
+		$.ajax({
+			
 		})
 	})
-	
-	/* <div class="card card-inner">
-		<div class="card-body">
-			<div class="row">
-				<div class="col-md-2">
-
-					<p class="text-secondary text-center">15 Minutes Ago</p>
-					작성날짜
-				</div>
-				<div class="col-md-10">
-					<p>
-						샵이름
-						<strong>Maniruzzaman Akash</strong>
-					</p>
-					<p>Lorem Ipsum is simply dummy text of the pr make but also
-						the leap into electronic typesetting, remaining essentially
-						unchanged. It was popularised in the 1960s with the release of
-						Letraset sheets containing Lorem Ipsum passages, and more
-						recently with desktop publishing software like Aldus PageMaker
-						including versions of Lorem Ipsum.</p>
-					<p></p>
-				</div>
-			</div>
-		</div>
-	</div> */
-	
 </script>
 <title>BEAUDAFEST</title>
 </head>
@@ -164,7 +119,7 @@
 
 		<hr>
 		<div class="container">
-			<h2 class="text-center">평점(<c:if test="${empty shopScore}">0</c:if><c:if test="${!empty shopScore}">${shopScore }</c:if>/5)</h2>
+			<h2 class="text-center">평점(${shopScore}/5)</h2>
 			<br>
 			<form>
 				<div>
@@ -243,7 +198,8 @@
 								<p></p>
 							</div>
 						</div>
-						<div class="reply_area${list.reviewGroup }"> <!-- 여기에 리리플 달기 -->
+						<div class="reply${list.reviewGroup }"> <!-- 여기에 리리플 달기 -->
+						
 						</div>
 					</div>
 				</div>

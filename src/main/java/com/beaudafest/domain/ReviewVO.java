@@ -2,15 +2,19 @@ package com.beaudafest.domain;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class ReviewVO {
 	private Integer reviewNum;
 	private String memberId;
 	private String memberName;
 	private Integer shopNum;
+	private String shopName;
 	private Integer reviewScore;
 	private String reviewComment;
 	private Integer reviewDepth;
 	private Integer reviewGroup;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
 	private Date reviewDate;
 	private Date rsvnDate;
 	private String designName;
@@ -20,7 +24,7 @@ public class ReviewVO {
 	}
 	
 	public ReviewVO(Integer reviewNum, String memberId, String memberName, Integer shopNum, Integer reviewScore, String reviewComment,
-			Integer reviewDepth, Integer reviewGroup, Date reviewDate, Date rsvnDate, String designName) {
+			Integer reviewDepth, Integer reviewGroup, Date reviewDate, Date rsvnDate, String designName, String shopName) {
 		super();
 		this.reviewNum = reviewNum;
 		this.memberId = memberId;
@@ -33,6 +37,7 @@ public class ReviewVO {
 		this.reviewDate = reviewDate;
 		this.rsvnDate = rsvnDate;
 		this.designName = designName;
+		this.shopName = shopName;
 	}
 	
 	public Integer getReviewNum() {
@@ -101,12 +106,19 @@ public class ReviewVO {
 	public void setDesignName(String designName) {
 		this.designName = designName;
 	}
+	public String getShopName() {
+		return shopName;
+	}
+	public void setShopName(String shopName) {
+		this.shopName = shopName;
+	}
 
 	@Override
 	public String toString() {
-		return "ReviewVO [reviewNum=" + reviewNum + ", memberId=" + memberId + ", memberName=" + memberName + ", shopNum=" + shopNum + ", reviewScore="
-				+ reviewScore + ", reviewComment=" + reviewComment + ", reviewDepth=" + reviewDepth + ", reviewGroup="
-				+ reviewGroup + ", reviewDate="+ reviewDate + ", rsvnDate="+ rsvnDate + "]";
+		return "ReviewVO [reviewNum=" + reviewNum + ", memberId=" + memberId + ", memberName=" + memberName
+				+ ", shopNum=" + shopNum + ", shopName=" + shopName + ", reviewScore=" + reviewScore
+				+ ", reviewComment=" + reviewComment + ", reviewDepth=" + reviewDepth + ", reviewGroup=" + reviewGroup
+				+ ", reviewDate=" + reviewDate + ", rsvnDate=" + rsvnDate + ", designName=" + designName + "]";
 	}
-	
+
 }

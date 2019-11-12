@@ -14,15 +14,13 @@
 		where shopNum=#{shopNum}
 	</select>
 	<select id="allOwnerReview" resultType="ReviewVO">
-		select reviewNum, memberId, shopNum, reviewComment, reviewDepth, reviewGroup, designName, memberName
-		from (select reviewNum, memberId, shopNum, reviewComment, reviewDepth, reviewGroup, designName
-			  from review join (select rsvnNum, designName
-								from reservation join shopDesign 
-				                using (designId)) 
-			  using (rsvnNum)
-			  where reviewDepth=1) join MEMBERLIST
-		using(memberId)
-		where shopNum=#{shopNum}
+		select reviewNum, memberId, shopNum, reviewComment, reviewDepth, reviewGroup, memberName, reviewDate, shopName
+		from review join (select memberName,memberId, shopNum, shopName
+				  		  from memberList join shopInfo
+				  		  using (memberId)
+				  		  where shopNum=#{shopNum})
+		using(memberId, shopNum)
+		where reviewDepth=1
 	</select>
 	
 	<!-- 샵 전체 평점 -->
@@ -31,7 +29,7 @@
 		from review where shopNum=#{shopNum}
 	</select>
 	
-	<!-- 예약 했던 & 리뷰X 유저만 댓글 등록 가능 -->
+	<!-- 예약 했던 & 리뷰X 유저만 댓글 등록 가능 ==> 마이페이지에서 리뷰등록하기 -->
 	<select id="checkRsvnAndReview">
 		select count(*) from review
 		where rsvnNum=#{rsvnNum} and (select bookingDate from reservation where rsvnNum=#{rsvnNum} and rsvnstatus=0)<![CDATA[ < ]]>sysdate
