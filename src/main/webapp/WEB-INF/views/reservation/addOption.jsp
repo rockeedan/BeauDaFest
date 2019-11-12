@@ -38,8 +38,7 @@
 	href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900"
 	rel="stylesheet">
 <script type="text/javascript">
-
-
+	
 </script>
 </head>
 <body>
@@ -109,25 +108,48 @@
 				</div>
 				<div class="col-md-6">
 					<h4 class="mb-3">OPTION 추가</h4>
-					<hr>
+
 
 					<div class="d-block my-3">
-						<c:forEach items="${addOption }" var="radio" varStatus="i">
-							<div class="custom-control custom-radio">
-								<input id="credit" name="paymentMethod" type="radio"
-									class="custom-control-input" value="${radio.designTime }" checked required> <label
-									class="custom-control-label" for="credit">${radio.designName }
-									: <span>${radio.designTime }분 </span><span> ${radio.designPrice}원</span></label>
-							</div>
-						</c:forEach>
-						<hr>
-						<br> <br>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th scope="col">선택</th>
+									<th scope="col">내용</th>
+									<th scope="col">시간</th>
+									<th scope="col">비용</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${addOption }" var="radio" varStatus="i">
+									<tr>
+										<th scope="row"><div class="custom-control custom-radio">
+												<input id="credit" name="paymentMethod" type="radio"
+													class="custom-control-input" value="${radio.designTime }"
+													checked required> <label
+													class="custom-control-label" for="credit"> </label>
+											</div></th>
+										<td>${radio.designName }</td>
+										<td>${radio.designTime }분</td>
+										<td>${radio.designPrice}원</td>
+									</tr>
+								</c:forEach>
+								<tr>
+									<td>합계</td>
+								</tr>
+						</table>
 
-						<h4 class="mb-3">총 소요시간:</h4>
+
 					</div>
 				</div>
 			</div>
 		</div>
+		<p class="text-center">
+			<a href="#" class="btn btn-outline-primary my-2">예약하기</a> <a href="#"
+				class="btn btn-outline-danger my-2">돌아가기</a>
+			<%--다음리스트보기 --%>
+		</p>
+
 	</div>
 </body>
 </html>
