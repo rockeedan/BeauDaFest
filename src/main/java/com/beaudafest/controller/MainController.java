@@ -1,7 +1,10 @@
 package com.beaudafest.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,19 +35,23 @@ public class MainController {
 	
 	//로그인
 	@PostMapping("/login")
-	public String login(MemberVO vo, HttpSession session) {
+	public String login(MemberVO vo, HttpSession session, HttpServletResponse response) throws Exception {
 		Map<String, Integer> login = memberService.login(vo);
 		String success = String.valueOf(login.get("SUCCESS"));
-		if(success==null) {
-			System.out.println("ㄴㄴ");
+		if(success.equals("0")) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('아이디 혹은 비밀번호가 틀립니다.');location.href='/beaudafest/login';</script>");
+			out.flush();
+			return "member/login";
 		} else {
 			System.out.println("로그인 성공");
 			session.setAttribute("login", "success");
 			session.setAttribute("loginId", vo.getMemberId());
 			session.setAttribute("memberStatus", String.valueOf(login.get("MEMBERSTATUS")));
 			System.out.println(session.getAttribute("memberStatus"));
+			return "redirect:/";
 		}
-		return "redirect:/";
 	}
 
 	//로그아웃

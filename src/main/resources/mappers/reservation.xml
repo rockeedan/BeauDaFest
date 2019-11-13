@@ -94,7 +94,7 @@
 	<select id = "selectUserRsvnList" resultType="java.util.HashMap">
 	
 		select rsvnnum, reservation.memberid, shopname, designname, 
-				nvl(optionname,'') optionname, designprice, bookingdate, rsvndate, shopaddr,rsvnstatus
+				nvl(optionname,'') optionname, designprice, bookingdate, rsvndate, shopaddr,rsvnstatus, reservation.shopnum
 		from (
 				select rsvnnum, memberid, RESERVATION2.shopnum,
 								RESERVATION2.designname designname, nvl(SHOPDESIGN2.designname,'해당없음') optionname,
@@ -130,7 +130,7 @@
 	<select id = "selectUserRsvnHistory" resultType="java.util.HashMap">
 	
 		select rsvnnum, reservation.memberid, shopname, designname, 
-					nvl(optionname,'') optionname, designprice, bookingdate, rsvndate, shopaddr,rsvnstatus
+					nvl(optionname,'') optionname, designprice, bookingdate, rsvndate, shopaddr,rsvnstatus, reservation.shopnum
 			from (
 					select rsvnnum, memberid, RESERVATION2.shopnum,
 									RESERVATION2.designname designname, nvl(SHOPDESIGN2.designname,'해당없음') optionname,
@@ -138,18 +138,15 @@
 									 bookingdate, rsvndate,rsvnstatus
 							
 							from
-								(select rsvnnum, memberid, shopdesign.designname designname, designid2 optionnum,
-										 shopdesign.designprice designprice, 
+								(select rsvnnum, memberid, shopdesign.designname designname, designid2 optionnum, shopdesign.designprice designprice, 
 										bookingdate, rsvndate, RESERVATION.shopnum shopnum,rsvnstatus
-										
 								 from
-									(select rsvnnum, memberid, shopnum, designid, bookingdate, rsvndate,rsvntime, designid2,rsvnstatus
-								 	 from reservation  inner join memberList 
-								 	 using(memberid)
-								 	 ) RESERVATION,  SHOPDESIGN
-								where RESERVATION.designid = shopdesign.designid
-								 <![CDATA[ and rsvndate < sysdate ]]>
-								and RESERVATION.memberid = #{memberid}
+									 (select rsvnnum, memberid, shopnum, designid, bookingdate, rsvndate,rsvntime, designid2,rsvnstatus
+								 	  from reservation  inner join memberList 
+								 	  using(memberid)) RESERVATION,  SHOPDESIGN
+								 where RESERVATION.designid = shopdesign.designid
+								  <![CDATA[ and rsvndate < sysdate ]]>
+								 and RESERVATION.memberid = #{memberid}
 							
 								) 
 								reservation2 left outer join SHOPDESIGN SHOPDESIGN2

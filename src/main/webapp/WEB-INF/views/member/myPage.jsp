@@ -109,15 +109,14 @@ function open_url(type, url,target) {
 				
 				<div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo"
 						data-parent="#accordionSidebar">
-						<div class="bg-white py-2 collapse-inner rounded">
-							<h6 class="collapse-header">예약 보기</h6>
-							<a class="collapse-item" href="javascript:;"
-								onClick="open_url('get', 'myReservation','contentDiv')">RESERVATIONS</a>
-							
-						</div>
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">예약 보기</h6>
+						<a class="collapse-item" href="javascript:;"
+							onClick="open_url('get', 'myReservation','contentDiv')">RESERVATIONS</a>
+						
+					</div>
 				</div>
 				</li>
-				
 			</ul>
 		</nav>
 
@@ -129,13 +128,6 @@ function open_url(type, url,target) {
 		</div>
 		</main>
 	</div>
-
-
-
-
-
-
-
 
 	<!-- Bootstrap core JavaScript-->
 	
