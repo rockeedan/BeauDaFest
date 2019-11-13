@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.beaudafest.domain.ReservationTableVO;
+import com.beaudafest.domain.ReservationVO;
 import com.beaudafest.domain.newReservationTableVO;
 
 public interface ReservationTableService {
@@ -17,4 +18,5 @@ public interface ReservationTableService {
 	public boolean deleteTimeSchedule(int shopNum,String addDate,String startTime);
 	public int countTimeSchedule(int shopNum,String addDate, String StartTime);
 	public List<newReservationTableVO> reservationEvent(int shopNum,int rsvnTime);
+	public boolean createReservation(ReservationVO vo);
 }

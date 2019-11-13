@@ -216,6 +216,7 @@ public class ShopController {
 		
 		String [] selectedPhoto = shopService.selectedDesign(vo.getDesignId()).split("\\|"); //첫번째 이미지 추출
 		m.addAttribute("shopNum",shopNum);
+		m.addAttribute("designId",vo.getDesignId());
 		m.addAttribute("designName", vo.getDesignName()); //디자인이름 
 		m.addAttribute("designPrice", vo.getDesignPrice()); //디자인가격
 		m.addAttribute("designTime", vo.getDesignTime());  //디자인시간

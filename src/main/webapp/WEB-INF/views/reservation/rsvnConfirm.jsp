@@ -25,6 +25,37 @@
 	}
 }
 </style>
+<script src='/beaudafest/resources/js/jquery-3.js'></script>
+<script type="text/javascript">
+function createReservation(){
+	$.ajax({
+		url:"/beaudafest/reservation/createReservation",
+		data:{
+			memberId:"${sessionScope.loginId}",
+			shopNum:${shopNum},
+			designId:${designId},
+			bookingDate:"${rsvnDate}".substring(0,11),
+			rsvnDate:"${rsvnDate}",
+			rsvnTime:"${designTime+optionTime}",
+			designId2:${optionId},
+			rsvnstatus:0,
+			rsvnName:$('#memberName').val(),
+			rsvnPhone:$('#phone').val()	
+		},
+		type:"POST",
+		success:function(result){
+			if(result){
+				alert("예약되었습니다.");
+				var form = document.createElement('form');
+				form.setAttribute('method', 'post');
+				form.setAttribute('action', "/beaudafest/myPage");
+				document.body.appendChild(form);
+				form.submit();
+			}
+		}
+	})
+}
+</script>
 </head>
 <div>
 	<%@ include file="../include/nav.jsp"%>
@@ -52,19 +83,19 @@
 						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
 							<h6 class="my-0">
-								<strong>디자인 이름</strong>
+								<strong>${designName }</strong>
 							</h6>
-							<small class="text-muted">시술시간</small>
-						</div> <span class="text-muted">가격</span>
+							<small class="text-muted">${designTime }</small>
+						</div> <span class="text-muted">${designPrice }</span>
 					</li>
 					<li
 						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
 							<h6 class="my-0">
-								<strong>옵션이름</strong>
+								<strong>${optionName }</strong>
 							</h6>
-							<small class="text-muted">시술시간</small>
-						</div> <span class="text-muted">가격</span>
+							<small class="text-muted">${optionTime }</small>
+						</div> <span class="text-muted">${optionPrice }</span>
 					</li>
 					<li
 						class="list-group-item d-flex justify-content-between lh-condensed">
@@ -77,7 +108,7 @@
 					</li>
 
 					<li class="list-group-item d-flex justify-content-between"><span>Total
-							(KRW)</span><small class="text-muted">${rsvnTime }분</small> <strong>총가격</strong></li>
+							(KRW)</span><small class="text-muted">${designTime+optionTime}분</small> <strong>${designPrice+optionPrice}원</strong></li>
 				</ul>
 			</div>
 			<div class="col-md-8 order-md-1">
@@ -105,7 +136,7 @@
 								<span class="input-group-text">@</span>
 							</div>
 							<input type="text" class="form-control" id="memberId"
-								placeholder="memberId" disabled>
+								placeholder="${sessionScope.loginId }" disabled>
 							<div class="invalid-feedback" style="width: 100%;">Your ID
 								is required.</div>
 						</div>
@@ -122,7 +153,7 @@
 
 					<hr class="mb-4">
 
-					<button class="btn btn-primary btn-lg btn-block" type="submit">Continue
+					<button class="btn btn-primary btn-lg btn-block" type="button" onclick="createReservation()">Continue
 						to confirm</button>
 				</form>
 			</div>

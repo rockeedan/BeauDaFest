@@ -12,10 +12,70 @@ public class ReservationVO {
 	private Date bookingDate;
 	private Date rsvnDate;
 	private Integer rsvnTime;
+	private Integer designId2;
+	private Integer rsvnstatus;
+	private String rsvnName;
+	private String rsvnPhone;
 	
 	
 	
 	
+	public String getRsvnName() {
+		return rsvnName;
+	}
+
+
+
+
+	public void setRsvnName(String rsvnName) {
+		this.rsvnName = rsvnName;
+	}
+
+
+
+
+	public String getRsvnPhone() {
+		return rsvnPhone;
+	}
+
+
+
+
+	public void setRsvnPhone(String rsvnPhone) {
+		this.rsvnPhone = rsvnPhone;
+	}
+
+
+
+
+	public Integer getDesignId2() {
+		return designId2;
+	}
+
+
+
+
+	public void setDesignId2(Integer designId2) {
+		this.designId2 = designId2;
+	}
+
+
+
+
+	public Integer getRsvnstatus() {
+		return rsvnstatus;
+	}
+
+
+
+
+	public void setRsvnstatus(Integer rsvnstatus) {
+		this.rsvnstatus = rsvnstatus;
+	}
+
+
+
+
 	public ReservationVO() {
 		super();
 	}

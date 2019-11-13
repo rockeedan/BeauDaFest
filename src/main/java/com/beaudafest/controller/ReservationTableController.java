@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.beaudafest.domain.ReservationTableVO;
+import com.beaudafest.domain.ReservationVO;
 import com.beaudafest.domain.newReservationTableVO;
 import com.beaudafest.service.ReservationTableService;
 
@@ -33,9 +34,14 @@ public class ReservationTableController {
 	@RequestMapping("/selectReservation")
 	public String selectReservation(HttpServletRequest request) {
 		request.setAttribute("shopNum", request.getParameter("shopNum"));
+		request.setAttribute("designId", request.getParameter("designId"));
 		request.setAttribute("designName", request.getParameter("designName"));
 		request.setAttribute("designPrice", request.getParameter("designPrice"));
 		request.setAttribute("designTime", request.getParameter("designTime"));
+		request.setAttribute("optionId", request.getParameter("optionId"));
+		request.setAttribute("optionName", request.getParameter("optionName"));
+		request.setAttribute("optionPrice", request.getParameter("optionPrice"));
+		request.setAttribute("optionTime", request.getParameter("optionTime"));
 		return "/reservation/reservationDate";
 	}
 	
@@ -113,5 +119,9 @@ public class ReservationTableController {
 	@RequestMapping("/reservationEvent")
 	public @ResponseBody List<newReservationTableVO> reservationEvent(int shopNum,int rsvnTime){
 		return service.reservationEvent(shopNum, rsvnTime);
+	}
+	@RequestMapping("/createReservation")
+	public @ResponseBody boolean createReservation(ReservationVO vo) {
+		return service.createReservation(vo);
 	}
 }

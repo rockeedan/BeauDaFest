@@ -86,4 +86,9 @@
 	from timeSchedule t1 where shopNum=#{shopNum} and <![CDATA[startTime>sysdate]]>
 	</select>
 	
+<!-- reservation -->
+	<insert id="createReservation">
+	insert into reservation(rsvnNum,memberId,shopNum,designId,bookingDate,rsvnDate,rsvnTime,designId2,rsvnstatus,rsvnName,rsvnPhone)
+	values(reservation_seq.nextval,#{memberId},#{shopNum},#{designId},#{bookingDate},#{rsvnDate},#{rsvnTime},#{designId2},#{rsvnstatus},#{rsvnName},#{rsvnPhone})
+	</insert>
 </mapper>

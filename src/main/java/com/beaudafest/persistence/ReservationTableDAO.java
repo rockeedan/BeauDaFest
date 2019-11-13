@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.beaudafest.domain.ReservationTableVO;
+import com.beaudafest.domain.ReservationVO;
 import com.beaudafest.domain.newReservationTableVO;
 
 public interface ReservationTableDAO {
@@ -18,4 +19,5 @@ public interface ReservationTableDAO {
 	public int countTimeSchedule(Map map);
 	public int deleteMonthSchedule(Map map);
 	public List<newReservationTableVO> reservationEvent(Map map);
+	public int createReservation(ReservationVO vo);
 }

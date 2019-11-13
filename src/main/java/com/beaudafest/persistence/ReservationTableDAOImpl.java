@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.beaudafest.domain.ReservationTableVO;
+import com.beaudafest.domain.ReservationVO;
 import com.beaudafest.domain.newReservationTableVO;
 
 @Repository
@@ -54,5 +55,9 @@ public class ReservationTableDAOImpl implements ReservationTableDAO {
 	@Override
 	public List<newReservationTableVO> reservationEvent(Map map) {
 		return sqlsession.selectList("reservation.selectReservationSchedule",map);
+	}
+	@Override
+	public int createReservation(ReservationVO vo) {
+		return sqlsession.insert("reservation.createReservation",vo);
 	}
 }

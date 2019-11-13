@@ -43,8 +43,16 @@ public class SearchController {
 	
 	@RequestMapping("/confirm")
 	public String confirm (HttpServletRequest request) {
+		request.setAttribute("shopNum", request.getParameter("shopNum"));
+		request.setAttribute("designId", request.getParameter("designId"));
+		request.setAttribute("designName", request.getParameter("designName"));
+		request.setAttribute("designPrice", request.getParameter("designPrice"));
+		request.setAttribute("designTime", request.getParameter("designTime"));
+		request.setAttribute("optionId", request.getParameter("optionId"));
+		request.setAttribute("optionName", request.getParameter("optionName"));
+		request.setAttribute("optionPrice", request.getParameter("optionPrice"));
+		request.setAttribute("optionTime", request.getParameter("optionTime"));
 		request.setAttribute("rsvnDate", request.getParameter("rsvnDate"));
-		request.setAttribute("rsvnTime", request.getParameter("rsvnTime"));
 		return "reservation/rsvnConfirm";
 	}
 	

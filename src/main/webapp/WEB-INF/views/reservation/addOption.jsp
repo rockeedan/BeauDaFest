@@ -44,10 +44,14 @@
 		form.setAttribute('action', "/beaudafest/reservation/selectReservation");
 		var params = {
 				"shopNum":${shopNum },
+				"designId":${designId},
 				"designName":"${designName }",
-				"designPrice":${designPrice },
 				"designTime":${designTime },
-				"designPrice":${designPrice}
+				"designPrice":${designPrice},
+				"optionId":$("input[name='addOption']:checked").attr("id"),
+				"optionName":$("input[name='addOption']:checked").parents('tr').children('td').eq(0).html(),
+				"optionTime":$("input[name='addOption']:checked").val(),
+				"optionPrice":$("input[name='addOption']:checked").attr("price")
 		}
 		for ( var key in params) {
 			var hiddenField = document.createElement('input');
@@ -95,7 +99,7 @@
 		<div class="nav-scroller py-1 mb-2">
 			<nav class="nav d-flex justify-content-between">
 				<a class="p-2 text-muted"
-					href="../shopDetail/${couponList.get(0).shopNum }">INFO</a> <a
+					href="../shopDetail/${shopNum }">INFO</a> <a
 					class="p-2 text-muted" href="#">COUPON</a> <a
 					class="p-2 text-muted" href="#">REVIEW</a>
 			</nav>
@@ -144,10 +148,10 @@
 								<c:forEach items="${addOption }" var="radio" varStatus="i">
 									<tr>
 										<th scope="row"><div class="custom-control custom-radio">
-												<input id="credit" name="paymentMethod" type="radio"
-													class="custom-control-input" value="${radio.designTime }"
+												<input id="${radio.designId}" name="addOption" type="radio"
+													class="custom-control-input" value="${radio.designTime }" price="${radio.designPrice}"
 													checked required> <label
-													class="custom-control-label" for="credit"> </label>
+													class="custom-control-label" for="${radio.designId}"> </label>
 											</div></th>
 										<td>${radio.designName }</td>
 										<td>${radio.designTime }분</td>

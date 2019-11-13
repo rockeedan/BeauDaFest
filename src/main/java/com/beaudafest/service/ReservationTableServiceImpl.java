@@ -19,6 +19,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.beaudafest.domain.ReservationTableVO;
+import com.beaudafest.domain.ReservationVO;
 import com.beaudafest.domain.newReservationTableVO;
 import com.beaudafest.persistence.ReservationTableDAO;
 
@@ -148,5 +149,10 @@ public class ReservationTableServiceImpl implements ReservationTableService{
 		map.put("shopNum",shopNum);
 		map.put("rsvnTime",rsvnTime);
 		return dao.reservationEvent(map);
+	}
+	@Override
+	public boolean createReservation(ReservationVO vo) {
+		if(dao.createReservation(vo)==1)return true;
+		return false;
 	}
 }

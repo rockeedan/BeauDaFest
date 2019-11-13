@@ -55,6 +55,9 @@ function sendPost(action, params) {
 	document.body.appendChild(form);
 	form.submit();
 }
+function back(){
+	document.history(-1);
+}
 $(function(){
 	var calendarEl = document.getElementById('contentDiv');
 	$('#contentDiv').html("");
@@ -113,7 +116,7 @@ $(function(){
     	    if(info.event.title =="예약가능"){
     	    	var eventDate = new Date(info.event.start);
     	    	console.log(eventDate);
-    	    	var monthCheck = eventDate.getMonth()<10 ? "0"+eventDate.getMonth():""+eventDate.getMonth();
+    	    	var monthCheck = eventDate.getMonth()<10 ? "0"+(eventDate.getMonth()+1):""+(eventDate.getMonth()+1);
     	    	var dateCheck = eventDate.getDate()<10 ? "0"+eventDate.getDate():""+eventDate.getDate();
     	    	var hoursCheck = eventDate.getHours()<10 ? "0"+eventDate.getHours():""+eventDate.getHours();
     	    	var minutesCheck = eventDate.getMinutes()==0 ? "00":"30";
@@ -122,13 +125,17 @@ $(function(){
     	    			hoursCheck+":"+minutesCheck+" 에 예약하시겠습니까?")){
     	    			var params = {
     	    				"shopNum":${shopNum},
-   	        				"designName":"${designName}",
    	        				"bookingDate":eventDate.getFullYear()+"/"+monthCheck+"/"+dateCheck,
    	        				"rsvnDate":eventDate.getFullYear()+"/"+monthCheck+"/"+dateCheck+" "+
    	        				hoursCheck+":"+minutesCheck,
-   	        				"rsvnTime":${designTime},
-   	        				"designPrice":${designPrice},
-   	        				"designId2":"이런디자인"
+	   	     				"designId":${designId},
+	   	     				"designName":"${designName }",
+	   	     				"designTime":${designTime },
+	   	     				"designPrice":${designPrice},
+	   	     				"optionId":${optionId},
+	   	     				"optionName":"${optionName}",
+	   	     				"optionTime":${optionTime},
+	   	     				"optionPrice":${optionPrice}
     	    			};
     	    		sendPost("/beaudafest/confirm", params);
     	    	}
@@ -175,10 +182,10 @@ $(function(){
 						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
 							<h6 class="my-0">
-								<strong>옵션이름</strong>
+								<strong>${optionName }</strong>
 							</h6>
-							<small class="text-muted">시술시간</small>
-						</div> <span class="text-muted">가격</span>
+							<small class="text-muted">${optionTime }</small>
+						</div> <span class="text-muted">${optionPrice }</span>
 					</li>
 					<li
 						class="list-group-item d-flex justify-content-between lh-condensed">
@@ -191,13 +198,13 @@ $(function(){
 					</li>
 
 					<li class="list-group-item d-flex justify-content-between"><span>Total
-							(KRW)</span><small class="text-muted">총 시술시간</small> <strong>총가격</strong></li>
+							(KRW)</span><small class="text-muted">${designTime+optionTime }</small> <strong>${designPrice+optionPrice }</strong></li>
 				</ul>
 			</div>
 			<div class="col-md-8 order-md-1">
 				<h4 class="mb-3">예약 날짜 확인</h4>
 				<div id="contentDiv"></div>
-				<button class="btn btn-primary btn-lg btn-block" type="submit">돌아가기</button>
+				<button class="btn btn-primary btn-lg btn-block" type="button" onclick="back()">돌아가기</button>
 			</div>
 		</div>
 	</div>
