@@ -200,9 +200,4 @@ insert into review values(review_seq.nextval, 'gildong', 1, 3, 1, '2Lorem Ipsum 
 insert into review(reviewNum, memberId, shopNum, reviewComment, reviewDepth, reviewGroup, reviewDate) 
 values(review_seq.nextval, 'juwon', 1, '11Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 1, 1, sysdate);
 insert into review(reviewNum, memberId, shopNum, reviewComment, reviewDepth, reviewGroup, reviewDate) 
-<<<<<<< HEAD
 values(review_seq.nextval, 'juwon', 1, '22Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 1, 2, sysdate);
-=======
-values(4, 'juwon', 1, '22Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 1, 2, sysdate);
-
->>>>>>> 0380639b5e8ab2127a6ff5930ade103a5e6e2995
