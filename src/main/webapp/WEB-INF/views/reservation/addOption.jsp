@@ -63,6 +63,20 @@
 		document.body.appendChild(form);
 		form.submit();
 	}
+	
+	
+	$(function(){
+		$('input:radio').on("change", function(){
+			var checked = $(this).val();
+			var price = $(this).attr('price');
+			var selTime = '${designTime}';
+			var selPrice = '${designPrice}';
+			console.log(selTime);
+			$('#sum').children().eq(2).text(parseInt(checked)+parseInt(selTime)+'분');
+			$('#sum').children().eq(3).text(parseInt(price)+parseInt(selPrice)+'원');
+			
+		})
+	})
 </script>
 </head>
 <body>
@@ -90,8 +104,8 @@
 		<section class="jumbotron text-center"
 			style="background-color: #fbceb1">
 			<div class="container">
-				<h1 class="jumbotron-heading">NAMDAREUM</h1>
-				<p class="lead text-muted">최고의 디자인이 어쩌고 블라 샵 코멘트</p>
+				<h1 class="jumbotron-heading">${couponList.get(0).shopName }</h1>
+				<p class="lead text-muted">${couponList.get(0).shopIntro }</p>
 
 			</div>
 		</section>
@@ -100,8 +114,8 @@
 			<nav class="nav d-flex justify-content-between">
 				<a class="p-2 text-muted"
 					href="../shopDetail/${shopNum }">INFO</a> <a
-					class="p-2 text-muted" href="#">COUPON</a> <a
-					class="p-2 text-muted" href="#">REVIEW</a>
+					class="p-2 text-muted" href="../couponList/${shopNum }">COUPON</a> <a
+					class="p-2 text-muted" href="../shopReview/${shopNum }">REVIEW</a>
 			</nav>
 		</div>
 		<hr>
@@ -115,10 +129,10 @@
 							<h3 class="mb-0">${designName }</h3>
 							<%--선택한 디자인 이름 --%>
 							<strong class="d-inline-block mb-2 text-primary">Price</strong>
-							<div class="mb-1 text-muted">${designPrice }원</div>
+							<div class="mb-1 text-muted" id="selPrice"  >${designPrice }원</div>
 							<%--선택한 디자인 가격 --%>
 							<strong class="d-inline-block mb-2 text-primary">Time</strong>
-							<p class="card-text mb-auto">${designTime }mins</p>
+							<p class="card-text mb-auto" id="selTime">${designTime }mins</p>
 							<%--시술시간--%>
 
 						</div>
@@ -146,20 +160,24 @@
 							</thead>
 							<tbody>
 								<c:forEach items="${addOption }" var="radio" varStatus="i">
-									<tr>
+									<tr id="selectOption">
 										<th scope="row"><div class="custom-control custom-radio">
-												<input id="${radio.designId}" name="addOption" type="radio"
-													class="custom-control-input" value="${radio.designTime }" price="${radio.designPrice}"
-													checked required> <label
-													class="custom-control-label" for="${radio.designId}"> </label>
+												<input id="${radio.designId }" name="addOption" type="radio"
+													class="custom-control-input" value="${radio.designTime }" price="${radio.designPrice }"
+													> <label
+													class="custom-control-label" for="${radio.designId }"> </label>
 											</div></th>
 										<td>${radio.designName }</td>
 										<td>${radio.designTime }분</td>
 										<td>${radio.designPrice}원</td>
 									</tr>
 								</c:forEach>
-								<tr>
+								<tr id="sum">
 									<td>합계</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									
 								</tr>
 						</table>
 

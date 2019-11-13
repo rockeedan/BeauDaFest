@@ -123,8 +123,8 @@ function makeRSVN (){ //예약하기 클릭 시 전달
 			<nav class="nav d-flex justify-content-between">
 				<a class="p-2 text-muted"
 					href="../shopDetail/${couponList.get(0).shopNum }">INFO</a> <a
-					class="p-2 text-muted" href="#">COUPON</a> <a
-					class="p-2 text-muted" href="#">REVIEW</a>
+					class="p-2 text-muted" href="../couponList/${couponList.get(0).shopNum }">COUPON</a> <a
+					class="p-2 text-muted" href="../shopReview/${couponList.get(0).shopNum }">REVIEW</a>
 			</nav>
 		</div>
 		<hr>
