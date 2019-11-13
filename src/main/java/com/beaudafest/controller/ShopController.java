@@ -214,6 +214,7 @@ public class ShopController {
 		map.put("designOption", type);
 		
 		String [] selectedPhoto = shopService.selectedDesign(vo.getDesignId()).split("\\|"); //첫번째 이미지 추출
+		m.addAttribute("couponList",shopService.couponList(shopNum));
 		m.addAttribute("shopNum",shopNum);
 		m.addAttribute("designId", vo.getDesignId()); //디자인이름 
 		m.addAttribute("designName", vo.getDesignName()); //디자인이름 
