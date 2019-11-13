@@ -65,19 +65,19 @@
 	<select id="addOption" resultType="CouponVO">
 		<choose>
 			<when test='designOption.equals("N")'>
-				select designName, designTime, designPrice
+				select designId, designName, designTime, designPrice
 				from shopDesign
 				where shopNum = #{shopNum} and designOption like 'NO'||'%'
 				
 			</when>
 			<when test='designOption.equals("P")'>
-				select designName, designTime, designPrice
+				select designId, designName, designTime, designPrice
 				from shopDesign
 				where shopNum = #{shopNum} and designOption like 'PO'||'%'
 				
 			</when>
 			<otherwise>
-				select designName, designTime, designPrice
+				select designId, designName, designTime, designPrice
 				from shopDesign
 				where shopNum = #{shopNum} and designOption like 'LO'||'%'
 			</otherwise>

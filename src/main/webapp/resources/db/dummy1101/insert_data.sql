@@ -147,8 +147,12 @@ insert into shopDesign(designId, shopNum, designName, designType, designOption, 
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '오늘의 페디1', '페디', 'PD'||pediDesign_seq.nextval, 49000, 60, '사진1');  -- 4
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '속눈썹연장1', '속눈썹', 'LD'||lashDesign_seq.nextval, 50000, 60, '사진1'); -- 5
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '페디off1', '페디', 'PO'||pediOption_seq.nextval, 30000, 30, '사진1');		  -- 6
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '네일off1', '네일', 'NO1'||nailOption_seq.nextval, 40000, 30, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '네일off1', '네일', 'NO'||nailOption_seq.nextval, 40000, 30, '사진1');
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '속눈썹off1', '속눈썹', 'LO'||lashOption_seq.nextval, 55000, 30, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '페디off4', '페디', 'PO'||pediOption_seq.nextval, 30000, 30, '사진1');		  -- 6
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '네일off5', '네일', 'NO'||nailOption_seq.nextval, 40000, 30, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '속눈썹off6', '속눈썹', 'LO'||lashOption_seq.nextval, 55000, 30, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '페디off5', '페디', 'PO'||pediOption_seq.nextval, 50000, 60, '사진1');
 
 --8
 insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '원컬러 젤네일2', '네일', 'ND'||nailDesign_seq.nextval, 40000, 60, '사진1'); 
