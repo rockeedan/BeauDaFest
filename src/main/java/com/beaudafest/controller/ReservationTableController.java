@@ -32,6 +32,10 @@ public class ReservationTableController {
 	
 	@RequestMapping("/selectReservation")
 	public String selectReservation(HttpServletRequest request) {
+		request.setAttribute("shopNum", request.getParameter("shopNum"));
+		request.setAttribute("designName", request.getParameter("designName"));
+		request.setAttribute("designPrice", request.getParameter("designPrice"));
+		request.setAttribute("designTime", request.getParameter("designTime"));
 		return "/reservation/reservationDate";
 	}
 	

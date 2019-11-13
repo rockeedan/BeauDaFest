@@ -38,7 +38,27 @@
 	href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900"
 	rel="stylesheet">
 <script type="text/javascript">
-	
+	function sendPost() {
+		var form = document.createElement('form');
+		form.setAttribute('method', 'post');
+		form.setAttribute('action', "/beaudafest/reservation/selectReservation");
+		var params = {
+				"shopNum":${shopNum },
+				"designName":"${designName }",
+				"designPrice":${designPrice },
+				"designTime":${designTime },
+				"designPrice":${designPrice}
+		}
+		for ( var key in params) {
+			var hiddenField = document.createElement('input');
+			hiddenField.setAttribute('type', 'hidden');
+			hiddenField.setAttribute('name', key);
+			hiddenField.setAttribute('value', params[key]);
+			form.appendChild(hiddenField);
+		}
+		document.body.appendChild(form);
+		form.submit();
+	}
 </script>
 </head>
 <body>
@@ -145,7 +165,7 @@
 			</div>
 		</div>
 		<p class="text-center">
-			<a href="#" class="btn btn-outline-primary my-2">예약하기</a> <a href="#"
+			<a href="#" class="btn btn-outline-primary my-2" onclick=sendPost()>예약하기</a> <a href="#"
 				class="btn btn-outline-danger my-2">돌아가기</a>
 			<%--다음리스트보기 --%>
 		</p>

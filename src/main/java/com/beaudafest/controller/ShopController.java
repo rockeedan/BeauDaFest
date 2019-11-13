@@ -212,12 +212,15 @@ public class ShopController {
 		Map<String, Object> map = new HashMap<>();
 		map.put("shopNum", shopNum);
 		map.put("designOption", type);
+		System.out.println("type--->" + type);
 		
-		String [] selectedPhoto = shopService.selectedDesign(vo.getDesignId()).split("\\|"); //첫번째 이미지 추출 
+		String [] selectedPhoto = shopService.selectedDesign(vo.getDesignId()).split("\\|"); //첫번째 이미지 추출
+		m.addAttribute("shopNum",shopNum);
 		m.addAttribute("designName", vo.getDesignName()); //디자인이름 
 		m.addAttribute("designPrice", vo.getDesignPrice()); //디자인가격
 		m.addAttribute("designTime", vo.getDesignTime());  //디자인시간
 		m.addAttribute("addOption",shopService.addOption(map)); //옵션 
+		System.out.println(shopService.addOption(map));
 		m.addAttribute("selectedPhoto", selectedPhoto[0]); //디자인사진 (첫번쨰) 
 		
 		return "reservation/addOption";

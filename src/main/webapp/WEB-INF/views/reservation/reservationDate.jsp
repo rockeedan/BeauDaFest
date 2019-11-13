@@ -91,8 +91,8 @@ $(function(){
 	  eventSources:[{events:function(info, successCallback, failureCallback){
 			$.ajax({
 				url:"/beaudafest/reservation/reservationEvent",
-				data:{shopNum:1,
-					rsvnTime:60},
+				data:{shopNum:${shopNum},
+					rsvnTime:${designTime}},
 				type:"POST",
 				dataType:'JSON',
 				success:function(data){
@@ -121,12 +121,13 @@ $(function(){
     	    	if(confirm(monthCheck+"월 "+dateCheck+"일 "+
     	    			hoursCheck+":"+minutesCheck+" 에 예약하시겠습니까?")){
     	    			var params = {
-    	    				"shopNum":1,
-   	        				"designId":1,
+    	    				"shopNum":${shopNum},
+   	        				"designName":"${designName}",
    	        				"bookingDate":eventDate.getFullYear()+"/"+monthCheck+"/"+dateCheck,
    	        				"rsvnDate":eventDate.getFullYear()+"/"+monthCheck+"/"+dateCheck+" "+
    	        				hoursCheck+":"+minutesCheck,
-   	        				"rsvnTime":60,
+   	        				"rsvnTime":${designTime},
+   	        				"designPrice":${designPrice},
    	        				"designId2":"이런디자인"
     	    			};
     	    		sendPost("/beaudafest/confirm", params);
@@ -165,10 +166,10 @@ $(function(){
 						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
 							<h6 class="my-0">
-								<strong>디자인 이름</strong>
+								<strong>${designName }</strong>
 							</h6>
-							<small class="text-muted">시술시간</small>
-						</div> <span class="text-muted">가격</span>
+							<small class="text-muted">${designTime}</small>
+						</div> <span class="text-muted">${designPrice }</span>
 					</li>
 					<li
 						class="list-group-item d-flex justify-content-between lh-condensed">
