@@ -15,7 +15,7 @@
 	rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="/beaudafest/resources/css/sb-admin-2.min.css" rel="stylesheet">
 
 
 <!-- Page level plugin CSS-->
@@ -144,21 +144,21 @@ function open_url(type, url,target) {
 
 	<!--Core plugin JavaScript-->
 	<script
-		src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+		src="/beaudafest/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 
 	<!--Custom scripts for all pages-->
 	<script src="resources/js/sb-admin.min.js"></script>
 
 	<!--Page level plugins-->
-	<script src="resources/vendor/datatables/jquery.dataTables.min.js"></script>
-	<script src="resources/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-	<script src="resources/js/demo/datatables-demo.js"></script>
+	<script src="/beaudafest/resources/vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="/beaudafest/resources/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+	<script src="/beaudafest/resources/js/demo/datatables-demo.js"></script>
 
 	 <!-- Page level plugins -->
-	<script src="resources/vendor/chart.js/Chart.min.js"></script>
+	<script src="/beaudafest/resources/vendor/chart.js/Chart.min.js"></script>
  
-	<script src="resources/js/demo/chart-area-demo.js"></script>
-	<script src="resources/js/demo/chart-bar-demo.js"></script>  
+	<script src="/beaudafest/resources/js/demo/chart-area-demo.js"></script>
+	<script src="/beaudafest/resources/js/demo/chart-bar-demo.js"></script>  
 </body>
 </html>

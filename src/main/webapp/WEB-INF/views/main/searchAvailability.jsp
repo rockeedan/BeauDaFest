@@ -9,8 +9,8 @@
 <meta charset="UTF-8">
 
 <!-- Bootstrap core CSS -->
-<link href="/beaudafest/resources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 <!-- Custom fonts for this template -->
 <link
@@ -42,7 +42,9 @@
 			</c:otherwise>
 		</c:choose>
 		<!-- Bootstrap core CSS -->
-		<link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Bootstrap core CSS -->
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		
 		<!-- Custom fonts for this template -->
 		<link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">

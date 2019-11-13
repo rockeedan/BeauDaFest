@@ -15,7 +15,8 @@
 <meta name="generator" content="Jekyll v3.8.5">
 
 <!-- Bootstrap core CSS -->
-
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 <!-- Custom fonts for this template -->
 <link
@@ -44,7 +45,9 @@
 				<%@ include file="../include/nav.jsp"%>
 			</c:otherwise>
 		</c:choose>
-	<link href="/beaudafest/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap core CSS -->
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	</div>
 	<br>
 	<br>
@@ -153,7 +156,7 @@
 
 	</div>
 	<!-- Bootstrap core JavaScript -->
-	<script src="resources/vendor/jquery/jquery.min.js"></script>
-	<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/beaudafest/resources/vendor/jquery/jquery.min.js"></script>
+	<script src="/beaudafest/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
