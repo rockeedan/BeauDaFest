@@ -100,8 +100,8 @@
 		<section class="jumbotron text-center"
 			style="background-color: #fbceb1">
 			<div class="container">
-				<h1 class="jumbotron-heading">NAMDAREUM</h1>
-				<p class="lead text-muted">최고의 디자인이 어쩌고 블라 샵 코멘트</p>
+				<h1 class="jumbotron-heading">${couponList.get(0).shopName }</h1>
+				<p class="lead text-muted">${couponList.get(0).shopIntro }</p>
 
 			</div>
 		</section>
@@ -109,9 +109,9 @@
 		<div class="nav-scroller py-1 mb-2">
 			<nav class="nav d-flex justify-content-between">
 				<a class="p-2 text-muted"
-					href="../shopDetail/${couponList.get(0).shopNum }">INFO</a> <a
-					class="p-2 text-muted" href="../couponList/${couponList.get(0).shopNum }">COUPON</a> <a
-					class="p-2 text-muted" href="../shopReview/${couponList.get(0).shopNum }">REVIEW</a>
+					href="../shopDetail/${shopNum }">INFO</a> <a
+					class="p-2 text-muted" href="../couponList/${shopNum }">COUPON</a> <a
+					class="p-2 text-muted" href="../shopReview/${shopNum }">REVIEW</a>
 			</nav>
 		</div>
 		<hr>
