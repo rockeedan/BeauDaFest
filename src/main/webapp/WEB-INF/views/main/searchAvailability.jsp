@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 
 <!-- Bootstrap core CSS -->
-<link href="resources/vendor/bootstrap/css/bootstrap.min.css"
+<link href="/beaudafest/resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- Custom fonts for this template -->
@@ -21,8 +21,8 @@
 	rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="resources/css/one-page-wonder.min.css" rel="stylesheet">
-<script src="resources/js/jquery-3.js"></script>
+<link href="/beaudafest/resources/css/one-page-wonder.min.css" rel="stylesheet">
+<script src="/beaudafest/resources/js/jquery-3.js"></script>
 <title>BEAUDAFEST</title>
 </head>
 <body>
@@ -163,8 +163,8 @@
 	</section>
 
 	<!-- Bootstrap core JavaScript -->
-	<script src="resources/vendor/jquery/jquery.min.js"></script>
-	<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/beaudafest/resources/vendor/jquery/jquery.min.js"></script>
+	<script src="/beaudafest/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

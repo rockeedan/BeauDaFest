@@ -15,7 +15,7 @@
 	rel="stylesheet">
 
 <!-- Custom styles for this template-->
-<link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="/beaudafest/resources/css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 <body class="bg-gradient-primary">
 	<div>
@@ -91,14 +91,14 @@
 	</div>
 
 	<!-- Bootstrap core JavaScript-->
-	<script src="resources/vendor/jquery/jquery.min.js"></script>
-	<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/beaudafest/resources/vendor/jquery/jquery.min.js"></script>
+	<script src="/beaudafest/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Core plugin JavaScript-->
-	<script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="/beaudafest/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 	<!-- Custom scripts for all pages-->
-	<script src="resources/js/sb-admin-2.min.js"></script>
+	<script src="/beaudafest/resources/js/sb-admin-2.min.js"></script>
 
 
 </body>
