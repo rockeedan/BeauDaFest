@@ -64,27 +64,8 @@
 	
 	
 	$(function(){
-		//오너 대댓글 조회
-		$.ajax({ 
-			url : "owners/${shopInfo.shopNum}",
-			success : function(data){
-				var html="";
-				for(var i=0; i<data.length; i++){
-					html+="<div class='card card-inner'>";
-					html+="<div class='card-body'>";
-					html+="<div class='row'>";
-					html+="<div class='col-md-2'>";
-					html+="<p class='text-secondary text-center'>"+data[i].reviewDate+"</p>";
-					html+="</div>";
-					html+="<div class='col-md-10'>";
-					html+="<p><strong>"+data[i].shopName+"</strong></p>"
-					html+="<p>"+data[i].reviewComment+"</p></div></div></div></div>";
-					$('.reply_area'+data[i].reviewGroup).html(html);
-					html="";
-				}
-			},
-			dataType:'json',
-			type : 'POST'
+		$.ajax({
+			
 		})
 	})
 </script>
@@ -129,26 +110,16 @@
 		<!-- 메뉴 NAV -->
 		<div class="nav-scroller py-1 mb-2">
 			<nav class="nav d-flex justify-content-between">
-				<c:choose>
-					<c:when test="${loginId eq shopInfo.memberId}">
-						<a class="p-2 text-muted" href="../shopDetail/${shopInfo.shopNum }">INFO</a> 
-						<a class="p-2 text-muted" href="../couponList/${shopInfo.shopNum }">COUPON</a> 
-						<a class="p-2 text-muted" href="../shopReview/${shopInfo.shopNum }">REVIEW</a>
-						<a class="p-2 text-muted" href="#">AVAILABILITY</a> 
-						<a class="p-2 text-muted" href="#">RESERVATION</a>
-					</c:when>
-					<c:otherwise>
-						<a class="p-2 text-muted" href="../shopDetail/${shopInfo.shopNum }">INFO</a> 
-						<a class="p-2 text-muted" href="../couponList/${shopInfo.shopNum }">COUPON</a> 
-						<a class="p-2 text-muted" href="../shopReview/${shopInfo.shopNum }">REVIEW</a>
-					</c:otherwise>
-				</c:choose>
+				<a class="p-2 text-muted"
+					href="../shopDetail/${shopInfo.shopNum }">INFO</a> <a
+					class="p-2 text-muted" href="../couponList/${shopInfo.shopNum }">COUPON</a> <a
+					class="p-2 text-muted" href="../shopReview/${shopInfo.shopNum }">REVIEW</a>
 			</nav>
 		</div>
 
 		<hr>
 		<div class="container">
-			<h2 class="text-center">평점(<c:if test="${empty shopScore}">0</c:if><c:if test="${!empty shopScore}">${shopScore }</c:if>/5)</h2>
+			<h2 class="text-center">평점(${shopScore}/5)</h2>
 			<br>
 			<form>
 				<div>
@@ -217,9 +188,8 @@
 							<div class="col-md-10">
 								<p>
 									<strong>${list.memberName}</strong> <font color="gray">(${list.designName })</font> 
-									<c:if test="${loginId eq shopInfo.memberId}"><a href="#" class="float-right"><font color="gray" size="3">답글달기</font></a></c:if>
 									<c:forEach var="star" begin="1" end="${list.reviewScore}">
-										<span><i
+										<span class="float-right"><i
 											class="text-warning fa fa-star"></i></span>
 									</c:forEach>
 								</p>
@@ -228,7 +198,8 @@
 								<p></p>
 							</div>
 						</div>
-						<div class="reply_area${list.reviewGroup }"> <!-- 여기에 리리플 달기 -->
+						<div class="reply${list.reviewGroup }"> <!-- 여기에 리리플 달기 -->
+						
 						</div>
 					</div>
 				</div>

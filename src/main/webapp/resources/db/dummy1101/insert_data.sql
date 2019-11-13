@@ -141,34 +141,34 @@ insert into timeSchedule(shopNum, addDate, startTime, endTime, arranged) values 
 
 /* 샵디자인 */
 /* 샵디자인 */
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '원컬러 젤네일1', '네일', 'ND', 40000, 60, '사진1'); 
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '포인트 젤네일1', '네일', 'ND', 50000, 90, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '오늘의 네일1', '네일', 'ND', 49000, 90, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '오늘의 페디1', '페디', 'PD', 49000, 60, '사진1');  -- 4
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '속눈썹연장1', '속눈썹', 'LD', 50000, 60, '사진1'); -- 5
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '페디off1', '페디', 'PO', 30000, 30, '사진1');		  -- 6
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '네일off1', '네일', 'NO', 40000, 30, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '속눈썹off1', '속눈썹', 'LO', 55000, 30, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '원컬러 젤네일1', '네일', 'ND'||nailDesign_seq.nextval, 40000, 60, '사진1'); 
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '포인트 젤네일1', '네일', 'ND'||nailDesign_seq.nextval, 50000, 90, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '오늘의 네일1', '네일', 'ND'||nailDesign_seq.nextval, 49000, 90, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '오늘의 페디1', '페디', 'PD'||pediDesign_seq.nextval, 49000, 60, '사진1');  -- 4
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '속눈썹연장1', '속눈썹', 'LD'||lashDesign_seq.nextval, 50000, 60, '사진1'); -- 5
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '페디off1', '페디', 'PO'||pediOption_seq.nextval, 30000, 30, '사진1');		  -- 6
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '네일off1', '네일', 'NO1'||nailOption_seq.nextval, 40000, 30, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 1, '속눈썹off1', '속눈썹', 'LO'||lashOption_seq.nextval, 55000, 30, '사진1');
 
 --8
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '원컬러 젤네일2', '네일', 'ND', 40000, 60, '사진1'); 
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '포인트 젤네일2', '네일', 'ND', 50000, 90, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '오늘의 네일2', '네일', 'ND', 49000, 90, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '오늘의 페디2', '페디', 'PD', 49000, 90, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '속눈썹연장2', '속눈썹', 'LD', 50000, 60, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '페디off2', '페디', 'PO', 30000, 30, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '네일off2', '네일', 'NO', 40000, 30, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '속눈썹off2', '속눈썹', 'LO', 55000, 30, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '원컬러 젤네일2', '네일', 'ND'||nailDesign_seq.nextval, 40000, 60, '사진1'); 
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '포인트 젤네일2', '네일', 'ND'||nailDesign_seq.nextval, 50000, 90, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '오늘의 네일2', '네일', 'ND'||nailDesign_seq.nextval, 49000, 90, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '오늘의 페디2', '페디', 'PD'||pediDesign_seq.nextval, 49000, 90, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '속눈썹연장2', '속눈썹', 'LD'||lashDesign_seq.nextval, 50000, 60, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '페디off2', '페디', 'PO'||pediOption_seq.nextval, 30000, 30, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '네일off2', '네일', 'NO'||nailOption_seq.nextval, 40000, 30, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 2, '속눈썹off2', '속눈썹', 'LO'||lashOption_seq.nextval, 55000, 30, '사진1');
 
 --15
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '원컬러 젤네일3', '네일', 'ND', 42000, 60, '사진1'); 
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '포인트 젤네일3', '네일', 'ND', 55000, 90, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '오늘의 네일3', '네일', 'ND', 19000, 90, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '오늘의 페디3', '페디', 'PD', 49000, 90, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '속눈썹연장3', '속눈썹', 'LD', 25000, 60, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '페디off3', '페디', 'PO', 25000, 30, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '네일off3', '네일', 'NO', 46000, 30, '사진1');
-insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '속눈썹off3', '속눈썹', 'LO', 51400, 60, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '원컬러 젤네일3', '네일', 'ND'||nailDesign_seq.nextval, 42000, 60, '사진1'); 
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '포인트 젤네일3', '네일', 'ND'||nailDesign_seq.nextval, 55000, 90, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '오늘의 네일3', '네일', 'ND'||nailDesign_seq.nextval, 19000, 90, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '오늘의 페디3', '페디', 'PD'||pediDesign_seq.nextval, 49000, 90, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '속눈썹연장3', '속눈썹', 'LD'||lashDesign_seq.nextval, 25000, 60, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '페디off3', '페디', 'PO'||pediOption_seq.nextval, 25000, 30, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '네일off3', '네일', 'NO'||nailOption_seq.nextval, 46000, 30, '사진1');
+insert into shopDesign(designId, shopNum, designName, designType, designOption, designPrice, designTime, designPhoto) values(shopDesign_seq.nextval, 3, '속눈썹off3', '속눈썹', 'LO'||lashOption_seq.nextval, 51400, 60, '사진1');
 
 
 
@@ -194,19 +194,11 @@ insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnD
 insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) values(reservation_seq.nextval, 'gosolb', 3, 17, TO_DATE('2019-11-02 14:00','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-21 11:30','YYYY-MM-DD HH24:MI'), 120, 21, 0);
 insert into reservation(rsvnNum, memberId, shopNum, designId, bookingDate, rsvnDate, rsvnTime, designId2, rsvnstatus) values(reservation_seq.nextval, 'gosolb', 3, 4, TO_DATE('2019-11-02 15:30','YYYY-MM-DD HH24:MI'), TO_DATE('2019-11-21 11:30','YYYY-MM-DD HH24:MI'), 120, 6, 0);
 
----- 리뷰
-----주원샵1
---insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'gosolb', 1, 1, 5, '너무 마음에 들어요', 0, 1, TO_DATE('2019-11-02 21:00','YYYY-MM-DD HH24:MI'));
---insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'juwon', 1, 0, 0, '감사합니다 또 와주세요:)', 1, 1, TO_DATE('2019-10-31 23:00','YYYY-MM-DD HH24:MI'));
---insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'ddoock', 1, 2, 3, '그냥 그랬어요', 0, 2, TO_DATE('2019-11-02 21:00','YYYY-MM-DD HH24:MI'));
---insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'lime', 1, 3, 4, '괜찮았어요', 0, 3, TO_DATE('2019-11-03 11:00','YYYY-MM-DD HH24:MI'));
---insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'juwon', 1, 0, 0, '감사합니다:)', 1, 3, TO_DATE('2019-11-03 21:00','YYYY-MM-DD HH24:MI'));
-----주원샵2
---insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'bboong', 2, 4, 5, '너무 마음에 들어요', 0, 1, TO_DATE('2019-11-01 21:00','YYYY-MM-DD HH24:MI'));
---insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'juwon', 2, 0, 0, '감사합니다! :)', 1, 1, TO_DATE('2019-11-03 21:00','YYYY-MM-DD HH24:MI'));
-----펭수샵
---insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'ddoock', 3, 5, 3, '뚝딱뚝딱', 0, 1, TO_DATE('2019-10-31 21:00','YYYY-MM-DD HH24:MI'));
---insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'pengsu', 3, 0, 0, '감사합니다 또 와주세요:)', 1, 1, TO_DATE('2019-10-31 23:00','YYYY-MM-DD HH24:MI'));
---insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'bboong', 3, 6, 1, '뿡뿡이', 0, 2, TO_DATE('2019-11-02 21:00','YYYY-MM-DD HH24:MI'));
---insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'thunder', 3, 7, 4, '번개맨', 0, 3, TO_DATE('2019-11-03 11:00','YYYY-MM-DD HH24:MI'));
---insert into review(reviewNum, memberId, shopNum, rsvnNum, reviewScore, reviewComment, reviewDepth, reviewGroup, reviewDate) values(review_seq.nextval, 'pengsu', 3, 0, 0, '감사합니다:)', 1, 3, TO_DATE('2019-11-03 21:00','YYYY-MM-DD HH24:MI'));
+--리뷰
+insert into review values(review_seq.nextval, 'gosolb', 1, 1, 5, '1Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages', 0, review_seq.currval, sysdate); --샵1111 디자인1
+insert into review values(review_seq.nextval, 'gildong', 1, 3, 1, '2Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 0, review_seq.currval, sysdate); --샵1111 디자인1
+insert into review(reviewNum, memberId, shopNum, reviewComment, reviewDepth, reviewGroup, reviewDate) 
+values(3, 'juwon', 1, '11Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 1, 1, sysdate);
+insert into review(reviewNum, memberId, shopNum, reviewComment, reviewDepth, reviewGroup, reviewDate) 
+values(4, 'juwon', 1, '22Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 1, 2, sysdate);
+
